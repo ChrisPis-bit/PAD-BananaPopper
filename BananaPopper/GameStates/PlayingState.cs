@@ -12,10 +12,12 @@ namespace BananaPopper
 {
     class PlayingState : GameObjectList
     {
-        Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 30);
-        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y);
+        Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 30); //temporary texture for line
+        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10,10); //temporary texture for bg
+
         Formula theFormula = new Formula();
-        Vector2 startPosLine = new Vector2(0, 0);
+
+        Vector2 startPosLine = new Vector2(0, GameEnvironment.Screen.Y / 2); //start position of the line
         float rc = 0; //Defines the a in y=ax+b
 
         public PlayingState() : base()
@@ -25,6 +27,13 @@ namespace BananaPopper
             for (int i = 0; i < data.Length; ++i) data[i] = Color.Chocolate;
             lineTest.SetData(data);
 
+            //Sets color for temporary background
+            Color[] data1 = new Color[10 * 10];
+            for (int i = 0; i < data1.Length; ++i) data1[i] = Color.Black;
+            bg.SetData(data1);
+
+            //Add GameObjects here
+            Add(new TextureGameObject(bg));
             Add(theFormula);
         }
 
@@ -47,6 +56,12 @@ namespace BananaPopper
 
         public override void Draw(SpriteBatch spriteBatch)
         {
+            //Draws the bg across the screen
+            spriteBatch.Draw(bg,
+               new Rectangle(0, 0, GameEnvironment.Screen.X, GameEnvironment.Screen.Y),
+               new Rectangle(0, 0, bg.Width, bg.Height),
+               Color.White);
+
             base.Draw(spriteBatch);
 
             //Draws a test line
