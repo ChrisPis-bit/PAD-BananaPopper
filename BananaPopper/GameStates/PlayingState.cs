@@ -12,18 +12,20 @@ namespace BananaPopper
 {
     class PlayingState : GameObjectList
     {
-        Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 30); //temporary texture for line
+        Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5); //temporary texture for line
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10,10); //temporary texture for bg
 
         Formula theFormula = new Formula();
 
-        Vector2 startPosLine = new Vector2(0, GameEnvironment.Screen.Y / 2); //start position of the line
+        Vector2 startPosLine = new Vector2(200, GameEnvironment.Screen.Y / 2); //start position of the line
         float rc = 0; //Defines the a in y=ax+b
+
+
 
         public PlayingState() : base()
         {
             //Sets color for test texture for line
-            Color[] data = new Color[10 * 30];
+            Color[] data = new Color[lineTest.Width * lineTest.Height];
             for (int i = 0; i < data.Length; ++i) data[i] = Color.Chocolate;
             lineTest.SetData(data);
 
@@ -32,10 +34,12 @@ namespace BananaPopper
             for (int i = 0; i < data1.Length; ++i) data1[i] = Color.Black;
             bg.SetData(data1);
 
+
+
             //Add GameObjects here
-            Add(new TextureGameObject(bg));
             Add(theFormula);
         }
+
 
         public override void Update(GameTime gameTime)
         {
@@ -45,6 +49,7 @@ namespace BananaPopper
             theFormula.UpdateFormula(rc, startPosLine);
         }
 
+
         public override void HandleInput(InputHelper inputHelper)
         {
             base.HandleInput(inputHelper);
@@ -52,7 +57,11 @@ namespace BananaPopper
             //For testing, changes line direction
             if (inputHelper.KeyPressed(Keys.Up)) rc++;
             if (inputHelper.KeyPressed(Keys.Down)) rc--;
+
+            //For testing, flips line
+            if (inputHelper.KeyPressed(Keys.Space)) theFormula.flipLine = !theFormula.flipLine;
         }
+
 
         public override void Draw(SpriteBatch spriteBatch)
         {
@@ -64,7 +73,7 @@ namespace BananaPopper
 
             base.Draw(spriteBatch);
 
-            //Draws a test line
+            //Draws a test line, startPosLine must be player coords
             LineRenderer.DrawLine(spriteBatch, lineTest, startPosLine, theFormula.end);
         }
     }

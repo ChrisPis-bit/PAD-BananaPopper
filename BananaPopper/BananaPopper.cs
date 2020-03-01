@@ -19,6 +19,9 @@ namespace BananaPopper
             screen.Y = 900;
             ApplyResolutionSettings();
 
+            //Use globalScale on object pos and size to make it change in scale with the screen width/height
+            globalScale = screen.X / 10;
+
             // TODO: Add gamestates here
             gameStateList.Add(new PlayingState());
 

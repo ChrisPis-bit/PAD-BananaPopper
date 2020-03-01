@@ -4,9 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/chris/source/repos/BananaPopper/PAD-BananaPopper/BananaPopper/Content/arrowKey.png</File>
     <File>C:/Users/chris/source/repos/BananaPopper/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

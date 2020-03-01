@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
+namespace BananaPopper
+{
+    class Button : SpriteGameObject
+    {
+        public bool isPressed;
+
+        public Button(String texture) : base(texture)
+        {
+            isPressed = false;
+        }
+
+        public override void HandleInput(InputHelper inputHelper)
+        {
+            base.HandleInput(inputHelper);
+
+            if (Overlaps(inputHelper.MousePosition, new Vector2(0)) && inputHelper.MouseLeftButtonPressed())
+            {
+                isPressed = true;
+            }
+            else
+                isPressed = false;
+        }
+    }
+}

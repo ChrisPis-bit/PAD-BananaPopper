@@ -14,6 +14,7 @@ class GameEnvironment : Game
     protected SpriteBatch spriteBatch;
     static protected ContentManager content;
     protected static Point screen;
+    protected static float globalScale;
     protected static Random random;
     protected InputHelper inputHelper;
     static protected List<GameObject> gameStateList;
@@ -22,6 +23,12 @@ class GameEnvironment : Game
     public static Point Screen
     {
         get { return screen; }
+    }
+
+    //GlobalScale is used to make objects change scale with the screen
+    public static float GlobalScale
+    {
+        get { return globalScale; }
     }
 
     public static GraphicsDeviceManager Graphics
