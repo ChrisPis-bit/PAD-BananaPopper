@@ -15,7 +15,7 @@ namespace BananaPopper
         public Vector2 end = new Vector2(0, 0);
         public bool flipLine;
 
-        public Formula() : base("", Color.White, "GameFont", new Vector2(0 + 30, GameEnvironment.Screen.Y - 30))
+        public Formula(Vector2 position) : base("", Color.White, "GameFont", position)
         {
             flipLine = true;
         }

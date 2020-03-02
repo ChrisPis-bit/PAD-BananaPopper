@@ -9,17 +9,27 @@ using System.Threading.Tasks;
 class SpriteGameObject : GameObject
 {
     public Texture2D texture;
+    public Vector2 origin;
+    public float angle;
 
-    public SpriteGameObject(String assetName)
+    public SpriteGameObject(String assetName, float angle)
     {
         if (assetName.Length > 0)
             texture = GameEnvironment.ContentManager.Load<Texture2D>(assetName);
+
+        this.angle = angle;
+        origin = new Vector2(texture.Width / 2, texture.Height / 2);
     }
 
     public override void Draw(SpriteBatch spriteBatch)
     {
         if (visible)
-            spriteBatch.Draw(texture, GlobalPosition, Color.White);
+            //spriteBatch.Draw(texture, GlobalPosition, Color.White);
+            spriteBatch.Draw(texture, GlobalPosition + origin, null, Color.White,
+             angle,
+             origin,
+             1,
+             SpriteEffects.None, 0f);
     }
 
     public Boolean Overlaps(SpriteGameObject other)
