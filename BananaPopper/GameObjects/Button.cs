@@ -24,6 +24,7 @@ namespace BananaPopper
         {
             base.HandleInput(inputHelper);
 
+            //Checks overlap with mouse, and detects if mouse presses on the button
             if (Overlaps(inputHelper.MousePosition, new Vector2(0)) && inputHelper.MouseLeftButtonPressed())
             {
                 isPressed = true;
