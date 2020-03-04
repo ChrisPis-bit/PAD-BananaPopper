@@ -21,6 +21,14 @@ class SpriteGameObject : GameObject
         origin = new Vector2(texture.Width / 2, texture.Height / 2);
     }
 
+    public SpriteGameObject(Texture2D texture, float angle)
+    {
+        this.texture = texture;
+
+        this.angle = angle;
+        origin = new Vector2(texture.Width / 2, texture.Height / 2);
+    }
+
     public override void Draw(SpriteBatch spriteBatch)
     {
         if (visible)
