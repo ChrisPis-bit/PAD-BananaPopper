@@ -21,7 +21,6 @@ namespace BananaPopper
         SpriteGameObject theMouse;
         Speler thePlayer = new Speler(new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 2));
 
-        Vector2 startPosLine = new Vector2(200, GameEnvironment.Screen.Y / 2); //start position of the line
         float rc = 0; //Defines the a in y=ax+b
 
 
@@ -78,7 +77,7 @@ namespace BananaPopper
                 }
             }
             //Updates the formula on screen
-            theFormula.UpdateFormula(rc, startPosLine);
+            theFormula.UpdateFormula(rc, thePlayer.centerPos);
         }
 
 
@@ -115,7 +114,7 @@ namespace BananaPopper
             base.Draw(spriteBatch);
 
             //Draws a test line, startPosLine must be player coords
-            LineRenderer.DrawLine(spriteBatch, lineTest, startPosLine, theFormula.end);
+            LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
         }
     }
 }
