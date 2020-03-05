@@ -40,7 +40,7 @@ namespace BananaPopper
             //Add GameObjects here
             Add(theFormula);
             Add(theMouse);
-
+            Add(new HUD());
             for (int iButton = 0; iButton < 2; iButton++)
                 Add(new Button("arrowKey", (float)Math.PI * (float)iButton,
                     new Vector2(theFormula.position.X + BananaPopper.GlobalScale/2.5f, theFormula.position.Y - 10 + 30 * iButton)));
