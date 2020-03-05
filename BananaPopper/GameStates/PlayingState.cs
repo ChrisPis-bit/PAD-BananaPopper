@@ -19,6 +19,7 @@ namespace BananaPopper
 
         Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
         SpriteGameObject theMouse;
+        Speler thePlayer = new Speler(new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 2));
 
         Vector2 startPosLine = new Vector2(200, GameEnvironment.Screen.Y / 2); //start position of the line
         float rc = 0; //Defines the a in y=ax+b
@@ -40,6 +41,7 @@ namespace BananaPopper
             //Add GameObjects here
             Add(theFormula);
             Add(theMouse);
+            Add(thePlayer);
 
             for (int iButton = 0; iButton < 2; iButton++)
                 Add(new Button("arrowKey", (float)Math.PI * (float)iButton,
