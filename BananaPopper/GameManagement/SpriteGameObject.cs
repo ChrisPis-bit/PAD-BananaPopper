@@ -12,7 +12,7 @@ class SpriteGameObject : GameObject
     public Vector2 origin;
     public float angle;
 
-    public SpriteGameObject(String assetName, float angle)
+    public SpriteGameObject(String assetName, float angle = 0)
     {
         if (assetName.Length > 0)
             texture = GameEnvironment.ContentManager.Load<Texture2D>(assetName);
@@ -21,7 +21,7 @@ class SpriteGameObject : GameObject
         origin = new Vector2(texture.Width / 2, texture.Height / 2);
     }
 
-    public SpriteGameObject(Texture2D texture, float angle)
+    public SpriteGameObject(Texture2D texture, float angle = 0)
     {
         this.texture = texture;
 

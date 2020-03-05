@@ -14,8 +14,11 @@ namespace BananaPopper
     {
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5); //temporary texture for line
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for bg
+        Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for mouse
+
 
         Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
+        SpriteGameObject theMouse;
 
         Vector2 startPosLine = new Vector2(200, GameEnvironment.Screen.Y / 2); //start position of the line
         float rc = 0; //Defines the a in y=ax+b
@@ -25,19 +28,18 @@ namespace BananaPopper
         public PlayingState() : base()
         {
             //Sets color for test texture for line
-            Color[] data = new Color[lineTest.Width * lineTest.Height];
-            for (int i = 0; i < data.Length; ++i) data[i] = Color.Chocolate;
-            lineTest.SetData(data);
+            GameEnvironment.ChangeColor(lineTest, Color.Blue);
 
             //Sets color for temporary background
-            Color[] data1 = new Color[10 * 10];
-            for (int i = 0; i < data1.Length; ++i) data1[i] = Color.Black;
-            bg.SetData(data1);
+            GameEnvironment.ChangeColor(bg, Color.Black);
+
+            GameEnvironment.ChangeColor(mouse, Color.White);
 
 
-
+            theMouse = new SpriteGameObject(mouse);
             //Add GameObjects here
             Add(theFormula);
+            Add(theMouse);
 
             for (int iButton = 0; iButton < 2; iButton++)
                 Add(new Button("arrowKey", (float)Math.PI * (float)iButton,
@@ -64,6 +66,8 @@ namespace BananaPopper
 
             //For testing, flips line
             if (inputHelper.KeyPressed(Keys.Space)) theFormula.flipLine = !theFormula.flipLine;
+
+            theMouse.position = inputHelper.MousePosition;
         }
 
 

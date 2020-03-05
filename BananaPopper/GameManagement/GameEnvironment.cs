@@ -46,6 +46,13 @@ class GameEnvironment : Game
         get { return content; }
     }
 
+    static public void ChangeColor(Texture2D texture, Color color)
+    {
+        Color[] data = new Color[texture.Width * texture.Height];
+        for (int i = 0; i < data.Length; ++i) data[i] = color;
+        texture.SetData(data);
+    }
+
     static public void SwitchTo(int gameStateIndex)
     {
         if (gameStateIndex >= 0 && gameStateIndex < gameStateList.Count)
