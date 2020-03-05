@@ -76,6 +76,7 @@ namespace BananaPopper
                     }
                 }
             }
+
             //Updates the formula on screen
             theFormula.UpdateFormula(rc, thePlayer.centerPos);
         }

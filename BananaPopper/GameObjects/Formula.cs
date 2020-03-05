@@ -22,18 +22,20 @@ namespace BananaPopper
 
         public void UpdateFormula(float a, Vector2 start)
         {
+            a = -a;
+
             //Calculates b in y=ax+b
             float b = start.Y - a * start.X;
 
             //Sets end coördinate for the line. This way it has 2 points do draw on
             if (flipLine)
             {
-                end = new Vector2(GameEnvironment.Screen.X, (a * GameEnvironment.Screen.X + b) * -1 + GameEnvironment.Screen.Y);
+                end = new Vector2(GameEnvironment.Screen.X, a * GameEnvironment.Screen.X + b);
             }
             else
-                end = new Vector2(0, (a * 0 + b) * -1 + GameEnvironment.Screen.Y);
+                end = new Vector2(0, a * 0 + b);
 
-            text = "Y = " + a + "X +" + b;
+            text = "Y = " + -a + "X +" + -b;
         }
     }
 }
