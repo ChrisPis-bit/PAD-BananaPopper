@@ -20,7 +20,7 @@ namespace BananaPopper
             flipLine = true;
         }
 
-        public void UpdateFormula(float a, Vector2 start)
+        public void UpdateFormula(float a, Vector2 start, Vector2 origin)
         {
             a = -a;
 
@@ -34,6 +34,8 @@ namespace BananaPopper
             }
             else
                 end = new Vector2(0, a * 0 + b);
+
+            b = (start.Y - origin.Y) - a * (start.X - origin.X);
 
             text = "Y = " + -a + "X +" + -b;
         }

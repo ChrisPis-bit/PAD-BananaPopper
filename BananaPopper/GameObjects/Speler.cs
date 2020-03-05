@@ -33,7 +33,7 @@ namespace BananaPopper
         {
             base.HandleInput(inputHelper);
 
-            //Movement
+            //Movement, checks if player is holding down mouse to swipe the player up
             if (inputHelper.MouseLeftButtonDown())
             {
                 if (centerPos == Oorsprong)
@@ -45,19 +45,22 @@ namespace BananaPopper
                     else velocity.Y = inputHelper.MouseVelocity.Y * 50;
                 } 
 
+                //Free movement on x if player is gone from 0,0
                 else if (centerPos.X != Oorsprong.X) {
                     velocity.X = inputHelper.MouseVelocity.X * 50;
-                } 
+                }
 
-                else if(centerPos.Y != Oorsprong.Y)
+                //Free movement on y if player is gone from 0,0
+                else if (centerPos.Y != Oorsprong.Y)
                 {
                     velocity.Y = inputHelper.MouseVelocity.Y * 50;
                 }
-
                 else
                 {
                     velocity = new Vector2(0);
                 }
+
+            //Checks if the player is close to the center of x and y, and places player on 0,0 if he is
             } else if(Overlaps(Oorsprong - new Vector2(50), new Vector2(100, 100))){
                 position = Oorsprong - origin;
                 velocity = new Vector2(0);
