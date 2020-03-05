@@ -16,7 +16,7 @@ namespace BananaPopper
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for bg
         Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for mouse
 
-
+        HUD hud = new HUD();
         Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
         SpriteGameObject theMouse;
         Speler thePlayer = new Speler(new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 2));
@@ -42,7 +42,7 @@ namespace BananaPopper
             Add(theFormula);
             Add(theMouse);
 
-            Add(new HUD());
+            Add(hud);
             Add(thePlayer);
 
 
@@ -55,7 +55,28 @@ namespace BananaPopper
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
+            foreach (GameObject banaan in Children)
+            {
+                if (banaan is Banaan)
+                {
+                    if (banaan.position.X < 0 || banaan.position.X > GameEnvironment.Screen.X * 3 / 4 || banaan.position.Y < 0 || banaan.position.Y > GameEnvironment.Screen.Y)
+                    {
+                        banaan.Visible = false;
+                    }
+                }
+            }
+            for (int i = 0; i<Children.Count; i++)
+            {
+              if (!Children[i].Visible)
+                {
+                    if (Children[i] is Banaan)
+                    {
+                        remove(Children[i]);
+                        i--;
+                        Console.WriteLine("works");
+                    }
+                }
+            }
             //Updates the formula on screen
             theFormula.UpdateFormula(rc, startPosLine);
         }
@@ -73,6 +94,13 @@ namespace BananaPopper
             if (inputHelper.KeyPressed(Keys.Space)) theFormula.flipLine = !theFormula.flipLine;
 
             theMouse.position = inputHelper.MousePosition;
+
+            if (inputHelper.KeyPressed(Keys.Space))
+            {
+                Add(new Banaan(thePlayer.position));
+                hud.numBananas--;
+             
+            }
         }
 
 
