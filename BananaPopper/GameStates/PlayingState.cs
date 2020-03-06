@@ -46,7 +46,7 @@ namespace BananaPopper
 
             for (int iButton = 0; iButton < 2; iButton++)
                 Add(new Button("arrowKey", (float)Math.PI * (float)iButton,
-                    new Vector2(theFormula.position.X + BananaPopper.GlobalScale / 2.5f, theFormula.position.Y - 10 + 30 * iButton)));
+                    new Vector2(theFormula.position.X + BananaPopper.GlobalScale/2.5f, theFormula.position.Y - 10 + 30 * iButton)));
         }
 
 
@@ -63,9 +63,9 @@ namespace BananaPopper
                     }
                 }
             }
-            for (int i = 0; i < Children.Count; i++)
+            for (int i = 0; i<Children.Count; i++)
             {
-                if (!Children[i].Visible)
+              if (!Children[i].Visible)
                 {
                     if (Children[i] is Banaan)
                     {
@@ -90,23 +90,15 @@ namespace BananaPopper
             if (inputHelper.KeyPressed(Keys.Down)) rc--;
 
             //For testing, flips line
-            if (inputHelper.KeyPressed(Keys.F))
-            {
-                theFormula.flipLine = !theFormula.flipLine;
-                
-            }
-
-
+            if (inputHelper.KeyPressed(Keys.Space)) theFormula.flipLine = !theFormula.flipLine;
 
             theMouse.position = inputHelper.MousePosition;
 
             if (inputHelper.KeyPressed(Keys.Space))
             {
-                if (hud.numBananas != 0)
-                {
-                    Add(new Banaan(thePlayer.position, rc, theFormula.flipLine));
-                    hud.numBananas--;
-                }
+                Add(new Banaan(thePlayer.position));
+                hud.numBananas--;
+             
             }
         }
 

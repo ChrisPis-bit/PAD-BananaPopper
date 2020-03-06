@@ -12,17 +12,17 @@ namespace BananaPopper
 {
     class Banaan : SpriteGameObject
     {
-        public Banaan(Vector2 position, float speed, bool flipLine): base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 35, 20))
+        Texture2D banaan;
+        
+        public Banaan(Vector2 position): base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 35, 20))
         {
             GameEnvironment.ChangeColor(texture, Color.Yellow);
             this.position = position;
-            if (flipLine) velocity = new Vector2(1, speed *-1) * 100;
-            else velocity = new Vector2(1, speed *-1) * -100;
         }
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
- 
+            this.position.X += 1 * 3; //3 = speed
         }
     }
 }
