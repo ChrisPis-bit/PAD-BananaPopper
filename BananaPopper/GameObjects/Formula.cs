@@ -11,8 +11,7 @@ namespace BananaPopper
 {
     class Formula : TextGameObject
     {
-        public float a = 0, b = 0,
-            scale = 0.01f;
+        public float a = 0, b = 0;
         public Vector2 end = new Vector2(0, 0);
         public bool flipLine;
 
@@ -21,7 +20,7 @@ namespace BananaPopper
             flipLine = true;
         }
 
-        public void UpdateFormula(float a, Vector2 start, Vector2 origin)
+        public void UpdateFormula(float a, Vector2 start)
         {
             a = -a;
 
@@ -36,9 +35,7 @@ namespace BananaPopper
             else
                 end = new Vector2(0, a * 0 + b);
 
-            b = (start.Y - origin.Y) - a * (start.X - origin.X);
-
-            text = "Y = " + -a + "X +" + -b * scale;
+            text = "Y = " + -a + "X +" + -b;
         }
     }
 }
