@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BananaPopper.cs" />
-    <Compile Include="GameManagement\Grid.cs" />
+    <Compile Include="GameObjects\banaan.cs" />
     <Compile Include="GameObjects\Button.cs" />
     <Compile Include="GameObjects\Formula.cs" />
     <Compile Include="GameManagement\GameEnvironment.cs" />
@@ -52,6 +52,8 @@
     <Compile Include="GameManagement\SpriteGameObject.cs" />
     <Compile Include="GameManagement\TextGameObject.cs" />
     <Compile Include="GameManagement\LineRenderer.cs" />
+    <Compile Include="GameObjects\HUD.cs" />
+    <Compile Include="GameObjects\Speler.cs" />
     <Compile Include="GameStates\PlayingState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

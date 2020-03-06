@@ -11,7 +11,8 @@ namespace BananaPopper
 {
     class Formula : TextGameObject
     {
-        public float a = 0, b = 0;
+        public float a = 0, b = 0,
+            scale = 0.01f;
         public Vector2 end = new Vector2(0, 0);
         public bool flipLine;
 
@@ -20,20 +21,24 @@ namespace BananaPopper
             flipLine = true;
         }
 
-        public void UpdateFormula(float a, Vector2 start)
+        public void UpdateFormula(float a, Vector2 start, Vector2 origin)
         {
+            a = -a;
+
             //Calculates b in y=ax+b
             float b = start.Y - a * start.X;
 
             //Sets end coördinate for the line. This way it has 2 points do draw on
             if (flipLine)
             {
-                end = new Vector2(GameEnvironment.Screen.X, (a * GameEnvironment.Screen.X + b) * -1 + GameEnvironment.Screen.Y);
+                end = new Vector2(GameEnvironment.Screen.X, a * GameEnvironment.Screen.X + b);
             }
             else
-                end = new Vector2(0, (a * 0 + b) * -1 + GameEnvironment.Screen.Y);
+                end = new Vector2(0, a * 0 + b);
 
-            text = "Y = " + a + "X +" + b;
+            b = (start.Y - origin.Y) - a * (start.X - origin.X);
+
+            text = "Y = " + -a + "X +" + -b * scale;
         }
     }
 }
