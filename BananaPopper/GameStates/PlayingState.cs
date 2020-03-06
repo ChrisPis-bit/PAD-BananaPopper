@@ -21,7 +21,7 @@ namespace BananaPopper
         HUD hud = new HUD();
         Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
         SpriteGameObject theMouse;
-        Speler thePlayer = new Speler(new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 2));
+        Speler thePlayer = new Speler(new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.GlobalScale * 5));
 
         float rc = 0; //Defines the a in y=ax+b
 
