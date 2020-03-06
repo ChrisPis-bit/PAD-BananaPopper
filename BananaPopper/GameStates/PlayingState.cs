@@ -17,6 +17,7 @@ namespace BananaPopper
         Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for mouse
         Texture2D XYas = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
         Obstakel theObstacle = new Obstakel(new Vector2(GameEnvironment.Screen.X/2 + 100, GameEnvironment.Screen.Y/2 + 100));
+        Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
         HUD hud = new HUD();
         Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
         SpriteGameObject theMouse;
@@ -33,6 +34,9 @@ namespace BananaPopper
             GameEnvironment.ChangeColor(bg, Color.Black);
             GameEnvironment.ChangeColor(mouse, Color.White);
             GameEnvironment.ChangeColor(XYas, Color.LightGray);
+            GameEnvironment.ChangeColor(XYas, Color.LightGreen);
+
+            GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
 
             theMouse = new SpriteGameObject(mouse);
@@ -118,6 +122,16 @@ namespace BananaPopper
                new Rectangle(0, 0, GameEnvironment.Screen.X, GameEnvironment.Screen.Y),
                new Rectangle(0, 0, bg.Width, bg.Height),
                Color.White);
+
+            for (int i = 0; i < 30; i++)
+            {
+                LineRenderer.DrawLine(spriteBatch, grid, new Vector2((GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale), 0), new Vector2(GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale, GameEnvironment.Screen.Y));
+            }
+
+            for (int j = 0; j < 15; j++)
+            {
+                LineRenderer.DrawLine(spriteBatch, grid, new Vector2(GameEnvironment.Screen.X, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale), new Vector2(0, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale));
+            }
 
             //Draws lines of players movement
             LineRenderer.DrawLine(spriteBatch, XYas, new Vector2(0, thePlayer.Oorsprong.Y),
