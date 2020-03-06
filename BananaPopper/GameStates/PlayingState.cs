@@ -15,6 +15,8 @@ namespace BananaPopper
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5); //temporary texture for line
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for bg
         Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for mouse
+        Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1); //temprary texture for rectangle
+        Grid theGrid = new Grid();
 
 
         Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
@@ -35,11 +37,14 @@ namespace BananaPopper
 
             GameEnvironment.ChangeColor(mouse, Color.White);
 
+            GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
+
 
             theMouse = new SpriteGameObject(mouse);
             //Add GameObjects here
             Add(theFormula);
             Add(theMouse);
+        
 
             for (int iButton = 0; iButton < 2; iButton++)
                 Add(new Button("arrowKey", (float)Math.PI * (float)iButton,
@@ -78,11 +83,25 @@ namespace BananaPopper
                new Rectangle(0, 0, GameEnvironment.Screen.X, GameEnvironment.Screen.Y),
                new Rectangle(0, 0, bg.Width, bg.Height),
                Color.White);
+  
+            for (int i = 0; i < 30; i++)
+            {
+                LineRenderer.DrawLine(spriteBatch, grid, new Vector2((GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale), 0), new Vector2(GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale, GameEnvironment.Screen.Y));
+            }
+
+            for (int j = 0; j < 15; j++)
+            {
+                LineRenderer.DrawLine(spriteBatch, grid, new Vector2(GameEnvironment.Screen.X, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale), new Vector2(0, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale));
+            }
+
+
 
             base.Draw(spriteBatch);
 
             //Draws a test line, startPosLine must be player coords
             LineRenderer.DrawLine(spriteBatch, lineTest, startPosLine, theFormula.end);
+            
+
         }
     }
 }

@@ -14,13 +14,14 @@ namespace BananaPopper
         /// </summary>
         protected override void LoadContent()
         {
+           
             base.LoadContent();
             screen.X = 1600;
             screen.Y = 900;
             ApplyResolutionSettings();
 
             //Use globalScale on object pos and size to make it change in scale with the screen width/height
-            globalScale = screen.X / 10;
+            globalScale = screen.X / 20;
 
             // TODO: Add gamestates here
             gameStateList.Add(new PlayingState());
