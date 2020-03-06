@@ -53,6 +53,7 @@
     <Compile Include="GameManagement\TextGameObject.cs" />
     <Compile Include="GameManagement\LineRenderer.cs" />
     <Compile Include="GameObjects\HUD.cs" />
+    <Compile Include="GameObjects\obstakel.cs" />
     <Compile Include="GameObjects\Speler.cs" />
     <Compile Include="GameStates\PlayingState.cs" />
     <Compile Include="Program.cs" />

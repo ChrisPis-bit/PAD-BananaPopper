@@ -16,8 +16,8 @@ namespace BananaPopper
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for bg
         Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for mouse
         Texture2D XYas = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
+        Obstakel theObstacle = new Obstakel(new Vector2(GameEnvironment.Screen.X/2 + 100, GameEnvironment.Screen.Y/2 + 100));
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
-
         HUD hud = new HUD();
         Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
         SpriteGameObject theMouse;
@@ -43,7 +43,7 @@ namespace BananaPopper
             //Add GameObjects here
             Add(theFormula);
             Add(theMouse);
-
+            Add(theObstacle);
             Add(hud);
             Add(thePlayer);
 
@@ -61,7 +61,7 @@ namespace BananaPopper
             {
                 if (banaan is Banaan)
                 {
-                    if (banaan.position.X < 0 || banaan.position.X > GameEnvironment.Screen.X * 3 / 4 || banaan.position.Y < 0 || banaan.position.Y > GameEnvironment.Screen.Y)
+                    if (banaan.position.X < 0 || banaan.position.X > GameEnvironment.Screen.X || banaan.position.Y < 0 || banaan.position.Y > GameEnvironment.Screen.Y)
                     {
                         banaan.Visible = false;
                     }
