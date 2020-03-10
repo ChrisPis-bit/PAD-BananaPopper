@@ -17,6 +17,7 @@ namespace BananaPopper
         Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for mouse
         Texture2D XYas = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
         Obstakel theObstacle = new Obstakel(new Vector2(GameEnvironment.Screen.X/2 + 100, GameEnvironment.Screen.Y/2 + 100));
+        Enemy theEnemy = new Enemy(new Vector2(GameEnvironment.Screen.X / 2 + 400, GameEnvironment.Screen.Y / 2 + 400));
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
         HUD hud = new HUD();
         Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
@@ -44,6 +45,7 @@ namespace BananaPopper
             Add(theFormula);
             Add(theMouse);
             Add(theObstacle);
+            Add(theEnemy);
             Add(hud);
             Add(thePlayer);
 

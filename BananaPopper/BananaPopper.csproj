@@ -44,6 +44,7 @@
     <Compile Include="BananaPopper.cs" />
     <Compile Include="GameObjects\banaan.cs" />
     <Compile Include="GameObjects\Button.cs" />
+    <Compile Include="GameObjects\Enemy.cs" />
     <Compile Include="GameObjects\Formula.cs" />
     <Compile Include="GameManagement\GameEnvironment.cs" />
     <Compile Include="GameManagement\GameObject.cs" />
