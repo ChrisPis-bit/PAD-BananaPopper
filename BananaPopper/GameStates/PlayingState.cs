@@ -12,11 +12,15 @@ namespace BananaPopper
 {
     class PlayingState : GameObjectList
     {
-        Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5); //temporary texture for line
-        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for bg
-        Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for mouse
+        //All temporary textures for prototype
+        Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
+        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
+        Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         Texture2D XYas = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
-        Obstakel theObstacle = new Obstakel(new Vector2(GameEnvironment.Screen.X/2 + 100, GameEnvironment.Screen.Y/2 + 100));
+
+        GameObjectList theObstacles = new GameObjectList();
+        GameObjectList theBullets = new GameObjectList();
+
         Enemy theEnemy = new Enemy(new Vector2(GameEnvironment.Screen.X / 2 + 400, GameEnvironment.Screen.Y / 2 + 400));
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
         HUD hud = new HUD();
@@ -39,16 +43,25 @@ namespace BananaPopper
 
             GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
-
             theMouse = new SpriteGameObject(mouse);
+
+            theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 6, GameEnvironment.GlobalScale * 8)));
+            theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 4, GameEnvironment.GlobalScale * 4)));
+
             //Add GameObjects here
             Add(theFormula);
             Add(theMouse);
-            Add(theObstacle);
+            Add(theObstacles);
             Add(theEnemy);
             Add(hud);
             Add(thePlayer);
 
+            for (int iBan = 0; iBan < hud.numBananas; iBan++)
+            {
+                theBullets.Add(new Banaan());
+            }
+
+            Add(theBullets);
 
             for (int iButton = 0; iButton < 2; iButton++)
                 Add(new Button("arrowKey", (float)Math.PI * (float)iButton,
@@ -59,28 +72,24 @@ namespace BananaPopper
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            foreach (GameObject banaan in Children)
+            foreach (SpriteGameObject banana in theBullets.Children)
             {
-                if (banaan is Banaan)
+
+                if (banana.position.X < 0 || banana.position.X > GameEnvironment.Screen.X ||
+                    banana.position.Y < 0 || banana.position.Y > GameEnvironment.Screen.Y)
                 {
-                    if (banaan.position.X < 0 || banaan.position.X > GameEnvironment.Screen.X || banaan.position.Y < 0 || banaan.position.Y > GameEnvironment.Screen.Y)
+                    banana.Visible = false;
+                }
+
+                foreach (Obstakel obstacle in theObstacles.Children)
+                {
+                    if (obstacle.Overlaps(banana))
                     {
-                        banaan.Visible = false;
+                        banana.Visible = false;
                     }
                 }
             }
-            for (int i = 0; i < Children.Count; i++)
-            {
-                if (!Children[i].Visible)
-                {
-                    if (Children[i] is Banaan)
-                    {
-                        remove(Children[i]);
-                        i--;
-                        Console.WriteLine("works");
-                    }
-                }
-            }
+
 
             //Updates the formula on screen
             theFormula.UpdateFormula(rc, thePlayer.centerPos, thePlayer.Oorsprong);
@@ -99,7 +108,7 @@ namespace BananaPopper
             if (inputHelper.KeyPressed(Keys.F))
             {
                 theFormula.flipLine = !theFormula.flipLine;
-                
+
             }
 
 
@@ -110,8 +119,15 @@ namespace BananaPopper
             {
                 if (hud.numBananas != 0)
                 {
-                    Add(new Banaan(thePlayer.position, rc, theFormula.flipLine));
-                    hud.numBananas--;
+                    foreach (Banaan banana in theBullets.Children)
+                    {
+                        if (!banana.Visible)
+                        {
+                            banana.Shoot(thePlayer.position, rc, theFormula.flipLine);
+                            hud.numBananas--;
+                            break;
+                        }
+                    }
                 }
             }
         }
