@@ -106,6 +106,7 @@ namespace BananaPopper
                     if (enemy.Overlaps(banana))
                     {
                         enemy.Visible = false;
+                        banana.Visible = false;
                     }
                 }
             }
