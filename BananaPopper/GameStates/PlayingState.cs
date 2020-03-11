@@ -20,8 +20,9 @@ namespace BananaPopper
 
         GameObjectList theObstacles = new GameObjectList();
         GameObjectList theBullets = new GameObjectList();
+        GameObjectList theEnemy = new GameObjectList();
 
-        Enemy theEnemy = new Enemy(new Vector2(GameEnvironment.Screen.X / 2 + 400, GameEnvironment.Screen.Y / 2 + 400));
+       
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
         HUD hud = new HUD();
         Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
@@ -47,6 +48,7 @@ namespace BananaPopper
 
             theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 6, GameEnvironment.GlobalScale * 8)));
             theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 4, GameEnvironment.GlobalScale * 4)));
+            theEnemy.Add(new Enemy(new Vector2(GameEnvironment.GlobalScale * 10, GameEnvironment.GlobalScale * 8)));
 
             //Add GameObjects here
             Add(theFormula);
@@ -86,6 +88,24 @@ namespace BananaPopper
                     if (obstacle.Overlaps(banana))
                     {
                         banana.Visible = false;
+                    }
+                }
+            }
+
+            foreach (SpriteGameObject banana in theBullets.Children)
+            {
+
+                if (banana.position.X < 0 || banana.position.X > GameEnvironment.Screen.X ||
+                    banana.position.Y < 0 || banana.position.Y > GameEnvironment.Screen.Y)
+                {
+                    banana.Visible = false;
+                }
+
+                foreach (Enemy enemy in theEnemy.Children)
+                {
+                    if (enemy.Overlaps(banana))
+                    {
+                        enemy.Visible = false;
                     }
                 }
             }
