@@ -26,10 +26,21 @@ namespace BananaPopper
 
         public void Shoot(Vector2 position, float speed, bool flipLine)
         {
+            float angle;
+
             visible = true;
             this.position = position;
-            if (flipLine) velocity = new Vector2(1, speed * -1) * 100;
-            else velocity = new Vector2(1, speed * -1) * -100;
+
+            if (flipLine)
+            {
+                angle = (float)Math.Atan2(-speed, 1);
+            }
+            else
+            {
+                angle = (float)Math.Atan2(speed, -1);
+            }
+
+            velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 100;
         }
     }
 }
