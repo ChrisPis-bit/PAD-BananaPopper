@@ -95,11 +95,7 @@ namespace BananaPopper
             foreach (SpriteGameObject banana in theBullets.Children)
             {
 
-                if (banana.position.X < 0 || banana.position.X > GameEnvironment.Screen.X ||
-                    banana.position.Y < 0 || banana.position.Y > GameEnvironment.Screen.Y)
-                {
-                    banana.Visible = false;
-                }
+                
 
                 foreach (Enemy enemy in theEnemy.Children)
                 {
