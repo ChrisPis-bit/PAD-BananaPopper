@@ -12,7 +12,7 @@ namespace BananaPopper
 {
     class Enemy : SpriteGameObject
     {
-        public Enemy(Vector2 position) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 50, 50))
+        public Enemy(Vector2 position) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, (int)GameEnvironment.GlobalScale, (int)GameEnvironment.GlobalScale))
         {
             GameEnvironment.ChangeColor(texture, Color.Brown);
             this.position = position;

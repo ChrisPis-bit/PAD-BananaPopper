@@ -26,8 +26,6 @@ namespace BananaPopper
 
         public void Shoot(Vector2 position, float speed, bool flipLine)
         {
-            float angle;
-
             visible = true;
             this.position = position;
 
