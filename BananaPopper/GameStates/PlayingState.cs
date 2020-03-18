@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -25,9 +26,9 @@ namespace BananaPopper
 
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
         HUD hud = new HUD();
-        Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
+        Formula theFormula;
         SpriteGameObject theMouse;
-        Speler thePlayer = new Speler(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 5));
+        Speler thePlayer;
 
         int iRc = 0;
         float[] rc = new float[] { 1, -0.5f, 3 }; //Defines the a in y=ax+b
@@ -36,6 +37,9 @@ namespace BananaPopper
 
         public PlayingState() : base()
         {
+            //Put which level you wanna start in the brackets
+            StartLevel(3);
+
             //Sets color for test textures
             GameEnvironment.ChangeColor(lineTest, Color.Blue);
             GameEnvironment.ChangeColor(bg, Color.Black);
@@ -47,15 +51,7 @@ namespace BananaPopper
 
             theMouse = new SpriteGameObject(mouse);
 
-            theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 6, GameEnvironment.GlobalScale * 8)));
-            theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 4, GameEnvironment.GlobalScale * 4)));
-            theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 5, GameEnvironment.GlobalScale * 4)));
-            theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 14, GameEnvironment.GlobalScale * 8)));
-
-            theEnemy.Add(new Enemy(new Vector2(GameEnvironment.GlobalScale * 15, GameEnvironment.GlobalScale * 8)));
-            theEnemy.Add(new Enemy(new Vector2(GameEnvironment.GlobalScale * 4, GameEnvironment.GlobalScale * 3)));
-            theEnemy.Add(new Enemy(new Vector2(GameEnvironment.GlobalScale * 16, GameEnvironment.GlobalScale * 2)));
-
+            theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
 
             //Add GameObjects here
             Add(theFormula);
@@ -114,10 +110,11 @@ namespace BananaPopper
                 }
             }
 
-            if(iRc >= rc.Length)
+            if (iRc >= rc.Length)
             {
                 iRc = 0;
-            } else if(iRc < 0)
+            }
+            else if (iRc < 0)
             {
                 iRc = rc.Length - 1;
             }
@@ -192,6 +189,57 @@ namespace BananaPopper
             LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
 
             base.Draw(spriteBatch);
+        }
+
+
+
+
+        public void StartLevel(int levelIndex)
+        {
+            //Colors for game objects, use these colors for maps
+            Color balloon = new Color(255, 0, 0),
+                obstacle = new Color(0, 0, 255),
+                point0 = new Color(0, 255, 0);
+
+
+            Texture2D map = GameEnvironment.ContentManager.Load<Texture2D>("Maps/Map" + levelIndex);
+
+            //Changes GlobalScale according to the maps width or height, so that the map always fits on the screen
+            if (GameEnvironment.Screen.X / map.Width / 16 > GameEnvironment.Screen.Y / map.Height / 9)
+            {
+                GameEnvironment.GlobalScale = GameEnvironment.Screen.X / map.Width;
+            }
+            else
+                GameEnvironment.GlobalScale = GameEnvironment.Screen.Y / map.Height;
+
+
+
+            Color[] mapData = new Color[map.Width * map.Height];
+            map.GetData(mapData);
+
+
+            //Loops through the data of the map texture and checks every pixel for its color
+            //If it's a color from the given object colors, it will place down that object on the right position on screen
+            for (int i = 0; i < map.Width; i++)
+            {
+                for (int j = 0; j < map.Height; j++)
+                {
+                    Vector2 position = new Vector2(GameEnvironment.GlobalScale * i, GameEnvironment.GlobalScale * j);
+
+                    if (mapData[i + j * map.Width].Equals(balloon))
+                    {
+                        theEnemy.Add(new Enemy(position));
+                    }
+                    else if (mapData[i + j * map.Width].Equals(obstacle))
+                    {
+                        theObstacles.Add(new Obstakel(position));
+                    }
+                    else if (mapData[i + j * map.Width].Equals(point0))
+                    {
+                        thePlayer = new Speler(position);
+                    }
+                }
+            }
         }
     }
 }

@@ -6,8 +6,14 @@
   <SourceFiles>
     <File>C:/Users/chris/source/repos/BananaPopper/PAD-BananaPopper/BananaPopper/Content/arrowKey.png</File>
     <File>C:/Users/chris/source/repos/BananaPopper/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont</File>
+    <File>C:/Users/chris/source/repos/BananaPopper/PAD-BananaPopper/BananaPopper/Content/Maps/Map1.png</File>
+    <File>C:/Users/chris/source/repos/BananaPopper/PAD-BananaPopper/BananaPopper/Content/Maps/Map2.png</File>
+    <File>C:/Users/chris/source/repos/BananaPopper/PAD-BananaPopper/BananaPopper/Content/Maps/Map3.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>

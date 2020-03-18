@@ -30,6 +30,9 @@ class GameEnvironment : Game
     public static float GlobalScale
     {
         get { return globalScale; }
+        set { globalScale = value;
+            textureScale = globalScale / 32;
+        }
     }
 
     public static float TextureScale
