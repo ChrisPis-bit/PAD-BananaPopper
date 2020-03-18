@@ -38,7 +38,7 @@ namespace BananaPopper
 
             b = (start.Y - origin.Y) - a * (start.X - origin.X);
 
-            text = "Y = " + -a + "X +" + -b / scale;
+            text = "Y = " + -a + "X +" + (int)(-b / scale);
         }
     }
 }

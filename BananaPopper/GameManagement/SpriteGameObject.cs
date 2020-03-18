@@ -10,7 +10,8 @@ class SpriteGameObject : GameObject
 {
     public Texture2D texture;
     public Vector2 origin;
-    public float angle;
+    public float angle,
+        scale;
 
     public SpriteGameObject(String assetName, float angle = 0)
     {
@@ -19,6 +20,7 @@ class SpriteGameObject : GameObject
 
         this.angle = angle;
         origin = new Vector2(texture.Width / 2, texture.Height / 2);
+        scale = GameEnvironment.TextureScale;
     }
 
     public SpriteGameObject(Texture2D texture, float angle = 0)
@@ -27,6 +29,7 @@ class SpriteGameObject : GameObject
 
         this.angle = angle;
         origin = new Vector2(texture.Width / 2, texture.Height / 2);
+        scale = GameEnvironment.TextureScale;
     }
 
     public override void Draw(SpriteBatch spriteBatch)
@@ -36,8 +39,16 @@ class SpriteGameObject : GameObject
             spriteBatch.Draw(texture, GlobalPosition + origin, null, Color.White,
              angle,
              origin,
-             1,
+             scale,
              SpriteEffects.None, 0f);
+    }
+
+    public override void Update(GameTime gameTime)
+    {
+        if (Visible)
+        {
+            base.Update(gameTime);
+        }
     }
 
     public Boolean Overlaps(SpriteGameObject other)

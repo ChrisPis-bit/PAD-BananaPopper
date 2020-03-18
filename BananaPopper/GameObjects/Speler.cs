@@ -14,7 +14,7 @@ namespace BananaPopper
         public Vector2 centerPos,
             Oorsprong;
 
-        public Speler(Vector2 startPosition) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 40, 40))
+        public Speler(Vector2 startPosition) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 16, 16))
         {
             GameEnvironment.ChangeColor(texture, Color.Green);
             Oorsprong = startPosition;
@@ -85,8 +85,6 @@ namespace BananaPopper
                 velocity = new Vector2(0);
             }
             else velocity = new Vector2(0);
-
-            Console.WriteLine(centerPos.X % GameEnvironment.GlobalScale);
         }
     }
 }

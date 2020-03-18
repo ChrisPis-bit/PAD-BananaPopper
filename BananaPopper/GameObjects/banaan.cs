@@ -12,7 +12,7 @@ namespace BananaPopper
 {
     class Banaan : SpriteGameObject
     {
-        public Banaan(): base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 35, 20))
+        public Banaan(): base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 20, 10))
         {
             GameEnvironment.ChangeColor(texture, Color.Yellow);
             visible = false;
@@ -20,8 +20,8 @@ namespace BananaPopper
 
         public override void Update(GameTime gameTime)
         {
+
             base.Update(gameTime);
- 
         }
 
         public void Shoot(Vector2 position, float speed, bool flipLine)
@@ -38,7 +38,7 @@ namespace BananaPopper
                 angle = (float)Math.Atan2(speed, -1);
             }
 
-            velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 100;
+            velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 300;
         }
     }
 }

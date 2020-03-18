@@ -22,14 +22,15 @@ namespace BananaPopper
         GameObjectList theBullets = new GameObjectList();
         GameObjectList theEnemy = new GameObjectList();
 
-       
+
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
         HUD hud = new HUD();
         Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
         SpriteGameObject theMouse;
-        Speler thePlayer = new Speler(new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.GlobalScale * 5));
+        Speler thePlayer = new Speler(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 5));
 
-        float rc = 0; //Defines the a in y=ax+b
+        int iRc = 0;
+        float[] rc = new float[] { 1, -0.5f, 3 }; //Defines the a in y=ax+b
 
 
 
@@ -48,7 +49,13 @@ namespace BananaPopper
 
             theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 6, GameEnvironment.GlobalScale * 8)));
             theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 4, GameEnvironment.GlobalScale * 4)));
-            theEnemy.Add(new Enemy(new Vector2(GameEnvironment.GlobalScale * 10, GameEnvironment.GlobalScale * 8)));
+            theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 5, GameEnvironment.GlobalScale * 4)));
+            theObstacles.Add(new Obstakel(new Vector2(GameEnvironment.GlobalScale * 14, GameEnvironment.GlobalScale * 8)));
+
+            theEnemy.Add(new Enemy(new Vector2(GameEnvironment.GlobalScale * 15, GameEnvironment.GlobalScale * 8)));
+            theEnemy.Add(new Enemy(new Vector2(GameEnvironment.GlobalScale * 4, GameEnvironment.GlobalScale * 3)));
+            theEnemy.Add(new Enemy(new Vector2(GameEnvironment.GlobalScale * 16, GameEnvironment.GlobalScale * 2)));
+
 
             //Add GameObjects here
             Add(theFormula);
@@ -95,9 +102,9 @@ namespace BananaPopper
             foreach (SpriteGameObject banana in theBullets.Children)
             {
 
-                
 
-                foreach (Enemy enemy in theEnemy.Children)
+
+                foreach (SpriteGameObject enemy in theEnemy.Children)
                 {
                     if (enemy.Overlaps(banana))
                     {
@@ -107,9 +114,16 @@ namespace BananaPopper
                 }
             }
 
+            if(iRc >= rc.Length)
+            {
+                iRc = 0;
+            } else if(iRc < 0)
+            {
+                iRc = rc.Length - 1;
+            }
 
             //Updates the formula on screen
-            theFormula.UpdateFormula(rc, thePlayer.centerPos, thePlayer.Oorsprong);
+            theFormula.UpdateFormula(rc[iRc], thePlayer.centerPos, thePlayer.Oorsprong);
         }
 
 
@@ -118,8 +132,8 @@ namespace BananaPopper
             base.HandleInput(inputHelper);
 
             //For testing, changes line direction
-            if (inputHelper.KeyPressed(Keys.Up)) rc++;
-            if (inputHelper.KeyPressed(Keys.Down)) rc--;
+            if (inputHelper.KeyPressed(Keys.Up)) iRc += 1;
+            if (inputHelper.KeyPressed(Keys.Down)) iRc -= 1;
 
             //For testing, flips line
             if (inputHelper.KeyPressed(Keys.F))
@@ -136,11 +150,11 @@ namespace BananaPopper
             {
                 if (hud.numBananas != 0)
                 {
-                    foreach (Banaan banana in theBullets.Children)
+                    foreach (SpriteGameObject banana in theBullets.Children)
                     {
                         if (!banana.Visible)
                         {
-                            banana.Shoot(thePlayer.position, rc, theFormula.flipLine);
+                            (banana as Banaan).Shoot(thePlayer.position, rc[iRc], theFormula.flipLine);
                             hud.numBananas--;
                             break;
                         }
