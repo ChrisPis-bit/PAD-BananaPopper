@@ -96,3 +96,6 @@ C:\Users\bsiu2\OneDrive\Documents\GitHub\PAD-BananaPopper\BananaPopper\obj\x86\D
 C:\Users\chris\source\repos\BananaPopper\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map1.xnb
 C:\Users\chris\source\repos\BananaPopper\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map2.xnb
 C:\Users\chris\source\repos\BananaPopper\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map3.xnb
+C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map1.xnb
+C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map2.xnb
+C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map3.xnb

@@ -28,7 +28,7 @@ namespace BananaPopper
         HUD hud = new HUD();
         Formula theFormula;
         SpriteGameObject theMouse;
-        Speler thePlayer;
+        Player thePlayer;
 
         int iRc = 0;
         float[] rc = new float[] { 1, -0.5f, 3 }; //Defines the a in y=ax+b
@@ -63,7 +63,7 @@ namespace BananaPopper
 
             for (int iBan = 0; iBan < hud.numBananas; iBan++)
             {
-                theBullets.Add(new Banaan());
+                theBullets.Add(new Banana());
             }
 
             Add(theBullets);
@@ -86,7 +86,7 @@ namespace BananaPopper
                     banana.Visible = false;
                 }
 
-                foreach (Obstakel obstacle in theObstacles.Children)
+                foreach (Obstacle obstacle in theObstacles.Children)
                 {
                     if (obstacle.Overlaps(banana))
                     {
@@ -151,7 +151,7 @@ namespace BananaPopper
                     {
                         if (!banana.Visible)
                         {
-                            (banana as Banaan).Shoot(thePlayer.position, rc[iRc], theFormula.flipLine);
+                            (banana as Banana).Shoot(thePlayer.position, rc[iRc], theFormula.flipLine);
                             hud.numBananas--;
                             break;
                         }
@@ -228,15 +228,15 @@ namespace BananaPopper
 
                     if (mapData[i + j * map.Width].Equals(balloon))
                     {
-                        theEnemy.Add(new Enemy(position));
+                        theEnemy.Add(new Balloon(position));
                     }
                     else if (mapData[i + j * map.Width].Equals(obstacle))
                     {
-                        theObstacles.Add(new Obstakel(position));
+                        theObstacles.Add(new Obstacle(position));
                     }
                     else if (mapData[i + j * map.Width].Equals(point0))
                     {
-                        thePlayer = new Speler(position);
+                        thePlayer = new Player(position);
                     }
                 }
             }
