@@ -21,7 +21,7 @@ namespace BananaPopper
 
         GameObjectList theObstacles = new GameObjectList();
         GameObjectList theBullets = new GameObjectList();
-        GameObjectList theEnemy = new GameObjectList();
+        GameObjectList theBalloons = new GameObjectList();
 
 
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
@@ -52,12 +52,12 @@ namespace BananaPopper
             theMouse = new SpriteGameObject(mouse);
 
             theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
-
+            theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale*2,GameEnvironment.GlobalScale*4)));
             //Add GameObjects here
             Add(theFormula);
             Add(theMouse);
             Add(theObstacles);
-            Add(theEnemy);
+            Add(theBalloons);
             Add(hud);
             Add(thePlayer);
 
@@ -100,7 +100,7 @@ namespace BananaPopper
 
 
 
-                foreach (SpriteGameObject enemy in theEnemy.Children)
+                foreach (SpriteGameObject enemy in theBalloons.Children)
                 {
                     if (enemy.Overlaps(banana))
                     {
@@ -228,7 +228,7 @@ namespace BananaPopper
 
                     if (mapData[i + j * map.Width].Equals(balloon))
                     {
-                        theEnemy.Add(new Balloon(position));
+                        theBalloons.Add(new Balloon(position));
                     }
                     else if (mapData[i + j * map.Width].Equals(obstacle))
                     {
