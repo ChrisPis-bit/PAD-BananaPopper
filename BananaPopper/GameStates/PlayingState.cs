@@ -21,7 +21,8 @@ namespace BananaPopper
 
         GameObjectList theObstacles = new GameObjectList();
         GameObjectList theBullets = new GameObjectList();
-        GameObjectList theEnemy = new GameObjectList();
+        GameObjectList theBalloons = new GameObjectList();
+        GameObjectList thePlusBanana = new GameObjectList();
 
 
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
@@ -52,12 +53,14 @@ namespace BananaPopper
             theMouse = new SpriteGameObject(mouse);
 
             theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
-
+            theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale*2,GameEnvironment.GlobalScale*4)));
+            thePlusBanana.Add(new plusBanana(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 3)));
             //Add GameObjects here
             Add(theFormula);
             Add(theMouse);
             Add(theObstacles);
-            Add(theEnemy);
+            Add(theBalloons);
+            Add(thePlusBanana);
             Add(hud);
             Add(thePlayer);
 
@@ -100,12 +103,28 @@ namespace BananaPopper
 
 
 
-                foreach (SpriteGameObject enemy in theEnemy.Children)
+                foreach (SpriteGameObject balloons in theBalloons.Children)
                 {
-                    if (enemy.Overlaps(banana))
+                    if (balloons.Overlaps(banana))
                     {
-                        enemy.Visible = false;
+                        balloons.Visible = false;
                         banana.Visible = false;
+                    }
+                }
+            }
+
+            foreach (SpriteGameObject banana in theBullets.Children)
+            {
+
+
+
+                foreach (SpriteGameObject plusBanana in thePlusBanana.Children)
+                {
+                    if (plusBanana.Overlaps(banana))
+                    {
+                        plusBanana.Visible = false;
+                        banana.Visible = false;
+                        hud.numBananas++;
                     }
                 }
             }
@@ -228,7 +247,7 @@ namespace BananaPopper
 
                     if (mapData[i + j * map.Width].Equals(balloon))
                     {
-                        theEnemy.Add(new Balloon(position));
+                        theBalloons.Add(new Balloon(position));
                     }
                     else if (mapData[i + j * map.Width].Equals(obstacle))
                     {
