@@ -22,6 +22,7 @@ namespace BananaPopper
         GameObjectList theObstacles = new GameObjectList();
         GameObjectList theBullets = new GameObjectList();
         GameObjectList theBalloons = new GameObjectList();
+        GameObjectList thePlusBanana = new GameObjectList();
 
 
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
@@ -65,15 +66,18 @@ namespace BananaPopper
                     invPoints.Add(balloon.position);
                 }
             }
-            
+
             theTable = new Table(invPoints.Count(), invPoints, thePlayer.Oorsprong,
                 new Vector2(0 + GameEnvironment.GlobalScale*3, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
+
+            thePlusBanana.Add(new plusBanana(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 3)));
 
             //Add GameObjects here
             Add(theFormula);
             Add(theMouse);
             Add(theObstacles);
             Add(theBalloons);
+            Add(thePlusBanana);
             Add(hud);
             Add(theTable);
             Add(thePlayer);
@@ -117,12 +121,28 @@ namespace BananaPopper
 
 
 
-                foreach (SpriteGameObject enemy in theBalloons.Children)
+                foreach (SpriteGameObject balloons in theBalloons.Children)
                 {
-                    if (enemy.Overlaps(banana))
+                    if (balloons.Overlaps(banana))
                     {
-                        enemy.Visible = false;
+                        balloons.Visible = false;
                         banana.Visible = false;
+                    }
+                }
+            }
+
+            foreach (SpriteGameObject banana in theBullets.Children)
+            {
+
+
+
+                foreach (SpriteGameObject plusBanana in thePlusBanana.Children)
+                {
+                    if (plusBanana.Overlaps(banana))
+                    {
+                        plusBanana.Visible = false;
+                        banana.Visible = false;
+                        hud.numBananas++;
                     }
                 }
             }
