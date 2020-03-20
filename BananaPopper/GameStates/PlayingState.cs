@@ -27,6 +27,7 @@ namespace BananaPopper
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
         HUD hud = new HUD();
         Formula theFormula;
+        Table theTable;
         SpriteGameObject theMouse;
         Player thePlayer;
 
@@ -53,12 +54,28 @@ namespace BananaPopper
 
             theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
             theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale*2,GameEnvironment.GlobalScale*4)));
+            theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale * 1, GameEnvironment.GlobalScale * 5)));
+
+            //Detects how much invisible balloons there are in the game
+            List<Vector2> invPoints = new List<Vector2>();
+            foreach (Balloon balloon in theBalloons.Children)
+            {
+                if(balloon is InvisibleBalloon)
+                {
+                    invPoints.Add(balloon.position);
+                }
+            }
+            
+            theTable = new Table(invPoints.Count(), invPoints, thePlayer.Oorsprong,
+                new Vector2(0 + GameEnvironment.GlobalScale*3, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
+
             //Add GameObjects here
             Add(theFormula);
             Add(theMouse);
             Add(theObstacles);
             Add(theBalloons);
             Add(hud);
+            Add(theTable);
             Add(thePlayer);
 
             for (int iBan = 0; iBan < hud.numBananas; iBan++)

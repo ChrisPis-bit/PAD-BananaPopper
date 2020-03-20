@@ -28,7 +28,7 @@ namespace BananaPopper
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            spriteBatch.DrawString(font, text, position, color);
+            spriteBatch.DrawString(font, text, GlobalPosition, color);
         }
     }
 }
