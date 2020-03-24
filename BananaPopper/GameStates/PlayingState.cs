@@ -31,6 +31,7 @@ namespace BananaPopper
         Table theTable;
         SpriteGameObject theMouse;
         Player thePlayer;
+        Timer theTimer;
 
         int iRc = 0;
         float[] rc = new float[] { 1, -0.5f, 3 }; //Defines the a in y=ax+b
@@ -81,6 +82,7 @@ namespace BananaPopper
             Add(hud);
             Add(theTable);
             Add(thePlayer);
+            Add(theTimer = new Timer());
 
             for (int iBan = 0; iBan < hud.numBananas; iBan++)
             {

@@ -58,6 +58,7 @@
     <Compile Include="GameObjects\invisibleBalloon.cs" />
     <Compile Include="GameObjects\Obstacle.cs" />
     <Compile Include="GameObjects\Player.cs" />
+    <Compile Include="GameObjects\Timer.cs" />
     <Compile Include="GameStates\PlayingState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
