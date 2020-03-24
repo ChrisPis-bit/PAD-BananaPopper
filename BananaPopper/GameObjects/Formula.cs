@@ -12,7 +12,7 @@ namespace BananaPopper
     class Formula : TextGameObject
     {
         public float a = 0, b = 0,
-            scale = 0.01f;
+            scale = GameEnvironment.GlobalScale;
         public Vector2 end = new Vector2(0, 0);
         public bool flipLine;
 
@@ -38,7 +38,7 @@ namespace BananaPopper
 
             b = (start.Y - origin.Y) - a * (start.X - origin.X);
 
-            text = "Y = " + -a + "X +" + -b * scale;
+            text = "Y = " + -a + "X +" + Math.Round(-b / scale);
         }
     }
 }

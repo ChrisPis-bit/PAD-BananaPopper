@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,37 +13,81 @@ namespace BananaPopper
 {
     class PlayingState : GameObjectList
     {
-        Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5); //temporary texture for line
-        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for bg
-        Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10); //temporary texture for mouse
+        //All temporary textures for prototype
+        Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
+        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
+        Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         Texture2D XYas = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
 
-        HUD hud = new HUD();
-        Formula theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
-        SpriteGameObject theMouse;
-        Speler thePlayer = new Speler(new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 2));
+        GameObjectList theObstacles = new GameObjectList();
+        GameObjectList theBullets = new GameObjectList();
+        GameObjectList theBalloons = new GameObjectList();
+        GameObjectList thePlusBanana = new GameObjectList();
 
-        float rc = 0; //Defines the a in y=ax+b
+
+        Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
+        HUD hud = new HUD();
+        Formula theFormula;
+        Table theTable;
+        SpriteGameObject theMouse;
+        Player thePlayer;
+
+        int iRc = 0;
+        float[] rc = new float[] { 1, -0.5f, 3 }; //Defines the a in y=ax+b
 
 
 
         public PlayingState() : base()
         {
+            //Put which level you wanna start in the brackets
+            StartLevel(3);
+
             //Sets color for test textures
             GameEnvironment.ChangeColor(lineTest, Color.Blue);
             GameEnvironment.ChangeColor(bg, Color.Black);
             GameEnvironment.ChangeColor(mouse, Color.White);
             GameEnvironment.ChangeColor(XYas, Color.LightGray);
+            GameEnvironment.ChangeColor(XYas, Color.LightGreen);
 
+            GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
             theMouse = new SpriteGameObject(mouse);
+
+            theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
+            theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale*2,GameEnvironment.GlobalScale*4)));
+            theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale * 1, GameEnvironment.GlobalScale * 5)));
+
+            //Detects how much invisible balloons there are in the game
+            List<Vector2> invPoints = new List<Vector2>();
+            foreach (Balloon balloon in theBalloons.Children)
+            {
+                if(balloon is InvisibleBalloon)
+                {
+                    invPoints.Add(balloon.position);
+                }
+            }
+
+            theTable = new Table(invPoints.Count(), invPoints, thePlayer.Oorsprong,
+                new Vector2(0 + GameEnvironment.GlobalScale*3, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
+
+            thePlusBanana.Add(new plusBanana(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 3)));
+
             //Add GameObjects here
             Add(theFormula);
             Add(theMouse);
-
+            Add(theObstacles);
+            Add(theBalloons);
+            Add(thePlusBanana);
             Add(hud);
+            Add(theTable);
             Add(thePlayer);
 
+            for (int iBan = 0; iBan < hud.numBananas; iBan++)
+            {
+                theBullets.Add(new Banana());
+            }
+
+            Add(theBullets);
 
             for (int iButton = 0; iButton < 2; iButton++)
                 Add(new Button("arrowKey", (float)Math.PI * (float)iButton,
@@ -53,31 +98,66 @@ namespace BananaPopper
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            foreach (GameObject banaan in Children)
+            foreach (SpriteGameObject banana in theBullets.Children)
             {
-                if (banaan is Banaan)
+
+                if (banana.position.X < 0 || banana.position.X > GameEnvironment.Screen.X ||
+                    banana.position.Y < 0 || banana.position.Y > GameEnvironment.Screen.Y)
                 {
-                    if (banaan.position.X < 0 || banaan.position.X > GameEnvironment.Screen.X * 3 / 4 || banaan.position.Y < 0 || banaan.position.Y > GameEnvironment.Screen.Y)
-                    {
-                        banaan.Visible = false;
-                    }
+                    banana.Visible = false;
                 }
-            }
-            for (int i = 0; i < Children.Count; i++)
-            {
-                if (!Children[i].Visible)
+
+                foreach (Obstacle obstacle in theObstacles.Children)
                 {
-                    if (Children[i] is Banaan)
+                    if (obstacle.Overlaps(banana))
                     {
-                        remove(Children[i]);
-                        i--;
-                        Console.WriteLine("works");
+                        banana.Visible = false;
                     }
                 }
             }
 
+            foreach (SpriteGameObject banana in theBullets.Children)
+            {
+
+
+
+                foreach (SpriteGameObject balloons in theBalloons.Children)
+                {
+                    if (balloons.Overlaps(banana))
+                    {
+                        balloons.Visible = false;
+                        banana.Visible = false;
+                    }
+                }
+            }
+
+            foreach (SpriteGameObject banana in theBullets.Children)
+            {
+
+
+
+                foreach (SpriteGameObject plusBanana in thePlusBanana.Children)
+                {
+                    if (plusBanana.Overlaps(banana))
+                    {
+                        plusBanana.Visible = false;
+                        banana.Visible = false;
+                        hud.numBananas++;
+                    }
+                }
+            }
+
+            if (iRc >= rc.Length)
+            {
+                iRc = 0;
+            }
+            else if (iRc < 0)
+            {
+                iRc = rc.Length - 1;
+            }
+
             //Updates the formula on screen
-            theFormula.UpdateFormula(rc, thePlayer.centerPos, thePlayer.Oorsprong);
+            theFormula.UpdateFormula(rc[iRc], thePlayer.centerPos, thePlayer.Oorsprong);
         }
 
 
@@ -86,14 +166,14 @@ namespace BananaPopper
             base.HandleInput(inputHelper);
 
             //For testing, changes line direction
-            if (inputHelper.KeyPressed(Keys.Up)) rc++;
-            if (inputHelper.KeyPressed(Keys.Down)) rc--;
+            if (inputHelper.KeyPressed(Keys.Up)) iRc += 1;
+            if (inputHelper.KeyPressed(Keys.Down)) iRc -= 1;
 
             //For testing, flips line
             if (inputHelper.KeyPressed(Keys.F))
             {
                 theFormula.flipLine = !theFormula.flipLine;
-                
+
             }
 
 
@@ -104,8 +184,15 @@ namespace BananaPopper
             {
                 if (hud.numBananas != 0)
                 {
-                    Add(new Banaan(thePlayer.position, rc, theFormula.flipLine));
-                    hud.numBananas--;
+                    foreach (SpriteGameObject banana in theBullets.Children)
+                    {
+                        if (!banana.Visible)
+                        {
+                            (banana as Banana).Shoot(thePlayer.position, rc[iRc], theFormula.flipLine);
+                            hud.numBananas--;
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -119,6 +206,16 @@ namespace BananaPopper
                new Rectangle(0, 0, bg.Width, bg.Height),
                Color.White);
 
+            for (int i = 0; i < 30; i++)
+            {
+                LineRenderer.DrawLine(spriteBatch, grid, new Vector2((GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale), 0), new Vector2(GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale, GameEnvironment.Screen.Y));
+            }
+
+            for (int j = 0; j < 15; j++)
+            {
+                LineRenderer.DrawLine(spriteBatch, grid, new Vector2(GameEnvironment.Screen.X, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale), new Vector2(0, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale));
+            }
+
             //Draws lines of players movement
             LineRenderer.DrawLine(spriteBatch, XYas, new Vector2(0, thePlayer.Oorsprong.Y),
                                                          new Vector2(GameEnvironment.Screen.X, thePlayer.Oorsprong.Y));
@@ -129,6 +226,57 @@ namespace BananaPopper
             LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
 
             base.Draw(spriteBatch);
+        }
+
+
+
+
+        public void StartLevel(int levelIndex)
+        {
+            //Colors for game objects, use these colors for maps
+            Color balloon = new Color(255, 0, 0),
+                obstacle = new Color(0, 0, 255),
+                point0 = new Color(0, 255, 0);
+
+
+            Texture2D map = GameEnvironment.ContentManager.Load<Texture2D>("Maps/Map" + levelIndex);
+
+            //Changes GlobalScale according to the maps width or height, so that the map always fits on the screen
+            if (GameEnvironment.Screen.X / map.Width / 16 > GameEnvironment.Screen.Y / map.Height / 9)
+            {
+                GameEnvironment.GlobalScale = GameEnvironment.Screen.X / map.Width;
+            }
+            else
+                GameEnvironment.GlobalScale = GameEnvironment.Screen.Y / map.Height;
+
+
+
+            Color[] mapData = new Color[map.Width * map.Height];
+            map.GetData(mapData);
+
+
+            //Loops through the data of the map texture and checks every pixel for its color
+            //If it's a color from the given object colors, it will place down that object on the right position on screen
+            for (int i = 0; i < map.Width; i++)
+            {
+                for (int j = 0; j < map.Height; j++)
+                {
+                    Vector2 position = new Vector2(GameEnvironment.GlobalScale * i, GameEnvironment.GlobalScale * j);
+
+                    if (mapData[i + j * map.Width].Equals(balloon))
+                    {
+                        theBalloons.Add(new Balloon(position));
+                    }
+                    else if (mapData[i + j * map.Width].Equals(obstacle))
+                    {
+                        theObstacles.Add(new Obstacle(position));
+                    }
+                    else if (mapData[i + j * map.Width].Equals(point0))
+                    {
+                        thePlayer = new Player(position);
+                    }
+                }
+            }
         }
     }
 }
