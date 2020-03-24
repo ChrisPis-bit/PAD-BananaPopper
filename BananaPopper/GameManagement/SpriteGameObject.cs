@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 class SpriteGameObject : GameObject
 {
     public Texture2D texture;
-    public Vector2 origin;
-    public float angle;
+    public Vector2 origin, hitbox;
+    public float angle,
+        scale;
 
     public SpriteGameObject(String assetName, float angle = 0)
     {
@@ -19,6 +20,8 @@ class SpriteGameObject : GameObject
 
         this.angle = angle;
         origin = new Vector2(texture.Width / 2, texture.Height / 2);
+        scale = GameEnvironment.TextureScale;
+        hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
     }
 
     public SpriteGameObject(Texture2D texture, float angle = 0)
@@ -27,6 +30,18 @@ class SpriteGameObject : GameObject
 
         this.angle = angle;
         origin = new Vector2(texture.Width / 2, texture.Height / 2);
+        scale = GameEnvironment.TextureScale;
+        hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
+    }
+
+    public Vector2 HitBox
+    {
+        get { return hitbox; }
+    }
+
+    public Vector2 HitBoxPosition
+    {
+        get { return new Vector2(GlobalPosition.X - (hitbox.X / 2 - texture.Width / 2), GlobalPosition.Y - (hitbox.Y / 2 - texture.Height / 2)); }
     }
 
     public override void Draw(SpriteBatch spriteBatch)
@@ -36,22 +51,30 @@ class SpriteGameObject : GameObject
             spriteBatch.Draw(texture, GlobalPosition + origin, null, Color.White,
              angle,
              origin,
-             1,
+             scale,
              SpriteEffects.None, 0f);
+    }
+
+    public override void Update(GameTime gameTime)
+    {
+        if (Visible)
+        {
+            base.Update(gameTime);
+        }
     }
 
     public Boolean Overlaps(SpriteGameObject other)
     {
         if (visible)
         {
-            float w0 = this.texture.Width,
-                h0 = this.texture.Height,
-                w1 = other.texture.Width,
-                h1 = other.texture.Height,
-                x0 = this.GlobalPosition.X,
-                y0 = this.GlobalPosition.Y,
-                x1 = other.GlobalPosition.X,
-                y1 = other.GlobalPosition.Y;
+            float w0 = this.HitBox.X,
+                h0 = this.HitBox.Y,
+                w1 = other.HitBox.X,
+                h1 = other.HitBox.Y,
+                x0 = this.HitBoxPosition.X,
+                y0 = this.HitBoxPosition.Y,
+                x1 = other.HitBoxPosition.X,
+                y1 = other.HitBoxPosition.Y;
 
             return !(x0 > x1 + w1 || x0 + w0 < x1 ||
               y0 > y1 + h1 || y0 + h0 < y1);
@@ -65,12 +88,12 @@ class SpriteGameObject : GameObject
     {
         if (visible)
         {
-            float w0 = this.texture.Width,
-                h0 = this.texture.Height,
+            float w0 = this.HitBox.X,
+                h0 = this.HitBox.Y,
                 w1 = size.X,
                 h1 = size.Y,
-                x0 = this.GlobalPosition.X,
-                y0 = this.GlobalPosition.Y,
+                x0 = this.HitBoxPosition.X,
+                y0 = this.HitBoxPosition.Y,
                 x1 = position.X,
                 y1 = position.Y;
 

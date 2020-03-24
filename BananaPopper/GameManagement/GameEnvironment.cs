@@ -14,7 +14,8 @@ class GameEnvironment : Game
     protected SpriteBatch spriteBatch;
     static protected ContentManager content;
     protected static Point screen;
-    protected static float globalScale;
+    protected static float globalScale,
+        textureScale;
     protected static Random random;
     protected InputHelper inputHelper;
     static protected List<GameObject> gameStateList;
@@ -29,6 +30,14 @@ class GameEnvironment : Game
     public static float GlobalScale
     {
         get { return globalScale; }
+        set { globalScale = value;
+            textureScale = globalScale / 32;
+        }
+    }
+
+    public static float TextureScale
+    {
+        get { return textureScale; }
     }
 
     public static GraphicsDeviceManager Graphics

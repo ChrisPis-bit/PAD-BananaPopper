@@ -18,6 +18,7 @@ namespace BananaPopper
         {
             isPressed = false;
             this.position = position;
+            scale /= 2;
         }
 
         public override void HandleInput(InputHelper inputHelper)
