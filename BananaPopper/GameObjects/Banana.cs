@@ -12,10 +12,11 @@ namespace BananaPopper
 {
     class Banana : SpriteGameObject
     {
-        public Banana(): base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 20, 10))
+        public Banana(Vector2 position, float speed, bool flipLine) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 20, 10))
         {
             GameEnvironment.ChangeColor(texture, Color.Yellow);
-            visible = false;
+
+            Shoot(position, speed, flipLine);
         }
 
         public override void Update(GameTime gameTime)
@@ -26,7 +27,6 @@ namespace BananaPopper
 
         public void Shoot(Vector2 position, float speed, bool flipLine)
         {
-            visible = true;
             this.position = position;
 
             if (flipLine)
