@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+
+
 namespace BananaPopper
 {
     class PlayingState : GameObjectList
@@ -83,12 +85,6 @@ namespace BananaPopper
             Add(theTable);
             Add(thePlayer);
             Add(theTimer = new Timer());
-
-            for (int iBan = 0; iBan < hud.numBananas; iBan++)
-            {
-                theBullets.Add(new Banana());
-            }
-
             Add(theBullets);
 
             for (int iButton = 0; iButton < 2; iButton++)
@@ -158,6 +154,14 @@ namespace BananaPopper
                 iRc = rc.Length - 1;
             }
 
+            for(int i = 0; i < theBullets.Children.Count(); i++)
+            {
+                if (!theBullets.Children[i].Visible)
+                {
+                    theBullets.remove(theBullets.Children[i]);
+                }
+            }
+
             //Updates the formula on screen
             theFormula.UpdateFormula(rc[iRc], thePlayer.centerPos, thePlayer.Oorsprong);
         }
@@ -186,15 +190,8 @@ namespace BananaPopper
             {
                 if (hud.numBananas != 0)
                 {
-                    foreach (SpriteGameObject banana in theBullets.Children)
-                    {
-                        if (!banana.Visible)
-                        {
-                            (banana as Banana).Shoot(thePlayer.position, rc[iRc], theFormula.flipLine);
-                            hud.numBananas--;
-                            break;
-                        }
-                    }
+                    theBullets.Add(new Banana(thePlayer.position, rc[iRc], theFormula.flipLine));
+                    hud.numBananas--;
                 }
             }
         }
