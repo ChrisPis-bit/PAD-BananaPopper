@@ -10,13 +10,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BananaPopper
 {
-    class InvisibleBalloon : Balloon
+    class PopAnimation : SpriteGameObject
     {
-        public InvisibleBalloon(Vector2 position) : base(position)
+        public PopAnimation(Vector2 position) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 32, 32))
         {
-            
-            GameEnvironment.ChangeColor(texture, Color.White);
-                
+            GameEnvironment.ChangeColor(texture, Color.Orange);
+            this.position = position - origin;
+
         }
     }
 }

@@ -125,8 +125,10 @@ namespace BananaPopper
                 {
                     if (balloons.Overlaps(banana))
                     {
+                        
                         balloons.Visible = false;
                         banana.Visible = false;
+                        
                     }
                 }
             }
