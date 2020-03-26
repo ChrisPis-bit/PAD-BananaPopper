@@ -12,11 +12,25 @@ namespace BananaPopper
 {
     class PopAnimation : SpriteGameObject
     {
-        public PopAnimation(Vector2 position) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 32, 32))
+        int frameCounter = 0;
+        public PopAnimation() : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 32, 32))
         {
             GameEnvironment.ChangeColor(texture, Color.Orange);
-            this.position = position - origin;
+            visible = false;
 
+        }
+        public override void Update(GameTime gameTime)
+        {
+            if (visible == true)
+            {
+                frameCounter++;
+                if (frameCounter == 15)
+                {
+                    visible = false;
+                    frameCounter = 0;
+                }
+            }
+            base.Update(gameTime);
         }
     }
 }

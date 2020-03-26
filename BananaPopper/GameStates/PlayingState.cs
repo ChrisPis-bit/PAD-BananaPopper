@@ -34,7 +34,7 @@ namespace BananaPopper
         SpriteGameObject theMouse;
         Player thePlayer;
         Timer theTimer;
-
+        PopAnimation thePopAnimation;
         int iRc = 0;
         float[] rc = new float[] { 1, -0.5f, 3 }; //Defines the a in y=ax+b
 
@@ -55,7 +55,7 @@ namespace BananaPopper
             GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
             theMouse = new SpriteGameObject(mouse);
-
+            
             theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
             theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale*2,GameEnvironment.GlobalScale*4)));
             theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale * 1, GameEnvironment.GlobalScale * 5)));
@@ -86,7 +86,7 @@ namespace BananaPopper
             Add(thePlayer);
             Add(theTimer = new Timer());
             Add(theBullets);
-
+            Add(thePopAnimation = new PopAnimation());
             for (int iButton = 0; iButton < 2; iButton++)
                 Add(new Button("arrowKey", (float)Math.PI * (float)iButton,
                     new Vector2(theFormula.position.X + BananaPopper.GlobalScale / 2.5f, theFormula.position.Y - 10 + 30 * iButton)));
@@ -123,9 +123,14 @@ namespace BananaPopper
                 {
                     if (balloons.Overlaps(banana))
                     {
+                        if(balloons is InvisibleBalloon)
+                        {
+                            thePopAnimation.position = balloons.position;
+                            thePopAnimation.Visible = true;
+                        }
                         
                         balloons.Visible = false;
-                        banana.Visible = false;
+                      //  banana.Visible = false;
                         
                     }
                 }
@@ -140,6 +145,7 @@ namespace BananaPopper
                 {
                     if (plusBanana.Overlaps(banana))
                     {
+
                         plusBanana.Visible = false;
                         banana.Visible = false;
                         hud.numBananas++;
@@ -224,7 +230,7 @@ namespace BananaPopper
                                                          new Vector2(thePlayer.Oorsprong.X, GameEnvironment.Screen.Y));
 
             //Draws a test line, startPosLine must be player coords
-            LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
+           // LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
 
             base.Draw(spriteBatch);
         }
