@@ -19,7 +19,6 @@ namespace BananaPopper
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
-        Texture2D XYas = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
 
         GameObjectList theObstacles = new GameObjectList();
         GameObjectList theBullets = new GameObjectList();
@@ -35,6 +34,8 @@ namespace BananaPopper
         Player thePlayer;
         Timer theTimer;
         PopAnimation thePopAnimation;
+        XYAxes theXYaxes;
+
         int iRc = 0;
         float[] rc = new float[] { 1, -0.5f, 3 }; //Defines the a in y=ax+b
 
@@ -49,8 +50,6 @@ namespace BananaPopper
             GameEnvironment.ChangeColor(lineTest, Color.Blue);
             GameEnvironment.ChangeColor(bg, Color.Black);
             GameEnvironment.ChangeColor(mouse, Color.White);
-            GameEnvironment.ChangeColor(XYas, Color.LightGray);
-            GameEnvironment.ChangeColor(XYas, Color.LightGreen);
 
             GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
@@ -76,6 +75,7 @@ namespace BananaPopper
             thePlusBanana.Add(new plusBanana(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 3)));
 
             //Add GameObjects here
+            Add(theXYaxes = new XYAxes(thePlayer.Oorsprong));
             Add(theFormula);
             Add(theMouse);
             Add(theObstacles);
@@ -223,18 +223,11 @@ namespace BananaPopper
                 LineRenderer.DrawLine(spriteBatch, grid, new Vector2(GameEnvironment.Screen.X, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale), new Vector2(0, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale));
             }
 
-            //Draws lines of players movement
-            LineRenderer.DrawLine(spriteBatch, XYas, new Vector2(0, thePlayer.Oorsprong.Y),
-                                                         new Vector2(GameEnvironment.Screen.X, thePlayer.Oorsprong.Y));
-            LineRenderer.DrawLine(spriteBatch, XYas, new Vector2(thePlayer.Oorsprong.X, 0),
-                                                         new Vector2(thePlayer.Oorsprong.X, GameEnvironment.Screen.Y));
-
             //Draws a test line, startPosLine must be player coords
            // LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
 
             base.Draw(spriteBatch);
         }
-
 
 
 
