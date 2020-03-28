@@ -9,12 +9,17 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace BananaPopper
 {
     class PlayingState : GameObjectList
     {
+        string connectionString = "server=oege.ie.hva.nl;user=lokhorc;database=zlokhorc;port=3306;password=dw5dZKtaln1AHIK2";
+        MySqlConnection test;
+       
+
         //All temporary textures for prototype
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
@@ -24,7 +29,6 @@ namespace BananaPopper
         GameObjectList theBullets = new GameObjectList();
         GameObjectList theBalloons = new GameObjectList();
         GameObjectList thePlusBanana = new GameObjectList();
-
 
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
         HUD hud = new HUD();
@@ -44,7 +48,23 @@ namespace BananaPopper
         public PlayingState() : base()
         {
             //Put which level you wanna start in the brackets
-            StartLevel(3);
+            StartLevel(2);
+
+            //code for database
+            /*test = new MySqlConnection(connectionString);
+            test.Open();
+
+            string sql = "SELECT * FROM zlokhorc.Highscores";
+
+            MySqlCommand cmd = new MySqlCommand(sql, test);
+            MySqlDataReader cmdData = cmd.ExecuteReader();
+
+            while (cmdData.Read()) {
+                Console.WriteLine(cmdData[0] +" -- "+ cmdData[1] + " -- " + cmdData[2]);
+            }
+            cmdData.Close();
+
+            test.Close();*/
 
             //Sets color for test textures
             GameEnvironment.ChangeColor(lineTest, Color.Blue);
