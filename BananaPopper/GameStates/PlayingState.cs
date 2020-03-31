@@ -211,13 +211,12 @@ namespace BananaPopper
                                 thePopAnimation.Visible = true;
                             }
 
-                            if ((balloons as Balloon).hp == 0)
+                        if ((balloons as Balloon).hp == 0)
                             {
-                                balloons.Visible = false;
+                            balloons.Visible = false;
+                            eBanana.Visible = false;
+
                             }
-                            else { eBanana.Visible = false; }
-
-
                         }
                     }
                 }
