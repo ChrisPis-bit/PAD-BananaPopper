@@ -9,18 +9,13 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace BananaPopper
-{  
+{
     class InvisibleBalloon : Balloon
     {
         public InvisibleBalloon(Vector2 position) : base(position)
         {
-            
             GameEnvironment.ChangeColor(texture, Color.White);
-        }
-        public override void Draw(SpriteBatch spriteBatch)
-        {
-
-           
+                
         }
     }
 }
