@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 class GameObject
 {
     public Vector2 position;
+    public Vector2 positionE;
     public Vector2 velocity;
     protected bool visible;
     protected GameObject parent;

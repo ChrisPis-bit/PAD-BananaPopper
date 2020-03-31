@@ -46,6 +46,7 @@
     <Compile Include="GameObjects\Banana.cs" />
     <Compile Include="GameObjects\Button.cs" />
     <Compile Include="GameObjects\Balloon.cs" />
+    <Compile Include="GameObjects\ExplosiveBanana.cs" />
     <Compile Include="GameObjects\plusBanana.cs" />
     <Compile Include="GameObjects\Formula.cs" />
     <Compile Include="GameManagement\GameEnvironment.cs" />
