@@ -18,7 +18,7 @@ namespace BananaPopper
     {
         string connectionString = "server=oege.ie.hva.nl;user=lokhorc;database=zlokhorc;port=3306;password=dw5dZKtaln1AHIK2";
         MySqlConnection test;
-       
+
 
         //All temporary textures for prototype
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
@@ -48,7 +48,7 @@ namespace BananaPopper
         public PlayingState() : base()
         {
             //Put which level you wanna start in the brackets
-            StartLevel(4);
+            StartLevel(5);
 
             //code for database
             /*test = new MySqlConnection(connectionString);
@@ -74,35 +74,36 @@ namespace BananaPopper
             GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
             theMouse = new SpriteGameObject(mouse);
-            
-            theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
-            theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale*2,GameEnvironment.GlobalScale*4)));
-            theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale * 1, GameEnvironment.GlobalScale * 5)));
-            theBalloons.Add(new StrongBalloon(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 2)));
+
+            //theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale * 2, GameEnvironment.GlobalScale * 4)));
+            //theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale * 1, GameEnvironment.GlobalScale * 5)));
+            //theBalloons.Add(new StrongBalloon(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 2)));
+
             //Detects how much invisible balloons there are in the game
             List<Vector2> invPoints = new List<Vector2>();
             foreach (Balloon balloon in theBalloons.Children)
             {
-                if(balloon is InvisibleBalloon)
+                if (balloon is InvisibleBalloon)
                 {
                     invPoints.Add(balloon.position);
                 }
             }
 
+            theFormula = new Formula(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
             theTable = new Table(invPoints.Count(), invPoints, thePlayer.Oorsprong,
-                new Vector2(0 + GameEnvironment.GlobalScale*3, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
+                    new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
 
-            thePlusBanana.Add(new plusBanana(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 3)));
+            //thePlusBanana.Add(new plusBanana(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 3)));
 
             //Add GameObjects here
             Add(theXYaxes = new XYAxes(thePlayer.Oorsprong));
-            Add(theFormula);
             Add(theMouse);
             Add(theObstacles);
             Add(theBalloons);
             Add(thePlusBanana);
             Add(hud);
             Add(theTable);
+            Add(theFormula);
             Add(thePlayer);
             Add(theTimer = new Timer());
             Add(theBullets);
@@ -144,18 +145,19 @@ namespace BananaPopper
                     if (balloons.Overlaps(banana))
                     {
                         (balloons as Balloon).hp--;
-                        if(balloons is InvisibleBalloon)
+                        if (balloons is InvisibleBalloon)
                         {
                             thePopAnimation.position = balloons.position;
                             thePopAnimation.Visible = true;
                         }
-                        
-                        if ((balloons as Balloon).hp == 0){
+
+                        if ((balloons as Balloon).hp == 0)
+                        {
                             balloons.Visible = false;
                         }
                         else { banana.Visible = false; }
-                      
-                        
+
+
                     }
                 }
             }
@@ -186,7 +188,7 @@ namespace BananaPopper
                 iRc = rc.Length - 1;
             }
 
-            for(int i = 0; i < theBullets.Children.Count(); i++)
+            for (int i = 0; i < theBullets.Children.Count(); i++)
             {
                 if (!theBullets.Children[i].Visible)
                 {
@@ -248,7 +250,7 @@ namespace BananaPopper
             }
 
             //Draws a test line, startPosLine must be player coords
-           // LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
+            // LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
 
             base.Draw(spriteBatch);
         }
@@ -261,7 +263,9 @@ namespace BananaPopper
             Color balloon = new Color(255, 0, 0),
                 obstacle = new Color(0, 0, 255),
                 invBalloon = new Color(255, 255, 0),
-                point0 = new Color(0, 255, 0);
+                point0 = new Color(0, 255, 0),
+            extraBanana = new Color(150, 255, 150),
+            strongBalloon = new Color(200, 100, 100);
 
 
             Texture2D map = GameEnvironment.ContentManager.Load<Texture2D>("Maps/Map" + levelIndex);
@@ -279,6 +283,10 @@ namespace BananaPopper
             Color[] mapData = new Color[map.Width * map.Height];
             map.GetData(mapData);
 
+            for (int i = 0; i < mapData.Length; i++)
+            {
+                Console.WriteLine(mapData[i]);
+            }
 
             //Loops through the data of the map texture and checks every pixel for its color
             //If it's a color from the given object colors, it will place down that object on the right position on screen
@@ -299,6 +307,14 @@ namespace BananaPopper
                     else if (mapData[i + j * map.Width].Equals(invBalloon))
                     {
                         theBalloons.Add(new InvisibleBalloon(position));
+                    }
+                    else if (mapData[i + j * map.Width].Equals(extraBanana))
+                    {
+                        Add(new plusBanana(position));
+                    }
+                    else if (mapData[i + j * map.Width].Equals(strongBalloon))
+                    {
+                        theBalloons.Add(new StrongBalloon(position));
                     }
                     else if (mapData[i + j * map.Width].Equals(point0))
                     {
