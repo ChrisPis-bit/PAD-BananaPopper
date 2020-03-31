@@ -78,7 +78,7 @@ namespace BananaPopper
             theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
             theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale*2,GameEnvironment.GlobalScale*4)));
             theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale * 1, GameEnvironment.GlobalScale * 5)));
-
+            theBalloons.Add(new StrongBalloon(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 2)));
             //Detects how much invisible balloons there are in the game
             List<Vector2> invPoints = new List<Vector2>();
             foreach (Balloon balloon in theBalloons.Children)
@@ -143,14 +143,18 @@ namespace BananaPopper
                 {
                     if (balloons.Overlaps(banana))
                     {
+                        (balloons as Balloon).hp--;
                         if(balloons is InvisibleBalloon)
                         {
                             thePopAnimation.position = balloons.position;
                             thePopAnimation.Visible = true;
                         }
                         
-                        balloons.Visible = false;
-                      //  banana.Visible = false;
+                        if ((balloons as Balloon).hp == 0){
+                            balloons.Visible = false;
+                        }
+                        else { banana.Visible = false; }
+                      
                         
                     }
                 }

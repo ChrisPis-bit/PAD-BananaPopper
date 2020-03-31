@@ -60,6 +60,7 @@
     <Compile Include="GameObjects\Obstacle.cs" />
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="GameObjects\PopAnimation.cs" />
+    <Compile Include="GameObjects\StrongBalloon.cs" />
     <Compile Include="GameObjects\Timer.cs" />
     <Compile Include="GameStates\PlayingState.cs" />
     <Compile Include="Program.cs" />
