@@ -129,6 +129,7 @@ namespace BananaPopper
                             thePopAnimation.Visible = true;
                         }
                         
+                        
                         balloons.Visible = false;
                       //  banana.Visible = false;
                         
