@@ -9,23 +9,26 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace BananaPopper
 {
     class PlayingState : GameObjectList
     {
+        string connectionString = "server=oege.ie.hva.nl;user=lokhorc;database=zlokhorc;port=3306;password=dw5dZKtaln1AHIK2";
+        MySqlConnection test;
+       
+
         //All temporary textures for prototype
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
-        Texture2D XYas = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
 
         GameObjectList theObstacles = new GameObjectList();
         GameObjectList theBullets = new GameObjectList();
         GameObjectList theBalloons = new GameObjectList();
         GameObjectList thePlusBanana = new GameObjectList();
-
 
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
         HUD hud = new HUD();
@@ -34,6 +37,8 @@ namespace BananaPopper
         SpriteGameObject theMouse;
         Player thePlayer;
         Timer theTimer;
+        PopAnimation thePopAnimation;
+        XYAxes theXYaxes;
 
         int iRc = 0;
         float[] rc = new float[] { 1, -0.5f, 3 }; //Defines the a in y=ax+b
@@ -65,13 +70,11 @@ namespace BananaPopper
             GameEnvironment.ChangeColor(lineTest, Color.Blue);
             GameEnvironment.ChangeColor(bg, Color.Black);
             GameEnvironment.ChangeColor(mouse, Color.White);
-            GameEnvironment.ChangeColor(XYas, Color.LightGray);
-            GameEnvironment.ChangeColor(XYas, Color.LightGreen);
 
             GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
             theMouse = new SpriteGameObject(mouse);
-
+            
             theFormula = new Formula(new Vector2(0 + GameEnvironment.GlobalScale, GameEnvironment.Screen.Y - GameEnvironment.GlobalScale));
             theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale*2,GameEnvironment.GlobalScale*4)));
             theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale * 1, GameEnvironment.GlobalScale * 5)));
@@ -92,6 +95,7 @@ namespace BananaPopper
             thePlusBanana.Add(new plusBanana(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 3)));
 
             //Add GameObjects here
+            Add(theXYaxes = new XYAxes(thePlayer.Oorsprong));
             Add(theFormula);
             Add(theMouse);
             Add(theObstacles);
@@ -102,7 +106,7 @@ namespace BananaPopper
             Add(thePlayer);
             Add(theTimer = new Timer());
             Add(theBullets);
-
+            Add(thePopAnimation = new PopAnimation());
             for (int iButton = 0; iButton < 2; iButton++)
                 Add(new Button("arrowKey", (float)Math.PI * (float)iButton,
                     new Vector2(theFormula.position.X + BananaPopper.GlobalScale / 2.5f, theFormula.position.Y - 10 + 30 * iButton)));
@@ -144,8 +148,10 @@ namespace BananaPopper
                             thePopAnimation.position = balloons.position;
                             thePopAnimation.Visible = true;
                         }
+                        
                         balloons.Visible = false;
-                        banana.Visible = false;
+                      //  banana.Visible = false;
+                        
                     }
                 }
             }
@@ -159,6 +165,7 @@ namespace BananaPopper
                 {
                     if (plusBanana.Overlaps(banana))
                     {
+
                         plusBanana.Visible = false;
                         banana.Visible = false;
                         hud.numBananas++;
@@ -236,18 +243,11 @@ namespace BananaPopper
                 LineRenderer.DrawLine(spriteBatch, grid, new Vector2(GameEnvironment.Screen.X, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale), new Vector2(0, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale));
             }
 
-            //Draws lines of players movement
-            LineRenderer.DrawLine(spriteBatch, XYas, new Vector2(0, thePlayer.Oorsprong.Y),
-                                                         new Vector2(GameEnvironment.Screen.X, thePlayer.Oorsprong.Y));
-            LineRenderer.DrawLine(spriteBatch, XYas, new Vector2(thePlayer.Oorsprong.X, 0),
-                                                         new Vector2(thePlayer.Oorsprong.X, GameEnvironment.Screen.Y));
-
             //Draws a test line, startPosLine must be player coords
-            LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
+           // LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
 
             base.Draw(spriteBatch);
         }
-
 
 
 
