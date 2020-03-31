@@ -48,7 +48,7 @@ namespace BananaPopper
         public PlayingState() : base()
         {
             //Put which level you wanna start in the brackets
-            StartLevel(2);
+            StartLevel(4);
 
             //code for database
             /*test = new MySqlConnection(connectionString);
@@ -256,6 +256,7 @@ namespace BananaPopper
             //Colors for game objects, use these colors for maps
             Color balloon = new Color(255, 0, 0),
                 obstacle = new Color(0, 0, 255),
+                invBalloon = new Color(255, 255, 0),
                 point0 = new Color(0, 255, 0);
 
 
@@ -290,6 +291,10 @@ namespace BananaPopper
                     else if (mapData[i + j * map.Width].Equals(obstacle))
                     {
                         theObstacles.Add(new Obstacle(position));
+                    }
+                    else if (mapData[i + j * map.Width].Equals(invBalloon))
+                    {
+                        theBalloons.Add(new InvisibleBalloon(position));
                     }
                     else if (mapData[i + j * map.Width].Equals(point0))
                     {
