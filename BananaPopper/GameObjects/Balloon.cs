@@ -12,10 +12,12 @@ namespace BananaPopper
 { 
     class Balloon : SpriteGameObject
     {
-        public Balloon(Vector2 position) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 16, 16))
+        public int hp = 1;
+        public Balloon(Vector2 position) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 32, 32))
         {
             GameEnvironment.ChangeColor(texture, Color.Brown);
             this.position = position - origin;
+
         }
     }
 }
