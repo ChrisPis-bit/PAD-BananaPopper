@@ -40,16 +40,17 @@ namespace BananaPopper
         Timer theTimer;
         PopAnimation thePopAnimation;
         XYAxes theXYaxes;
+        DirectionBox theDirectionBox;
 
         int iRc = 0;
-        float[] rc = new float[] { 1, -0.5f, 3 }; //Defines the a in y=ax+b
+        float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 0.66f }; //Defines the a in y=ax+b
 
 
 
         public PlayingState() : base()
         {
             //Put which level you wanna start in the brackets
-            StartLevel(5);
+            StartLevel(6);
 
             //code for database
             /*test = new MySqlConnection(connectionString);
@@ -69,16 +70,12 @@ namespace BananaPopper
 
             //Sets color for test textures
             GameEnvironment.ChangeColor(lineTest, Color.Blue);
-            GameEnvironment.ChangeColor(bg, Color.Black);
+            GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
             GameEnvironment.ChangeColor(mouse, Color.White);
-
             GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
             theMouse = new SpriteGameObject(mouse);
 
-            //theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale * 2, GameEnvironment.GlobalScale * 4)));
-            //theBalloons.Add(new InvisibleBalloon(new Vector2(GameEnvironment.GlobalScale * 1, GameEnvironment.GlobalScale * 5)));
-            //theBalloons.Add(new StrongBalloon(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 2)));
 
             //Detects how much invisible balloons there are in the game
             List<Vector2> invPoints = new List<Vector2>();
@@ -94,40 +91,41 @@ namespace BananaPopper
             theTable = new Table(invPoints.Count(), invPoints, thePlayer.Oorsprong,
                     new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
 
-            //thePlusBanana.Add(new plusBanana(new Vector2(GameEnvironment.GlobalScale * 3, GameEnvironment.GlobalScale * 3)));
-
-            //Add GameObjects here
-            Add(theXYaxes = new XYAxes(thePlayer.Oorsprong));
-            Add(theMouse);
+            //Add GameObjects here            
             Add(theObstacles);
             Add(theBalloons);
             Add(thePlusBanana);
-            Add(hud);
-            Add(theTable);
-            Add(theFormula);
-            Add(thePlayer);
-            Add(theTimer = new Timer());
+            Add(thePopAnimation = new PopAnimation());
             Add(theBullets);
             Add(theEBullets);
-            Add(thePopAnimation = new PopAnimation());
-            for (int iButton = 0; iButton < 2; iButton++)
-                Add(new Button("arrowKey", (float)Math.PI * (float)iButton,
-                    new Vector2(theFormula.position.X + BananaPopper.GlobalScale / 2.5f, theFormula.position.Y - 10 + 30 * iButton)));
+            Add(theDirectionBox = new DirectionBox());
+            Add(theXYaxes = new XYAxes(thePlayer.Oorsprong));
+            Add(thePlayer);
+            Add(theTable);
+            Add(theFormula);
+            Add(hud);
+            Add(theTimer = new Timer());
+            Add(theMouse);
         }
 
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            //////////////////////////////
+            //Collisions with the banana//
+            //////////////////////////////
             foreach (SpriteGameObject banana in theBullets.Children)
             {
-
-                if (banana.position.X < 0 || banana.position.X > GameEnvironment.Screen.X ||
-                    banana.position.Y < 0 || banana.position.Y > GameEnvironment.Screen.Y)
+                //Collision with screen border
+                if (banana.position.X + banana.HitBox.X < 0 || banana.position.X > GameEnvironment.Screen.X ||
+                    banana.position.Y + banana.HitBox.Y < 0 || banana.position.Y > GameEnvironment.Screen.Y)
                 {
                     banana.Visible = false;
                 }
 
+                //Collision with obstacles
                 foreach (Obstacle obstacle in theObstacles.Children)
                 {
                     if (obstacle.Overlaps(banana))
@@ -135,13 +133,46 @@ namespace BananaPopper
                         banana.Visible = false;
                     }
                 }
+
+                //Collision with balloons
+                foreach (SpriteGameObject balloons in theBalloons.Children)
+                {
+                    if (balloons.Overlaps(banana))
+                    {
+                        (balloons as Balloon).hp--;
+
+                        //Invisible balloon collision
+                        if (balloons is InvisibleBalloon)
+                        {
+                            thePopAnimation.position = balloons.position;
+                            thePopAnimation.Visible = true;
+                        }
+
+                        if ((balloons as Balloon).hp == 0)
+                        {
+                            balloons.Visible = false;
+                        }
+                        else { banana.Visible = false; }
+                    }
+                }
+
+                //Collision with plus banana power up
+                foreach (SpriteGameObject plusBanana in thePlusBanana.Children)
+                {
+                    if (plusBanana.Overlaps(banana))
+                    {
+                        plusBanana.Visible = false;
+                        hud.numBananas++;
+                    }
+                }
             }
+
+
 
             foreach (SpriteGameObject eBanana in theEBullets.Children)
             {
-
-                if (eBanana.position.X < 0 || eBanana.position.X > GameEnvironment.Screen.X ||
-                    eBanana.position.Y < 0 || eBanana.position.Y > GameEnvironment.Screen.Y)
+                if (eBanana.position.X + eBanana.HitBox.X < 0 || eBanana.position.X > GameEnvironment.Screen.X ||
+                    eBanana.position.Y + eBanana.HitBox.Y < 0 || eBanana.position.Y > GameEnvironment.Screen.Y)
                 {
                     eBanana.Visible = false;
                 }
@@ -151,6 +182,7 @@ namespace BananaPopper
                     if (obstacle.Overlaps(eBanana))
                     {
                         (obstacle as Obstacle).ObstacleHP--;
+
                         if (obstacle is InvisibleBalloon)
                         {
                             thePopAnimation.position = obstacle.position;
@@ -166,126 +198,76 @@ namespace BananaPopper
                     }
                 }
             }
-            
 
-                foreach (SpriteGameObject banana in theBullets.Children)
+            foreach (SpriteGameObject eBanana in theEBullets.Children)
+            {
+                foreach (SpriteGameObject balloons in theBalloons.Children)
                 {
-
-
-
-                    foreach (SpriteGameObject balloons in theBalloons.Children)
+                    if (balloons.Overlaps(eBanana))
                     {
-                        if (balloons.Overlaps(banana))
+                        (balloons as Balloon).hp--;
+                        if (balloons is InvisibleBalloon)
                         {
-                            (balloons as Balloon).hp--;
-                            if (balloons is InvisibleBalloon)
-                            {
-                                thePopAnimation.position = balloons.position;
-                                thePopAnimation.Visible = true;
-                            }
-
-                            if ((balloons as Balloon).hp == 0)
-                            {
-                                balloons.Visible = false;
-                            }
-                            else { banana.Visible = false; }
-
-
+                            thePopAnimation.position = balloons.position;
+                            thePopAnimation.Visible = true;
                         }
-                    }
-                }
-
-                foreach (SpriteGameObject eBanana in theEBullets.Children)
-                {
-
-
-
-                    foreach (SpriteGameObject balloons in theBalloons.Children)
-                    {
-                        if (balloons.Overlaps(eBanana))
-                        {
-                            (balloons as Balloon).hp--;
-                            if (balloons is InvisibleBalloon)
-                            {
-                                thePopAnimation.position = balloons.position;
-                                thePopAnimation.Visible = true;
-                            }
 
                         if ((balloons as Balloon).hp == 0)
-                            {
+                        {
                             balloons.Visible = false;
                             eBanana.Visible = false;
 
-                            }
                         }
                     }
                 }
-
-
-                foreach (SpriteGameObject banana in theBullets.Children)
-                {
-
-
-
-                    foreach (SpriteGameObject plusBanana in thePlusBanana.Children)
-                    {
-                        if (plusBanana.Overlaps(banana))
-                        {
-
-                            plusBanana.Visible = false;
-                            banana.Visible = false;
-                            hud.numBananas++;
-                        }
-                    }
-                }
-
-                foreach (SpriteGameObject eBanana in theEBullets.Children)
-                {
-
-
-
-                    foreach (SpriteGameObject plusBanana in thePlusBanana.Children)
-                    {
-                        if (plusBanana.Overlaps(eBanana))
-                        {
-
-                            plusBanana.Visible = false;
-                            eBanana.Visible = false;
-                            hud.numBananas++;
-                        }
-                    }
-                }
-
-                if (iRc >= rc.Length)
-                {
-                    iRc = 0;
-                }
-                else if (iRc < 0)
-                {
-                    iRc = rc.Length - 1;
-                }
-
-                for (int i = 0; i < theBullets.Children.Count(); i++)
-                {
-                    if (!theBullets.Children[i].Visible)
-                    {
-                        theBullets.remove(theBullets.Children[i]);
-                    }
-                }
-
-                for (int i = 0; i < theEBullets.Children.Count(); i++)
-                {
-                    if (!theEBullets.Children[i].Visible)
-                    {
-                        theEBullets.remove(theEBullets.Children[i]);
-                    }
-                }
-
-                //Updates the formula on screen
-                theFormula.UpdateFormula(rc[iRc], thePlayer.centerPos, thePlayer.Oorsprong);
             }
-        
-        
+
+
+            foreach (SpriteGameObject eBanana in theEBullets.Children)
+            {
+                foreach (SpriteGameObject plusBanana in thePlusBanana.Children)
+                {
+                    if (plusBanana.Overlaps(eBanana))
+                    {
+
+                        plusBanana.Visible = false;
+                        eBanana.Visible = false;
+                        hud.numBananas++;
+                    }
+                }
+            }
+
+            if (iRc >= rc.Length)
+            {
+                iRc = 0;
+            }
+            else if (iRc < 0)
+            {
+                iRc = rc.Length - 1;
+            }
+
+            for (int i = 0; i < theBullets.Children.Count(); i++)
+            {
+                if (!theBullets.Children[i].Visible)
+                {
+                    theBullets.remove(theBullets.Children[i]);
+                }
+            }
+
+            for (int i = 0; i < theEBullets.Children.Count(); i++)
+            {
+                if (!theEBullets.Children[i].Visible)
+                {
+                    theEBullets.remove(theEBullets.Children[i]);
+                }
+            }
+
+            //Updates the formula on screen
+            theFormula.UpdateFormula(rc[iRc], thePlayer.centerPos, thePlayer.Oorsprong);
+            theDirectionBox.UpdateDirection(theFormula.flipLine, thePlayer.centerPos);
+        }
+
+
 
 
         public override void HandleInput(InputHelper inputHelper)
@@ -311,7 +293,7 @@ namespace BananaPopper
             {
                 if (hud.numBananas != 0)
                 {
-                    theBullets.Add(new Banana(thePlayer.position, rc[iRc], theFormula.flipLine));
+                    theBullets.Add(new Banana(thePlayer.centerPos, rc[iRc], theFormula.flipLine));
                     hud.numBananas--;
                 }
             }
@@ -320,7 +302,7 @@ namespace BananaPopper
             {
                 if (hud.numEBananas != 0)
                 {
-                    theEBullets.Add(new ExplosiveBanana(thePlayer.position, rc[iRc], theFormula.flipLine));
+                    theEBullets.Add(new ExplosiveBanana(thePlayer.centerPos, rc[iRc], theFormula.flipLine));
                     hud.numEBananas--;
                 }
             }
@@ -367,7 +349,7 @@ namespace BananaPopper
             Texture2D map = GameEnvironment.ContentManager.Load<Texture2D>("Maps/Map" + levelIndex);
 
             //Changes GlobalScale according to the maps width or height, so that the map always fits on the screen
-            if (GameEnvironment.Screen.X / map.Width / 16 > GameEnvironment.Screen.Y / map.Height / 9)
+            if (GameEnvironment.Screen.X / map.Width / 16 >= GameEnvironment.Screen.Y / map.Height / 9)
             {
                 GameEnvironment.GlobalScale = GameEnvironment.Screen.X / map.Width;
             }
@@ -406,7 +388,7 @@ namespace BananaPopper
                     }
                     else if (mapData[i + j * map.Width].Equals(extraBanana))
                     {
-                        Add(new plusBanana(position));
+                        thePlusBanana.Add(new plusBanana(position));
                     }
                     else if (mapData[i + j * map.Width].Equals(strongBalloon))
                     {

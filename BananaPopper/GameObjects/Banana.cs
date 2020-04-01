@@ -27,7 +27,7 @@ namespace BananaPopper
 
         public void Shoot(Vector2 position, float speed, bool flipLine)
         {
-            this.position = position;
+            this.position = position - new Vector2(texture.Width/2, texture.Height/2);
 
             if (flipLine)
             {
