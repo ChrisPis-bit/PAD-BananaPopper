@@ -52,6 +52,7 @@ namespace BananaPopper.GameStates
             try
             {
                 _screens.Push(screen);
+
                 _screens.Peek().Initialize();
                 if (_content != null)
                 {

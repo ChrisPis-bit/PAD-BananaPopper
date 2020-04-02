@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace BananaPopper.GameStates
 {
-    public abstract class GameState : IGameState
+    public abstract class GameState : GameManagement.IGameState
     {
         protected GraphicsDevice _graphicsDevice;
         public GameState(GraphicsDevice graphicsDevice)
