@@ -314,7 +314,7 @@ namespace BananaPopper
                     if (inputHelper.KeyPressed(Keys.Space))
                     {
                         fire = false;
-                        idf (hu.numEBananas != 0)
+                        if (hud.numEBananas != 0)
                         {
                             theEBullets.Add(new ExplosiveBanana(thePlayer.centerPos, rc[iRc], theFormula.flipLine));
                             hud.numEBananas--;
