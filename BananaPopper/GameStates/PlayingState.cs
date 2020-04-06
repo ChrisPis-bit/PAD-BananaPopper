@@ -43,6 +43,8 @@ namespace BananaPopper
         DirectionBox theDirectionBox;
 
         int iRc = 0;
+        bool fire = true;
+        bool Efire = false;
         float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 0.66f }; //Defines the a in y=ax+b
 
 
@@ -263,6 +265,8 @@ namespace BananaPopper
                 }
             }
 
+            
+
             //Updates the formula on screen
             theFormula.UpdateFormula(rc[iRc], thePlayer.centerPos, thePlayer.Oorsprong);
             theDirectionBox.UpdateDirection(theFormula.flipLine, thePlayer.centerPos);
@@ -289,24 +293,48 @@ namespace BananaPopper
 
 
             theMouse.position = inputHelper.MousePosition;
-
-            if (inputHelper.KeyPressed(Keys.Space))
+            if (fire)
             {
-                if (hud.numBananas != 0)
+                if (inputHelper.KeyPressed(Keys.Space))
                 {
-                    theBullets.Add(new Banana(thePlayer.centerPos, rc[iRc], theFormula.flipLine));
-                    hud.numBananas--;
+                    if (hud.numBananas != 0)
+                    {
+                        theBullets.Add(new Banana(thePlayer.centerPos, rc[iRc], theFormula.flipLine));
+                        hud.numBananas--;
+                    }
                 }
             }
 
-            if (inputHelper.KeyPressed(Keys.E))
+            if (hud.numBananas == 5)
             {
-                if (hud.numEBananas != 0)
+                fire = false;
+                if (fire == false)
                 {
-                    theEBullets.Add(new ExplosiveBanana(thePlayer.centerPos, rc[iRc], theFormula.flipLine));
-                    hud.numEBananas--;
+                    if (Efire) { 
+                    if (inputHelper.KeyPressed(Keys.Space))
+                    {
+                        fire = false;
+                        idf (hu.numEBananas != 0)
+                        {
+                            theEBullets.Add(new ExplosiveBanana(thePlayer.centerPos, rc[iRc], theFormula.flipLine));
+                            hud.numEBananas--;
+                        }
+                    }
                 }
             }
+        }
+
+            if(hud.numBananas == 5)
+            {
+                Efire = true;
+            }
+
+            if(hud.numEBananas == 0)
+            {
+                fire = true;
+            }
+
+
         }
 
 
