@@ -43,9 +43,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BananaPopper.cs" />
+    <Compile Include="GameManagement\DatabaseHelper.cs" />
     <Compile Include="GameObjects\Banana.cs" />
     <Compile Include="GameObjects\Button.cs" />
     <Compile Include="GameObjects\Balloon.cs" />
+    <Compile Include="GameObjects\CharacterSelector.cs" />
     <Compile Include="GameObjects\DirectionBox.cs" />
     <Compile Include="GameObjects\ExplosiveBanana.cs" />
     <Compile Include="GameObjects\plusBanana.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="GameObjects\PopAnimation.cs" />
     <Compile Include="GameObjects\StrongBalloon.cs" />
     <Compile Include="GameObjects\Timer.cs" />
+    <Compile Include="GameStates\Login.cs" />
     <Compile Include="GameStates\PlayingState.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

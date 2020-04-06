@@ -20,6 +20,7 @@ class GameEnvironment : Game
     protected InputHelper inputHelper;
     static protected List<GameObject> gameStateList;
     static protected GameObject currentGameState;
+    static protected DatabaseHelper databaseHelper;
 
     public static Point Screen
     {
@@ -55,6 +56,11 @@ class GameEnvironment : Game
         get { return content; }
     }
 
+    public static DatabaseHelper DatabaseHelper
+    {
+        get { return databaseHelper; }
+    }
+
     static public void ChangeColor(Texture2D texture, Color color)
     {
         Color[] data = new Color[texture.Width * texture.Height];
@@ -76,6 +82,7 @@ class GameEnvironment : Game
         content = Content;
         gameStateList = new List<GameObject>();
         random = new Random();
+        databaseHelper = new DatabaseHelper();
     }
 
     public void ApplyResolutionSettings()

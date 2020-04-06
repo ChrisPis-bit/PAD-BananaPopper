@@ -17,7 +17,6 @@ namespace BananaPopper
         {
             GameEnvironment.ChangeColor(texture, Color.Orange);
             visible = false;
-
         }
         public override void Update(GameTime gameTime)
         {

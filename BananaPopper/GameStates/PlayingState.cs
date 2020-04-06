@@ -53,12 +53,13 @@ namespace BananaPopper
             StartLevel(6);
 
             //code for database
-            /*test = new MySqlConnection(connectionString);
+           /* test = new MySqlConnection(connectionString);
             test.Open();
 
-            string sql = "SELECT * FROM zlokhorc.Highscores";
+            string sql = "update Highscores set time = 10 where Users_id = 100;";
 
-            MySqlCommand cmd = new MySqlCommand(sql, test);
+            MySqlScript cmd = new MySqlScript(test, sql);
+
             MySqlDataReader cmdData = cmd.ExecuteReader();
 
             while (cmdData.Read()) {
@@ -361,10 +362,6 @@ namespace BananaPopper
             Color[] mapData = new Color[map.Width * map.Height];
             map.GetData(mapData);
 
-            for (int i = 0; i < mapData.Length; i++)
-            {
-                Console.WriteLine(mapData[i]);
-            }
 
             //Loops through the data of the map texture and checks every pixel for its color
             //If it's a color from the given object colors, it will place down that object on the right position on screen

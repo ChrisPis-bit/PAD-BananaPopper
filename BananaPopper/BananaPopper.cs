@@ -26,6 +26,7 @@ namespace BananaPopper
 
             // TODO: Add gamestates here
             gameStateList.Add(new PlayingState());
+            gameStateList.Add(new Login());
 
             SwitchTo(0);
         }

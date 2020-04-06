@@ -21,6 +21,12 @@ public class InputHelper
         currentKeyboardState = Keyboard.GetState();
     }
 
+    private void TextInputHandler(object sender, TextInputEventArgs args)
+    {
+        var pressedKey = args.Key;
+        var character = args.Character;
+    }
+
     public Vector2 Scale
     {
         get { return scale; }
@@ -61,6 +67,16 @@ public class InputHelper
     public bool IsKeyDown(Keys k)
     {
         return currentKeyboardState.IsKeyDown(k);
+    }
+
+    public Keys ReturnPressedKey()
+    {
+        if (Keyboard.GetState().GetPressedKeys().Length != 0 && KeyPressed(Keyboard.GetState().GetPressedKeys()[0]))
+        {
+            return Keyboard.GetState().GetPressedKeys()[0];
+        }
+        else
+            return Keys.None;
     }
 
     public bool AnyKeyPressed
