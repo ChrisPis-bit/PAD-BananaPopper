@@ -86,5 +86,26 @@ namespace BananaPopper
             }
             else velocity = new Vector2(0);
         }
+
+        public void CollideWithObject(SpriteGameObject obj)
+        {
+            /*if(Overlaps(new Vector2(obj.HitBoxPosition.X - velocity.X, obj.HitBoxPosition.Y), obj.HitBox))
+            {
+                while (!Overlaps(new Vector2(obj.HitBoxPosition.X + Math.Sign(velocity.X), obj.HitBoxPosition.Y), obj.HitBox))
+                {
+                    position.X += Math.Sign(velocity.X);
+                }
+                velocity = Vector2.Zero;
+            }
+            if (Overlaps(new Vector2(obj.HitBoxPosition.X, obj.HitBoxPosition.Y - velocity.Y), obj.HitBox))
+            {
+                while (!Overlaps(new Vector2(obj.HitBoxPosition.X, obj.HitBoxPosition.Y + Math.Sign(velocity.Y)), obj.HitBox))
+                {
+                    position.Y += Math.Sign(velocity.Y);
+                }
+                velocity = Vector2.Zero;
+
+            }*/
+        }
     }
 }
