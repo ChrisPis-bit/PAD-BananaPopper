@@ -14,7 +14,7 @@ namespace BananaPopper
     {
         public bool isPressed;
 
-        public Button(String texture, float angle, Vector2 position) : base(texture, angle)
+        public Button(String texture, Vector2 position, float angle = 0) : base(texture, angle)
         {
             isPressed = false;
             this.position = position;

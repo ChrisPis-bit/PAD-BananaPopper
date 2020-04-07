@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 namespace BananaPopper
 {
     class HUD : GameObjectList
     {
-      public int numBananas;
+        public int numBananas;
         public int numEBananas;
         Texture2D banaan;
         Texture2D eBanaan;
         Vector2 offset;
         Vector2 offsetE;
+        Button flipButton;
         public HUD() : base()
         {
             numBananas = 10;
@@ -30,16 +25,16 @@ namespace BananaPopper
             GameEnvironment.ChangeColor(eBanaan, Color.Red);
             offset = new Vector2(25, 0);
             offsetE = new Vector2(25, 0);
+            Add(flipButton = new Button("arrowKey", new Vector2(500, 400)));
 
-           
         }
         public override void Draw(SpriteBatch spriteBatch)
         {
             base.Draw(spriteBatch);
-            for (int i = 0; i<numBananas; i++)
+            for (int i = 0; i < numBananas; i++)
             {
-                
-                spriteBatch.Draw(banaan, position + i*offset , Color.White);
+
+                spriteBatch.Draw(banaan, position + i * offset, Color.White);
             }
 
             for (int i = 0; i < numEBananas; i++)
@@ -47,6 +42,11 @@ namespace BananaPopper
 
                 spriteBatch.Draw(eBanaan, positionE + i * offsetE, Color.White);
             }
+        }
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
         }
 
     }
