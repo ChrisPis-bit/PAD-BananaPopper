@@ -42,6 +42,7 @@ namespace BananaPopper
         DirectionBox theDirectionBox;
 
         int iRc = 0;
+        int count;
         bool fire = true;
         bool Efire = false;
         float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 0.66f }; //Defines the a in y=ax+b
@@ -308,7 +309,7 @@ namespace BananaPopper
                 }
             }
 
-            if (hud.numBananas == 5)
+            if (hud.numBananas == count)
             {
                 fire = false;
                 if (fire == false)
@@ -329,6 +330,7 @@ namespace BananaPopper
 
             if(hud.numBananas == 5)
             {
+                count = 5;
                 Efire = true;
             }
 
