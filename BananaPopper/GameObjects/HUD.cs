@@ -13,6 +13,9 @@ namespace BananaPopper
         Vector2 offset;
         Vector2 offsetE;
         Button flipButton;
+        public bool flipLine;
+        public Formula theFormula;
+
         public HUD() : base()
         {
             numBananas = 10;
@@ -26,7 +29,10 @@ namespace BananaPopper
             offset = new Vector2(25, 0);
             offsetE = new Vector2(25, 0);
             Add(flipButton = new Button("arrowKey", new Vector2(500, 400)));
+            flipLine = true;
 
+            theFormula = new Formula(new Vector2(-GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
+            Add(theFormula);
         }
         public override void Draw(SpriteBatch spriteBatch)
         {

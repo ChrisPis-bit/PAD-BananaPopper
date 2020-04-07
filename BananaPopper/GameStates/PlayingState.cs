@@ -33,7 +33,6 @@ namespace BananaPopper
 
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
         HUD hud = new HUD();
-        Formula theFormula;
         Table theTable;
         SpriteGameObject theMouse;
         Player thePlayer;
@@ -90,7 +89,6 @@ namespace BananaPopper
                 }
             }
 
-            theFormula = new Formula(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
             theTable = new Table(invPoints.Count(), invPoints, thePlayer.Oorsprong,
                     new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
 
@@ -109,7 +107,6 @@ namespace BananaPopper
             Add(theXYaxes = new XYAxes(thePlayer.Oorsprong));
             Add(thePlayer);
             Add(theTable);
-            Add(theFormula);
             Add(hud);
             Add(theTimer = new Timer());
             Add(theMouse);
@@ -274,8 +271,8 @@ namespace BananaPopper
             
 
             //Updates the formula on screen
-            theFormula.UpdateFormula(rc[iRc], thePlayer.centerPos, thePlayer.Oorsprong);
-            theDirectionBox.UpdateDirection(theFormula.flipLine, thePlayer.centerPos);
+            hud.theFormula.UpdateFormula(rc[iRc], thePlayer.centerPos, thePlayer.Oorsprong, hud.flipLine);
+            theDirectionBox.UpdateDirection(hud.flipLine, thePlayer.centerPos);
         }
 
 
@@ -292,7 +289,7 @@ namespace BananaPopper
             //For testing, flips line
             if (inputHelper.KeyPressed(Keys.F))
             {
-                theFormula.flipLine = !theFormula.flipLine;
+                hud.flipLine = !hud.flipLine;
 
             }
 
@@ -305,7 +302,7 @@ namespace BananaPopper
                 {
                     if (hud.numBananas != 0)
                     {
-                        theBullets.Add(new Banana(thePlayer.centerPos, rc[iRc], theFormula.flipLine));
+                        theBullets.Add(new Banana(thePlayer.centerPos, rc[iRc], hud.flipLine));
                         hud.numBananas--;
                     }
                 }
@@ -322,7 +319,7 @@ namespace BananaPopper
                         fire = false;
                         if (hud.numEBananas != 0)
                         {
-                            theEBullets.Add(new ExplosiveBanana(thePlayer.centerPos, rc[iRc], theFormula.flipLine));
+                            theEBullets.Add(new ExplosiveBanana(thePlayer.centerPos, rc[iRc], hud.flipLine));
                             hud.numEBananas--;
                         }
                     }
