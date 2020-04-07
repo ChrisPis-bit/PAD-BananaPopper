@@ -13,6 +13,7 @@ namespace BananaPopper
     {
         public Vector2 centerPos,
             Oorsprong;
+        private float maxSpeed = GameEnvironment.GlobalScale *40;
 
         public Player(Vector2 startPosition) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 16, 16))
         {
@@ -29,6 +30,7 @@ namespace BananaPopper
 
             //position = centerPos - origin;
             centerPos = position + origin;
+
         }
 
         public override void HandleInput(InputHelper inputHelper)
@@ -85,27 +87,38 @@ namespace BananaPopper
                 velocity = new Vector2(0);
             }
             else velocity = new Vector2(0);
+
+
+            if (velocity.X > maxSpeed || velocity.X < -maxSpeed)
+            {
+                velocity.X = maxSpeed * Math.Sign(velocity.X);
+            }
+            if (velocity.Y > maxSpeed || velocity.Y < -maxSpeed)
+            {
+                velocity.Y = maxSpeed * Math.Sign(velocity.Y);
+            }
         }
 
         public void CollideWithObject(SpriteGameObject obj)
         {
-            /*if(Overlaps(new Vector2(obj.HitBoxPosition.X - velocity.X, obj.HitBoxPosition.Y), obj.HitBox))
+            if (Overlaps(obj))
             {
-                while (!Overlaps(new Vector2(obj.HitBoxPosition.X + Math.Sign(velocity.X), obj.HitBoxPosition.Y), obj.HitBox))
+                if (velocity.X != 0)
                 {
-                    position.X += Math.Sign(velocity.X);
+                    while (Overlaps(obj))
+                    {
+                        position.X += -Math.Sign(velocity.X);
+                    }
+                }
+                else if (velocity.Y != 0)
+                {
+                    while (Overlaps(obj))
+                    {
+                        position.Y += -Math.Sign(velocity.Y);
+                    }
                 }
                 velocity = Vector2.Zero;
             }
-            if (Overlaps(new Vector2(obj.HitBoxPosition.X, obj.HitBoxPosition.Y - velocity.Y), obj.HitBox))
-            {
-                while (!Overlaps(new Vector2(obj.HitBoxPosition.X, obj.HitBoxPosition.Y + Math.Sign(velocity.Y)), obj.HitBox))
-                {
-                    position.Y += Math.Sign(velocity.Y);
-                }
-                velocity = Vector2.Zero;
-
-            }*/
         }
     }
 }

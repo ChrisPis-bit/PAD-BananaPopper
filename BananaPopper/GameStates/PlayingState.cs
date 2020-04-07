@@ -93,10 +93,6 @@ namespace BananaPopper
             theTable = new Table(invPoints.Count(), invPoints, thePlayer.Oorsprong,
                     new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
 
-            theObstacles.Add(new Obstacle(new Vector2(GameEnvironment.GlobalScale *2, thePlayer.Oorsprong.Y)));
-            theObstacles.Add(new Obstacle(new Vector2(GameEnvironment.GlobalScale * 10, thePlayer.Oorsprong.Y)));
-
-
             //Add GameObjects here            
             Add(theObstacles);
             Add(theBalloons);
@@ -117,6 +113,11 @@ namespace BananaPopper
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            foreach(Obstacle obstacles in theObstacles.Children)
+            {
+                thePlayer.CollideWithObject(obstacles);
+            }
 
             //////////////////////////////
             //Collisions with the banana//
