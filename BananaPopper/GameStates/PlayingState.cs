@@ -55,12 +55,12 @@ namespace BananaPopper
             StartLevel(6);
 
             //code for database
-           /* test = new MySqlConnection(connectionString);
+            /*test = new MySqlConnection(connectionString);
             test.Open();
 
             string sql = "update Highscores set time = 10 where Users_id = 100;";
 
-            MySqlScript cmd = new MySqlScript(test, sql);
+            MySqlCommand cmd = new MySqlCommand(sql, test);
 
             MySqlDataReader cmdData = cmd.ExecuteReader();
 
@@ -93,6 +93,10 @@ namespace BananaPopper
             theFormula = new Formula(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
             theTable = new Table(invPoints.Count(), invPoints, thePlayer.Oorsprong,
                     new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
+
+            theObstacles.Add(new Obstacle(new Vector2(GameEnvironment.GlobalScale *2, thePlayer.Oorsprong.Y)));
+            theObstacles.Add(new Obstacle(new Vector2(GameEnvironment.GlobalScale * 10, thePlayer.Oorsprong.Y)));
+
 
             //Add GameObjects here            
             Add(theObstacles);
@@ -169,6 +173,8 @@ namespace BananaPopper
                     }
                 }
             }
+
+
 
 
 
