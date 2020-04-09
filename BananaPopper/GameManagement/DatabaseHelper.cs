@@ -11,7 +11,7 @@ class DatabaseHelper
 {
     //This class handles repeated database code, like query's
 
-    string connectionString = "server=oege.ie.hva.nl;user=lokhorc;database=zlokhorc;port=3306;password=dw5dZKtaln1AHIK2";
+    string connectionString = "server=oege.ie.hva.nl;user=mult;database=zmult;port=3306;password=hyxjnFq3hznpHMf+";
     public MySqlConnection con;
 
     public DatabaseHelper()
