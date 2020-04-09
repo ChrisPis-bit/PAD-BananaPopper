@@ -21,6 +21,7 @@ class GameEnvironment : Game
     static protected List<GameObject> gameStateList;
     static protected GameObject currentGameState;
     static protected DatabaseHelper databaseHelper;
+    StringBuilder builder = new StringBuilder();
 
     public static Point Screen
     {
@@ -76,6 +77,8 @@ class GameEnvironment : Game
 
     public GameEnvironment()
     {
+        Window.TextInput += TextInputHandler;
+
         graphics = new GraphicsDeviceManager(this);
         inputHelper = new InputHelper();
         Content.RootDirectory = "Content";
@@ -83,6 +86,16 @@ class GameEnvironment : Game
         gameStateList = new List<GameObject>();
         random = new Random();
         databaseHelper = new DatabaseHelper();
+    }
+
+    private void TextInputHandler(object sender, TextInputEventArgs args)
+    {
+        if (args.Key == Keys.Back)
+            if (builder.Length > 0)
+                builder.Remove(builder.Length - 1, 1);
+            else
+                builder.Append(args.Character);
+        this.Window.Title = builder.ToString();
     }
 
     public void ApplyResolutionSettings()
