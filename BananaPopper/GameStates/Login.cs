@@ -15,7 +15,6 @@ namespace BananaPopper
         public Login() : base()
         {
             Add(test = new TextGameObject("", Color.White, "GameFont", new Vector2(0)));
-            CreateAccount("test", "123");
         }
 
         public override void Update(GameTime gameTime)

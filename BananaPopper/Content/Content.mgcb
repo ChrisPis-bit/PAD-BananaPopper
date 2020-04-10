@@ -104,3 +104,6 @@
 /processorParam:TextureFormat=Color
 /build:Maps/Map6.png
 
+#begin MapStats.txt
+/copy:MapStats.txt
+

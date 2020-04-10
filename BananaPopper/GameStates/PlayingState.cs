@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace BananaPopper
 {
@@ -52,8 +53,10 @@ namespace BananaPopper
         public PlayingState() : base()
         {
             //Put which level you wanna start in the brackets
-            StartLevel(6);
+            StartLevel(5);
 
+            StreamReader test = new StreamReader("Content/MapStats.txt");
+            Console.WriteLine(test.ReadToEnd());
             //code for database
             /*test = new MySqlConnection(connectionString);
             test.Open();
