@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <SourceFile>C:/Users/chris/source/repos/BananaPopper/PAD-BananaPopper/BananaPopper/Content/arrowKey.png</SourceFile>
-  <SourceTime>2020-03-31T13:52:24.794049+02:00</SourceTime>
+  <SourceTime>2020-04-10T12:32:18.9687112+02:00</SourceTime>
   <DestFile>C:/Users/chris/source/repos/BananaPopper/PAD-BananaPopper/BananaPopper/Content/bin/Windows/Content/arrowKey.xnb</DestFile>
-  <DestTime>2020-04-07T12:42:08.6899795+02:00</DestTime>
+  <DestTime>2020-04-11T14:26:22.4191605+02:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

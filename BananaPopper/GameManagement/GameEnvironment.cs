@@ -47,6 +47,11 @@ class GameEnvironment : Game
         get { return graphics; }
     }
 
+    public static List<GameObject> GameStateList
+    {
+        get { return gameStateList; }
+    }
+
     public static Random Random
     {
         get { return random; }

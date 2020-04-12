@@ -16,9 +16,16 @@ namespace BananaPopper
 
         public Button(String texture, Vector2 position, float angle = 0) : base(texture, angle)
         {
+            
             isPressed = false;
             this.position = position;
             scale /= 2;
+        }
+        public Button(Texture2D texture, Vector2 position, float angle = 0) : base(texture, angle)
+        {
+            isPressed = false;
+            this.position = position;
+            scale = 1;
         }
 
         public override void HandleInput(InputHelper inputHelper)
