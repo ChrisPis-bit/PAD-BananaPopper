@@ -110,6 +110,10 @@ namespace BananaPopper
             Add(hud);
             Add(theTimer = new Timer());
             Add(theMouse);
+
+            string filePath = "OrderBanana.txt";
+
+            ReadFromFile(filePath);
         }
 
 
@@ -332,6 +336,8 @@ namespace BananaPopper
             }
         }
 
+
+            
             if(hud.numBananas == 5)
             {
                 count = 5;
@@ -434,6 +440,28 @@ namespace BananaPopper
                     }
                 }
             }
+        }
+
+        
+     
+
+        
+
+        public static void ReadFromFile(string filePath)
+        {
+            StreamReader reader = new StreamReader(filePath);
+
+            while (!reader.EndOfStream)
+            {
+                Console.WriteLine(reader.ReadLine());
+            }
+
+            reader.Close();
+        }
+
+        public static void WriteToFile(string filePath)
+        {
+
         }
     }
 }
