@@ -44,7 +44,7 @@ class SpriteGameObject : GameObject
         get { return new Vector2(GlobalPosition.X - (hitbox.X / 2 - texture.Width / 2), GlobalPosition.Y - (hitbox.Y / 2 - texture.Height / 2)); }
     }
 
-    public override void Draw(SpriteBatch spriteBatch)
+    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
         if (visible)
             //spriteBatch.Draw(texture, GlobalPosition, Color.White);

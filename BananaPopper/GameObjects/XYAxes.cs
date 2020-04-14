@@ -35,9 +35,9 @@ namespace BananaPopper
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            base.Draw(gameTime, spriteBatch);
 
             //Draws lines of players movement
             LineRenderer.DrawLine(spriteBatch, XYas, new Vector2(0, origin.Y),

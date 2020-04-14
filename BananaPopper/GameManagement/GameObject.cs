@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class GameObject
+class GameObject : IGameLoopObject
 {
     public Vector2 position;
     public Vector2 positionE;
@@ -40,7 +40,7 @@ class GameObject
     public virtual void Reset() { }
     public virtual void HandleInput(InputHelper inputHelper) { }
 
-    public virtual void Draw(SpriteBatch spriteBatch)
+    public virtual void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     { }
 
     public virtual Vector2 GlobalPosition

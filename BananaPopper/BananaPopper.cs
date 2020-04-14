@@ -25,10 +25,10 @@ namespace BananaPopper
             textureScale = globalScale / 32;
 
             // TODO: Add gamestates here
-            gameStateList.Add(new PlayingState());
-            gameStateList.Add(new Login());
-            gameStateList.Add(new Startup());
-            SwitchTo(2);
+            GameStateManager.AddGameState("PlayingState", new PlayingState());
+            GameStateManager.AddGameState("Login", new Login());
+            GameStateManager.AddGameState("Startup", new Startup());
+            GameStateManager.SwitchTo("Startup");
         }
     }
 }

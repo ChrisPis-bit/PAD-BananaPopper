@@ -44,9 +44,9 @@ namespace BananaPopper
             }
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            base.Draw(gameTime, spriteBatch);
 
             LineRenderer.DrawLine(spriteBatch, lineTexture, new Vector2(position.X, position.Y + pointOffset.Y),
                                                             new Vector2(Children[Children.Count() - 1].GlobalPosition.X - pointOffset.X, position.Y + pointOffset.Y));

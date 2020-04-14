@@ -34,9 +34,9 @@ namespace BananaPopper
             theFormula = new Formula(new Vector2(-GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
             Add(theFormula);
         }
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            base.Draw(gameTime, spriteBatch);
             for (int i = 0; i < numBananas; i++)
             {
 

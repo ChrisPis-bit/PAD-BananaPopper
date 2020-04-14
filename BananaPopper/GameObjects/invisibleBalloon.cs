@@ -17,7 +17,7 @@ namespace BananaPopper
             
             GameEnvironment.ChangeColor(texture, Color.White);
         }
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
 
            

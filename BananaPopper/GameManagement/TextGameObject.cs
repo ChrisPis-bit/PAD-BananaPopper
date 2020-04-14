@@ -25,9 +25,9 @@ namespace BananaPopper
             this.position = position;
         }
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            base.Draw(gameTime, spriteBatch);
             spriteBatch.DrawString(font, text, GlobalPosition, color);
         }
     }

@@ -46,11 +46,11 @@ class GameObjectList : GameObject
             gameObject.Update(gameTime);
     }
 
-    public override void Draw(SpriteBatch spriteBatch)
+    public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
         if (visible)
             foreach (GameObject gameObject in children)
-                gameObject.Draw(spriteBatch);
+                gameObject.Draw(gameTime, spriteBatch);
     }
 
     public override void HandleInput(InputHelper inputHelper)
