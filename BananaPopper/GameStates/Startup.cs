@@ -46,19 +46,19 @@ namespace BananaPopper
             if (login.isPressed)
             {
                 //Switches to login screen and sets createAccount to false so the player can log in
-                GameEnvironment.SwitchTo(1);
-                (GameEnvironment.GameStateList[1] as Login).createAccount = false;
+                GameEnvironment.GameStateManager.SwitchTo("Login");
+                (GameEnvironment.GameStateManager.GetGameState("Login") as Login).createAccount = false;
             }
             else if (createAccount.isPressed)
             {
                 //Switches to login screen and sets createAccount to true so the player can create an account
-                GameEnvironment.SwitchTo(1);
-                (GameEnvironment.GameStateList[1] as Login).createAccount = true;
+                GameEnvironment.GameStateManager.SwitchTo("Login");
+                (GameEnvironment.GameStateManager.GetGameState("Login") as Login).createAccount = true;
             }
             else if (offline.isPressed)
             {
                 //If player doesn't have internet, or isn't interested in an account, he/she can skip the login and play without account info
-                GameEnvironment.SwitchTo(0);
+                GameEnvironment.GameStateManager.SwitchTo("PlayingState");
             }
         }
 

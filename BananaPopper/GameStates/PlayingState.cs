@@ -353,7 +353,7 @@ namespace BananaPopper
         }
 
 
-        public override void Draw(SpriteBatch spriteBatch)
+        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             //Draws the bg across the screen
             spriteBatch.Draw(bg,
@@ -374,7 +374,7 @@ namespace BananaPopper
             //Draws a test line, startPosLine must be player coords
             // LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
 
-            base.Draw(spriteBatch);
+            base.Draw(gameTime, spriteBatch);
         }
 
 

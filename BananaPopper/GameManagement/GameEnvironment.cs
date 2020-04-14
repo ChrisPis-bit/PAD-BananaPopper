@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 class GameEnvironment : Game
 {
     protected static GraphicsDeviceManager graphics;
+    protected static GameStateManager gameStateManager;
     protected SpriteBatch spriteBatch;
     static protected ContentManager content;
     protected static Point screen;
@@ -18,8 +19,8 @@ class GameEnvironment : Game
         textureScale;
     protected static Random random;
     protected InputHelper inputHelper;
-    static protected List<GameObject> gameStateList;
-    static protected GameObject currentGameState;
+    /*static protected List<GameObject> gameStateList;
+    static protected GameObject currentGameState;*/
     static protected DatabaseHelper databaseHelper;
     StringBuilder builder = new StringBuilder();
 
@@ -47,11 +48,6 @@ class GameEnvironment : Game
         get { return graphics; }
     }
 
-    public static List<GameObject> GameStateList
-    {
-        get { return gameStateList; }
-    }
-
     public static Random Random
     {
         get { return random; }
@@ -67,17 +63,16 @@ class GameEnvironment : Game
         get { return databaseHelper; }
     }
 
+    public static GameStateManager GameStateManager
+    {
+        get { return gameStateManager; }
+    }
+
     static public void ChangeColor(Texture2D texture, Color color)
     {
         Color[] data = new Color[texture.Width * texture.Height];
         for (int i = 0; i < data.Length; ++i) data[i] = color;
         texture.SetData(data);
-    }
-
-    static public void SwitchTo(int gameStateIndex)
-    {
-        if (gameStateIndex >= 0 && gameStateIndex < gameStateList.Count)
-            currentGameState = gameStateList[gameStateIndex];
     }
 
     public GameEnvironment()
@@ -88,7 +83,7 @@ class GameEnvironment : Game
         inputHelper = new InputHelper();
         Content.RootDirectory = "Content";
         content = Content;
-        gameStateList = new List<GameObject>();
+        gameStateManager = new GameStateManager();
         random = new Random();
         databaseHelper = new DatabaseHelper();
     }
@@ -123,16 +118,16 @@ class GameEnvironment : Game
             Exit();
         }
 
-        if (currentGameState != null)
-            currentGameState.HandleInput(inputHelper);
+        if (gameStateManager.CurrentGameState != null)
+            gameStateManager.CurrentGameState.HandleInput(inputHelper);
     }
 
     protected override void Draw(GameTime gameTime)
     {
         spriteBatch.Begin();
 
-        if (currentGameState != null)
-            currentGameState.Draw(spriteBatch);
+        if (gameStateManager.CurrentGameState != null)
+            gameStateManager.CurrentGameState.Draw(gameTime, spriteBatch);
 
         spriteBatch.End();
 
@@ -143,8 +138,8 @@ class GameEnvironment : Game
     {
         HandleInput();
 
-        if (currentGameState != null)
-            currentGameState.Update(gameTime);
+        if (gameStateManager.CurrentGameState != null)
+            gameStateManager.CurrentGameState.Update(gameTime);
 
         base.Update(gameTime);
     }
