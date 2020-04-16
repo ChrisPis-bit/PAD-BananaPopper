@@ -96,7 +96,7 @@ namespace BananaPopper
             theTable = new Table(invPoints.Count(), invPoints, thePlayer.Oorsprong,
                     new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
 
-            //Add GameObjects here            
+            //Add GameObjects here
             Add(theObstacles);
             Add(theBalloons);
             Add(thePlusBanana);
@@ -185,10 +185,10 @@ namespace BananaPopper
                 /*if(ballons==0)
                 {
                     //Switches the screen to the level cleared screen
-                    GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
-                }
-                else if (banana == 0) 
-                {
+                   // GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
+               // }
+                //else if (banana== 0)
+                //{
                     //Switches the screen to the level failed screen
                     GameEnvironment.GameStateManager.SwitchTo("LevelFailed");
                 }*/
@@ -291,7 +291,7 @@ namespace BananaPopper
                 }
             }
 
-            
+
 
             //Updates the formula on screen
             hud.theFormula.UpdateFormula(rc[iRc], thePlayer.centerPos, thePlayer.Oorsprong, hud.flipLine);
@@ -336,7 +336,7 @@ namespace BananaPopper
                 fire = false;
                 if (fire == false)
                 {
-                    if (Efire) { 
+                    if (Efire) {
                     if (inputHelper.KeyPressed(Keys.Space))
                     {
                         fire = false;
@@ -351,7 +351,7 @@ namespace BananaPopper
         }
 
 
-            
+
             if(hud.numBananas == 5)
             {
                 count = 5;
@@ -456,10 +456,10 @@ namespace BananaPopper
             }
         }
 
-        
-     
 
-        
+
+
+
 
         public static void ReadFromFile(string filePath)
         {

@@ -51,11 +51,11 @@ namespace BananaPopper
                 //Switches to the playingstate so the player can play the game
                 GameEnvironment.GameStateManager.SwitchTo("PlayingState");
             }
-            else if (options.isPressed)
-            {
+           // else if (options.isPressed)
+           // {
                 //Switches to options screen so the player lower or increase the in-game sound
-                GameEnvironment.GameStateManager.SwitchTo("Options");
-            }
+           //     GameEnvironment.GameStateManager.SwitchTo("Options");
+            //}
             
         }
 
