@@ -16,7 +16,7 @@ namespace BananaPopper
 
         public Timer() : base("Time: ", Color.White, "GameFont", new Vector2(0))
         {
-
+            position.Y = GameEnvironment.Screen.Y / 5 + GameEnvironment.Screen.Y / 10;
         }
 
         public override void Reset()

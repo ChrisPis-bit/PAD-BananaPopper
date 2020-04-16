@@ -15,13 +15,20 @@ namespace BananaPopper
             Oorsprong;
         private float maxSpeed = GameEnvironment.GlobalScale *40;
 
-        public Player(Vector2 startPosition) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 16, 16))
+        public Player() : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 16, 16))
         {
             GameEnvironment.ChangeColor(texture, Color.Green);
+
+            ResetPlayer(Vector2.Zero);
+        }
+
+        public void ResetPlayer(Vector2 startPosition)
+        {
             Oorsprong = startPosition;
 
             position = startPosition - origin;
             centerPos = position + origin;
+            scale = GameEnvironment.TextureScale;
         }
 
         public override void Update(GameTime gameTime)

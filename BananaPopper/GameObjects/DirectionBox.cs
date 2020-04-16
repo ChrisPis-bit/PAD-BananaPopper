@@ -13,7 +13,6 @@ namespace BananaPopper
         public DirectionBox() : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y))
         {
             GameEnvironment.ChangeColor(texture, new Color(Color.Black, 80));
-            scale = 1;
         }
 
         public void UpdateDirection(bool flip, Vector2 position)

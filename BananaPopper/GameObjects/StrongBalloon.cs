@@ -17,6 +17,7 @@ namespace BananaPopper
         {
             hp = 2;
             GameEnvironment.ChangeColor(texture, Color.Gray);
+            scale = GameEnvironment.TextureScale;
         }
     }
 }

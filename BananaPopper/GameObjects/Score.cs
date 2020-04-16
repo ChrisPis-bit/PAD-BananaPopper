@@ -13,8 +13,8 @@ namespace BananaPopper
 
         public Score() : base("Score = 0", Color.White, "GameFont", Vector2.Zero)
         {
-            //TEMPORARY
-            position.X += GameEnvironment.Screen.X / 4;
+            
+            position.Y = GameEnvironment.Screen.Y / 5;
 
             Reset();
         }

@@ -13,14 +13,13 @@ namespace BananaPopper
     class InvisibleBalloon : Balloon
     {
         public InvisibleBalloon(Vector2 position) : base(position)
-        {
-            
+        {     
             GameEnvironment.ChangeColor(texture, Color.White);
+            scale = GameEnvironment.TextureScale;
         }
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-
-           
+        
         }
     }
 }

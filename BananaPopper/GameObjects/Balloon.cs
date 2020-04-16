@@ -17,6 +17,7 @@ namespace BananaPopper
         {
             GameEnvironment.ChangeColor(texture, Color.Brown);
             this.position = position - origin;
+            scale = GameEnvironment.TextureScale;
         }
     }
 }

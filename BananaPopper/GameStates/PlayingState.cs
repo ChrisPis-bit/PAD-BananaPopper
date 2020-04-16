@@ -25,19 +25,17 @@ namespace BananaPopper
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
-
-        GameObjectList theObstacles = new GameObjectList();
-        GameObjectList theBullets = new GameObjectList();
-        GameObjectList theEBullets = new GameObjectList();
-        GameObjectList theBalloons = new GameObjectList();
-        GameObjectList thePlusBanana = new GameObjectList();
-
         Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
-        HUD hud = new HUD();
-        Table theTable;
+
+        GameObjectList theObstacles = new GameObjectList(),
+         theBullets = new GameObjectList(),
+         theEBullets = new GameObjectList(),
+         theBalloons = new GameObjectList(),
+         thePlusBanana = new GameObjectList();
+
+        HUD hud;
         SpriteGameObject theMouse;
         Player thePlayer;
-        Timer theTimer;
         PopAnimation thePopAnimation;
         XYAxes theXYaxes;
         DirectionBox theDirectionBox;
@@ -52,9 +50,6 @@ namespace BananaPopper
 
         public PlayingState() : base()
         {
-            //Put which level you wanna start in the brackets
-            StartLevel(5);
-
             StreamReader test = new StreamReader("Content/MapStats.txt");
             Console.WriteLine(test.ReadToEnd());
             //code for database
@@ -81,20 +76,12 @@ namespace BananaPopper
             GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
             theMouse = new SpriteGameObject(mouse);
+            hud = new HUD();
+            theXYaxes = new XYAxes();
+            thePlayer = new Player();
 
-
-            //Detects how much invisible balloons there are in the game
-            List<Vector2> invPoints = new List<Vector2>();
-            foreach (Balloon balloon in theBalloons.Children)
-            {
-                if (balloon is InvisibleBalloon)
-                {
-                    invPoints.Add(balloon.position);
-                }
-            }
-
-            theTable = new Table(invPoints.Count(), invPoints, thePlayer.Oorsprong,
-                    new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
+            //Put which level you wanna start in the brackets
+            StartLevel(5);
 
             //Add GameObjects here
             Add(theObstacles);
@@ -104,12 +91,12 @@ namespace BananaPopper
             Add(theBullets);
             Add(theEBullets);
             Add(theDirectionBox = new DirectionBox());
-            Add(theXYaxes = new XYAxes(thePlayer.Oorsprong));
+            Add(theXYaxes);
             Add(thePlayer);
-            Add(theTable);
             Add(hud);
-            Add(theTimer = new Timer());
             Add(theMouse);
+
+
 
             string filePath = "Content/MapStats.txt";
 
@@ -121,7 +108,7 @@ namespace BananaPopper
         {
             base.Update(gameTime);
 
-            foreach(Obstacle obstacles in theObstacles.Children)
+            foreach (Obstacle obstacles in theObstacles.Children)
             {
                 thePlayer.CollideWithObject(obstacles);
             }
@@ -313,10 +300,17 @@ namespace BananaPopper
             if (inputHelper.KeyPressed(Keys.F))
             {
                 hud.flipLine = !hud.flipLine;
-
             }
 
+            if (inputHelper.KeyPressed(Keys.L))
+            {
+                StartLevel(3);
+            }
 
+            if (inputHelper.KeyPressed(Keys.K))
+            {
+                StartLevel(5);
+            }
 
             theMouse.position = inputHelper.MousePosition;
             if (fire)
@@ -336,29 +330,30 @@ namespace BananaPopper
                 fire = false;
                 if (fire == false)
                 {
-                    if (Efire) {
-                    if (inputHelper.KeyPressed(Keys.Space))
+                    if (Efire)
                     {
-                        fire = false;
-                        if (hud.numEBananas != 0)
+                        if (inputHelper.KeyPressed(Keys.Space))
                         {
-                            theEBullets.Add(new ExplosiveBanana(thePlayer.centerPos, rc[iRc], hud.flipLine));
-                            hud.numEBananas--;
+                            fire = false;
+                            if (hud.numEBananas != 0)
+                            {
+                                theEBullets.Add(new ExplosiveBanana(thePlayer.centerPos, rc[iRc], hud.flipLine));
+                                hud.numEBananas--;
+                            }
                         }
                     }
                 }
             }
-        }
 
 
 
-            if(hud.numBananas == 5)
+            if (hud.numBananas == 5)
             {
                 count = 5;
                 Efire = true;
             }
 
-            if(hud.numEBananas == 0)
+            if (hud.numEBananas == 0)
             {
                 fire = true;
             }
@@ -395,6 +390,13 @@ namespace BananaPopper
 
         public void StartLevel(int levelIndex)
         {
+            //Clears all lists for reset
+            theBalloons.Children.Clear();
+            theObstacles.Children.Clear();
+            thePlusBanana.Children.Clear();
+            theBullets.Children.Clear();
+            theEBullets.Children.Clear();
+
             //Colors for game objects, use these colors for maps
             Color balloon = new Color(255, 0, 0),
                 obstacle = new Color(0, 0, 255),
@@ -450,10 +452,23 @@ namespace BananaPopper
                     }
                     else if (mapData[i + j * map.Width].Equals(point0))
                     {
-                        thePlayer = new Player(position);
+                        thePlayer.ResetPlayer(position);
                     }
                 }
             }
+
+            //Gets all the invisible balloon points for the table
+            List<Vector2> invPoints = new List<Vector2>();
+            foreach (Balloon balloons in theBalloons.Children)
+            {
+                if (balloons is InvisibleBalloon)
+                {
+                    invPoints.Add(balloons.position);
+                }
+            }
+
+            hud.theTable.ResetTable(invPoints, thePlayer.Oorsprong);
+            theXYaxes.ResetAxes(thePlayer.Oorsprong);
         }
 
 

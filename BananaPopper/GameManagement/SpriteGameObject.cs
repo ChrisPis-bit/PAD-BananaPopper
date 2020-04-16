@@ -20,7 +20,7 @@ class SpriteGameObject : GameObject
 
         this.angle = angle;
         origin = new Vector2(texture.Width / 2, texture.Height / 2);
-        scale = GameEnvironment.TextureScale;
+        scale = 1;
         hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
     }
 
@@ -30,7 +30,7 @@ class SpriteGameObject : GameObject
 
         this.angle = angle;
         origin = new Vector2(texture.Width / 2, texture.Height / 2);
-        scale = GameEnvironment.TextureScale;
+        scale = 1;
         hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
     }
 
