@@ -58,7 +58,7 @@ namespace BananaPopper
             else if (offline.isPressed)
             {
                 //If player doesn't have internet, or isn't interested in an account, he/she can skip the login and play without account info
-                GameEnvironment.GameStateManager.SwitchTo("PlayingState");
+                GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
             }
         }
 

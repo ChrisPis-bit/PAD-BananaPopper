@@ -111,7 +111,7 @@ namespace BananaPopper
             Add(theTimer = new Timer());
             Add(theMouse);
 
-            string filePath = "OrderBanana.txt";
+            string filePath = "Content/MapStats.txt";
 
             ReadFromFile(filePath);
         }
@@ -164,6 +164,9 @@ namespace BananaPopper
                         if ((balloons as Balloon).hp == 0)
                         {
                             balloons.Visible = false;
+
+                            //TEMPORARY SCORE
+                            hud.theScore.GetScore += 10;
                         }
                         else { banana.Visible = false; }
                     }
@@ -179,7 +182,7 @@ namespace BananaPopper
                     }
                 }
 
-                if(ballons==0)
+                /*if(ballons==0)
                 {
                     //Switches the screen to the level cleared screen
                     GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
@@ -188,7 +191,7 @@ namespace BananaPopper
                 {
                     //Switches the screen to the level failed screen
                     GameEnvironment.GameStateManager.SwitchTo("LevelFailed");
-                }
+                }*/
             }
 
 

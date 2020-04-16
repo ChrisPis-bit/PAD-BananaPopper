@@ -90,7 +90,7 @@ namespace BananaPopper
                     Console.WriteLine(cmdData[0] + " -- " + cmdData[1] + " -- " + cmdData[2]);
 
                     //Switches to playingstate for now
-                    GameEnvironment.GameStateManager.SwitchTo("PlayingState");
+                    GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
                 }
                 //If the account doesnt exist, it can't execute the Read() function
                 else
@@ -119,7 +119,7 @@ namespace BananaPopper
                 Console.WriteLine("Account created succesfully");
 
                 //Switches to playingstate for now
-                GameEnvironment.GameStateManager.SwitchTo("PlayingState");
+                GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
             }
             catch (Exception ex)
             {

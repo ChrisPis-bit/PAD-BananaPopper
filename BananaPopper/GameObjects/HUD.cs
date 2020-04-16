@@ -14,7 +14,9 @@ namespace BananaPopper
         Vector2 offsetE;
         Button flipButton;
         public bool flipLine;
+
         public Formula theFormula;
+        public Score theScore;
 
         public HUD() : base()
         {
@@ -33,6 +35,7 @@ namespace BananaPopper
 
             theFormula = new Formula(new Vector2(-GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10));
             Add(theFormula);
+            Add(theScore = new Score());
         }
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
