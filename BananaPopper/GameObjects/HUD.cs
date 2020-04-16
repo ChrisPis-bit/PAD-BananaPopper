@@ -55,7 +55,10 @@ namespace BananaPopper
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
+            if (flipButton.isPressed)
+            {
+                flipLine = !flipLine;
+            }
         }
 
     }
