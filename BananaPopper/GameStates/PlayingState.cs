@@ -159,16 +159,6 @@ namespace BananaPopper
                     }
                 }
 
-                //Collision with plus banana power up
-                foreach (SpriteGameObject plusBanana in thePlusBanana.Children)
-                {
-                    if (plusBanana.Overlaps(banana))
-                    {
-                        plusBanana.Visible = false;
-                        hud.numBananas++;
-                    }
-                }
-
                 /*if(ballons==0)
                 {
                     //Switches the screen to the level cleared screen
@@ -264,7 +254,19 @@ namespace BananaPopper
 
             for (int i = 0; i < theBullets.Children.Count(); i++)
             {
-                if (!theBullets.Children[i].Visible)
+                //Collision with plus banana power up
+                foreach (SpriteGameObject plusBanana in thePlusBanana.Children)
+                {
+                    if (plusBanana.Overlaps(theBullets.Children[i] as SpriteGameObject))
+                    {
+                        plusBanana.Visible = false;
+                        theBullets.Add(new Banana());
+                        hud.numBananas++;
+                    }
+                }
+
+                //Deletes used bananas
+                if (!theBullets.Children[i].Visible && (theBullets.Children[i] as Banana).shot)
                 {
                     theBullets.remove(theBullets.Children[i]);
                 }
@@ -319,8 +321,15 @@ namespace BananaPopper
                 {
                     if (hud.numBananas != 0)
                     {
-                        theBullets.Add(new Banana(thePlayer.centerPos, rc[iRc], hud.flipLine));
-                        hud.numBananas--;
+                        foreach(Banana banana in theBullets.Children)
+                        {
+                            if (!banana.shot)
+                            {
+                                banana.Shoot(thePlayer.centerPos, rc[iRc], hud.flipLine);
+                                hud.numBananas--;
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -455,6 +464,12 @@ namespace BananaPopper
                         thePlayer.ResetPlayer(position);
                     }
                 }
+            }
+
+            //Adds banana's to the list
+            for(int iBanana = 0; iBanana < hud.numBananas; iBanana++)
+            {
+                theBullets.Add(new Banana());
             }
 
             //Gets all the invisible balloon points for the table

@@ -12,12 +12,15 @@ namespace BananaPopper
 {
     class Banana : SpriteGameObject
     {
-        public Banana(Vector2 position, float speed, bool flipLine) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 20, 10))
+        //This bool will stay true after being shot AND hitting an object
+        public bool shot;
+
+        public Banana() : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 20, 10))
         {
             GameEnvironment.ChangeColor(texture, Color.Yellow);
             scale = GameEnvironment.TextureScale;
-
-            Shoot(position, speed, flipLine);
+            Visible = false;
+            shot = false;
         }
 
         public override void Update(GameTime gameTime)
@@ -29,6 +32,8 @@ namespace BananaPopper
         public void Shoot(Vector2 position, float speed, bool flipLine)
         {
             this.position = position - new Vector2(texture.Width/2, texture.Height/2);
+            Visible = true;
+            shot = true;
 
             if (flipLine)
             {
