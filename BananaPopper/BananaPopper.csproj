@@ -69,6 +69,10 @@
     <Compile Include="GameObjects\PopAnimation.cs" />
     <Compile Include="GameObjects\StrongBalloon.cs" />
     <Compile Include="GameObjects\Timer.cs" />
+    <Compile Include="GameStates\LevelCleared.cs" />
+    <Compile Include="GameStates\Level Failed.cs" />
+    <Compile Include="GameStates\HomeMenu.cs" />
+    <Compile Include="GameStates\TitleMenuState.cs" />
     <Compile Include="GameStates\Login.cs" />
     <Compile Include="GameStates\PlayingState.cs" />
     <Compile Include="GameStates\Startup.cs" />

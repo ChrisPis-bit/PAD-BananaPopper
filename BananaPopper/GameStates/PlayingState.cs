@@ -178,6 +178,17 @@ namespace BananaPopper
                         hud.numBananas++;
                     }
                 }
+
+                if(ballons==0)
+                {
+                    //Switches the screen to the level cleared screen
+                    GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
+                }
+                else if (banana == 0) 
+                {
+                    //Switches the screen to the level failed screen
+                    GameEnvironment.GameStateManager.SwitchTo("LevelFailed");
+                }
             }
 
 
