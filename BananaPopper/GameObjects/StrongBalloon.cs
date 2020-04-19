@@ -13,10 +13,14 @@ namespace BananaPopper
     
     class StrongBalloon : Balloon
     {
+        const int STRONG_BALLOON_SCORE = 100;
+
         public StrongBalloon(Vector2 position) : base(position)
         {
             hp = 2;
             GameEnvironment.ChangeColor(texture, Color.Gray);
+
+            score = STRONG_BALLOON_SCORE;
             scale = GameEnvironment.TextureScale;
         }
     }

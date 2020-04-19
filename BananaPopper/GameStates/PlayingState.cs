@@ -146,6 +146,7 @@ namespace BananaPopper
                         {
                             thePopAnimation.position = balloons.position;
                             thePopAnimation.Visible = true;
+
                         }
 
                         if ((balloons as Balloon).hp == 0)
@@ -153,7 +154,7 @@ namespace BananaPopper
                             balloons.Visible = false;
 
                             //TEMPORARY SCORE
-                            hud.theScore.GetScore += 10;
+                            hud.theScore.GetScore += (balloons as Balloon).score;
                         }
                         else { banana.Visible = false; }
                     }
@@ -466,12 +467,6 @@ namespace BananaPopper
                 }
             }
 
-            //Adds banana's to the list
-            for(int iBanana = 0; iBanana < hud.numBananas; iBanana++)
-            {
-                theBullets.Add(new Banana());
-            }
-
             //Gets all the invisible balloon points for the table
             List<Vector2> invPoints = new List<Vector2>();
             foreach (Balloon balloons in theBalloons.Children)
@@ -483,7 +478,14 @@ namespace BananaPopper
             }
 
             hud.theTable.ResetTable(invPoints, thePlayer.Oorsprong);
+            hud.Reset();
             theXYaxes.ResetAxes(thePlayer.Oorsprong);
+
+            //Adds banana's to the list
+            for (int iBanana = 0; iBanana < hud.numBananas; iBanana++)
+            {
+                theBullets.Add(new Banana());
+            }
         }
 
 
