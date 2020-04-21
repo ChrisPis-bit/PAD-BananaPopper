@@ -19,7 +19,7 @@ namespace BananaPopper
     {
         string connectionString = "server=oege.ie.hva.nl;user=lokhorc;database=zlokhorc;port=3306;password=dw5dZKtaln1AHIK2";
         MySqlConnection test;
-
+         
 
         //All temporary textures for prototype
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);

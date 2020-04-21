@@ -19,6 +19,7 @@
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Normal baloon.png</File>
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Strong Balloon.png</File>
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Vines definitive.png</File>
+
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
@@ -33,8 +34,10 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
+ 
   </DestFiles>
 </SourceFileCollection>
