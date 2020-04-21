@@ -15,9 +15,9 @@ namespace BananaPopper
         //This bool will stay true after being shot AND hitting an object
         public bool shot;
 
-        public Banana() : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 20, 10))
+        public Banana() : base("sprites/banana sprite")
         {
-            GameEnvironment.ChangeColor(texture, Color.Yellow);
+            //GameEnvironment.ChangeColor(texture, Color.Yellow);
             scale = GameEnvironment.TextureScale;
             Visible = false;
             shot = false;
