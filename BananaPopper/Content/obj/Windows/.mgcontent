@@ -5,6 +5,8 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/arrowKey.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/Balloon.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/banana sprite piksel.png</File>
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont</File>
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map1.png</File>
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map2.png</File>
@@ -19,6 +21,8 @@
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Vines definitive.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
