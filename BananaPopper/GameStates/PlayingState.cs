@@ -20,7 +20,7 @@ namespace BananaPopper
     {
         string connectionString = "server=oege.ie.hva.nl;user=lokhorc;database=zlokhorc;port=3306;password=dw5dZKtaln1AHIK2";
         MySqlConnection test;
-         
+
 
         //All temporary textures for prototype
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
@@ -51,8 +51,10 @@ namespace BananaPopper
 
         public PlayingState() : base()
         {
-            StreamReader test = new StreamReader("Content/MapStats.txt");
-            Console.WriteLine(test.ReadToEnd());
+            //StreamReader test = new StreamReader("Content/MapStats.txt");
+            Console.WriteLine(string.Join("", readRecord("1", "Content/MapStats.txt", 1)));
+            Console.ReadLine();
+
             //code for database
             /*test = new MySqlConnection(connectionString);
             test.Open();
@@ -100,9 +102,8 @@ namespace BananaPopper
 
 
 
-            string filePath = "Content/MapStats.txt";
+            
 
-            ReadFromFile(filePath);
         }
 
 
@@ -324,7 +325,7 @@ namespace BananaPopper
                 {
                     if (hud.numBananas != 0)
                     {
-                        foreach(Banana banana in theBullets.Children)
+                        foreach (Banana banana in theBullets.Children)
                         {
                             if (!banana.shot)
                             {
@@ -492,24 +493,64 @@ namespace BananaPopper
 
 
 
-
-
-
-        public static void ReadFromFile(string filePath)
+        public static void addRecord(string level, string bullet, string eBullet, string filePath)
         {
-            StreamReader reader = new StreamReader(filePath);
-
-            while (!reader.EndOfStream)
+            try
             {
-                Console.WriteLine(reader.ReadLine());
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@filePath, true))
+                {
+                    file.WriteLine(level + "," + bullet + "," + eBullet);
+                }
             }
-
-            reader.Close();
+            catch (Exception ex)
+            {
+                throw new ApplicationException("This program is doing something wrong :", ex);
+            }
         }
 
-        public static void WriteToFile(string filePath)
+        public static string[] readRecord(string searchTerm, string filePath, int positionOfSearchTerm)
         {
+            positionOfSearchTerm--;
+            string[] recordNotFound = { "Record not found" };
 
+            try
+            {
+                string[] lines = System.IO.File.ReadAllLines(@filePath);
+
+                for(int i = 0; i < lines.Length; i++)
+                {
+                    string[] fields = lines[i].Split(',');
+                    if(recordMatches(searchTerm, fields, positionOfSearchTerm))
+                    {
+                        Console.WriteLine("Record found");
+                        return fields;
+                    }
+                }
+                return recordNotFound;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("This program is doing something wrong");
+                return recordNotFound;
+                throw new ApplicationException("This program is doing something wrong :", ex);
+            }
         }
+
+        public static bool recordMatches(string searchTerm, string[] record, int positionOfSearchTerm)
+        {
+            if(record[positionOfSearchTerm].Equals(searchTerm))
+            {
+                return true;
+            }
+            return false;
+        }
+            
+         
+    
+
+
+       
+
+       
     }
 }
