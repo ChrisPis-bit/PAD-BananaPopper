@@ -30,11 +30,11 @@ namespace BananaPopper
 
             Add(startGame = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10)));
 
-            Add(new TextGameObject("Start Game", Color.White, "GameFont", startGame.position));
+            Add(new TextGameObject(Color.White, startGame.position, "Start Game"));
 
             Add(theMouse = new SpriteGameObject(mouse));
 
-            Add(new TextGameObject("BananaPopper", Color.Cyan, "GameFont", new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 2)));
+            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 2), "BananaPopper"));
 
             theMouse.scale = 1;
         }

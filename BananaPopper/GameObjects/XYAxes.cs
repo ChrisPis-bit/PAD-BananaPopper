@@ -31,14 +31,14 @@ namespace BananaPopper
             //Uses 2 for loops for the X and Y lines
             for (int i = 0; i < GameEnvironment.Screen.X / GameEnvironment.GlobalScale; i++)
             {
-                Add(new TextGameObject(((0 + i * GameEnvironment.GlobalScale - origin.X) / GameEnvironment.GlobalScale).ToString(),
-                    Color.White, "GameFont", new Vector2(0 + i * GameEnvironment.GlobalScale, origin.Y)));
+                Add(new TextGameObject(Color.White, new Vector2(0 + i * GameEnvironment.GlobalScale, origin.Y), 
+                    ((0 + i * GameEnvironment.GlobalScale - origin.X) / GameEnvironment.GlobalScale).ToString()));
             }
 
             for (int i = 0; i < GameEnvironment.Screen.Y / GameEnvironment.GlobalScale; i++)
             {
-                Add(new TextGameObject(((0 + i * GameEnvironment.GlobalScale - origin.Y) / GameEnvironment.GlobalScale * -1).ToString(),
-                    Color.White, "GameFont", new Vector2(origin.X, 0 + i * GameEnvironment.GlobalScale)));
+                Add(new TextGameObject(Color.White, new Vector2(origin.X, 0 + i * GameEnvironment.GlobalScale), 
+                    ((0 + i * GameEnvironment.GlobalScale - origin.Y) / GameEnvironment.GlobalScale * -1).ToString()));
             }
         }
 

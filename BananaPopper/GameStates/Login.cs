@@ -32,8 +32,8 @@ namespace BananaPopper
             Add(userName = new CharacterSelector(MAX_CHARACTERS, loginInfoOffset));
             Add(passWord = new CharacterSelector(MAX_CHARACTERS, new Vector2(loginInfoOffset.X, loginInfoOffset.Y * 2), false));
 
-            Add(new TextGameObject("Username", Color.White, "GameFont", new Vector2(userName.position.X, userName.position.Y - 80)));
-            Add(new TextGameObject("Password", Color.White, "GameFont", new Vector2(passWord.position.X, passWord.position.Y - 80)));
+            Add(new TextGameObject(Color.White, new Vector2(userName.position.X, userName.position.Y - 80), "Username"));
+            Add(new TextGameObject(Color.White, new Vector2(passWord.position.X, passWord.position.Y - 80), "Password"));
         }
 
         public override void HandleInput(InputHelper inputHelper)

@@ -17,7 +17,7 @@ namespace BananaPopper
             elapsedSeconds,
             displayedSeconds;
 
-        public Timer() : base("Time: ", Color.White, "GameFont", new Vector2(0))
+        public Timer() : base(Color.White, Vector2.Zero)
         {
             position.Y = GameEnvironment.Screen.Y / 5 + GameEnvironment.Screen.Y / 10;
         }

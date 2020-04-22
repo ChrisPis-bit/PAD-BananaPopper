@@ -15,7 +15,7 @@ namespace BananaPopper
             scale = GameEnvironment.GlobalScale;
         public Vector2 end = new Vector2(0, 0);
 
-        public Formula() : base("", Color.White, "GameFont", Vector2.Zero)
+        public Formula() : base(Color.White, Vector2.Zero)
         {
             position.Y = GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 10;
         }

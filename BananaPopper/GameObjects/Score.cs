@@ -11,7 +11,7 @@ namespace BananaPopper
     {
         private int score;
 
-        public Score() : base("Score = 0", Color.White, "GameFont", Vector2.Zero)
+        public Score() : base(Color.White, Vector2.Zero, "Score = 0")
         {
             
             position.Y = GameEnvironment.Screen.Y / 5;

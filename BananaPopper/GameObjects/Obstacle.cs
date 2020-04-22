@@ -16,9 +16,16 @@ namespace BananaPopper
         public Obstacle(Vector2 position) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 32, 32))
         {
             GameEnvironment.ChangeColor(texture, Color.Purple);
-            scale = GameEnvironment.TextureScale;
+            Reset();
             this.position = position - origin;
             
+        }
+
+        public override void Reset()
+        {
+            scale = GameEnvironment.TextureScale;
+
+            base.Reset();
         }
     }
 }

@@ -21,7 +21,8 @@ class SpriteGameObject : GameObject
         this.angle = angle;
         origin = new Vector2(texture.Width / 2, texture.Height / 2);
         scale = 1;
-        hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
+
+        Reset();
     }
 
     public SpriteGameObject(Texture2D texture, float angle = 0)
@@ -31,6 +32,13 @@ class SpriteGameObject : GameObject
         this.angle = angle;
         origin = new Vector2(texture.Width / 2, texture.Height / 2);
         scale = 1;
+        hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+
         hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
     }
 

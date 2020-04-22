@@ -31,13 +31,13 @@ namespace BananaPopper
             Add(nextLevel = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10)));
             Add(homeScreen = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*5)));
 
-            Add(new TextGameObject("Next Level", Color.White, "GameFont", nextLevel.position));
-            Add(new TextGameObject("Home", Color.White, "GameFont", homeScreen.position));
+            Add(new TextGameObject(Color.White, nextLevel.position, "Next Level"));
+            Add(new TextGameObject(Color.White, homeScreen.position, "Home"));
 
             Add(theMouse = new SpriteGameObject(mouse));
 
-            Add(new TextGameObject("Level Cleared", Color.Cyan, "GameFont", new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 2)));
-            Add(new TextGameObject("well done", Color.Cyan, "GameFont", new Vector2(GameEnvironment.Screen.X / 4, GameEnvironment.Screen.Y / 2)));
+            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 2), "Level Cleared"));
+            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 4, GameEnvironment.Screen.Y / 2), "well done"));
 
             theMouse.scale = 1;
         }

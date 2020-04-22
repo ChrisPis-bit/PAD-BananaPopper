@@ -12,6 +12,7 @@ using Microsoft.Xna.Framework.Input;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
+using BananaPopper.GameObjects;
 
 namespace BananaPopper
 {
@@ -84,6 +85,7 @@ namespace BananaPopper
             StartLevel(5);
 
             //Add GameObjects here
+            Add(new Background());
             Add(theObstacles);
             Add(theBalloons);
             Add(thePlusBanana);

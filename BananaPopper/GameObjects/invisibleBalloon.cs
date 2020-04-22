@@ -16,7 +16,7 @@ namespace BananaPopper
 
         public InvisibleBalloon(Vector2 position) : base(position)
         {     
-            GameEnvironment.ChangeColor(texture, Color.White);
+            //GameEnvironment.ChangeColor(texture, Color.White);
 
             score = INV_BALLOON_SCORE;
             scale = GameEnvironment.TextureScale;

@@ -142,10 +142,6 @@ C:\Users\chris\source\repos\BananaPopper\PAD-BananaPopper\BananaPopper\bin\Windo
 C:\Users\bsiu2\OneDrive\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\MapStats.txt
 C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\MapStats.txt
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Background.xnb
-C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\banana sprite.xnb
-C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Normal baloon.xnb
-C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Strong Balloon.xnb
-C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Vines definitive.xnb
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map1.xnb
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map2.xnb
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map3.xnb
@@ -187,3 +183,11 @@ C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\obj\x86\
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\obj\x86\Debug\BananaPopper.csproj.CopyComplete
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\obj\x86\Debug\BananaPopper.exe
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\obj\x86\Debug\BananaPopper.pdb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Balloon.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\banana sprite piksel.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\IngameSprites\Balloon.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\IngameSprites\Balloon2.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\IngameSprites\Banana.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\IngameSprites\Normal Balloon.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\IngameSprites\Strong Balloon.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\IngameSprites\Vines.xnb

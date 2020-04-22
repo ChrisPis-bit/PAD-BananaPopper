@@ -17,7 +17,7 @@ namespace BananaPopper
         public String text;
         public SpriteFont font;
 
-        public TextGameObject(String text, Color color, String font, Vector2 position) : base()
+        public TextGameObject(Color color, Vector2 position, String text = "", String font = "GameFont") : base()
         {
             this.text = text;
             this.color = color;

@@ -33,8 +33,8 @@ namespace BananaPopper
             if (points.Count() != 0)
             {
                 //Adds the X and Y indication to the table
-                Add(new TextGameObject("X", Color.White, "GameFont", new Vector2(pointOffset.X / 2, 0)));
-                Add(new TextGameObject("Y", Color.White, "GameFont", new Vector2(pointOffset.X / 2, pointOffset.Y)));
+                Add(new TextGameObject(Color.White, new Vector2(pointOffset.X / 2, 0), "X"));
+                Add(new TextGameObject(Color.White, new Vector2(pointOffset.X / 2, pointOffset.Y), "Y"));
 
                 this.points = points;
 
@@ -45,11 +45,11 @@ namespace BananaPopper
                 //Adds each point given to the table instance
                 for (int i = 0; i < points.Count(); i++)
                 {
-                    Add(new TextGameObject(Math.Round((points[i].X - origin.X) / GameEnvironment.GlobalScale).ToString(),
-                        Color.White, "GameFont", new Vector2(pointOffset.X + pointOffset.X / 2 + i * pointOffset.X, 0)));
+                    Add(new TextGameObject(Color.White, new Vector2(pointOffset.X + pointOffset.X / 2 + i * pointOffset.X, 0), 
+                        Math.Round((points[i].X - origin.X) / GameEnvironment.GlobalScale).ToString()));
 
-                    Add(new TextGameObject(Math.Round((points[i].Y - origin.Y) / GameEnvironment.GlobalScale * -1).ToString(),
-                        Color.White, "GameFont", new Vector2(pointOffset.X + pointOffset.X / 2 + i * pointOffset.X, pointOffset.Y)));
+                    Add(new TextGameObject(Color.White, new Vector2(pointOffset.X + pointOffset.X / 2 + i * pointOffset.X, pointOffset.Y), 
+                        Math.Round((points[i].Y - origin.Y) / GameEnvironment.GlobalScale * -1).ToString()));
                 }
             }
         }
