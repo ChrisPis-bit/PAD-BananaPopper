@@ -19,7 +19,7 @@ namespace BananaPopper
 
         public Table() : base()
         {
-            position.Y = GameEnvironment.Screen.Y / 2;
+            position.Y = GameEnvironment.Screen.Y / 1.5f;
 
             GameEnvironment.ChangeColor(lineTexture, Color.White);
 

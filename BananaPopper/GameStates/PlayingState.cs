@@ -45,7 +45,7 @@ namespace BananaPopper
         int count;
         bool fire = true;
         bool Efire = false;
-        float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 0.66f }; //Defines the a in y=ax+b
+        float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 0.66f, 0 }; //Defines the a in y=ax+b
 
 
 

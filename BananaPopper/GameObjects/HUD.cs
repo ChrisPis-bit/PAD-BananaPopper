@@ -28,7 +28,7 @@ namespace BananaPopper
 
         public HUD() : base()
         {
-            hudFlipPosition = new Vector2((GameEnvironment.Screen.X / 5) * 4, 0);
+            position = new Vector2((GameEnvironment.Screen.X / 5) * 4, 0);
             HudShade = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X - (int)hudFlipPosition.X, GameEnvironment.Screen.Y);
             GameEnvironment.ChangeColor(HudShade, new Color(Color.Black, 100));
 
@@ -85,12 +85,12 @@ namespace BananaPopper
                 flipLine = !flipLine;
             }
 
-            if (flipLine)
+            /*if (flipLine)
             {
                 position = Vector2.Zero;
             }
             else
-                position = hudFlipPosition;
+                position = hudFlipPosition;*/
         }
     }
 }

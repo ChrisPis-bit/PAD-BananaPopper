@@ -71,6 +71,7 @@
     <Compile Include="GameObjects\Score.cs" />
     <Compile Include="GameObjects\StrongBalloon.cs" />
     <Compile Include="GameObjects\Timer.cs" />
+    <Compile Include="GameObjects\Vine.cs" />
     <Compile Include="GameStates\LevelCleared.cs" />
     <Compile Include="GameStates\Level Failed.cs" />
     <Compile Include="GameStates\HomeMenu.cs" />
