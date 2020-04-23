@@ -16,6 +16,7 @@ namespace BananaPopper
         public PopAnimation() : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 32, 32))
         {
             GameEnvironment.ChangeColor(texture, Color.Orange);
+            scale = GameEnvironment.TextureScale;
             visible = false;
         }
         public override void Update(GameTime gameTime)

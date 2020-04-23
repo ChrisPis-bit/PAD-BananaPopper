@@ -124,7 +124,7 @@ class GameEnvironment : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        spriteBatch.Begin();
+        spriteBatch.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
 
         if (gameStateManager.CurrentGameState != null)
             gameStateManager.CurrentGameState.Draw(gameTime, spriteBatch);

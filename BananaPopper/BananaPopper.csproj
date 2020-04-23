@@ -45,6 +45,7 @@
     <Compile Include="BananaPopper.cs" />
     <Compile Include="GameManagement\GameStateManager.cs" />
     <Compile Include="GameManagement\IGameLoopObject.cs" />
+    <Compile Include="GameObjects\Background.cs" />
     <Compile Include="GameObjects\Character.cs" />
     <Compile Include="GameManagement\DatabaseHelper.cs" />
     <Compile Include="GameObjects\Banana.cs" />
@@ -67,8 +68,13 @@
     <Compile Include="GameObjects\Obstacle.cs" />
     <Compile Include="GameObjects\Player.cs" />
     <Compile Include="GameObjects\PopAnimation.cs" />
+    <Compile Include="GameObjects\Score.cs" />
     <Compile Include="GameObjects\StrongBalloon.cs" />
     <Compile Include="GameObjects\Timer.cs" />
+    <Compile Include="GameStates\LevelCleared.cs" />
+    <Compile Include="GameStates\Level Failed.cs" />
+    <Compile Include="GameStates\HomeMenu.cs" />
+    <Compile Include="GameStates\TitleMenuState.cs" />
     <Compile Include="GameStates\Login.cs" />
     <Compile Include="GameStates\PlayingState.cs" />
     <Compile Include="GameStates\Startup.cs" />

@@ -17,30 +17,40 @@ namespace BananaPopper
         Vector2 pointOffset = new Vector2(GameEnvironment.Screen.X / 20, GameEnvironment.Screen.Y / 25);
         Texture2D lineTexture = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 2, 2);
 
-        public Table(int pointAmount, List<Vector2> points, Vector2 origin, Vector2 position) : base()
+        public Table() : base()
         {
+            position.Y = GameEnvironment.Screen.Y / 2;
+
             GameEnvironment.ChangeColor(lineTexture, Color.White);
 
-            this.position = position;
-            this.points = points;
+            ResetTable(new List<Vector2>(), Vector2.Zero);
+        }
 
-            //Sorts the list, so that the X value is always ascending in the table
-            if (this.points[0].X > this.points[points.Count() - 1].X)
-                this.points.Reverse();
+        public void ResetTable(List<Vector2> points, Vector2 origin)
+        {
+            Children.Clear();
 
-            //Adds the X and Y indication to the table
-            Add(new TextGameObject("X", Color.White, "GameFont", new Vector2(pointOffset.X / 2, 0)));
-            Add(new TextGameObject("Y", Color.White, "GameFont", new Vector2(pointOffset.X / 2, pointOffset.Y)));
-
-
-            //Adds each point given to the table instance
-            for (int i = 0; i < pointAmount; i++)
+            if (points.Count() != 0)
             {
-                Add(new TextGameObject(Math.Round((points[i].X - origin.X) / GameEnvironment.GlobalScale).ToString(),
-                    Color.White, "GameFont", new Vector2(pointOffset.X + pointOffset.X / 2 + i * pointOffset.X, 0)));
+                //Adds the X and Y indication to the table
+                Add(new TextGameObject(Color.White, new Vector2(pointOffset.X / 2, 0), "X"));
+                Add(new TextGameObject(Color.White, new Vector2(pointOffset.X / 2, pointOffset.Y), "Y"));
 
-                Add(new TextGameObject(Math.Round((points[i].Y - origin.Y) / GameEnvironment.GlobalScale * -1).ToString(),
-                    Color.White, "GameFont", new Vector2(pointOffset.X + pointOffset.X / 2 + i * pointOffset.X, pointOffset.Y)));
+                this.points = points;
+
+                //Sorts the list, so that the X value is always ascending in the table
+                if (this.points[0].X > this.points[points.Count() - 1].X)
+                    this.points.Reverse();
+
+                //Adds each point given to the table instance
+                for (int i = 0; i < points.Count(); i++)
+                {
+                    Add(new TextGameObject(Color.White, new Vector2(pointOffset.X + pointOffset.X / 2 + i * pointOffset.X, 0), 
+                        Math.Round((points[i].X - origin.X) / GameEnvironment.GlobalScale).ToString()));
+
+                    Add(new TextGameObject(Color.White, new Vector2(pointOffset.X + pointOffset.X / 2 + i * pointOffset.X, pointOffset.Y), 
+                        Math.Round((points[i].Y - origin.Y) / GameEnvironment.GlobalScale * -1).ToString()));
+                }
             }
         }
 
@@ -48,14 +58,19 @@ namespace BananaPopper
         {
             base.Draw(gameTime, spriteBatch);
 
-            LineRenderer.DrawLine(spriteBatch, lineTexture, new Vector2(position.X, position.Y + pointOffset.Y),
-                                                            new Vector2(Children[Children.Count() - 1].GlobalPosition.X - pointOffset.X, position.Y + pointOffset.Y));
-
-            //Draws a line inbetween every point
-            for (int i = 0; i < Children.Count() - 2; i += 2)
+            if (Children.Count() > 0)
             {
-                LineRenderer.DrawLine(spriteBatch, lineTexture, new Vector2(Children[i].GlobalPosition.X + pointOffset.X / 2, position.Y),
-                     new Vector2(Children[i].GlobalPosition.X + pointOffset.X / 2, position.Y + pointOffset.Y));
+
+                //Draws line that seperates x and y parts of the table
+                LineRenderer.DrawLine(spriteBatch, lineTexture, new Vector2(GlobalPosition.X, GlobalPosition.Y + pointOffset.Y),
+                 new Vector2(Children[Children.Count() - 1].GlobalPosition.X - pointOffset.X, GlobalPosition.Y + pointOffset.Y));
+
+                //Draws a line inbetween every point
+                for (int i = 0; i < Children.Count() - 2; i += 2)
+                {
+                    LineRenderer.DrawLine(spriteBatch, lineTexture, new Vector2(Children[i].GlobalPosition.X + pointOffset.X / 2, position.Y),
+                         new Vector2(Children[i].GlobalPosition.X + pointOffset.X / 2, position.Y + pointOffset.Y));
+                }
             }
         }
     }

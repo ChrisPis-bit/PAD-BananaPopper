@@ -15,7 +15,7 @@ namespace BananaPopper
         public ExplosiveBanana(Vector2 position, float speed, bool flipLine) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 20, 10))
         {
             GameEnvironment.ChangeColor(texture, Color.Red);
-
+            scale = GameEnvironment.TextureScale;
             Shoot(position, speed, flipLine);
         }
 

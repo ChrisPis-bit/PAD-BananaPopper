@@ -12,7 +12,7 @@ namespace BananaPopper
         public string[] availableCharacters;
         public int selectedChar;
 
-        public Character(Vector2 position) : base(" ", Color.White, "GameFont", position)
+        public Character(Vector2 position) : base(Color.White, position)
         {
             selectedChar = 0;
             this.position = position;

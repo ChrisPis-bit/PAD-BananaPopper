@@ -13,15 +13,25 @@ namespace BananaPopper
     {
         public Vector2 centerPos,
             Oorsprong;
-        private float maxSpeed = GameEnvironment.GlobalScale *40;
+        private float maxSpeed;
 
-        public Player(Vector2 startPosition) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 16, 16))
+        public Player() : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 16, 16))
         {
             GameEnvironment.ChangeColor(texture, Color.Green);
+
+            ResetPlayer(Vector2.Zero);
+        }
+
+        public void ResetPlayer(Vector2 startPosition)
+        {
             Oorsprong = startPosition;
 
             position = startPosition - origin;
             centerPos = position + origin;
+            scale = GameEnvironment.TextureScale;
+            maxSpeed = GameEnvironment.GlobalScale * 40;
+
+            Reset();
         }
 
         public override void Update(GameTime gameTime)
@@ -30,7 +40,6 @@ namespace BananaPopper
 
             //position = centerPos - origin;
             centerPos = position + origin;
-
         }
 
         public override void HandleInput(InputHelper inputHelper)
@@ -72,15 +81,15 @@ namespace BananaPopper
                 //Re-positions player if he's closer to the last grid point than the next one
                 if (centerPos.X % GameEnvironment.GlobalScale < GameEnvironment.GlobalScale / 2)
                     position.X = centerPos.X - centerPos.X % GameEnvironment.GlobalScale - origin.X;
-                
+
                 if (centerPos.Y % GameEnvironment.GlobalScale < GameEnvironment.GlobalScale / 2)
                     position.Y = centerPos.Y - centerPos.Y % GameEnvironment.GlobalScale - origin.Y;
 
 
                 //Re-positions player if he's closer to the next grid point than the last one
-                if (centerPos.X % GameEnvironment.GlobalScale >= GameEnvironment.GlobalScale / 2)              
+                if (centerPos.X % GameEnvironment.GlobalScale >= GameEnvironment.GlobalScale / 2)
                     position.X = centerPos.X + GameEnvironment.GlobalScale - (centerPos.X % GameEnvironment.GlobalScale) - origin.X;
-                
+
                 if (centerPos.Y % GameEnvironment.GlobalScale >= GameEnvironment.GlobalScale / 2)
                     position.Y = centerPos.Y + GameEnvironment.GlobalScale - (centerPos.Y % GameEnvironment.GlobalScale) - origin.Y;
 

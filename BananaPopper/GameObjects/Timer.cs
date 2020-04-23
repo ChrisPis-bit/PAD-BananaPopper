@@ -11,18 +11,22 @@ namespace BananaPopper
 {
     class Timer : TextGameObject
     {
+        const int BEGIN_TIME = 300;
+
         private int elapsedFrames,
-            elapsedSeconds;
+            elapsedSeconds,
+            displayedSeconds;
 
-        public Timer() : base("Time: ", Color.White, "GameFont", new Vector2(0))
+        public Timer() : base(Color.White, Vector2.Zero)
         {
-
+            position.Y = GameEnvironment.Screen.Y / 5 + GameEnvironment.Screen.Y / 10;
         }
 
         public override void Reset()
         {
             base.Reset();
 
+            displayedSeconds = BEGIN_TIME;
             elapsedFrames = 0;
             elapsedSeconds = 0;
         }
@@ -33,13 +37,15 @@ namespace BananaPopper
             elapsedFrames++;
             elapsedSeconds = (int)(elapsedFrames * (float)gameTime.ElapsedGameTime.TotalSeconds);
 
-            TimeElapsed();
-        }
+            displayedSeconds = BEGIN_TIME - elapsedSeconds;
 
-        public int TimeElapsed()
-        {
-            text = "Time: " + elapsedSeconds;
-            return elapsedSeconds;
+            //Displays time
+            if (displayedSeconds <= 0)
+            {
+                displayedSeconds = 0;
+            }
+
+            text = "Time: " + displayedSeconds;
         }
     }
 }

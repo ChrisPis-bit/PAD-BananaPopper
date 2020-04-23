@@ -32,8 +32,8 @@ namespace BananaPopper
             Add(userName = new CharacterSelector(MAX_CHARACTERS, loginInfoOffset));
             Add(passWord = new CharacterSelector(MAX_CHARACTERS, new Vector2(loginInfoOffset.X, loginInfoOffset.Y * 2), false));
 
-            Add(new TextGameObject("Username", Color.White, "GameFont", new Vector2(userName.position.X, userName.position.Y - 80)));
-            Add(new TextGameObject("Password", Color.White, "GameFont", new Vector2(passWord.position.X, passWord.position.Y - 80)));
+            Add(new TextGameObject(Color.White, new Vector2(userName.position.X, userName.position.Y - 80), "Username"));
+            Add(new TextGameObject(Color.White, new Vector2(passWord.position.X, passWord.position.Y - 80), "Password"));
         }
 
         public override void HandleInput(InputHelper inputHelper)
@@ -90,7 +90,7 @@ namespace BananaPopper
                     Console.WriteLine(cmdData[0] + " -- " + cmdData[1] + " -- " + cmdData[2]);
 
                     //Switches to playingstate for now
-                    GameEnvironment.GameStateManager.SwitchTo("PlayingState");
+                    GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
                 }
                 //If the account doesnt exist, it can't execute the Read() function
                 else
@@ -119,7 +119,7 @@ namespace BananaPopper
                 Console.WriteLine("Account created succesfully");
 
                 //Switches to playingstate for now
-                GameEnvironment.GameStateManager.SwitchTo("PlayingState");
+                GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
             }
             catch (Exception ex)
             {
