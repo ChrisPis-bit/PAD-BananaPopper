@@ -13,9 +13,8 @@ namespace BananaPopper
     class Obstacle : SpriteGameObject
     {
         public int ObstacleHP = 1;
-        public Obstacle(Vector2 position) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 32, 32))
+        public Obstacle(Vector2 position) : base("sprites/IngameSprites/Obstacle")
         {
-            GameEnvironment.ChangeColor(texture, Color.Purple);
             Reset();
             this.position = position - origin;
             
@@ -23,7 +22,7 @@ namespace BananaPopper
 
         public override void Reset()
         {
-            scale = GameEnvironment.TextureScale;
+            scale = GameEnvironment.TextureScale/2;
 
             base.Reset();
         }

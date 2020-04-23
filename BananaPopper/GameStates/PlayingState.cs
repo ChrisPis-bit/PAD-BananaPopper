@@ -26,7 +26,6 @@ namespace BananaPopper
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
-        Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
 
         GameObjectList theObstacles = new GameObjectList(),
          theBullets = new GameObjectList(),
@@ -76,7 +75,6 @@ namespace BananaPopper
             GameEnvironment.ChangeColor(lineTest, Color.Blue);
             GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
             GameEnvironment.ChangeColor(mouse, Color.White);
-            GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
             theMouse = new SpriteGameObject(mouse);
             hud = new HUD();
@@ -99,11 +97,6 @@ namespace BananaPopper
             Add(thePlayer);
             Add(hud);
             Add(theMouse);
-
-
-
-            
-
         }
 
 
@@ -383,15 +376,7 @@ namespace BananaPopper
                new Rectangle(0, 0, bg.Width, bg.Height),
                Color.White);
 
-            for (int i = 0; i < 30; i++)
-            {
-                LineRenderer.DrawLine(spriteBatch, grid, new Vector2((GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale), 0), new Vector2(GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale, GameEnvironment.Screen.Y));
-            }
 
-            for (int j = 0; j < 15; j++)
-            {
-                LineRenderer.DrawLine(spriteBatch, grid, new Vector2(GameEnvironment.Screen.X, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale), new Vector2(0, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale));
-            }
 
             //Draws a test line, startPosLine must be player coords
             // LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);

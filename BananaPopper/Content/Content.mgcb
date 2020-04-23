@@ -167,7 +167,7 @@
 /processorParam:TextureFormat=Color
 /build:sprites/IngameSprites/Normal Balloon.png
 
-#begin sprites/IngameSprites/Obstakel Sprite.png.png
+#begin sprites/IngameSprites/Obstacle.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -177,7 +177,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:sprites/IngameSprites/Obstakel Sprite.png.png
+/build:sprites/IngameSprites/Obstacle.png
 
 #begin sprites/IngameSprites/Strong Balloon.png
 /importer:TextureImporter
