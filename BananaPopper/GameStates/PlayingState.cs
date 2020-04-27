@@ -148,9 +148,8 @@ namespace BananaPopper
                         if ((balloons as Balloon).hp == 0)
                         {
                             balloons.Visible = false;
-
-                            //TEMPORARY SCORE
-                            hud.theScore.GetScore += (balloons as Balloon).score;
+                            hud.theScore.GetScore += (balloons as Balloon).score * (banana as Banana).ScoreMultiplier;
+                            (banana as Banana).hitBalloonsAmount++;
                         }
                         else { banana.Visible = false; }
                     }
