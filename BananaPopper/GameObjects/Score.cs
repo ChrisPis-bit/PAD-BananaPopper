@@ -9,7 +9,7 @@ namespace BananaPopper
 {
     class Score : TextGameObject
     {
-        private int score;
+        private float score;
 
         public Score() : base(Color.White, Vector2.Zero, "Score = 0")
         {
@@ -26,13 +26,13 @@ namespace BananaPopper
             score = 0;
         }
 
-        public int GetScore
+        public float GetScore
         {
             get { return score; }
             set
             {
                 score = value;
-                text = "Score = " + score;
+                text = "Score = " + (int)score;
             }
         }
     }
