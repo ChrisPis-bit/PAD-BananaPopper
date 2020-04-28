@@ -9,14 +9,7 @@ namespace BananaPopper
     {
         Texture2D HudShade;
 
-        public int numBananas;
-        public int numEBananas;
-        Texture2D banaan;
-        Texture2D eBanaan;
-
-        Vector2 offset;
-        Vector2 offsetE,
-            hudFlipPosition;
+        Vector2 hudFlipPosition;
 
         Button flipButton;
         public bool flipLine;
@@ -25,6 +18,7 @@ namespace BananaPopper
         public Score theScore;
         public Timer theTimer;
         public Table theTable;
+        public BananaCounter theBananaCounter;
 
         public HUD() : base()
         {
@@ -40,19 +34,9 @@ namespace BananaPopper
             Add(theScore = new Score());
             Add(theTimer = new Timer());
             Add(theTable = new Table());
+            Add(theBananaCounter = new BananaCounter());
 
             Reset();
-
-            positionE = new Vector2(GameEnvironment.Screen.X / 1 - numEBananas * 670, 40);
-
-
-            banaan = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 20, 35);
-            eBanaan = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 20, 35);
-            GameEnvironment.ChangeColor(banaan, Color.Yellow);
-            GameEnvironment.ChangeColor(eBanaan, Color.Red);
-
-            offset = new Vector2(25, 0);
-            offsetE = new Vector2(25, 0);
         }
 
         public override void Reset()
@@ -60,23 +44,8 @@ namespace BananaPopper
             base.Reset();
 
             theScore.GetScore = 0;
-            numBananas = 5;
-            numEBananas = 1;
         }
 
-        public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
-        {
-            base.Draw(gameTime, spriteBatch);
-            for (int i = 0; i < numBananas; i++)
-            {
-                spriteBatch.Draw(banaan, position + i * offset, Color.White);
-            }
-
-            for (int i = 0; i < numEBananas; i++)
-            {
-                spriteBatch.Draw(eBanaan, positionE + i * offsetE, Color.White);
-            }
-        }
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);

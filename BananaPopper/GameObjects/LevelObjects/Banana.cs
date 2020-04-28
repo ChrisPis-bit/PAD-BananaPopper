@@ -20,7 +20,7 @@ namespace BananaPopper
         public int hitBalloonsAmount;
         private float scoreMult;
 
-        public Banana() : base("sprites/IngameSprites/Banana")
+        public Banana(string assetName = "sprites/IngameSprites/Banana") : base(assetName)
         {
             scoreMult = SCORE_MULT_START;
             scale = GameEnvironment.TextureScale / 2;

@@ -33,6 +33,18 @@ class GameObjectList : GameObject
         children.Remove(gameObject);
     }
 
+    public void removeAt(int index)
+    {
+        for(int i = 0; i < children.Count(); i++)
+        {
+            if(i == index)
+            {
+                remove(children[index]);
+                break;
+            }
+        }
+    }
+
     public override void Reset()
     {
         foreach (GameObject gameObject in children)

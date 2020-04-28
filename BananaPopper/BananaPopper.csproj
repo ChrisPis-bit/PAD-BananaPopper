@@ -45,17 +45,18 @@
     <Compile Include="BananaPopper.cs" />
     <Compile Include="GameManagement\GameStateManager.cs" />
     <Compile Include="GameManagement\IGameLoopObject.cs" />
-    <Compile Include="GameObjects\Background.cs" />
-    <Compile Include="GameObjects\Character.cs" />
+    <Compile Include="GameObjects\LevelObjects\Background.cs" />
+    <Compile Include="GameObjects\HudObjects\BananaCounter.cs" />
+    <Compile Include="GameObjects\MenuObjects\Character.cs" />
     <Compile Include="GameManagement\DatabaseHelper.cs" />
-    <Compile Include="GameObjects\Banana.cs" />
+    <Compile Include="GameObjects\LevelObjects\Banana.cs" />
     <Compile Include="GameObjects\Button.cs" />
-    <Compile Include="GameObjects\Balloon.cs" />
-    <Compile Include="GameObjects\CharacterSelector.cs" />
-    <Compile Include="GameObjects\DirectionBox.cs" />
-    <Compile Include="GameObjects\ExplosiveBanana.cs" />
-    <Compile Include="GameObjects\plusBanana.cs" />
-    <Compile Include="GameObjects\Formula.cs" />
+    <Compile Include="GameObjects\LevelObjects\Balloon.cs" />
+    <Compile Include="GameObjects\MenuObjects\CharacterSelector.cs" />
+    <Compile Include="GameObjects\LevelObjects\DirectionBox.cs" />
+    <Compile Include="GameObjects\LevelObjects\ExplosiveBanana.cs" />
+    <Compile Include="GameObjects\LevelObjects\plusBanana.cs" />
+    <Compile Include="GameObjects\HudObjects\Formula.cs" />
     <Compile Include="GameManagement\GameEnvironment.cs" />
     <Compile Include="GameManagement\GameObject.cs" />
     <Compile Include="GameManagement\GameObjectList.cs" />
@@ -63,15 +64,15 @@
     <Compile Include="GameManagement\SpriteGameObject.cs" />
     <Compile Include="GameManagement\TextGameObject.cs" />
     <Compile Include="GameManagement\LineRenderer.cs" />
-    <Compile Include="GameObjects\HUD.cs" />
-    <Compile Include="GameObjects\invisibleBalloon.cs" />
-    <Compile Include="GameObjects\Obstacle.cs" />
-    <Compile Include="GameObjects\Player.cs" />
-    <Compile Include="GameObjects\PopAnimation.cs" />
-    <Compile Include="GameObjects\Score.cs" />
-    <Compile Include="GameObjects\StrongBalloon.cs" />
-    <Compile Include="GameObjects\Timer.cs" />
-    <Compile Include="GameObjects\Vine.cs" />
+    <Compile Include="GameObjects\HudObjects\HUD.cs" />
+    <Compile Include="GameObjects\LevelObjects\invisibleBalloon.cs" />
+    <Compile Include="GameObjects\LevelObjects\Obstacle.cs" />
+    <Compile Include="GameObjects\LevelObjects\Player.cs" />
+    <Compile Include="GameObjects\LevelObjects\PopAnimation.cs" />
+    <Compile Include="GameObjects\HudObjects\Score.cs" />
+    <Compile Include="GameObjects\LevelObjects\StrongBalloon.cs" />
+    <Compile Include="GameObjects\HudObjects\Timer.cs" />
+    <Compile Include="GameObjects\LevelObjects\Vine.cs" />
     <Compile Include="GameStates\LevelCleared.cs" />
     <Compile Include="GameStates\Level Failed.cs" />
     <Compile Include="GameStates\HomeMenu.cs" />
@@ -81,8 +82,8 @@
     <Compile Include="GameStates\Startup.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GameObjects\Table.cs" />
-    <Compile Include="GameObjects\XYAxes.cs" />
+    <Compile Include="GameObjects\HudObjects\Table.cs" />
+    <Compile Include="GameObjects\LevelObjects\XYAxes.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
@@ -102,6 +103,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\MapStats.txt" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>

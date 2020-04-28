@@ -201,3 +201,4 @@ C:\Users\bsiu2\OneDrive\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windo
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\IngameSprites\Obstacle.xnb
 C:\Users\bsiu2\OneDrive\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\IngameSprites\Obstakel Sprite.png.xnb
 C:\Users\bsiu2\OneDrive\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\IngameSprites\Obstacle.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\IngameSprites\ExplosiveBanana.xnb

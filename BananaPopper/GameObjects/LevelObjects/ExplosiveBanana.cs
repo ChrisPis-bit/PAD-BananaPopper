@@ -12,7 +12,7 @@ namespace BananaPopper
 {
     class ExplosiveBanana : Banana
     {
-        public ExplosiveBanana() : base()
+        public ExplosiveBanana() : base("sprites/IngameSprites/ExplosiveBanana")
         {
 
         }

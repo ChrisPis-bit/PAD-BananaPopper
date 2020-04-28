@@ -155,6 +155,18 @@
 /processorParam:TextureFormat=Color
 /build:sprites/IngameSprites/Banana.png
 
+#begin sprites/IngameSprites/ExplosiveBanana.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:sprites/IngameSprites/ExplosiveBanana.png
+
 #begin sprites/IngameSprites/Normal Balloon.png
 /importer:TextureImporter
 /processor:TextureProcessor
