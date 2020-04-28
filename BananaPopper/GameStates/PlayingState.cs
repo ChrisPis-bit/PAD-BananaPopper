@@ -29,7 +29,6 @@ namespace BananaPopper
 
         GameObjectList theObstacles = new GameObjectList(),
          theBullets = new GameObjectList(),
-         theEBullets = new GameObjectList(),
          theBalloons = new GameObjectList(),
          thePlusBanana = new GameObjectList();
 
@@ -44,6 +43,7 @@ namespace BananaPopper
         int count;
         bool fire = true;
         bool Efire = false;
+        int name = 4;
         float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 0.66f, 0 }; //Defines the a in y=ax+b
 
 
@@ -51,7 +51,7 @@ namespace BananaPopper
         public PlayingState() : base()
         {
             //StreamReader test = new StreamReader("Content/MapStats.txt");
-            Console.WriteLine(string.Join("", readRecord("1", "Content/MapStats.txt", 1)));
+            Console.WriteLine(string.Join("", readRecord("1", "Content/MapStats.txt")));
             Console.ReadLine();
 
             //code for database
@@ -82,7 +82,7 @@ namespace BananaPopper
             thePlayer = new Player();
 
             //Put which level you wanna start in the brackets
-            StartLevel(5);
+            StartLevel(name);
 
             //Add GameObjects here
             Add(new Background());
@@ -91,7 +91,6 @@ namespace BananaPopper
             Add(thePlusBanana);
             Add(thePopAnimation = new PopAnimation());
             Add(theBullets);
-            Add(theEBullets);
             Add(theDirectionBox = new DirectionBox());
             Add(theXYaxes);
             Add(thePlayer);
@@ -126,6 +125,11 @@ namespace BananaPopper
                 {
                     if (obstacle.Overlaps(banana))
                     {
+                        if(banana is ExplosiveBanana)
+                        {
+                            banana.Visible = false;
+                            obstacle.Visible = false;
+                        }
                         banana.Visible = false;
                     }
                 }
@@ -153,6 +157,12 @@ namespace BananaPopper
                             hud.theScore.GetScore += (balloons as Balloon).score;
                         }
                         else { banana.Visible = false; }
+
+                        if(banana is ExplosiveBanana)
+                        {
+                            banana.Visible = false;
+                            balloons.Visible = false;
+                        }
                     }
                 }
 
@@ -172,73 +182,6 @@ namespace BananaPopper
 
 
 
-            foreach (SpriteGameObject eBanana in theEBullets.Children)
-            {
-                if (eBanana.position.X + eBanana.HitBox.X < 0 || eBanana.position.X > GameEnvironment.Screen.X ||
-                    eBanana.position.Y + eBanana.HitBox.Y < 0 || eBanana.position.Y > GameEnvironment.Screen.Y)
-                {
-                    eBanana.Visible = false;
-                }
-
-                foreach (Obstacle obstacle in theObstacles.Children)
-                {
-                    if (obstacle.Overlaps(eBanana))
-                    {
-                        (obstacle as Obstacle).ObstacleHP--;
-
-                        if (obstacle is InvisibleBalloon)
-                        {
-                            thePopAnimation.position = obstacle.position;
-                            thePopAnimation.Visible = true;
-                        }
-
-                        if ((obstacle as Obstacle).ObstacleHP == 0)
-                        {
-                            obstacle.Visible = false;
-                            eBanana.Visible = false;
-                        }
-
-                    }
-                }
-            }
-
-            foreach (SpriteGameObject eBanana in theEBullets.Children)
-            {
-                foreach (SpriteGameObject balloons in theBalloons.Children)
-                {
-                    if (balloons.Overlaps(eBanana))
-                    {
-                        (balloons as Balloon).hp--;
-                        if (balloons is InvisibleBalloon)
-                        {
-                            thePopAnimation.position = balloons.position;
-                            thePopAnimation.Visible = true;
-                        }
-
-                        if ((balloons as Balloon).hp == 0)
-                        {
-                            balloons.Visible = false;
-                            eBanana.Visible = false;
-
-                        }
-                    }
-                }
-            }
-
-
-            foreach (SpriteGameObject eBanana in theEBullets.Children)
-            {
-                foreach (SpriteGameObject plusBanana in thePlusBanana.Children)
-                {
-                    if (plusBanana.Overlaps(eBanana))
-                    {
-
-                        plusBanana.Visible = false;
-                        eBanana.Visible = false;
-                        hud.numBananas++;
-                    }
-                }
-            }
 
             if (iRc >= rc.Length)
             {
@@ -266,14 +209,6 @@ namespace BananaPopper
                 if (!theBullets.Children[i].Visible && (theBullets.Children[i] as Banana).shot)
                 {
                     theBullets.remove(theBullets.Children[i]);
-                }
-            }
-
-            for (int i = 0; i < theEBullets.Children.Count(); i++)
-            {
-                if (!theEBullets.Children[i].Visible)
-                {
-                    theEBullets.remove(theEBullets.Children[i]);
                 }
             }
 
@@ -312,8 +247,7 @@ namespace BananaPopper
             }
 
             theMouse.position = inputHelper.MousePosition;
-            if (fire)
-            {
+          
                 if (inputHelper.KeyPressed(Keys.Space))
                 {
                     if (hud.numBananas != 0)
@@ -329,40 +263,6 @@ namespace BananaPopper
                         }
                     }
                 }
-            }
-
-            if (hud.numBananas == count)
-            {
-                fire = false;
-                if (fire == false)
-                {
-                    if (Efire)
-                    {
-                        if (inputHelper.KeyPressed(Keys.Space))
-                        {
-                            fire = false;
-                            if (hud.numEBananas != 0)
-                            {
-                                theEBullets.Add(new ExplosiveBanana(thePlayer.centerPos, rc[iRc], hud.flipLine));
-                                hud.numEBananas--;
-                            }
-                        }
-                    }
-                }
-            }
-
-
-
-            if (hud.numBananas == 5)
-            {
-                count = 5;
-                Efire = true;
-            }
-
-            if (hud.numEBananas == 0)
-            {
-                fire = true;
-            }
 
 
         }
@@ -393,7 +293,6 @@ namespace BananaPopper
             theObstacles.Children.Clear();
             thePlusBanana.Children.Clear();
             theBullets.Children.Clear();
-            theEBullets.Children.Clear();
 
             //Colors for game objects, use these colors for maps
             Color balloon = new Color(255, 0, 0),
@@ -470,9 +369,27 @@ namespace BananaPopper
             theXYaxes.ResetAxes(thePlayer.Oorsprong);
 
             //Adds banana's to the list
-            for (int iBanana = 0; iBanana < hud.numBananas; iBanana++)
+            ///for (int iBanana = 0; iBanana < hud.numBananas; iBanana++)
+            //{
+            //    theBullets.Add(new Banana());
+            //}
+
+            for (int i = 0; i < readRecord(levelIndex.ToString(), "Content/MapStats.txt").Count(); i++)
             {
-                theBullets.Add(new Banana());
+                if (readRecord(levelIndex.ToString(), "Content/MapStats.txt")[i] == "e")
+                {
+                    theBullets.Add(new ExplosiveBanana());
+                    Console.WriteLine('e');
+                }
+
+                if (readRecord(levelIndex.ToString(), "Content/MapStats.txt")[i] == "b")
+                {
+                    theBullets.Add(new Banana());
+                    Console.WriteLine('b');
+                }
+
+
+
             }
         }
 
@@ -493,9 +410,8 @@ namespace BananaPopper
             }
         }
 
-        public static string[] readRecord(string searchTerm, string filePath, int positionOfSearchTerm)
+        public static string[] readRecord(string searchTerm, string filePath)
         {
-            positionOfSearchTerm--;
             string[] recordNotFound = { "Record not found" };
 
             try
@@ -505,7 +421,7 @@ namespace BananaPopper
                 for(int i = 0; i < lines.Length; i++)
                 {
                     string[] fields = lines[i].Split(',');
-                    if(recordMatches(searchTerm, fields, positionOfSearchTerm))
+                    if(recordMatches(searchTerm, fields))
                     {
                         Console.WriteLine("Record found");
                         return fields;
@@ -521,9 +437,9 @@ namespace BananaPopper
             }
         }
 
-        public static bool recordMatches(string searchTerm, string[] record, int positionOfSearchTerm)
+        public static bool recordMatches(string searchTerm, string[] record)
         {
-            if(record[positionOfSearchTerm].Equals(searchTerm))
+            if(record[0].Equals(searchTerm))
             {
                 return true;
             }

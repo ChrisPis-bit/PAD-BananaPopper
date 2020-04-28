@@ -60,7 +60,7 @@ namespace BananaPopper
             base.Reset();
 
             theScore.GetScore = 0;
-            numBananas = 10;
+            numBananas = 5;
             numEBananas = 1;
         }
 
