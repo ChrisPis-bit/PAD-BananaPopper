@@ -15,10 +15,9 @@ namespace BananaPopper
             Oorsprong;
         private float maxSpeed;
 
-        public Player() : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 16, 16))
+        public Player() : base("sprites/IngameSprites/Monkey")
         {
-            GameEnvironment.ChangeColor(texture, Color.Green);
-
+            spriteEffect = SpriteEffects.FlipHorizontally;
             ResetPlayer(Vector2.Zero);
         }
 
@@ -28,7 +27,7 @@ namespace BananaPopper
 
             position = startPosition - origin;
             centerPos = position + origin;
-            scale = GameEnvironment.TextureScale;
+            scale = GameEnvironment.TextureScale/2 - 0.1f;
             maxSpeed = GameEnvironment.GlobalScale * 40;
 
             Reset();
@@ -128,6 +127,16 @@ namespace BananaPopper
                 }
                 velocity = Vector2.Zero;
             }
+        }
+
+        public void Flip(bool lookingRight)
+        {
+            if (lookingRight)
+            {
+                spriteEffect = SpriteEffects.None;
+            }
+            else
+                spriteEffect = SpriteEffects.FlipHorizontally;
         }
     }
 }

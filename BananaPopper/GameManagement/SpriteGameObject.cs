@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 class SpriteGameObject : GameObject
 {
     public Texture2D texture;
+    public SpriteEffects spriteEffect;
     public Vector2 origin, hitbox;
     public float angle,
         scale;
@@ -21,7 +22,7 @@ class SpriteGameObject : GameObject
         this.angle = angle;
         origin = new Vector2(texture.Width / 2, texture.Height / 2);
         scale = 1;
-
+        spriteEffect = SpriteEffects.None;
         Reset();
     }
 
@@ -60,7 +61,7 @@ class SpriteGameObject : GameObject
              angle,
              origin,
              scale,
-             SpriteEffects.None, 0f);
+             spriteEffect, 0f);
     }
 
     public override void Update(GameTime gameTime)

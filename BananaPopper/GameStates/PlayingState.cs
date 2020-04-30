@@ -206,7 +206,10 @@ namespace BananaPopper
 
             //Updates the formula on screen
             hud.theFormula.UpdateFormula(thePlayer.centerPos, thePlayer.Oorsprong, hud.flipLine);
+
             theDirectionBox.UpdateDirection(hud.flipLine, thePlayer.centerPos);
+
+            thePlayer.Flip(hud.flipLine);
         }
 
 
