@@ -39,12 +39,10 @@ namespace BananaPopper
         XYAxes theXYaxes;
         DirectionBox theDirectionBox;
 
-        int iRc = 0;
         int count;
         bool fire = true;
         bool Efire = false;
         int name = 4;
-        float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 0.66f, 0 }; //Defines the a in y=ax+b
 
 
 
@@ -182,14 +180,7 @@ namespace BananaPopper
 
 
 
-            if (iRc >= rc.Length)
-            {
-                iRc = 0;
-            }
-            else if (iRc < 0)
-            {
-                iRc = rc.Length - 1;
-            }
+
 
             for (int i = 0; i < theBullets.Children.Count(); i++)
             {
@@ -214,7 +205,7 @@ namespace BananaPopper
 
 
             //Updates the formula on screen
-            hud.theFormula.UpdateFormula(rc[iRc], thePlayer.centerPos, thePlayer.Oorsprong, hud.flipLine);
+            hud.theFormula.UpdateFormula(thePlayer.centerPos, thePlayer.Oorsprong, hud.flipLine);
             theDirectionBox.UpdateDirection(hud.flipLine, thePlayer.centerPos);
         }
 
@@ -225,9 +216,7 @@ namespace BananaPopper
         {
             base.HandleInput(inputHelper);
 
-            //For testing, changes line direction
-            if (inputHelper.KeyPressed(Keys.Up)) iRc += 1;
-            if (inputHelper.KeyPressed(Keys.Down)) iRc -= 1;
+
 
             //For testing, flips line
             if (inputHelper.KeyPressed(Keys.F))
@@ -255,7 +244,7 @@ namespace BananaPopper
                     {
                         if (!banana.shot)
                         {
-                            banana.Shoot(thePlayer.centerPos, rc[iRc], hud.flipLine);
+                            banana.Shoot(thePlayer.centerPos, hud.theFormula.RC, hud.flipLine);
                             hud.theBananaCounter.Amount--;
                             break;
                         }
