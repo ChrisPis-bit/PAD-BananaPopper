@@ -18,10 +18,6 @@ namespace BananaPopper
 {
     class PlayingState : GameObjectList
     {
-        string connectionString = "server=oege.ie.hva.nl;user=lokhorc;database=zlokhorc;port=3306;password=dw5dZKtaln1AHIK2";
-        MySqlConnection test;
-
-
         //All temporary textures for prototype
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
@@ -39,10 +35,7 @@ namespace BananaPopper
         XYAxes theXYaxes;
         DirectionBox theDirectionBox;
 
-        int count;
-        bool fire = true;
-        bool Efire = false;
-        int name = 4;
+        public int levelIndex = 3;
 
 
 
@@ -79,8 +72,8 @@ namespace BananaPopper
             theXYaxes = new XYAxes();
             thePlayer = new Player();
 
-            //Put which level you wanna start in the brackets
-            StartLevel(name);
+            //Put which level you want to start in the brackets
+            Reset();
 
             //Add GameObjects here
             Add(new Background());
@@ -96,6 +89,14 @@ namespace BananaPopper
             Add(theMouse);
         }
 
+
+        //Restarts the level for when you want to re-do it
+        public override void Reset()
+        {
+            base.Reset();
+
+            StartLevel(levelIndex);
+        }
 
         public override void Update(GameTime gameTime)
         {
@@ -162,20 +163,7 @@ namespace BananaPopper
                         }
                     }
                 }
-
-                /*if(ballons==0)
-                {
-                    //Switches the screen to the level cleared screen
-                   // GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
-               // }
-                //else if (banana== 0)
-                //{
-                    //Switches the screen to the level failed screen
-                    GameEnvironment.GameStateManager.SwitchTo("LevelFailed");
-                }*/
             }
-
-
 
 
 
@@ -199,9 +187,31 @@ namespace BananaPopper
                 if (!theBullets.Children[i].Visible && (theBullets.Children[i] as Banana).shot)
                 {
                     theBullets.remove(theBullets.Children[i]);
+                    i--;
                 }
             }
 
+            for(int i = 0; i < theBalloons.Children.Count(); i++)
+            {
+                //Deletes popped balloons
+                if (!theBalloons.Children[i].Visible)
+                {
+                    theBalloons.remove(theBalloons.Children[i]);
+                    i--;
+                }
+            }
+
+
+            //Switches game state if the player wins (pops all balloons)
+            //or loses (runs out of bananas)
+            if (theBalloons.Children.Count() == 0)
+            {
+                GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
+            }
+            else if (theBullets.Children.Count() == 0)
+            {
+                GameEnvironment.GameStateManager.SwitchTo("LevelFailed");
+            }
 
 
             //Updates the formula on screen
@@ -295,7 +305,7 @@ namespace BananaPopper
             Texture2D map = GameEnvironment.ContentManager.Load<Texture2D>("Maps/Map" + levelIndex);
 
             //Changes GlobalScale according to the maps width or height, so that the map always fits on the screen
-            if (GameEnvironment.Screen.X / map.Width / 16 >= GameEnvironment.Screen.Y / map.Height / 9)
+            if (GameEnvironment.Screen.X / map.Width / 16 > GameEnvironment.Screen.Y / map.Height / 9)
             {
                 GameEnvironment.GlobalScale = GameEnvironment.Screen.X / map.Width;
             }

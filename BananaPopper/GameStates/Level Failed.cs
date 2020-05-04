@@ -31,12 +31,12 @@ namespace BananaPopper
             Add(retry = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10)));
             Add(homeScreen = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 5)));
 
-            Add(new TextGameObject(Color.White, retry.position, "Next Level"));
+            Add(new TextGameObject(Color.White, retry.position, "Restart"));
             Add(new TextGameObject(Color.White, homeScreen.position, "Home"));
 
             Add(theMouse = new SpriteGameObject(mouse));
 
-            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 2), "Level Failed"));
+            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 3), "Level Failed"));
             Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 4, GameEnvironment.Screen.Y / 2), "Do you want to retry this level?"));
 
             theMouse.scale = 1;
@@ -50,10 +50,14 @@ namespace BananaPopper
             if (retry.isPressed)
             {
                 //Switches to the level the player last played, so they can retry the level
+                GameEnvironment.GameStateManager.GetGameState("PlayingState").Reset();
                 GameEnvironment.GameStateManager.SwitchTo("PlayingState");
             }
             else if (homeScreen.isPressed)
             {
+                //Temporary level reset//
+                GameEnvironment.GameStateManager.GetGameState("PlayingState").Reset();
+
                 //Switches to the home menu screen
                 GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
             }

@@ -104,6 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\MapStats.txt" />
+    <Content Include="Content\Maps\Map1.png" />
+    <Content Include="Content\Maps\Map2.png" />
+    <Content Include="Content\Maps\Map3.png" />
+    <Content Include="Content\Maps\Map4.png" />
+    <Content Include="Content\Maps\Map5.png" />
+    <Content Include="Content\Maps\Map6.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
