@@ -33,12 +33,13 @@ namespace BananaPopper
             Add(upRC = new Button("arrowKey", Vector2.Zero));
             Add(downRC = new Button("arrowKey", Vector2.Zero));
 
-            upRC.scale = BUTTON_SCALE;
-            downRC.scale = BUTTON_SCALE;
+            upRC.Scale = BUTTON_SCALE;
+            downRC.Scale = BUTTON_SCALE;
 
             upRC.position = new Vector2(BUTTON_X_OFFSET, 0);
-            downRC.position = new Vector2(BUTTON_X_OFFSET, 0 + downRC.HitBox.X * 4);
+            downRC.position = new Vector2(BUTTON_X_OFFSET, 0 + downRC.HitBox.X * 2);
             downRC.angle = (float)Math.PI;
+            downRC.Origin = new Vector2(downRC.HitBox.X / 2, downRC.HitBox.Y / 2);
 
             Add(formulaText = new TextGameObject(Color.White, new Vector2(0, upRC.HitBox.X)));
 

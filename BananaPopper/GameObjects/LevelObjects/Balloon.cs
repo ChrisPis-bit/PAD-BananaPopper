@@ -18,11 +18,10 @@ namespace BananaPopper
         public const int BALLOON_SCORE = 50;
         public Balloon(Vector2 position, string assetName = "sprites/IngameSprites/Normal Balloon") : base(assetName)
         {
-            //GameEnvironment.ChangeColor(texture, Color.Brown);
-
             score = BALLOON_SCORE;
-            this.position = position - origin;
-            scale = GameEnvironment.TextureScale;
+            Scale = GameEnvironment.TextureScale;
+            this.position = position - HitBox/2;
+
         }
     }
 }

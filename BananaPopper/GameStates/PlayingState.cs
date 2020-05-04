@@ -35,7 +35,7 @@ namespace BananaPopper
         XYAxes theXYaxes;
         DirectionBox theDirectionBox;
 
-        public int levelIndex = 3;
+        public int levelIndex = 4;
 
 
 
@@ -305,9 +305,9 @@ namespace BananaPopper
             Texture2D map = GameEnvironment.ContentManager.Load<Texture2D>("Maps/Map" + levelIndex);
 
             //Changes GlobalScale according to the maps width or height, so that the map always fits on the screen
-            if (GameEnvironment.Screen.X / map.Width / 16 > GameEnvironment.Screen.Y / map.Height / 9)
+            if (map.Width / 13 >= map.Height / 9)
             {
-                GameEnvironment.GlobalScale = GameEnvironment.Screen.X / map.Width;
+                GameEnvironment.GlobalScale = GameEnvironment.Screen.X/16 * 13 / map.Width;
             }
             else
                 GameEnvironment.GlobalScale = GameEnvironment.Screen.Y / map.Height;
@@ -359,7 +359,7 @@ namespace BananaPopper
             {
                 if (balloons is InvisibleBalloon)
                 {
-                    invPoints.Add(balloons.position);
+                    invPoints.Add(balloons.GlobalPosition);
                 }
             }
 
@@ -367,11 +367,6 @@ namespace BananaPopper
             hud.Reset();
             theXYaxes.ResetAxes(thePlayer.Oorsprong);
 
-            //Adds banana's to the list
-            ///for (int iBanana = 0; iBanana < hud.numBananas; iBanana++)
-            //{
-            //    theBullets.Add(new Banana());
-            //}
 
             for (int i = 0; i < readRecord(levelIndex.ToString(), "Content/MapStats.txt").Count(); i++)
             {

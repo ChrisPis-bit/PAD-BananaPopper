@@ -25,9 +25,9 @@ namespace BananaPopper
         {
             Oorsprong = startPosition;
 
-            position = startPosition - origin;
-            centerPos = position + origin;
-            scale = GameEnvironment.TextureScale/2 - 0.1f;
+            position = startPosition;
+            centerPos = position + HitBox/2;
+            Scale = GameEnvironment.TextureScale/2 - 0.1f;
             maxSpeed = GameEnvironment.GlobalScale * 40;
 
             Reset();
@@ -38,7 +38,7 @@ namespace BananaPopper
             base.Update(gameTime);
 
             //position = centerPos - origin;
-            centerPos = position + origin;
+            centerPos = position + HitBox / 2;
         }
 
         public override void HandleInput(InputHelper inputHelper)
@@ -79,18 +79,18 @@ namespace BananaPopper
             {
                 //Re-positions player if he's closer to the last grid point than the next one
                 if (centerPos.X % GameEnvironment.GlobalScale < GameEnvironment.GlobalScale / 2)
-                    position.X = centerPos.X - centerPos.X % GameEnvironment.GlobalScale - origin.X;
+                    position.X = centerPos.X - centerPos.X % GameEnvironment.GlobalScale - HitBox.X/2;
 
                 if (centerPos.Y % GameEnvironment.GlobalScale < GameEnvironment.GlobalScale / 2)
-                    position.Y = centerPos.Y - centerPos.Y % GameEnvironment.GlobalScale - origin.Y;
+                    position.Y = centerPos.Y - centerPos.Y % GameEnvironment.GlobalScale - HitBox.Y/2;
 
 
                 //Re-positions player if he's closer to the next grid point than the last one
                 if (centerPos.X % GameEnvironment.GlobalScale >= GameEnvironment.GlobalScale / 2)
-                    position.X = centerPos.X + GameEnvironment.GlobalScale - (centerPos.X % GameEnvironment.GlobalScale) - origin.X;
+                    position.X = centerPos.X + GameEnvironment.GlobalScale - (centerPos.X % GameEnvironment.GlobalScale) - HitBox.X/2;
 
                 if (centerPos.Y % GameEnvironment.GlobalScale >= GameEnvironment.GlobalScale / 2)
-                    position.Y = centerPos.Y + GameEnvironment.GlobalScale - (centerPos.Y % GameEnvironment.GlobalScale) - origin.Y;
+                    position.Y = centerPos.Y + GameEnvironment.GlobalScale - (centerPos.Y % GameEnvironment.GlobalScale) - HitBox.Y/2;
 
                 velocity = new Vector2(0);
             }

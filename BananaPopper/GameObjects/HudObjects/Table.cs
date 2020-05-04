@@ -49,7 +49,7 @@ namespace BananaPopper
                         Math.Round((points[i].X - origin.X) / GameEnvironment.GlobalScale).ToString()));
 
                     Add(new TextGameObject(Color.White, new Vector2(pointOffset.X + pointOffset.X / 2 + i * pointOffset.X, pointOffset.Y), 
-                        Math.Round((points[i].Y - origin.Y) / GameEnvironment.GlobalScale * -1).ToString()));
+                        Math.Floor((int)(points[i].Y - origin.Y) / GameEnvironment.GlobalScale * -1).ToString()));
                 }
             }
         }

@@ -119,6 +119,18 @@
 /processorParam:TextureFormat=Color
 /build:sprites/Background.png
 
+#begin sprites/HudSprites/FlipButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:sprites/HudSprites/FlipButton.png
+
 #begin sprites/IngameSprites/Balloon.png
 /importer:TextureImporter
 /processor:TextureProcessor

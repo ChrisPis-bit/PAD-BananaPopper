@@ -16,7 +16,7 @@ namespace BananaPopper
         public Obstacle(Vector2 position) : base("sprites/IngameSprites/Obstacle")
         {
             Reset();
-            this.position = position - origin;
+            this.position = position - HitBox / 2;
             
         }
 

@@ -22,13 +22,15 @@ namespace BananaPopper
 
         public HUD() : base()
         {
-            position = new Vector2((GameEnvironment.Screen.X / 5) * 4, 0);
+            position = new Vector2((GameEnvironment.Screen.X / 16) * 13, 0);
             HudShade = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X - (int)hudFlipPosition.X, GameEnvironment.Screen.Y);
-            GameEnvironment.ChangeColor(HudShade, new Color(Color.Black, 100));
+            GameEnvironment.ChangeColor(HudShade, Color.SaddleBrown);
 
             Add(new SpriteGameObject(HudShade));
-            Add(flipButton = new Button("arrowKey", new Vector2(0, (GameEnvironment.Screen.X / 5) * 2)));
+            Add(flipButton = new Button("sprites/HudSprites/FlipButton", new Vector2(20, (GameEnvironment.Screen.Y / 5) * 2)));
             flipLine = true;
+            flipButton.Scale = 3;
+            flipButton.Origin = Vector2.Zero;
 
             Add(theFormula = new Formula());
             Add(theScore = new Score());

@@ -48,7 +48,7 @@ namespace BananaPopper
                 {
                     for (int i = 0; i < value - Children.Count(); i++)
                     {
-                        Add(new SpriteGameObject("Banana"));
+                        Add(new SpriteGameObject("sprites/IngameSprites/Banana"));
                         Children[Children.Count() - 1].position = new Vector2(i * (Children[Children.Count() - 1] as SpriteGameObject).texture.Width, 0);
                     }
                 }

@@ -37,8 +37,6 @@ namespace BananaPopper
             Add(theMouse = new SpriteGameObject(mouse));
 
             Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 2), "BananaPopper"));
-
-            theMouse.scale = 1;
         }
 
         public override void Update(GameTime gameTime)

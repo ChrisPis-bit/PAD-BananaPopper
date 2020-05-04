@@ -17,7 +17,7 @@ namespace BananaPopper
         {
             GameEnvironment.ChangeColor(texture, Color.GreenYellow);
             scale = GameEnvironment.TextureScale;
-            this.position = position - origin;
+            this.position = position - HitBox / 2;
 
         }
     }

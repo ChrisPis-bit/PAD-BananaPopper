@@ -11,7 +11,7 @@ namespace BananaPopper
     {
         public Vine(Vector2 position, float angle = 0) : base("sprites/IngameSprites/Vines", angle)
         {
-            scale = GameEnvironment.TextureScale;
+            Scale = GameEnvironment.TextureScale;
             this.position = position;
 
             if (angle == 0)

@@ -32,7 +32,7 @@ namespace BananaPopper
             //Uses 2 for loops for the X and Y lines
             for (int i = 0; i < GameEnvironment.Screen.X / GameEnvironment.GlobalScale; i++)
             {
-                Add(new Vine(new Vector2(0 + i * GameEnvironment.GlobalScale, origin.Y), (float)Math.PI/2));
+                Add(new Vine(new Vector2(GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale, origin.Y), (float)Math.PI/2));
 
                 Add(new TextGameObject(Color.White, new Vector2(0 + i * GameEnvironment.GlobalScale, origin.Y), 
                     ((0 + i * GameEnvironment.GlobalScale - origin.X) / GameEnvironment.GlobalScale).ToString()));

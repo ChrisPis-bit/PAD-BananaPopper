@@ -39,7 +39,7 @@ namespace BananaPopper
             Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 2), "Level Cleared"));
             Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 4, GameEnvironment.Screen.Y / 2), "well done"));
 
-            theMouse.scale = 1;
+            theMouse.Scale = 1;
         }
 
         public override void Update(GameTime gameTime)

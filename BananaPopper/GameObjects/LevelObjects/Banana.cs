@@ -23,7 +23,8 @@ namespace BananaPopper
         public Banana(string assetName = "sprites/IngameSprites/Banana") : base(assetName)
         {
             scoreMult = SCORE_MULT_START;
-            scale = GameEnvironment.TextureScale / 2;
+            Scale = GameEnvironment.TextureScale / 2;
+            Origin = new Vector2( texture.Width / 2, texture.Height/2);
             Visible = false;
             shot = false;
         }
@@ -33,12 +34,14 @@ namespace BananaPopper
             scoreMult = SCORE_MULT_START + SCORE_MULT_INCREASE * hitBalloonsAmount;
 
             base.Update(gameTime);
+
+            angle += 0.1f;
         }
 
         public void Shoot(Vector2 position, float speed, bool flipLine)
         {
             hitBalloonsAmount = 0;
-            this.position = position - new Vector2(texture.Width / 2, texture.Height / 2);
+            this.position = position;
             Visible = true;
             shot = true;
 

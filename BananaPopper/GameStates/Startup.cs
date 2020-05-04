@@ -34,8 +34,6 @@ namespace BananaPopper
             Add(new TextGameObject(Color.White, offline.position, "Play Offline"));
 
             Add(theMouse = new SpriteGameObject(mouse));
-
-            theMouse.scale = 1;
         }
 
         public override void Update(GameTime gameTime)
