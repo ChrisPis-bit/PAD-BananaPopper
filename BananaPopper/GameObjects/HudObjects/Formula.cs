@@ -21,8 +21,9 @@ namespace BananaPopper
         public Vector2 end = new Vector2(0, 0);
         public TextGameObject formulaText;
         Button upRC, downRC;
-        float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 2, -2 }; //Defines the a in y=ax+b
-        int iRc = 0;
+        private float rc;
+        /*float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 2, -2 }; //Defines the a in y=ax+b
+        int iRc = 0;*/
 
         public Formula() : base()
         {
@@ -57,18 +58,18 @@ namespace BananaPopper
         {
             base.Update(gameTime);
 
-            if (upRC.isPressed) iRc += 1;
-            if (downRC.isPressed) iRc -= 1;
+            if (upRC.isPressed) rc += 0.5f;
+            if (downRC.isPressed) rc -= 0.5f;
 
             //Prevents the array from going out of bounds
-            if (iRc >= rc.Length)
+            /*if (iRc >= rc.Length)
             {
                 iRc = 0;
             }
             else if (iRc < 0)
             {
                 iRc = rc.Length - 1;
-            }
+            }*/
         }
 
         public void UpdateFormula(Vector2 start, Vector2 origin, bool flipline)
@@ -105,7 +106,7 @@ namespace BananaPopper
 
         public float RC
         {
-            get { return rc[iRc]; }
+            get { return rc; }
         }
     }
 }
