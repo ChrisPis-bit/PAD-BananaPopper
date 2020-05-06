@@ -107,6 +107,12 @@
 #begin MapStats.txt
 /copy:MapStats.txt
 
+#begin MonkeyIslandBand.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:MonkeyIslandBand.mp3
+
 #begin sprites/Background.png
 /importer:TextureImporter
 /processor:TextureProcessor
