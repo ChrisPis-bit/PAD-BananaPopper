@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<<<<<<< HEAD
-<<<<<<< HEAD
   <SourceFile>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont</SourceFile>
   <SourceTime>2020-05-05T11:45:47.1474833+02:00</SourceTime>
   <DestFile>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/bin/Windows/GameFont.xnb</DestFile>
-  <DestTime>2020-05-06T15:56:59.3738712+02:00</DestTime>
-=======
-=======
->>>>>>> 74d610bb136a64a34b87cb5d1a2d33796f4b03ea
-  <SourceFile>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont</SourceFile>
-  <SourceTime>2020-05-06T12:08:19.6732301+02:00</SourceTime>
-  <DestFile>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/bin/Windows/GameFont.xnb</DestFile>
-  <DestTime>2020-05-06T12:20:28.825002+02:00</DestTime>
-<<<<<<< HEAD
->>>>>>> 74d610bb136a64a34b87cb5d1a2d33796f4b03ea
-=======
->>>>>>> 74d610bb136a64a34b87cb5d1a2d33796f4b03ea
+  <DestTime>2020-05-05T15:53:25.0956155+02:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2018-12-08T17:35:54+01:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

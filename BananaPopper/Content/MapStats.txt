@@ -1,9 +1,7 @@
-1,b,b
-2,b,b
-3,b,b
-4,b
-5,b,b
-6,b,b
-7,e,b,b,b
+1,b
+2,b,b,b,e,b
+3,e,b,b
+4,e,b
+5,b,b,b,e
 
 

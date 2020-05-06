@@ -28,21 +28,22 @@ namespace BananaPopper
          theBalloons = new GameObjectList(),
          thePlusBanana = new GameObjectList();
 
-        public HUD hud;
-        private SpriteGameObject theMouse;
-        private Player thePlayer;
-        private PopAnimation thePopAnimation;
-        private XYAxes theXYaxes;
-        private DirectionBox theDirectionBox;
+        HUD hud;
+        SpriteGameObject theMouse;
+        Player thePlayer;
+        PopAnimation thePopAnimation;
+        XYAxes theXYaxes;
+        DirectionBox theDirectionBox;
 
-        public int levelIndex = 1;
+        public int levelIndex = 4;
 
 
 
         public PlayingState() : base()
         {
-            Console.WriteLine(System.IO.Directory.GetFiles("Content/Maps").Length);
-
+            //StreamReader test = new StreamReader("Content/MapStats.txt");
+            Console.WriteLine(string.Join("", readRecord("1", "Content/MapStats.txt")));
+            Console.ReadLine();
 
             //code for database
             /*test = new MySqlConnection(connectionString);

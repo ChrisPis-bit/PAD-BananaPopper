@@ -4,8 +4,6 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-<<<<<<< HEAD
-<<<<<<< HEAD
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/arrowKey.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map1.png</File>
@@ -14,7 +12,6 @@
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map4.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map5.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map6.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map7.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Background.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/FlipButton.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/HUDbg.png</File>
@@ -29,39 +26,8 @@
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Obstacle.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Strong Balloon.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Vines.png</File>
-=======
-=======
->>>>>>> 74d610bb136a64a34b87cb5d1a2d33796f4b03ea
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/arrowKey.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/Maps/Map1.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/Maps/Map2.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/Maps/Map3.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/Maps/Map4.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/Maps/Map5.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/Maps/Map6.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/MonkeyIslandBand.mp3</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/Background.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/FlipButton.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/HUDbg.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/TableLine.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/TableStop.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Balloon.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Balloon2.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Banana.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/ExplosiveBanana.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Monkey.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Normal Balloon.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Obstacle.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Strong Balloon.png</File>
-    <File>C:/Users/bsiu2/OneDrive/Documents/Team 16 GD/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Vines.png</File>
-<<<<<<< HEAD
->>>>>>> 74d610bb136a64a34b87cb5d1a2d33796f4b03ea
-=======
->>>>>>> 74d610bb136a64a34b87cb5d1a2d33796f4b03ea
   </SourceFiles>
   <DestFiles>
-    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -48,10 +48,5 @@ namespace BananaPopper
 
             text = "Time: " + displayedSeconds;
         }
-
-        public int SecondsLeft
-        {
-            get { return displayedSeconds; }
-        }
     }
 }
