@@ -307,10 +307,10 @@ namespace BananaPopper
             //Changes GlobalScale according to the maps width or height, so that the map always fits on the screen
             if (map.Width / 13 >= map.Height / 9)
             {
-                GameEnvironment.GlobalScale = GameEnvironment.Screen.X/16 * 13 / map.Width;
+                GameEnvironment.GlobalScale = (float)GameEnvironment.Screen.X/16 * 13 / map.Width;
             }
             else
-                GameEnvironment.GlobalScale = GameEnvironment.Screen.Y / map.Height;
+                GameEnvironment.GlobalScale = (float)GameEnvironment.Screen.Y / map.Height;
 
 
 

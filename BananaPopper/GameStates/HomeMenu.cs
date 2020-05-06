@@ -29,14 +29,14 @@ namespace BananaPopper
             Add(new SpriteGameObject(bg));
 
             Add(startGame = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*3)));
-            Add(options = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 13, GameEnvironment.Screen.Y / 10*5)));
+            Add(options = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*5)));
 
             Add(new TextGameObject(Color.White, startGame.position, "Start Game"));
             Add(new TextGameObject(Color.White, options.position, "Options"));
 
             Add(theMouse = new SpriteGameObject(mouse));
 
-            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 2), "BananaPopper"));
+            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10), "BananaPopper"));
         }
 
         public override void Update(GameTime gameTime)

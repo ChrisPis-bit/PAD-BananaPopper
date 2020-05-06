@@ -16,8 +16,8 @@ namespace BananaPopper
         {
            
             base.LoadContent();
-            screen.X = 800*2;
-            screen.Y = 450*2;
+            screen.X = 1600;
+            screen.Y = 900;
             ApplyResolutionSettings();
 
             //Use globalScale on object pos and size to make it change in scale with the screen width/height

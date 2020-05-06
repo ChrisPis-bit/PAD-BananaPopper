@@ -16,8 +16,7 @@ namespace BananaPopper.GameObjects
         {
             GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
-            scale = GameEnvironment.Screen.X / texture.Width;
-            origin = Vector2.Zero;
+            Scale = (float)GameEnvironment.Screen.X / texture.Width;
         }
 
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)

@@ -32,5 +32,11 @@ namespace BananaPopper
             base.Draw(gameTime, spriteBatch);
             spriteBatch.DrawString(font, text, GlobalPosition, color, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
         }
+
+        public Vector2 Size
+        {
+            get
+            { return font.MeasureString(text); }
+        }
     }
 }

@@ -110,6 +110,20 @@
     <Content Include="Content\Maps\Map4.png" />
     <Content Include="Content\Maps\Map5.png" />
     <Content Include="Content\Maps\Map6.png" />
+    <Content Include="Content\sprites\Background.png" />
+    <Content Include="Content\sprites\HudSprites\FlipButton.png" />
+    <Content Include="Content\sprites\HudSprites\HUDbg.png" />
+    <Content Include="Content\sprites\HudSprites\TableLine.png" />
+    <Content Include="Content\sprites\HudSprites\TableStop.png" />
+    <Content Include="Content\sprites\IngameSprites\Balloon.png" />
+    <Content Include="Content\sprites\IngameSprites\Balloon2.png" />
+    <Content Include="Content\sprites\IngameSprites\Banana.png" />
+    <Content Include="Content\sprites\IngameSprites\ExplosiveBanana.png" />
+    <Content Include="Content\sprites\IngameSprites\Monkey.png" />
+    <Content Include="Content\sprites\IngameSprites\Normal Balloon.png" />
+    <Content Include="Content\sprites\IngameSprites\Obstacle.png" />
+    <Content Include="Content\sprites\IngameSprites\Strong Balloon.png" />
+    <Content Include="Content\sprites\IngameSprites\Vines.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +131,7 @@
     <None Include="app.config" />
     <None Include="app.manifest" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="Content\GameFont.spritefont" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,19 +1,19 @@
 ﻿
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 
 namespace BananaPopper
 {
     class HUD : GameObjectList
     {
-        Texture2D HudShade;
-
         Vector2 hudFlipPosition;
 
         Button flipButton;
         public bool flipLine;
 
+        public SpriteGameObject theBG;
         public Formula theFormula;
         public Score theScore;
         public Timer theTimer;
@@ -23,11 +23,10 @@ namespace BananaPopper
         public HUD() : base()
         {
             position = new Vector2((GameEnvironment.Screen.X / 16) * 13, 0);
-            HudShade = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X - (int)hudFlipPosition.X, GameEnvironment.Screen.Y);
-            GameEnvironment.ChangeColor(HudShade, Color.SaddleBrown);
 
-            Add(new SpriteGameObject(HudShade));
-            Add(flipButton = new Button("sprites/HudSprites/FlipButton", new Vector2(20, (GameEnvironment.Screen.Y / 5) * 2)));
+            Add(theBG = new SpriteGameObject("sprites/HudSprites/HUDbg"));
+            theBG.Scale = (float)GameEnvironment.Screen.Y / theBG.texture.Height;
+            Add(flipButton = new Button("sprites/HudSprites/FlipButton", new Vector2(20, GameEnvironment.Screen.Y / 6 * 4)));
             flipLine = true;
             flipButton.Scale = 3;
             flipButton.Origin = Vector2.Zero;

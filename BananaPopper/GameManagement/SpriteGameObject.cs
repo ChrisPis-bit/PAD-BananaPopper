@@ -26,8 +26,6 @@ class SpriteGameObject : GameObject
         Scale = 1;
         spriteEffect = SpriteEffects.None;
         Reset();
-        hitBoxTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, (int)HitBox.X, (int)HitBox.Y);
-        GameEnvironment.ChangeColor(hitBoxTest, Color.Red);
     }
 
     public SpriteGameObject(Texture2D texture, float angle = 0)
@@ -38,8 +36,6 @@ class SpriteGameObject : GameObject
         Origin = Vector2.Zero;
         Scale = 1;
         hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
-        hitBoxTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, (int)HitBox.X, (int)HitBox.Y);
-        GameEnvironment.ChangeColor(hitBoxTest, Color.Red);
     }
 
     public override void Reset()
@@ -56,13 +52,15 @@ class SpriteGameObject : GameObject
 
     public Vector2 HitBoxPosition
     {
-        get { return GlobalPosition; }
+        get { return GlobalPosition - Origin * Scale; }
     }
 
     public Vector2 Origin
     {
         get { return origin; }
-        set { origin = value;
+        set
+        {
+            origin = value;
         }
     }
 
@@ -73,18 +71,16 @@ class SpriteGameObject : GameObject
         {
             scale = value;
             hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
-            
+            //hitBoxTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, (int)HitBox.X, (int)HitBox.Y);
         }
     }
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
-        /*hitBoxTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, (int)HitBox.X, (int)HitBox.Y);
-        GameEnvironment.ChangeColor(hitBoxTest, Color.Red);
+        /*GameEnvironment.ChangeColor(hitBoxTest, Color.Red);
         spriteBatch.Draw(hitBoxTest, HitBoxPosition, Color.White);*/
 
         if (visible)
-            //spriteBatch.Draw(texture, GlobalPosition, Color.White);
             spriteBatch.Draw(texture, GlobalPosition, null, Color.White,
              angle,
              Origin,

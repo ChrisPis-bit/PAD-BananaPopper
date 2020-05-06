@@ -9,6 +9,7 @@ namespace BananaPopper
 {
     class BananaCounter : GameObjectList
     {
+        const float SCALE = 1.5f;
         public BananaCounter() : base()
         {
 
@@ -28,7 +29,8 @@ namespace BananaPopper
                 {
                     Add(new SpriteGameObject("sprites/IngameSprites/Banana"));
                 }
-                Children[Children.Count() - 1].position = new Vector2(Children.Count() * (Children[0] as SpriteGameObject).texture.Width - (Children[0] as SpriteGameObject).texture.Width, 0);
+                (Children[Children.Count() - 1] as SpriteGameObject).Scale = SCALE;
+                Children[Children.Count() - 1].position = new Vector2(Children.Count() * (Children[0] as SpriteGameObject).HitBox.X - (Children[0] as SpriteGameObject).HitBox.X, 0);
             }
         }
 
@@ -49,7 +51,8 @@ namespace BananaPopper
                     for (int i = 0; i < value - Children.Count(); i++)
                     {
                         Add(new SpriteGameObject("sprites/IngameSprites/Banana"));
-                        Children[Children.Count() - 1].position = new Vector2(i * (Children[Children.Count() - 1] as SpriteGameObject).texture.Width, 0);
+                        (Children[Children.Count() - 1] as SpriteGameObject).Scale = SCALE;
+                        Children[Children.Count() - 1].position = new Vector2(i * (Children[Children.Count() - 1] as SpriteGameObject).HitBox.X, 0);
                     }
                 }
             }

@@ -21,7 +21,6 @@ namespace BananaPopper
             score = BALLOON_SCORE;
             Scale = GameEnvironment.TextureScale;
             this.position = position - HitBox/2;
-
         }
     }
 }

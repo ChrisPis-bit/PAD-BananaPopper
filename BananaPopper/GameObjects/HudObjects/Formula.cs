@@ -12,15 +12,16 @@ namespace BananaPopper
 {
     class Formula : GameObjectList
     {
-        const float TEXT_SCALE = 1.5f,
+        private const float TEXT_SCALE = 1.5f,
             BUTTON_SCALE = 2,
-            BUTTON_X_OFFSET = 120;
+            BUTTON_X_OFFSET = 100,
+            xOffset = 10;
 
         public float scale;
         public Vector2 end = new Vector2(0, 0);
         public TextGameObject formulaText;
         Button upRC, downRC;
-        float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 0.66f, 0 }; //Defines the a in y=ax+b
+        float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 2, -2 }; //Defines the a in y=ax+b
         int iRc = 0;
 
         public Formula() : base()
@@ -28,7 +29,7 @@ namespace BananaPopper
             Reset();
 
             //Position in the hud
-            position.Y = GameEnvironment.Screen.Y - GameEnvironment.Screen.Y / 6;
+            position = new Vector2(xOffset, GameEnvironment.Screen.Y / 6 * 5);
 
             Add(upRC = new Button("arrowKey", Vector2.Zero));
             Add(downRC = new Button("arrowKey", Vector2.Zero));
@@ -36,15 +37,13 @@ namespace BananaPopper
             upRC.Scale = BUTTON_SCALE;
             downRC.Scale = BUTTON_SCALE;
 
-            upRC.position = new Vector2(BUTTON_X_OFFSET, 0);
-            downRC.position = new Vector2(BUTTON_X_OFFSET, 0 + downRC.HitBox.X * 2);
-            downRC.angle = (float)Math.PI;
-            downRC.Origin = new Vector2(downRC.HitBox.X / 2, downRC.HitBox.Y / 2);
-
-            Add(formulaText = new TextGameObject(Color.White, new Vector2(0, upRC.HitBox.X)));
-
-
+            Add(formulaText = new TextGameObject(Color.White, new Vector2(0, upRC.HitBox.X), "Y ="));
             formulaText.scale = TEXT_SCALE;
+
+            upRC.position = new Vector2(BUTTON_X_OFFSET, 0);
+            downRC.Origin = new Vector2(downRC.texture.Width / 2, downRC.texture.Height / 2);
+            downRC.position = new Vector2(BUTTON_X_OFFSET, formulaText.position.Y + formulaText.Size.Y * formulaText.scale) + downRC.Origin * BUTTON_SCALE;
+            downRC.angle = (float)Math.PI;
         }
 
         public override void Reset()
