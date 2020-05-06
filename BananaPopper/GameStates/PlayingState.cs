@@ -28,14 +28,14 @@ namespace BananaPopper
          theBalloons = new GameObjectList(),
          thePlusBanana = new GameObjectList();
 
-        HUD hud;
+        public HUD hud;
         SpriteGameObject theMouse;
         Player thePlayer;
         PopAnimation thePopAnimation;
         XYAxes theXYaxes;
         DirectionBox theDirectionBox;
 
-        public int levelIndex = 4;
+        public int levelIndex = 1;
 
 
 
