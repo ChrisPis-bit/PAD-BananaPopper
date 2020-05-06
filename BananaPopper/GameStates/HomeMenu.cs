@@ -47,7 +47,7 @@ namespace BananaPopper
             if (startGame.isPressed)
             {
                 //Switches to the playingstate so the player can play the game
-                GameEnvironment.GameStateManager.SwitchTo("PlayingState");
+                GameEnvironment.GameStateManager.SwitchTo("LevelSelector");
             }
            // else if (options.isPressed)
            // {

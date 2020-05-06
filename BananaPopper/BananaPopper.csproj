@@ -76,6 +76,7 @@
     <Compile Include="GameStates\LevelCleared.cs" />
     <Compile Include="GameStates\Level Failed.cs" />
     <Compile Include="GameStates\HomeMenu.cs" />
+    <Compile Include="GameStates\LevelSelector.cs" />
     <Compile Include="GameStates\TitleMenuState.cs" />
     <Compile Include="GameStates\Login.cs" />
     <Compile Include="GameStates\PlayingState.cs" />

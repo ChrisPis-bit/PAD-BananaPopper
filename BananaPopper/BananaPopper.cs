@@ -32,6 +32,7 @@ namespace BananaPopper
             GameStateManager.AddGameState("HomeMenu", new HomeMenu());
             GameStateManager.AddGameState("LevelCleared", new LevelCleared ());
             GameStateManager.AddGameState("LevelFailed", new LevelFailed());
+            GameStateManager.AddGameState("LevelSelector", new LevelSelector());
             GameStateManager.SwitchTo("TitleMenuState");
         }
     }
