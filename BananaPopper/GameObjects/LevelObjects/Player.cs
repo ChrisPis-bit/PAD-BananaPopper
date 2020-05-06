@@ -48,7 +48,7 @@ namespace BananaPopper
             //Movement, checks if player is holding down mouse to swipe the player up
             if (inputHelper.MouseLeftButtonDown())
             {
-                if (centerPos == Oorsprong)
+                /*if (centerPos == Oorsprong)
                 {
                     if (Math.Abs(inputHelper.MouseVelocity.X) > Math.Abs(inputHelper.MouseVelocity.Y))
                     {
@@ -65,13 +65,13 @@ namespace BananaPopper
 
                 //Free movement on y if player is gone from 0,0
                 else if (centerPos.Y != Oorsprong.Y)
-                {
+                {*/
                     velocity.Y = inputHelper.MouseVelocity.Y * 50;
-                }
+                /*}
                 else
                 {
                     velocity = new Vector2(0);
-                }
+                }*/
 
                 //Checks if the player is close to a point on the grid
             }

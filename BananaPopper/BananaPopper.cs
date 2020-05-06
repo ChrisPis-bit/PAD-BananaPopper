@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework.Media;
 
 namespace BananaPopper
 {
     class BananaPopper : GameEnvironment
     {
+        Song backgroundMusic;
+
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
@@ -19,6 +22,13 @@ namespace BananaPopper
             screen.X = 1600;
             screen.Y = 900;
             ApplyResolutionSettings();
+
+            backgroundMusic = Content.Load<Song>("MonkeyIslandBand");
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Play(backgroundMusic);
+
+            //lower volume against annoyence
+            MediaPlayer.Volume = 0.3f;
 
             //Use globalScale on object pos and size to make it change in scale with the screen width/height
             globalScale = screen.X / 20;
