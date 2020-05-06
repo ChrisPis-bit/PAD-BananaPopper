@@ -287,6 +287,8 @@ namespace BananaPopper
 
         public void StartLevel(int levelIndex)
         {
+            this.levelIndex = levelIndex;
+
             //Clears all lists for reset
             theBalloons.Children.Clear();
             theObstacles.Children.Clear();
