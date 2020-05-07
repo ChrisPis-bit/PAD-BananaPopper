@@ -78,6 +78,7 @@
     <Compile Include="GameStates\Level Failed.cs" />
     <Compile Include="GameStates\HomeMenu.cs" />
     <Compile Include="GameStates\LevelSelector.cs" />
+    <Compile Include="GameStates\MenuState.cs" />
     <Compile Include="GameStates\TitleMenuState.cs" />
     <Compile Include="GameStates\Login.cs" />
     <Compile Include="GameStates\PlayingState.cs" />
@@ -105,6 +106,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\arrowKey.png" />
     <Content Include="Content\MapStats.txt" />
     <Content Include="Content\Maps\Map1.png" />
     <Content Include="Content\Maps\Map2.png" />

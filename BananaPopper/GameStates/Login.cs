@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BananaPopper
 {
-    class Login : GameObjectList
+    class Login : MenuState
     {
         const int MAX_CHARACTERS = 10;
 
@@ -19,21 +19,27 @@ namespace BananaPopper
         Vector2 loginInfoOffset = new Vector2(GameEnvironment.Screen.X / 4, GameEnvironment.Screen.Y / 3);
 
         CharacterSelector userName, passWord;
-        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y);
+
 
         public Login() : base()
         {
             //Bool defines if player is login in or creating an account
             createAccount = false;
 
-            GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
-
-            Add(new SpriteGameObject(bg));
             Add(userName = new CharacterSelector(MAX_CHARACTERS, loginInfoOffset));
             Add(passWord = new CharacterSelector(MAX_CHARACTERS, new Vector2(loginInfoOffset.X, loginInfoOffset.Y * 2), false));
 
             Add(new TextGameObject(Color.White, new Vector2(userName.position.X, userName.position.Y - 80), "Username"));
             Add(new TextGameObject(Color.White, new Vector2(passWord.position.X, passWord.position.Y - 80), "Password"));
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
+            if (backButton.isPressed)
+                GameEnvironment.GameStateManager.SwitchTo("Startup");
+
         }
 
         public override void HandleInput(InputHelper inputHelper)

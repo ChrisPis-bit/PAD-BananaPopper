@@ -11,10 +11,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BananaPopper
 {
-    class TitleMenuState : GameObjectList
+    class TitleMenuState : MenuState
     {
-        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y),
-            tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
+        Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
                mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         Button startGame;
 
@@ -24,9 +23,7 @@ namespace BananaPopper
         {
             GameEnvironment.ChangeColor(tempButton, Color.Green);
             GameEnvironment.ChangeColor(mouse, Color.White);
-            GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
 
-            Add(new SpriteGameObject(bg));
 
             Add(startGame = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 2)));
 
@@ -58,5 +55,5 @@ namespace BananaPopper
             theMouse.position = inputHelper.MousePosition;
         }
     }
-    }
+}
 

@@ -11,10 +11,9 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BananaPopper
 {
-    class HomeMenu : GameObjectList
+    class HomeMenu : MenuState
     {
-        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y),
-            tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
+        Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
                mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         Button startGame, options, back;
 
@@ -24,9 +23,7 @@ namespace BananaPopper
         {
             GameEnvironment.ChangeColor(tempButton, Color.Green);
             GameEnvironment.ChangeColor(mouse, Color.White);
-            GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
 
-            Add(new SpriteGameObject(bg));
 
             Add(startGame = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*3)));
             Add(options = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*5)));
@@ -49,12 +46,16 @@ namespace BananaPopper
                 //Switches to the playingstate so the player can play the game
                 GameEnvironment.GameStateManager.SwitchTo("LevelSelector");
             }
-           // else if (options.isPressed)
-           // {
-                //Switches to options screen so the player lower or increase the in-game sound
-           //     GameEnvironment.GameStateManager.SwitchTo("Options");
+
+            if (backButton.isPressed)
+                GameEnvironment.GameStateManager.SwitchTo("Startup");
+
+            // else if (options.isPressed)
+            // {
+            //Switches to options screen so the player lower or increase the in-game sound
+            //     GameEnvironment.GameStateManager.SwitchTo("Options");
             //}
-            
+
         }
 
 

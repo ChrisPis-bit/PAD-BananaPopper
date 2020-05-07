@@ -50,10 +50,19 @@ namespace BananaPopper
             //Button presses for each button on screen
             if (nextLevel.isPressed)
             {
-                //Switches to startup screen so the player can choose how they want to start the game
-                (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex++;
-                (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel((GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex);
-                GameEnvironment.GameStateManager.SwitchTo("PlayingState");
+                if ((GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex >= (GameEnvironment.GameStateManager.GetGameState("LevelSelector") as LevelSelector).levelCounter)
+                {
+                    GameEnvironment.GameStateManager.SwitchTo("LevelSelector");
+
+                }
+                else
+                {
+
+                    //Switches to startup screen so the player can choose how they want to start the game
+                    (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex++;
+                    (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel((GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex);
+                    GameEnvironment.GameStateManager.SwitchTo("PlayingState");
+                }
             }
             else if (homeScreen.isPressed)
             {
