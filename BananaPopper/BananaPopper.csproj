@@ -45,6 +45,8 @@
     <Compile Include="BananaPopper.cs" />
     <Compile Include="GameManagement\GameStateManager.cs" />
     <Compile Include="GameManagement\IGameLoopObject.cs" />
+    <Compile Include="GameManagement\ParticleObject.cs" />
+    <Compile Include="GameManagement\ParticleObjectList.cs" />
     <Compile Include="GameManagement\Sounds.cs" />
     <Compile Include="GameObjects\LevelObjects\Background.cs" />
     <Compile Include="GameObjects\HudObjects\BananaCounter.cs" />
