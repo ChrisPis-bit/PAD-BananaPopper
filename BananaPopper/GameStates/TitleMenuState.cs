@@ -28,7 +28,7 @@ namespace BananaPopper
 
             Add(new SpriteGameObject(bg));
 
-            Add(startGame = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 8)));
+            Add(startGame = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 2)));
 
             Add(new TextGameObject(Color.White, startGame.position, "Start Game"));
 

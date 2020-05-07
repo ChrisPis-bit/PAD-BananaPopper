@@ -16,7 +16,7 @@ namespace BananaPopper
         public plusBanana(Vector2 position) : base(new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 32, 32))
         {
             GameEnvironment.ChangeColor(texture, Color.GreenYellow);
-            scale = GameEnvironment.TextureScale;
+            Scale = GameEnvironment.TextureScale;
             this.position = position - HitBox / 2;
 
         }
