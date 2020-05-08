@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Media;
 
+
 namespace BananaPopper
 {
     class BananaPopper : GameEnvironment
@@ -29,6 +30,7 @@ namespace BananaPopper
 
             //lower volume against annoyence
             MediaPlayer.Volume = 0.3f;
+
 
             //Use globalScale on object pos and size to make it change in scale with the screen width/height
             globalScale = screen.X / 20;
