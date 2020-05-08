@@ -14,7 +14,7 @@ class SpriteGameObject : GameObject
     public SpriteEffects spriteEffect;
     protected Vector2 origin, hitbox;
     public float angle;
-    protected float scale;
+    protected float scale, hitboxScale;
 
     public SpriteGameObject(String assetName, float angle = 0)
     {
@@ -35,14 +35,12 @@ class SpriteGameObject : GameObject
         this.angle = angle;
         Origin = Vector2.Zero;
         Scale = 1;
-        hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
+        Reset();
     }
 
     public override void Reset()
     {
         base.Reset();
-
-        hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
     }
 
     public Vector2 HitBox
@@ -52,7 +50,7 @@ class SpriteGameObject : GameObject
 
     public Vector2 HitBoxPosition
     {
-        get { return GlobalPosition - Origin * Scale; }
+        get { return GlobalPosition - Origin * Scale + (new Vector2(texture.Width * Scale, texture.Height * Scale) / 2 - HitBox / 2); }
     }
 
     public Vector2 Origin
@@ -72,6 +70,16 @@ class SpriteGameObject : GameObject
             scale = value;
             hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
             //hitBoxTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, (int)HitBox.X, (int)HitBox.Y);
+        }
+    }
+
+    public float HitBoxScale
+    {
+        get { return hitboxScale; }
+        set
+        {
+            hitbox *= value;
+            hitboxScale = value;
         }
     }
 
