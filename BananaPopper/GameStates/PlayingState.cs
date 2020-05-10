@@ -13,6 +13,9 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
 using BananaPopper.GameObjects;
+using Microsoft.Xna.Framework.Audio;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Media;
 
 namespace BananaPopper
 {
@@ -36,6 +39,8 @@ namespace BananaPopper
         DirectionBox theDirectionBox;
 
         public int levelIndex = 1;
+        SoundEffect soundEffects;
+        Song End;
 
 
 
@@ -145,6 +150,8 @@ namespace BananaPopper
                         {
                             banana.Visible = false;
                             obstacle.Visible = false;
+                            soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/CrateBreak");
+                            soundEffects.Play();
                         }
                         banana.Visible = false;
                     }
@@ -168,6 +175,10 @@ namespace BananaPopper
                         if ((balloons as Balloon).hp == 0)
                         {
                             balloons.Visible = false;
+                            soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/BalloonPopping");
+                            soundEffects.Play();
+                           
+                          
                             hud.theScore.GetScore += (balloons as Balloon).score * (banana as Banana).ScoreMultiplier;
                             (banana as Banana).hitBalloonsAmount++;
                         }
@@ -224,6 +235,8 @@ namespace BananaPopper
             if (theBalloons.Children.Count() == 0)
             {
                 GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
+                //End = GameEnvironment.ContentManager.Load<Song>("Completion");
+                //MediaPlayer.Play(End);
             }
             else if (theBullets.Children.Count() == 0)
             {
@@ -268,6 +281,8 @@ namespace BananaPopper
 
             if (inputHelper.KeyPressed(Keys.Space))
             {
+                soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Woosh");
+                soundEffects.Play();
                 if (hud.theBananaCounter.Amount != 0)
                 {
                     foreach (Banana banana in theBullets.Children)

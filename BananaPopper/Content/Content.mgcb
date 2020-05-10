@@ -25,6 +25,12 @@
 /processorParam:TextureFormat=Color
 /build:arrowKey.png
 
+#begin Completion.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Completion.mp3
+
 #begin GameFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
@@ -112,6 +118,24 @@
 /processor:SongProcessor
 /processorParam:Quality=Best
 /build:MonkeyIslandBand.wma
+
+#begin SoundEffects/BalloonPopping.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/BalloonPopping.wav
+
+#begin SoundEffects/CrateBreak.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/CrateBreak.wav
+
+#begin SoundEffects/Woosh.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:SoundEffects/Woosh.wav
 
 #begin sprites/Background.png
 /importer:TextureImporter
