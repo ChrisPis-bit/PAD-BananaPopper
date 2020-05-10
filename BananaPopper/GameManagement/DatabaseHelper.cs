@@ -36,5 +36,20 @@ class DatabaseHelper
         }
         con.Close();
     }
+
+    public void ExecuteClosedQuery(string query)
+    {
+        try
+        {
+            string sql = query;
+
+            MySqlScript script = new MySqlScript(con, sql);
+            script.Execute();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
+    }
 }
 

@@ -41,9 +41,26 @@ namespace BananaPopper
 
         public PlayingState() : base()
         {
-            //StreamReader test = new StreamReader("Content/MapStats.txt");
-            Console.WriteLine(string.Join("", readRecord("1", "Content/MapStats.txt")));
-            Console.ReadLine();
+            //TEST CODE FOR UPDATING LEVEL SCORE
+
+            /*GameEnvironment.DatabaseHelper.con.Open();
+            MySqlCommand cmd = new MySqlCommand("SELECT * FROM zmult.Speler_has_Level WHERE Level_LevelNr = 1 AND Speler_idSpeler = 1;", GameEnvironment.DatabaseHelper.con);
+            MySqlDataReader cmdData = cmd.ExecuteReader();
+            if (cmdData.Read())
+            {
+                Console.WriteLine("yes");
+                cmdData.Close();
+                GameEnvironment.DatabaseHelper.ExecuteClosedQuery("Update zmult.Speler_has_Level SET Score = 10 WHERE Level_LevelNr = 1 AND Speler_idSpeler;");
+
+            }
+            else
+            {
+                Console.WriteLine("no");
+                cmdData.Close();
+                GameEnvironment.DatabaseHelper.ExecuteClosedQuery("INSERT INTO zmult.Speler_has_Level (Level_LevelNr, Speler_idSpeler, Score) VALUES (1, 1, 10);");
+            }
+            GameEnvironment.DatabaseHelper.con.Close();*/
+
 
             //code for database
             /*test = new MySqlConnection(connectionString);

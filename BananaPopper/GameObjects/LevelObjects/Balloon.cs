@@ -15,8 +15,6 @@ namespace BananaPopper
         public int hp = 1,
             score;
 
-        Texture2D test = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
-
         public const int BALLOON_SCORE = 50;
         private const float HITBOX_DOWNSCALE = 0.5f; //Defines how much smaller the hitbox is going to be from the original
 
@@ -26,7 +24,6 @@ namespace BananaPopper
             Scale = GameEnvironment.TextureScale;
             this.position = position - HitBox/2;
             HitBoxScale = HITBOX_DOWNSCALE;
-            GameEnvironment.ChangeColor(test, Color.Red);
         }
     }
 }
