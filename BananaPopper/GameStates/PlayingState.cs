@@ -41,7 +41,6 @@ namespace BananaPopper
         public int levelIndex = 1,
             highScore;
         SoundEffect soundEffects;
-        Song End;
 
 
 
@@ -155,6 +154,8 @@ namespace BananaPopper
                             soundEffects.Play();
                         }
                         banana.Visible = false;
+                        soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Box");
+                        soundEffects.Play();
                     }
                 }
 
@@ -236,12 +237,14 @@ namespace BananaPopper
             if (theBalloons.Children.Count() == 0)
             {
                 GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
-                End = GameEnvironment.ContentManager.Load<Song>("Completion");
-                MediaPlayer.Play(End);
+                soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Complete");
+                soundEffects.Play();
             }
             else if (theBullets.Children.Count() == 0)
             {
                 GameEnvironment.GameStateManager.SwitchTo("LevelFailed");
+                soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Failure");
+                soundEffects.Play();
             }
 
 
@@ -282,14 +285,14 @@ namespace BananaPopper
 
             if (inputHelper.KeyPressed(Keys.Space))
             {
-                soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Woosh");
-                soundEffects.Play();
                 if (hud.theBananaCounter.Amount != 0)
                 {
                     foreach (Banana banana in theBullets.Children)
                     {
                         if (!banana.shot)
                         {
+                            soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Woosh");
+                            soundEffects.Play();
                             banana.Shoot(thePlayer.centerPos, hud.theFormula.RC, hud.flipLine);
                             hud.theBananaCounter.Amount--;
                             break;
