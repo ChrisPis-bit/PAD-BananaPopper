@@ -286,3 +286,8 @@ C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\W
 C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\SoundEffects\Woosh.xnb
 C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Completion.wma
 C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Completion.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\SoundEffects\BalloonPopping.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\SoundEffects\CrateBreak.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\SoundEffects\Woosh.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Completion.wma
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Completion.xnb

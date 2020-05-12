@@ -38,7 +38,8 @@ namespace BananaPopper
         XYAxes theXYaxes;
         DirectionBox theDirectionBox;
 
-        public int levelIndex = 1;
+        public int levelIndex = 1,
+            highScore;
         SoundEffect soundEffects;
         Song End;
 
@@ -235,8 +236,8 @@ namespace BananaPopper
             if (theBalloons.Children.Count() == 0)
             {
                 GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
-                //End = GameEnvironment.ContentManager.Load<Song>("Completion");
-                //MediaPlayer.Play(End);
+                End = GameEnvironment.ContentManager.Load<Song>("Completion");
+                MediaPlayer.Play(End);
             }
             else if (theBullets.Children.Count() == 0)
             {
@@ -401,7 +402,7 @@ namespace BananaPopper
             hud.Reset();
             theXYaxes.ResetAxes(thePlayer.Oorsprong);
 
-
+            //Reads what bananas the player will have for this level from a textdocument
             for (int i = 0; i < readRecord(levelIndex.ToString(), "Content/MapStats.txt").Count(); i++)
             {
                 if (readRecord(levelIndex.ToString(), "Content/MapStats.txt")[i] == "e")
@@ -418,6 +419,22 @@ namespace BananaPopper
             }
 
             hud.theBananaCounter.ResetCounter(theBullets);
+
+            //Gets the highscore of this level
+            GameEnvironment.DatabaseHelper.con.Open();
+            MySqlCommand cmd = new MySqlCommand("SELECT Score FROM zmult.Speler_has_Level WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = 1;", GameEnvironment.DatabaseHelper.con);
+            MySqlDataReader cmdData = cmd.ExecuteReader();
+            if (cmdData.Read())
+            {
+                highScore = (int)cmdData[0];
+                cmdData.Close();
+            }
+            else
+            {
+                highScore = 0;
+                cmdData.Close();
+            }
+            GameEnvironment.DatabaseHelper.con.Close();
         }
 
 

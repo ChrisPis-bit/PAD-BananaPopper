@@ -13,6 +13,8 @@ class DatabaseHelper
 
     string connectionString = "server=oege.ie.hva.nl;user=mult;database=zmult;port=3306;password=hyxjnFq3hznpHMf+";
     public MySqlConnection con;
+    public bool online;
+    public int playerIndex;
 
     public DatabaseHelper()
     {

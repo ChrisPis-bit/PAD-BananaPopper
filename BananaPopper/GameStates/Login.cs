@@ -94,15 +94,20 @@ namespace BananaPopper
                 if (cmdData.Read())
                 {
                     Console.WriteLine(cmdData[0] + " -- " + cmdData[1] + " -- " + cmdData[2]);
+                    GameEnvironment.DatabaseHelper.playerIndex = (int)cmdData[0];
+                    cmdData.Close();
+
+                    (GameEnvironment.GameStateManager.GetGameState("LevelSelector") as LevelSelector).UpdateScores(GameEnvironment.DatabaseHelper.playerIndex);
 
                     //Switches to playingstate for now
                     GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
                 }
                 //If the account doesnt exist, it can't execute the Read() function
                 else
+                {
                     Console.WriteLine("Couldn't find account with this info");
-
-                cmdData.Close();
+                    cmdData.Close();
+                }
             }
             //For if the player doesn't have internet connection
             catch (Exception ex)
@@ -123,6 +128,9 @@ namespace BananaPopper
                 MySqlScript script = new MySqlScript(GameEnvironment.DatabaseHelper.con, sql);
                 script.Execute();
                 Console.WriteLine("Account created succesfully");
+                GameEnvironment.DatabaseHelper.con.Close();
+
+                LoginPlayer(userName, passWord);
 
                 //Switches to playingstate for now
                 GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
@@ -130,8 +138,8 @@ namespace BananaPopper
             catch (Exception ex)
             {
                 Console.WriteLine("Username taken, or no internet connection");
+                GameEnvironment.DatabaseHelper.con.Close();
             }
-            GameEnvironment.DatabaseHelper.con.Close();
         }
     }
 }
