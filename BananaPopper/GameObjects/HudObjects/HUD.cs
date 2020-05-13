@@ -10,7 +10,7 @@ namespace BananaPopper
     {
         Vector2 hudFlipPosition;
 
-        Button flipButton;
+        Button flipButton, restartButton;
         public bool flipLine;
 
         public SpriteGameObject theBG;
@@ -27,8 +27,10 @@ namespace BananaPopper
             Add(theBG = new SpriteGameObject("sprites/HudSprites/HUDbg"));
             theBG.Scale = (float)GameEnvironment.Screen.Y / theBG.texture.Height;
             Add(flipButton = new Button("sprites/HudSprites/FlipButton", new Vector2(20, GameEnvironment.Screen.Y / 6 * 4)));
+            Add(restartButton = new Button("sprites/Hudsprites/ReturnButton", new Vector2(20, GameEnvironment.Screen.Y / 6 * 3)));
             flipLine = true;
             flipButton.Scale = 3;
+            restartButton.Scale = 3;
             flipButton.Origin = Vector2.Zero;
 
             Add(theFormula = new Formula());

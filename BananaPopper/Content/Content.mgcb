@@ -149,6 +149,18 @@
 /processorParam:TextureFormat=Color
 /build:sprites/Background.png
 
+#begin sprites/HudSprites/back button.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:sprites/HudSprites/back button.png;sprites/HudSprites/ReturnButton.png
+
 #begin sprites/HudSprites/FlipButton.png
 /importer:TextureImporter
 /processor:TextureProcessor
