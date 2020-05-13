@@ -72,8 +72,7 @@ namespace BananaPopper
                 GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
             }
 
-            score = (int)(GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).hud.theScore.GetScore +
-                    (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).hud.theTimer.SecondsLeft;
+            score = (int)(GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).hud.theScore.GetScore;
             scoreText.text = "Score = " + score;
         }
 

@@ -35,7 +35,7 @@ namespace BananaPopper
                 Add(new Vine(new Vector2(GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale, origin.Y), (float)Math.PI/2));
 
                 Add(new TextGameObject(Color.White, new Vector2(0 + i * GameEnvironment.GlobalScale, origin.Y), 
-                    ((int)((0 + i * GameEnvironment.GlobalScale - origin.X) / GameEnvironment.GlobalScale)).ToString()));
+                    (Math.Round((0 + i * GameEnvironment.GlobalScale - origin.X) / GameEnvironment.GlobalScale)).ToString()));
             }
 
             for (int i = 0; i < GameEnvironment.Screen.Y / GameEnvironment.GlobalScale; i++)
@@ -43,7 +43,7 @@ namespace BananaPopper
                 Add(new Vine(new Vector2(origin.X, 0 + i * GameEnvironment.GlobalScale)));
 
                 Add(new TextGameObject(Color.White, new Vector2(origin.X, 0 + i * GameEnvironment.GlobalScale), 
-                    ((int)((0 + i * GameEnvironment.GlobalScale - origin.Y) / GameEnvironment.GlobalScale * -1)).ToString()));
+                    (Math.Round((0 + i * GameEnvironment.GlobalScale - origin.Y) / GameEnvironment.GlobalScale * -1)).ToString()));
             }
         }
     }

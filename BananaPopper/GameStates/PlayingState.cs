@@ -237,6 +237,7 @@ namespace BananaPopper
             //or loses (runs out of bananas)
             if (theBalloons.Children.Count() == 0)
             {
+                hud.theScore.GetScore += hud.theTimer.SecondsLeft;
                 UpdateScore();
                 GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
                 soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Complete");
