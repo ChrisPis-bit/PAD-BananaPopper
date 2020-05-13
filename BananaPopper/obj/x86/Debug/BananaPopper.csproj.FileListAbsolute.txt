@@ -292,6 +292,7 @@ C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\De
 C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\SoundEffects\BalloonPopping.xnb
 C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\SoundEffects\CrateBreak.xnb
 C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\SoundEffects\Woosh.xnb
-C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Completion.wma
-C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Completion.xnb
 C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\HudSprites\ReturnButton.xnb
+C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\SoundEffects\Box.xnb
+C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\SoundEffects\Complete.xnb
+C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\SoundEffects\Failure.xnb

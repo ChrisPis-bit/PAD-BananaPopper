@@ -48,24 +48,24 @@ namespace BananaPopper
         {
             //TEST CODE FOR UPDATING LEVEL SCORE
 
-           /* GameEnvironment.DatabaseHelper.con.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM zmult.Speler_has_Level WHERE Level_LevelNr = 1 AND Speler_idSpeler = 1;", GameEnvironment.DatabaseHelper.con);
-            MySqlDataReader cmdData = cmd.ExecuteReader();
-            if (cmdData.Read())
-            {
-                Console.WriteLine("yes");
-                cmdData.Close();
-                
-                GameEnvironment.DatabaseHelper.ExecuteClosedQuery("Update zmult.Speler_has_Level SET Score =" +hud.theScore.GetScore +"WHERE Level_LevelNr = 1 AND Speler_idSpeler;");
+            /* GameEnvironment.DatabaseHelper.con.Open();
+             MySqlCommand cmd = new MySqlCommand("SELECT * FROM zmult.Speler_has_Level WHERE Level_LevelNr = 1 AND Speler_idSpeler = 1;", GameEnvironment.DatabaseHelper.con);
+             MySqlDataReader cmdData = cmd.ExecuteReader();
+             if (cmdData.Read())
+             {
+                 Console.WriteLine("yes");
+                 cmdData.Close();
 
-            }
-            else
-            {
-                Console.WriteLine("no");
-                cmdData.Close();
-                GameEnvironment.DatabaseHelper.ExecuteClosedQuery("INSERT INTO zmult.Speler_has_Level (Level_LevelNr, Speler_idSpeler, Score) VALUES (1, 1, 10);");
-            }
-            GameEnvironment.DatabaseHelper.con.Close(); */
+                 GameEnvironment.DatabaseHelper.ExecuteClosedQuery("Update zmult.Speler_has_Level SET Score =" +hud.theScore.GetScore +"WHERE Level_LevelNr = 1 AND Speler_idSpeler;");
+
+             }
+             else
+             {
+                 Console.WriteLine("no");
+                 cmdData.Close();
+                 GameEnvironment.DatabaseHelper.ExecuteClosedQuery("INSERT INTO zmult.Speler_has_Level (Level_LevelNr, Speler_idSpeler, Score) VALUES (1, 1, 10);");
+             }
+             GameEnvironment.DatabaseHelper.con.Close(); */
 
 
             //code for database
@@ -180,8 +180,8 @@ namespace BananaPopper
                             balloons.Visible = false;
                             soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/BalloonPopping");
                             soundEffects.Play();
-                           
-                          
+
+
                             hud.theScore.GetScore += (balloons as Balloon).score * (banana as Banana).ScoreMultiplier;
                             (banana as Banana).hitBalloonsAmount++;
                         }
@@ -222,7 +222,7 @@ namespace BananaPopper
                 }
             }
 
-            for(int i = 0; i < theBalloons.Children.Count(); i++)
+            for (int i = 0; i < theBalloons.Children.Count(); i++)
             {
                 //Deletes popped balloons
                 if (!theBalloons.Children[i].Visible)
@@ -237,6 +237,7 @@ namespace BananaPopper
             //or loses (runs out of bananas)
             if (theBalloons.Children.Count() == 0)
             {
+                UpdateScore();
                 GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
                 soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Complete");
                 soundEffects.Play();
@@ -346,7 +347,7 @@ namespace BananaPopper
             //Changes GlobalScale according to the maps width or height, so that the map always fits on the screen
             if (map.Width / 13 >= map.Height / 9)
             {
-                GameEnvironment.GlobalScale = (float)GameEnvironment.Screen.X/16 * 13 / map.Width;
+                GameEnvironment.GlobalScale = (float)GameEnvironment.Screen.X / 16 * 13 / map.Width;
             }
             else
                 GameEnvironment.GlobalScale = (float)GameEnvironment.Screen.Y / map.Height;
@@ -441,8 +442,35 @@ namespace BananaPopper
             GameEnvironment.DatabaseHelper.con.Close();
         }
 
-
-
+        public void UpdateScore()
+        { try
+            {
+               int PlayerID = GameEnvironment.DatabaseHelper.playerIndex;
+                GameEnvironment.DatabaseHelper.con.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM zmult.Speler_has_Level WHERE Level_LevelNr = " + levelIndex +" AND Speler_idSpeler = " + PlayerID + ";", GameEnvironment.DatabaseHelper.con);
+                MySqlDataReader cmdData = cmd.ExecuteReader();
+                if (cmdData.Read())
+                {
+                    Console.WriteLine("yes");
+                    cmdData.Close();
+                    if (highScore < hud.theScore.GetScore)
+                    {
+                        GameEnvironment.DatabaseHelper.ExecuteClosedQuery("Update zmult.Speler_has_Level SET Score = " + hud.theScore.GetScore + " WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = " + PlayerID + ";");
+                    }
+                    
+                }
+                else
+                {
+                    Console.WriteLine("no");
+                    cmdData.Close();
+                    GameEnvironment.DatabaseHelper.ExecuteClosedQuery("INSERT INTO zmult.Speler_has_Level (Level_LevelNr, Speler_idSpeler, Score) VALUES (" +levelIndex+ "," +PlayerID+"," +hud.theScore.GetScore+");");
+                }
+            }
+            catch (Exception ex) 
+            { Console.WriteLine(ex.ToString()); }
+            GameEnvironment.DatabaseHelper.con.Close();
+        }
+    
         public static void addRecord(string level, string bullet, string eBullet, string filePath)
         {
             try
