@@ -4,6 +4,7 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/arrowKey.png</File>
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/Completion.mp3</File>
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont</File>
@@ -32,6 +33,7 @@
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Obstacle.png</File>
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Strong Balloon.png</File>
     <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Vines.png</File>
+
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
@@ -49,6 +51,8 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>sprites/HudSprites/ReturnButton.png</File>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

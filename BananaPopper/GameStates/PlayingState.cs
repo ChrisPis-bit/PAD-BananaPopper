@@ -38,9 +38,9 @@ namespace BananaPopper
         XYAxes theXYaxes;
         DirectionBox theDirectionBox;
 
-        public int levelIndex = 1;
+        public int levelIndex = 1,
+            highScore;
         SoundEffect soundEffects;
-        Song End;
 
 
 
@@ -155,6 +155,8 @@ namespace BananaPopper
                             soundEffects.Play();
                         }
                         banana.Visible = false;
+                        soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Box");
+                        soundEffects.Play();
                     }
                 }
 
@@ -236,12 +238,14 @@ namespace BananaPopper
             if (theBalloons.Children.Count() == 0)
             {
                 GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
-                //End = GameEnvironment.ContentManager.Load<Song>("Completion");
-                //MediaPlayer.Play(End);
+                soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Complete");
+                soundEffects.Play();
             }
             else if (theBullets.Children.Count() == 0)
             {
                 GameEnvironment.GameStateManager.SwitchTo("LevelFailed");
+                soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Failure");
+                soundEffects.Play();
             }
 
 
@@ -282,14 +286,14 @@ namespace BananaPopper
 
             if (inputHelper.KeyPressed(Keys.Space))
             {
-                soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Woosh");
-                soundEffects.Play();
                 if (hud.theBananaCounter.Amount != 0)
                 {
                     foreach (Banana banana in theBullets.Children)
                     {
                         if (!banana.shot)
                         {
+                            soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Woosh");
+                            soundEffects.Play();
                             banana.Shoot(thePlayer.centerPos, hud.theFormula.RC, hud.flipLine);
                             hud.theBananaCounter.Amount--;
                             break;
@@ -402,7 +406,7 @@ namespace BananaPopper
             hud.Reset();
             theXYaxes.ResetAxes(thePlayer.Oorsprong);
 
-
+            //Reads what bananas the player will have for this level from a textdocument
             for (int i = 0; i < readRecord(levelIndex.ToString(), "Content/MapStats.txt").Count(); i++)
             {
                 if (readRecord(levelIndex.ToString(), "Content/MapStats.txt")[i] == "e")
@@ -419,6 +423,22 @@ namespace BananaPopper
             }
 
             hud.theBananaCounter.ResetCounter(theBullets);
+
+            //Gets the highscore of this level
+            GameEnvironment.DatabaseHelper.con.Open();
+            MySqlCommand cmd = new MySqlCommand("SELECT Score FROM zmult.Speler_has_Level WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = 1;", GameEnvironment.DatabaseHelper.con);
+            MySqlDataReader cmdData = cmd.ExecuteReader();
+            if (cmdData.Read())
+            {
+                highScore = (int)cmdData[0];
+                cmdData.Close();
+            }
+            else
+            {
+                highScore = 0;
+                cmdData.Close();
+            }
+            GameEnvironment.DatabaseHelper.con.Close();
         }
 
 

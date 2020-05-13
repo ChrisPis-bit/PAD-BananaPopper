@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MySql.Data.MySqlClient;
 
 namespace BananaPopper
 {
@@ -24,6 +25,9 @@ namespace BananaPopper
         // buttonoffset = distance between side and first button.
         // buttondistance = distance between each button.
         const int BUTTONOFFSET = 100, BUTTONDISTANCE = 200;
+
+        public List<int> scoreList = new List<int>();
+
         public LevelSelector() : base()
         {
             levelCounter = System.IO.Directory.GetFiles("Content/Maps").Length;
@@ -43,9 +47,8 @@ namespace BananaPopper
                 }
             }
             Add(theMouse = new SpriteGameObject(mouse));
-
-
         }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
@@ -67,6 +70,36 @@ namespace BananaPopper
             base.HandleInput(inputHelper);
 
             theMouse.position = inputHelper.MousePosition;
+        }
+
+        public void UpdateScores(int playerIndex)
+        {
+            scoreList.Clear();
+
+
+            //Query gets all scores ascending from the level number
+            MySqlCommand cmd = new MySqlCommand("SELECT Score FROM zmult.Speler_has_Level WHERE Speler_idSpeler = " + playerIndex + " order by Level_LevelNr asc;", GameEnvironment.DatabaseHelper.con);
+            MySqlDataReader cmdData = cmd.ExecuteReader();
+
+            for (int i = 0; i < levelCounter; i++)
+            {
+                //Adds a score to the list if the level has a score
+                if (cmdData.Read())
+                {
+                    scoreList.Add((int)cmdData[0]);
+                }
+                //If it doesnt have a score, the score will be 0
+                else
+                {
+                    scoreList.Add(0);
+                }
+            }
+            cmdData.Close();
+
+            for(int i = 0; i < scoreList.Count(); i++)
+            {
+                Console.WriteLine(scoreList[i]);
+            }
         }
     }
 }
