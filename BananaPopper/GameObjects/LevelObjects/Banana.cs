@@ -13,25 +13,36 @@ namespace BananaPopper
     class Banana : SpriteGameObject
     {
         //This bool will stay true after being shot AND hitting an object
-        public bool shot;
+        private const float SCORE_MULT_INCREASE = 0.25f,
+            SCORE_MULT_START = 1;
 
-        public Banana() : base("sprites/IngameSprites/Banana")
+        public bool shot;
+        public int hitBalloonsAmount;
+        private float scoreMult;
+
+        public Banana(string assetName = "sprites/IngameSprites/Banana") : base(assetName)
         {
-            //GameEnvironment.ChangeColor(texture, Color.Yellow);
-            scale = GameEnvironment.TextureScale / 2;
+            scoreMult = SCORE_MULT_START;
             Visible = false;
             shot = false;
         }
 
         public override void Update(GameTime gameTime)
         {
+            scoreMult = SCORE_MULT_START + SCORE_MULT_INCREASE * hitBalloonsAmount;
 
             base.Update(gameTime);
+            angle -= 0.2f;
         }
 
         public void Shoot(Vector2 position, float speed, bool flipLine)
         {
-            this.position = position - new Vector2(texture.Width/2, texture.Height/2);
+            hitBalloonsAmount = 0;
+            Origin = new Vector2(texture.Width / 2, texture.Height / 2);
+
+            Scale = GameEnvironment.TextureScale / 2;
+            this.position = position;
+
             Visible = true;
             shot = true;
 
@@ -45,6 +56,13 @@ namespace BananaPopper
             }
 
             velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 300;
+
+            angle = 0;
+        }
+
+        public float ScoreMultiplier
+        {
+            get { return scoreMult; }
         }
     }
 }

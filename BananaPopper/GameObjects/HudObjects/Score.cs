@@ -9,12 +9,12 @@ namespace BananaPopper
 {
     class Score : TextGameObject
     {
-        private int score;
+        private float score;
+        private const int xOffset = 10;
 
         public Score() : base(Color.White, Vector2.Zero, "Score = 0")
-        {
-            
-            position.Y = GameEnvironment.Screen.Y / 5;
+        {        
+            position = new Vector2 (xOffset, GameEnvironment.Screen.Y / 6);
 
             Reset();
         }
@@ -26,13 +26,13 @@ namespace BananaPopper
             score = 0;
         }
 
-        public int GetScore
+        public float GetScore
         {
             get { return score; }
             set
             {
                 score = value;
-                text = "Score = " + score;
+                text = "Score = " + (int)score;
             }
         }
     }

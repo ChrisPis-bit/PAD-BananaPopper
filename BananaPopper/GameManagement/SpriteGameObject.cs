@@ -9,9 +9,12 @@ using System.Threading.Tasks;
 class SpriteGameObject : GameObject
 {
     public Texture2D texture;
-    public Vector2 origin, hitbox;
-    public float angle,
-        scale;
+    public Texture2D hitBoxTest;
+
+    public SpriteEffects spriteEffect;
+    protected Vector2 origin, hitbox;
+    public float angle;
+    protected float scale, hitboxScale;
 
     public SpriteGameObject(String assetName, float angle = 0)
     {
@@ -19,9 +22,9 @@ class SpriteGameObject : GameObject
             texture = GameEnvironment.ContentManager.Load<Texture2D>(assetName);
 
         this.angle = angle;
-        origin = new Vector2(texture.Width / 2, texture.Height / 2);
-        scale = 1;
-
+        Origin = Vector2.Zero;
+        Scale = 1;
+        spriteEffect = SpriteEffects.None;
         Reset();
     }
 
@@ -30,16 +33,14 @@ class SpriteGameObject : GameObject
         this.texture = texture;
 
         this.angle = angle;
-        origin = new Vector2(texture.Width / 2, texture.Height / 2);
-        scale = 1;
-        hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
+        Origin = Vector2.Zero;
+        Scale = 1;
+        Reset();
     }
 
     public override void Reset()
     {
         base.Reset();
-
-        hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
     }
 
     public Vector2 HitBox
@@ -49,18 +50,50 @@ class SpriteGameObject : GameObject
 
     public Vector2 HitBoxPosition
     {
-        get { return new Vector2(GlobalPosition.X - (hitbox.X / 2 - texture.Width / 2), GlobalPosition.Y - (hitbox.Y / 2 - texture.Height / 2)); }
+        get { return GlobalPosition - Origin * Scale + (new Vector2(texture.Width * Scale, texture.Height * Scale) / 2 - HitBox / 2); }
+    }
+
+    public Vector2 Origin
+    {
+        get { return origin; }
+        set
+        {
+            origin = value;
+        }
+    }
+
+    public float Scale
+    {
+        get { return scale; }
+        set
+        {
+            scale = value;
+            hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
+            //hitBoxTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, (int)HitBox.X, (int)HitBox.Y);
+        }
+    }
+
+    public float HitBoxScale
+    {
+        get { return hitboxScale; }
+        set
+        {
+            hitbox *= value;
+            hitboxScale = value;
+        }
     }
 
     public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
     {
+        /*GameEnvironment.ChangeColor(hitBoxTest, Color.Red);
+        spriteBatch.Draw(hitBoxTest, HitBoxPosition, Color.White);*/
+
         if (visible)
-            //spriteBatch.Draw(texture, GlobalPosition, Color.White);
-            spriteBatch.Draw(texture, GlobalPosition + origin, null, Color.White,
+            spriteBatch.Draw(texture, GlobalPosition, null, Color.White,
              angle,
-             origin,
-             scale,
-             SpriteEffects.None, 0f);
+             Origin,
+             Scale,
+             spriteEffect, 0f);
     }
 
     public override void Update(GameTime gameTime)

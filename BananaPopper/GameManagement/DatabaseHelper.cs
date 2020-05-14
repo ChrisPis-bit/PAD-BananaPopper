@@ -13,6 +13,8 @@ class DatabaseHelper
 
     string connectionString = "server=oege.ie.hva.nl;user=mult;database=zmult;port=3306;password=hyxjnFq3hznpHMf+";
     public MySqlConnection con;
+    public bool online;
+    public int playerIndex;
 
     public DatabaseHelper()
     {
@@ -35,6 +37,21 @@ class DatabaseHelper
             Console.WriteLine(ex.ToString());
         }
         con.Close();
+    }
+
+    public void ExecuteClosedQuery(string query)
+    {
+        try
+        {
+            string sql = query;
+
+            MySqlScript script = new MySqlScript(con, sql);
+            script.Execute();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+        }
     }
 }
 

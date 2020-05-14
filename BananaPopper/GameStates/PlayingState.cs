@@ -13,47 +13,60 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.IO;
 using BananaPopper.GameObjects;
+using Microsoft.Xna.Framework.Audio;
+using System.Collections.Generic;
+using Microsoft.Xna.Framework.Media;
 
 namespace BananaPopper
 {
     class PlayingState : GameObjectList
     {
-        string connectionString = "server=oege.ie.hva.nl;user=lokhorc;database=zlokhorc;port=3306;password=dw5dZKtaln1AHIK2";
-        MySqlConnection test;
-
-
         //All temporary textures for prototype
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
-        Texture2D grid = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 1, 1);
 
         GameObjectList theObstacles = new GameObjectList(),
          theBullets = new GameObjectList(),
-         theEBullets = new GameObjectList(),
          theBalloons = new GameObjectList(),
          thePlusBanana = new GameObjectList();
 
-        HUD hud;
+        public HUD hud;
         SpriteGameObject theMouse;
         Player thePlayer;
         PopAnimation thePopAnimation;
         XYAxes theXYaxes;
         DirectionBox theDirectionBox;
 
-        int iRc = 0;
-        int count;
-        bool fire = true;
-        bool Efire = false;
-        float[] rc = new float[] { 1, -1, 0.5f, -0.5f, 0.66f }; //Defines the a in y=ax+b
+        public int levelIndex = 1,
+            highScore;
+        SoundEffect soundEffects;
 
 
 
         public PlayingState() : base()
         {
-            //StreamReader test = new StreamReader("Content/MapStats.txt");
-            Console.WriteLine(string.Join("", readRecord("1", "Content/MapStats.txt", 1)));
-            Console.ReadLine();
+            //TEST CODE FOR UPDATING LEVEL SCORE
+
+            /* GameEnvironment.DatabaseHelper.con.Open();
+             MySqlCommand cmd = new MySqlCommand("SELECT * FROM zmult.Speler_has_Level WHERE Level_LevelNr = 1 AND Speler_idSpeler = 1;", GameEnvironment.DatabaseHelper.con);
+             MySqlDataReader cmdData = cmd.ExecuteReader();
+             if (cmdData.Read())
+             {
+                 Console.WriteLine("yes");
+                 cmdData.Close();
+
+                 GameEnvironment.DatabaseHelper.ExecuteClosedQuery("Update zmult.Speler_has_Level SET Score =" +hud.theScore.GetScore +"WHERE Level_LevelNr = 1 AND Speler_idSpeler;");
+
+             }
+             else
+             {
+                 Console.WriteLine("no");
+                 cmdData.Close();
+                 GameEnvironment.DatabaseHelper.ExecuteClosedQuery("INSERT INTO zmult.Speler_has_Level (Level_LevelNr, Speler_idSpeler, Score) VALUES (1, 1, 10);");
+             }
+             GameEnvironment.DatabaseHelper.con.Close(); */
+
 
             //code for database
             /*test = new MySqlConnection(connectionString);
@@ -76,15 +89,14 @@ namespace BananaPopper
             GameEnvironment.ChangeColor(lineTest, Color.Blue);
             GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
             GameEnvironment.ChangeColor(mouse, Color.White);
-            GameEnvironment.ChangeColor(grid, new Color(Color.ForestGreen, 200));
 
             theMouse = new SpriteGameObject(mouse);
             hud = new HUD();
             theXYaxes = new XYAxes();
             thePlayer = new Player();
 
-            //Put which level you wanna start in the brackets
-            StartLevel(5);
+            //Put which level you want to start in the brackets
+            Reset();
 
             //Add GameObjects here
             Add(new Background());
@@ -93,19 +105,21 @@ namespace BananaPopper
             Add(thePlusBanana);
             Add(thePopAnimation = new PopAnimation());
             Add(theBullets);
-            Add(theEBullets);
             Add(theDirectionBox = new DirectionBox());
             Add(theXYaxes);
             Add(thePlayer);
             Add(hud);
             Add(theMouse);
-
-
-
-            
-
         }
 
+
+        //Restarts the level for when you want to re-do it
+        public override void Reset()
+        {
+            base.Reset();
+
+            StartLevel(levelIndex);
+        }
 
         public override void Update(GameTime gameTime)
         {
@@ -133,7 +147,16 @@ namespace BananaPopper
                 {
                     if (obstacle.Overlaps(banana))
                     {
+                        if (banana is ExplosiveBanana)
+                        {
+                            banana.Visible = false;
+                            obstacle.Visible = false;
+                            soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/CrateBreak");
+                            soundEffects.Play();
+                        }
                         banana.Visible = false;
+                        soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Box");
+                        soundEffects.Play();
                     }
                 }
 
@@ -155,106 +178,28 @@ namespace BananaPopper
                         if ((balloons as Balloon).hp == 0)
                         {
                             balloons.Visible = false;
+                            soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/BalloonPopping");
+                            soundEffects.Play();
 
-                            //TEMPORARY SCORE
-                            hud.theScore.GetScore += (balloons as Balloon).score;
+
+                            hud.theScore.GetScore += (balloons as Balloon).score * (banana as Banana).ScoreMultiplier;
+                            (banana as Banana).hitBalloonsAmount++;
                         }
                         else { banana.Visible = false; }
-                    }
-                }
 
-                /*if(ballons==0)
-                {
-                    //Switches the screen to the level cleared screen
-                   // GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
-               // }
-                //else if (banana== 0)
-                //{
-                    //Switches the screen to the level failed screen
-                    GameEnvironment.GameStateManager.SwitchTo("LevelFailed");
-                }*/
-            }
-
-
-
-
-
-            foreach (SpriteGameObject eBanana in theEBullets.Children)
-            {
-                if (eBanana.position.X + eBanana.HitBox.X < 0 || eBanana.position.X > GameEnvironment.Screen.X ||
-                    eBanana.position.Y + eBanana.HitBox.Y < 0 || eBanana.position.Y > GameEnvironment.Screen.Y)
-                {
-                    eBanana.Visible = false;
-                }
-
-                foreach (Obstacle obstacle in theObstacles.Children)
-                {
-                    if (obstacle.Overlaps(eBanana))
-                    {
-                        (obstacle as Obstacle).ObstacleHP--;
-
-                        if (obstacle is InvisibleBalloon)
+                        if (banana is ExplosiveBanana)
                         {
-                            thePopAnimation.position = obstacle.position;
-                            thePopAnimation.Visible = true;
-                        }
-
-                        if ((obstacle as Obstacle).ObstacleHP == 0)
-                        {
-                            obstacle.Visible = false;
-                            eBanana.Visible = false;
-                        }
-
-                    }
-                }
-            }
-
-            foreach (SpriteGameObject eBanana in theEBullets.Children)
-            {
-                foreach (SpriteGameObject balloons in theBalloons.Children)
-                {
-                    if (balloons.Overlaps(eBanana))
-                    {
-                        (balloons as Balloon).hp--;
-                        if (balloons is InvisibleBalloon)
-                        {
-                            thePopAnimation.position = balloons.position;
-                            thePopAnimation.Visible = true;
-                        }
-
-                        if ((balloons as Balloon).hp == 0)
-                        {
+                            banana.Visible = false;
                             balloons.Visible = false;
-                            eBanana.Visible = false;
-
                         }
                     }
                 }
             }
 
 
-            foreach (SpriteGameObject eBanana in theEBullets.Children)
-            {
-                foreach (SpriteGameObject plusBanana in thePlusBanana.Children)
-                {
-                    if (plusBanana.Overlaps(eBanana))
-                    {
 
-                        plusBanana.Visible = false;
-                        eBanana.Visible = false;
-                        hud.numBananas++;
-                    }
-                }
-            }
 
-            if (iRc >= rc.Length)
-            {
-                iRc = 0;
-            }
-            else if (iRc < 0)
-            {
-                iRc = rc.Length - 1;
-            }
+
 
             for (int i = 0; i < theBullets.Children.Count(); i++)
             {
@@ -265,7 +210,7 @@ namespace BananaPopper
                     {
                         plusBanana.Visible = false;
                         theBullets.Add(new Banana());
-                        hud.numBananas++;
+                        hud.theBananaCounter.Amount++;
                     }
                 }
 
@@ -273,22 +218,45 @@ namespace BananaPopper
                 if (!theBullets.Children[i].Visible && (theBullets.Children[i] as Banana).shot)
                 {
                     theBullets.remove(theBullets.Children[i]);
+                    i--;
                 }
             }
 
-            for (int i = 0; i < theEBullets.Children.Count(); i++)
+            for (int i = 0; i < theBalloons.Children.Count(); i++)
             {
-                if (!theEBullets.Children[i].Visible)
+                //Deletes popped balloons
+                if (!theBalloons.Children[i].Visible)
                 {
-                    theEBullets.remove(theEBullets.Children[i]);
+                    theBalloons.remove(theBalloons.Children[i]);
+                    i--;
                 }
             }
 
+
+            //Switches game state if the player wins (pops all balloons)
+            //or loses (runs out of bananas)
+            if (theBalloons.Children.Count() == 0)
+            {
+                hud.theScore.GetScore += hud.theTimer.SecondsLeft;
+                UpdateScore();
+                GameEnvironment.GameStateManager.SwitchTo("LevelCleared");
+                soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Complete");
+                soundEffects.Play();
+            }
+            else if (theBullets.Children.Count() == 0)
+            {
+                GameEnvironment.GameStateManager.SwitchTo("LevelFailed");
+                soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Failure");
+                soundEffects.Play();
+            }
 
 
             //Updates the formula on screen
-            hud.theFormula.UpdateFormula(rc[iRc], thePlayer.centerPos, thePlayer.Oorsprong, hud.flipLine);
+            hud.theFormula.UpdateFormula(thePlayer.centerPos, thePlayer.Oorsprong, hud.flipLine);
+
             theDirectionBox.UpdateDirection(hud.flipLine, thePlayer.centerPos);
+
+            thePlayer.Flip(hud.flipLine);
         }
 
 
@@ -298,9 +266,7 @@ namespace BananaPopper
         {
             base.HandleInput(inputHelper);
 
-            //For testing, changes line direction
-            if (inputHelper.KeyPressed(Keys.Up)) iRc += 1;
-            if (inputHelper.KeyPressed(Keys.Down)) iRc -= 1;
+
 
             //For testing, flips line
             if (inputHelper.KeyPressed(Keys.F))
@@ -319,59 +285,24 @@ namespace BananaPopper
             }
 
             theMouse.position = inputHelper.MousePosition;
-            if (fire)
+
+            if (inputHelper.KeyPressed(Keys.Space))
             {
-                if (inputHelper.KeyPressed(Keys.Space))
+                if (hud.theBananaCounter.Amount != 0)
                 {
-                    if (hud.numBananas != 0)
+                    foreach (Banana banana in theBullets.Children)
                     {
-                        foreach (Banana banana in theBullets.Children)
+                        if (!banana.shot)
                         {
-                            if (!banana.shot)
-                            {
-                                banana.Shoot(thePlayer.centerPos, rc[iRc], hud.flipLine);
-                                hud.numBananas--;
-                                break;
-                            }
+                            soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Woosh");
+                            soundEffects.Play();
+                            banana.Shoot(thePlayer.centerPos, hud.theFormula.RC, hud.flipLine);
+                            hud.theBananaCounter.Amount--;
+                            break;
                         }
                     }
                 }
             }
-
-            if (hud.numBananas == count)
-            {
-                fire = false;
-                if (fire == false)
-                {
-                    if (Efire)
-                    {
-                        if (inputHelper.KeyPressed(Keys.Space))
-                        {
-                            fire = false;
-                            if (hud.numEBananas != 0)
-                            {
-                                theEBullets.Add(new ExplosiveBanana(thePlayer.centerPos, rc[iRc], hud.flipLine));
-                                hud.numEBananas--;
-                            }
-                        }
-                    }
-                }
-            }
-
-
-
-            if (hud.numBananas == 5)
-            {
-                count = 5;
-                Efire = true;
-            }
-
-            if (hud.numEBananas == 0)
-            {
-                fire = true;
-            }
-
-
         }
 
 
@@ -383,15 +314,7 @@ namespace BananaPopper
                new Rectangle(0, 0, bg.Width, bg.Height),
                Color.White);
 
-            for (int i = 0; i < 30; i++)
-            {
-                LineRenderer.DrawLine(spriteBatch, grid, new Vector2((GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale), 0), new Vector2(GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale, GameEnvironment.Screen.Y));
-            }
 
-            for (int j = 0; j < 15; j++)
-            {
-                LineRenderer.DrawLine(spriteBatch, grid, new Vector2(GameEnvironment.Screen.X, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale), new Vector2(0, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale));
-            }
 
             //Draws a test line, startPosLine must be player coords
             // LineRenderer.DrawLine(spriteBatch, lineTest, thePlayer.centerPos, theFormula.end);
@@ -403,12 +326,13 @@ namespace BananaPopper
 
         public void StartLevel(int levelIndex)
         {
+            this.levelIndex = levelIndex;
+
             //Clears all lists for reset
             theBalloons.Children.Clear();
             theObstacles.Children.Clear();
             thePlusBanana.Children.Clear();
             theBullets.Children.Clear();
-            theEBullets.Children.Clear();
 
             //Colors for game objects, use these colors for maps
             Color balloon = new Color(255, 0, 0),
@@ -422,12 +346,12 @@ namespace BananaPopper
             Texture2D map = GameEnvironment.ContentManager.Load<Texture2D>("Maps/Map" + levelIndex);
 
             //Changes GlobalScale according to the maps width or height, so that the map always fits on the screen
-            if (GameEnvironment.Screen.X / map.Width / 16 >= GameEnvironment.Screen.Y / map.Height / 9)
+            if (map.Width / 13 >= map.Height / 9)
             {
-                GameEnvironment.GlobalScale = GameEnvironment.Screen.X / map.Width;
+                GameEnvironment.GlobalScale = (float)GameEnvironment.Screen.X / 16 * 13 / map.Width;
             }
             else
-                GameEnvironment.GlobalScale = GameEnvironment.Screen.Y / map.Height;
+                GameEnvironment.GlobalScale = (float)GameEnvironment.Screen.Y / map.Height;
 
 
 
@@ -476,7 +400,7 @@ namespace BananaPopper
             {
                 if (balloons is InvisibleBalloon)
                 {
-                    invPoints.Add(balloons.position);
+                    invPoints.Add(balloons.GlobalPosition);
                 }
             }
 
@@ -484,15 +408,70 @@ namespace BananaPopper
             hud.Reset();
             theXYaxes.ResetAxes(thePlayer.Oorsprong);
 
-            //Adds banana's to the list
-            for (int iBanana = 0; iBanana < hud.numBananas; iBanana++)
+            //Reads what bananas the player will have for this level from a textdocument
+            for (int i = 0; i < readRecord(levelIndex.ToString(), "Content/MapStats.txt").Count(); i++)
             {
-                theBullets.Add(new Banana());
+                if (readRecord(levelIndex.ToString(), "Content/MapStats.txt")[i] == "e")
+                {
+                    theBullets.Add(new ExplosiveBanana());
+                    Console.WriteLine('e');
+                }
+
+                if (readRecord(levelIndex.ToString(), "Content/MapStats.txt")[i] == "b")
+                {
+                    theBullets.Add(new Banana());
+                    Console.WriteLine('b');
+                }
             }
+
+            hud.theBananaCounter.ResetCounter(theBullets);
+
+            //Gets the highscore of this level
+            GameEnvironment.DatabaseHelper.con.Open();
+            MySqlCommand cmd = new MySqlCommand("SELECT Score FROM zmult.Speler_has_Level WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = 1;", GameEnvironment.DatabaseHelper.con);
+            MySqlDataReader cmdData = cmd.ExecuteReader();
+            if (cmdData.Read())
+            {
+                highScore = (int)cmdData[0];
+                cmdData.Close();
+            }
+            else
+            {
+                highScore = 0;
+                cmdData.Close();
+            }
+            GameEnvironment.DatabaseHelper.con.Close();
         }
 
-
-
+        public void UpdateScore()
+        { try
+            {
+               int PlayerID = GameEnvironment.DatabaseHelper.playerIndex;
+                GameEnvironment.DatabaseHelper.con.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM zmult.Speler_has_Level WHERE Level_LevelNr = " + levelIndex +" AND Speler_idSpeler = " + PlayerID + ";", GameEnvironment.DatabaseHelper.con);
+                MySqlDataReader cmdData = cmd.ExecuteReader();
+                if (cmdData.Read())
+                {
+                    Console.WriteLine("yes");
+                    cmdData.Close();
+                    if (highScore < hud.theScore.GetScore)
+                    {
+                        GameEnvironment.DatabaseHelper.ExecuteClosedQuery("Update zmult.Speler_has_Level SET Score = " + hud.theScore.GetScore + " WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = " + PlayerID + ";");
+                    }
+                    
+                }
+                else
+                {
+                    Console.WriteLine("no");
+                    cmdData.Close();
+                    GameEnvironment.DatabaseHelper.ExecuteClosedQuery("INSERT INTO zmult.Speler_has_Level (Level_LevelNr, Speler_idSpeler, Score) VALUES (" +levelIndex+ "," +PlayerID+"," +hud.theScore.GetScore+");");
+                }
+            }
+            catch (Exception ex) 
+            { Console.WriteLine(ex.ToString()); }
+            GameEnvironment.DatabaseHelper.con.Close();
+        }
+    
         public static void addRecord(string level, string bullet, string eBullet, string filePath)
         {
             try
@@ -508,19 +487,18 @@ namespace BananaPopper
             }
         }
 
-        public static string[] readRecord(string searchTerm, string filePath, int positionOfSearchTerm)
+        public static string[] readRecord(string searchTerm, string filePath)
         {
-            positionOfSearchTerm--;
             string[] recordNotFound = { "Record not found" };
 
             try
             {
                 string[] lines = System.IO.File.ReadAllLines(@filePath);
 
-                for(int i = 0; i < lines.Length; i++)
+                for (int i = 0; i < lines.Length; i++)
                 {
                     string[] fields = lines[i].Split(',');
-                    if(recordMatches(searchTerm, fields, positionOfSearchTerm))
+                    if (recordMatches(searchTerm, fields))
                     {
                         Console.WriteLine("Record found");
                         return fields;
@@ -528,7 +506,7 @@ namespace BananaPopper
                 }
                 return recordNotFound;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("This program is doing something wrong");
                 return recordNotFound;
@@ -536,21 +514,21 @@ namespace BananaPopper
             }
         }
 
-        public static bool recordMatches(string searchTerm, string[] record, int positionOfSearchTerm)
+        public static bool recordMatches(string searchTerm, string[] record)
         {
-            if(record[positionOfSearchTerm].Equals(searchTerm))
+            if (record[0].Equals(searchTerm))
             {
                 return true;
             }
             return false;
         }
-            
-         
-    
 
 
-       
 
-       
+
+
+
+
+
     }
 }

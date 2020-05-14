@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 
 namespace BananaPopper
 {
-    class Startup : GameObjectList
+    class Startup : MenuState
     {
-        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y),
-         tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
+        Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
             mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         Button login, createAccount, offline;
 
@@ -21,9 +20,7 @@ namespace BananaPopper
         {
             GameEnvironment.ChangeColor(tempButton, Color.Green);
             GameEnvironment.ChangeColor(mouse, Color.White);
-            GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
 
-            Add(new SpriteGameObject(bg));
 
             Add(login = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10)));
             Add(createAccount = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 3)));
@@ -34,13 +31,16 @@ namespace BananaPopper
             Add(new TextGameObject(Color.White, offline.position, "Play Offline"));
 
             Add(theMouse = new SpriteGameObject(mouse));
-
-            theMouse.scale = 1;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
+            if (backButton.isPressed)
+            {
+                GameEnvironment.GameStateManager.SwitchTo("TitleMenuState");
+            }
 
             //Button presses for each button on screen
             if (login.isPressed)

@@ -20,6 +20,9 @@ namespace BananaPopper
 
         SpriteGameObject theMouse;
 
+        TextGameObject scoreText;
+        private int score;
+
         public LevelCleared() : base()
         {
             GameEnvironment.ChangeColor(tempButton, Color.Green);
@@ -28,18 +31,16 @@ namespace BananaPopper
 
             Add(new SpriteGameObject(bg));
 
-            Add(nextLevel = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10)));
-            Add(homeScreen = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*5)));
+            Add(nextLevel = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 3)));
+            Add(homeScreen = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 5)));
 
             Add(new TextGameObject(Color.White, nextLevel.position, "Next Level"));
             Add(new TextGameObject(Color.White, homeScreen.position, "Home"));
 
             Add(theMouse = new SpriteGameObject(mouse));
 
-            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 2), "Level Cleared"));
-            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 4, GameEnvironment.Screen.Y / 2), "well done"));
-
-            theMouse.scale = 1;
+            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10), "Level Cleared, Well Done!"));
+            Add(scoreText = new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10 * 2)));
         }
 
         public override void Update(GameTime gameTime)
@@ -49,14 +50,30 @@ namespace BananaPopper
             //Button presses for each button on screen
             if (nextLevel.isPressed)
             {
-                //Switches to startup screen so the player can choose how they want to start the game
-                GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
+                if ((GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex >= (GameEnvironment.GameStateManager.GetGameState("LevelSelector") as LevelSelector).levelCounter)
+                {
+                    GameEnvironment.GameStateManager.SwitchTo("LevelSelector");
+
+                }
+                else
+                {
+
+                    //Switches to startup screen so the player can choose how they want to start the game
+                    (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex++;
+                    (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel((GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex);
+                    GameEnvironment.GameStateManager.SwitchTo("PlayingState");
+                }
             }
-            else if(homeScreen.isPressed)
+            else if (homeScreen.isPressed)
             {
+                (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex++;
+                (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel((GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex);
 
                 GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
             }
+
+            score = (int)(GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).hud.theScore.GetScore;
+            scoreText.text = "Score = " + score;
         }
 
 

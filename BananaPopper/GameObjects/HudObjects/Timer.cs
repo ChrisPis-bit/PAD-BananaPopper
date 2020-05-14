@@ -12,6 +12,7 @@ namespace BananaPopper
     class Timer : TextGameObject
     {
         const int BEGIN_TIME = 300;
+        private const int xOffset = 10;
 
         private int elapsedFrames,
             elapsedSeconds,
@@ -19,7 +20,7 @@ namespace BananaPopper
 
         public Timer() : base(Color.White, Vector2.Zero)
         {
-            position.Y = GameEnvironment.Screen.Y / 5 + GameEnvironment.Screen.Y / 10;
+            position = new Vector2(xOffset, GameEnvironment.Screen.Y / 6 * 2);
         }
 
         public override void Reset()
@@ -46,6 +47,11 @@ namespace BananaPopper
             }
 
             text = "Time: " + displayedSeconds;
+        }
+
+        public int SecondsLeft
+        {
+            get { return displayedSeconds; }
         }
     }
 }
