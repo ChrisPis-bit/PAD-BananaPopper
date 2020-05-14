@@ -10,18 +10,17 @@ namespace BananaPopper
 {
     class MenuState : GameObjectList
     {
-        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y),
-            mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
+        Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         protected Button backButton;
-        public SpriteGameObject theMouse;
+        protected SpriteGameObject theMouse, backGround;
 
 
         public MenuState() : base()
         {
             GameEnvironment.ChangeColor(mouse, Color.White);
-            GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
 
-            Add(new SpriteGameObject(bg));
+            Add(backGround = new SpriteGameObject("sprites/Background"));
+            backGround.Scale = (float)GameEnvironment.Screen.X / backGround.texture.Width;
 
             Add(backButton = new Button("arrowKey", Vector2.Zero, -(float)Math.PI/2));
             backButton.Origin = new Vector2(backButton.texture.Width/2, backButton.texture.Height/2);

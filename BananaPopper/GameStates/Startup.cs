@@ -10,25 +10,19 @@ namespace BananaPopper
 {
     class Startup : MenuState
     {
-        Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
-            mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
-        Button login, createAccount, offline;
+        Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
+        MenuButton login, createAccount, offline;
 
         SpriteGameObject theMouse;
 
         public Startup() : base()
         {
-            GameEnvironment.ChangeColor(tempButton, Color.Green);
             GameEnvironment.ChangeColor(mouse, Color.White);
 
 
-            Add(login = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10)));
-            Add(createAccount = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 3)));
-            Add(offline = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 5)));
-
-            Add(new TextGameObject(Color.White, login.position, "Login"));
-            Add(new TextGameObject(Color.White, createAccount.position, "Create Account"));
-            Add(new TextGameObject(Color.White, offline.position, "Play Offline"));
+            Add(login = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10), "Login"));
+            Add(createAccount = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 3), "Create Account"));
+            Add(offline = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 5), "Offline"));
 
             Add(theMouse = new SpriteGameObject(mouse));
         }

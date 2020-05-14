@@ -7,31 +7,29 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 
-
-
 namespace BananaPopper
 {
     class TitleMenuState : MenuState
     {
         Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
                mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
-        Button startGame;
+        MenuButton startGame;
 
-        SpriteGameObject theMouse;
+        SpriteGameObject theMouse, title;
 
         public TitleMenuState() : base()
         {
             GameEnvironment.ChangeColor(tempButton, Color.Green);
             GameEnvironment.ChangeColor(mouse, Color.White);
 
+            Add(title = new SpriteGameObject("sprites/MenuSprites/Title"));
+            title.Origin = title.HitBox / 2;
+            title.Scale = 4;
+            title.position = new Vector2(GameEnvironment.Screen.X / 2, title.HitBox.Y/2);
 
-            Add(startGame = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 2)));
-
-            Add(new TextGameObject(Color.White, startGame.position, "Start Game"));
-
+            Add(startGame = new MenuButton(Vector2.Zero, "Start Game"));
+            startGame.position = new Vector2(GameEnvironment.Screen.X / 2 - startGame.HitBox.X / 2, GameEnvironment.Screen.Y / 3);
             Add(theMouse = new SpriteGameObject(mouse));
-
-            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10), "BananaPopper"));
         }
 
         public override void Update(GameTime gameTime)

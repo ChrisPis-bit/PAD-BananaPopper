@@ -13,27 +13,24 @@ namespace BananaPopper
 {
     class HomeMenu : MenuState
     {
-        Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
-               mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
-        Button startGame, options, back;
+        Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
+        MenuButton startGame, options;
 
-        SpriteGameObject theMouse;
+        private SpriteGameObject theMouse, title;
 
         public HomeMenu() : base()
         {
-            GameEnvironment.ChangeColor(tempButton, Color.Green);
             GameEnvironment.ChangeColor(mouse, Color.White);
 
-
-            Add(startGame = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*3)));
-            Add(options = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*5)));
-
-            Add(new TextGameObject(Color.White, startGame.position, "Start Game"));
-            Add(new TextGameObject(Color.White, options.position, "Options"));
+            Add(startGame = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*3), "Start Game"));
+            Add(options = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*5), "Options"));
 
             Add(theMouse = new SpriteGameObject(mouse));
 
-            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10), "BananaPopper"));
+            Add(title = new SpriteGameObject("sprites/MenuSprites/Title"));
+            title.Origin = title.HitBox / 2;
+            title.Scale = 4;
+            title.position = new Vector2(GameEnvironment.Screen.X / 2, title.HitBox.Y / 2);
         }
 
         public override void Update(GameTime gameTime)

@@ -12,7 +12,7 @@ class SpriteGameObject : GameObject
     public Texture2D hitBoxTest;
 
     public SpriteEffects spriteEffect;
-    protected Vector2 origin, hitbox;
+    protected Vector2 origin, hitbox, visualScale;
     public float angle;
     protected float scale, hitboxScale;
 
@@ -25,7 +25,7 @@ class SpriteGameObject : GameObject
         Origin = Vector2.Zero;
         Scale = 1;
         spriteEffect = SpriteEffects.None;
-        Reset();
+        visualScale = new Vector2(Scale);
     }
 
     public SpriteGameObject(Texture2D texture, float angle = 0)
@@ -33,14 +33,11 @@ class SpriteGameObject : GameObject
         this.texture = texture;
 
         this.angle = angle;
+
         Origin = Vector2.Zero;
         Scale = 1;
-        Reset();
-    }
-
-    public override void Reset()
-    {
-        base.Reset();
+        spriteEffect = SpriteEffects.None;
+        visualScale = new Vector2(Scale);
     }
 
     public Vector2 HitBox
@@ -69,8 +66,14 @@ class SpriteGameObject : GameObject
         {
             scale = value;
             hitbox = new Vector2(texture.Width * scale, texture.Height * scale);
-            //hitBoxTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, (int)HitBox.X, (int)HitBox.Y);
+            VisualScale = new Vector2(scale);
         }
+    }
+
+    public Vector2 VisualScale
+    {
+        get { return visualScale; }
+        set { visualScale = value; }
     }
 
     public float HitBoxScale
@@ -92,7 +95,7 @@ class SpriteGameObject : GameObject
             spriteBatch.Draw(texture, GlobalPosition, null, Color.White,
              angle,
              Origin,
-             Scale,
+             VisualScale,
              spriteEffect, 0f);
     }
 

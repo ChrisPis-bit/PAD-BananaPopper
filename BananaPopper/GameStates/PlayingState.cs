@@ -46,45 +46,6 @@ namespace BananaPopper
 
         public PlayingState() : base()
         {
-            //TEST CODE FOR UPDATING LEVEL SCORE
-
-            /* GameEnvironment.DatabaseHelper.con.Open();
-             MySqlCommand cmd = new MySqlCommand("SELECT * FROM zmult.Speler_has_Level WHERE Level_LevelNr = 1 AND Speler_idSpeler = 1;", GameEnvironment.DatabaseHelper.con);
-             MySqlDataReader cmdData = cmd.ExecuteReader();
-             if (cmdData.Read())
-             {
-                 Console.WriteLine("yes");
-                 cmdData.Close();
-
-                 GameEnvironment.DatabaseHelper.ExecuteClosedQuery("Update zmult.Speler_has_Level SET Score =" +hud.theScore.GetScore +"WHERE Level_LevelNr = 1 AND Speler_idSpeler;");
-
-             }
-             else
-             {
-                 Console.WriteLine("no");
-                 cmdData.Close();
-                 GameEnvironment.DatabaseHelper.ExecuteClosedQuery("INSERT INTO zmult.Speler_has_Level (Level_LevelNr, Speler_idSpeler, Score) VALUES (1, 1, 10);");
-             }
-             GameEnvironment.DatabaseHelper.con.Close(); */
-
-
-            //code for database
-            /*test = new MySqlConnection(connectionString);
-            test.Open();
-
-            string sql = "update Highscores set time = 10 where Users_id = 100;";
-
-            MySqlCommand cmd = new MySqlCommand(sql, test);
-
-            MySqlDataReader cmdData = cmd.ExecuteReader();
-
-            while (cmdData.Read()) {
-                Console.WriteLine(cmdData[0] +" -- "+ cmdData[1] + " -- " + cmdData[2]);
-            }
-            cmdData.Close();
-
-            test.Close();*/
-
             //Sets color for test textures
             GameEnvironment.ChangeColor(lineTest, Color.Blue);
             GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
@@ -414,13 +375,11 @@ namespace BananaPopper
                 if (readRecord(levelIndex.ToString(), "Content/MapStats.txt")[i] == "e")
                 {
                     theBullets.Add(new ExplosiveBanana());
-                    Console.WriteLine('e');
                 }
 
                 if (readRecord(levelIndex.ToString(), "Content/MapStats.txt")[i] == "b")
                 {
                     theBullets.Add(new Banana());
-                    Console.WriteLine('b');
                 }
             }
 
@@ -444,34 +403,33 @@ namespace BananaPopper
         }
 
         public void UpdateScore()
-        { try
+        {
+            try
             {
-               int PlayerID = GameEnvironment.DatabaseHelper.playerIndex;
+                int PlayerID = GameEnvironment.DatabaseHelper.playerIndex;
                 GameEnvironment.DatabaseHelper.con.Open();
-                MySqlCommand cmd = new MySqlCommand("SELECT * FROM zmult.Speler_has_Level WHERE Level_LevelNr = " + levelIndex +" AND Speler_idSpeler = " + PlayerID + ";", GameEnvironment.DatabaseHelper.con);
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM zmult.Speler_has_Level WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = " + PlayerID + ";", GameEnvironment.DatabaseHelper.con);
                 MySqlDataReader cmdData = cmd.ExecuteReader();
                 if (cmdData.Read())
                 {
-                    Console.WriteLine("yes");
                     cmdData.Close();
                     if (highScore < hud.theScore.GetScore)
                     {
                         GameEnvironment.DatabaseHelper.ExecuteClosedQuery("Update zmult.Speler_has_Level SET Score = " + hud.theScore.GetScore + " WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = " + PlayerID + ";");
                     }
-                    
+
                 }
                 else
                 {
-                    Console.WriteLine("no");
                     cmdData.Close();
-                    GameEnvironment.DatabaseHelper.ExecuteClosedQuery("INSERT INTO zmult.Speler_has_Level (Level_LevelNr, Speler_idSpeler, Score) VALUES (" +levelIndex+ "," +PlayerID+"," +hud.theScore.GetScore+");");
+                    GameEnvironment.DatabaseHelper.ExecuteClosedQuery("INSERT INTO zmult.Speler_has_Level (Level_LevelNr, Speler_idSpeler, Score) VALUES (" + levelIndex + ", " + PlayerID + ", " + (int)hud.theScore.GetScore + ");");
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             { Console.WriteLine(ex.ToString()); }
             GameEnvironment.DatabaseHelper.con.Close();
         }
-    
+
         public static void addRecord(string level, string bullet, string eBullet, string filePath)
         {
             try
@@ -522,13 +480,5 @@ namespace BananaPopper
             }
             return false;
         }
-
-
-
-
-
-
-
-
     }
 }

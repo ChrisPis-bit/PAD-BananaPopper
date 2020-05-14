@@ -1,3 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-
-"C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/back button.png","C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/bin/Windows/sprites/HudSprites/ReturnButton.xnb","TextureProcessor","Texture2DContent",660,4181,0,5235999
+"C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/MenuSprites/Title.png","C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/bin/Windows/sprites/MenuSprites/Title.xnb","TextureProcessor","Texture2DContent",1431,26077,0,1030934

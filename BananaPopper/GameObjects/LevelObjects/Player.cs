@@ -24,10 +24,9 @@ namespace BananaPopper
         public void ResetPlayer(Vector2 startPosition)
         {
             Oorsprong = startPosition;
-
-            position = startPosition;
-            centerPos = position + HitBox/2;
             Scale = GameEnvironment.TextureScale/2 - 0.1f;
+            position = startPosition - HitBox / 2;
+            centerPos = position + HitBox / 2;
             maxSpeed = GameEnvironment.GlobalScale * 40;
 
             Reset();

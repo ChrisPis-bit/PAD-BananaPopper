@@ -14,9 +14,8 @@ namespace BananaPopper
     class LevelCleared : GameObjectList
     {
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y),
-            tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
                mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
-        Button nextLevel, homeScreen;
+        MenuButton nextLevel, homeScreen;
 
         SpriteGameObject theMouse;
 
@@ -25,17 +24,13 @@ namespace BananaPopper
 
         public LevelCleared() : base()
         {
-            GameEnvironment.ChangeColor(tempButton, Color.Green);
             GameEnvironment.ChangeColor(mouse, Color.White);
             GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
 
             Add(new SpriteGameObject(bg));
 
-            Add(nextLevel = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 3)));
-            Add(homeScreen = new Button(tempButton, new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 5)));
-
-            Add(new TextGameObject(Color.White, nextLevel.position, "Next Level"));
-            Add(new TextGameObject(Color.White, homeScreen.position, "Home"));
+            Add(nextLevel = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 3), "Next Level"));
+            Add(homeScreen = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 5), "Home"));
 
             Add(theMouse = new SpriteGameObject(mouse));
 

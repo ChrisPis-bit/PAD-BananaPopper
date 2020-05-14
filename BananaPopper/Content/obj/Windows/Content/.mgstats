@@ -1,4 +1,1 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/arrowKey.png","C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/bin/Windows/Content/arrowKey.xnb","TextureProcessor","Texture2DContent",162,1109,1,176696
-"C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont","C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/bin/Windows/Content/GameFont.xnb","FontDescriptionProcessor","SpriteFontContent",2071,37905,0,4643553
-"C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/back button.png","C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/bin/Windows/Content/sprites/HudSprites/ReturnButton.xnb","TextureProcessor","Texture2DContent",660,4181,0,0295602

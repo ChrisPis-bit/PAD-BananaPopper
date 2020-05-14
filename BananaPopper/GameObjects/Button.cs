@@ -12,19 +12,25 @@ namespace BananaPopper
 {
     class Button : SpriteGameObject
     {
-        public bool isPressed;
+        public bool isPressed, isHovered;
 
         public Button(String texture, Vector2 position, float angle = 0) : base(texture, angle)
         {        
-            isPressed = false;
             this.position = position;
-            Scale = 1;
+            Reset();
         }
         public Button(Texture2D texture, Vector2 position, float angle = 0) : base(texture, angle)
         {
-            isPressed = false;
             this.position = position;
-            scale = 1;
+            Reset();
+        }
+
+        public override void Reset()
+        {
+            base.Reset();
+
+            isPressed = false;
+            isHovered = false;
         }
 
         public override void HandleInput(InputHelper inputHelper)
@@ -32,12 +38,21 @@ namespace BananaPopper
             base.HandleInput(inputHelper);
 
             //Checks overlap with mouse, and detects if mouse presses on the button
-            if (Overlaps(inputHelper.MousePosition, new Vector2(0)) && inputHelper.MouseLeftButtonPressed())
+            if (Overlaps(inputHelper.MousePosition, new Vector2(0)))
             {
-                isPressed = true;
+                isHovered = true;
+                if (inputHelper.MouseLeftButtonPressed())
+                {
+                    isPressed = true;
+                }
+                else
+                    isPressed = false;
             }
             else
+            {
+                isHovered = false;
                 isPressed = false;
+            }
         }
     }
 }
