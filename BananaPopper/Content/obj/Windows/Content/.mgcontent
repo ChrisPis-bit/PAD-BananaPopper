@@ -4,36 +4,36 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/arrowKey.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map1.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map2.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map3.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map4.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map5.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map6.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/MonkeyIslandBand.wma</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/BalloonPopping.wav</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/Box.wav</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/Complete.wav</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/CrateBreak.wav</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/Failure.wav</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/Woosh.wav</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Background.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/back button.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/FlipButton.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/HUDbg.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/TableLine.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/TableStop.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Balloon.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Balloon2.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Banana.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/ExplosiveBanana.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Monkey.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Normal Balloon.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Obstacle.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Strong Balloon.png</File>
-    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Vines.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/arrowKey.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map1.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map2.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map3.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map4.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map5.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map6.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/MonkeyIslandBand.wma</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/BalloonPopping.wav</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/Box.wav</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/Complete.wav</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/CrateBreak.wav</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/Failure.wav</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/Woosh.wav</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Background.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/back button.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/FlipButton.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/HUDbg.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/TableLine.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/TableStop.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Balloon.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Balloon2.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Banana.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/ExplosiveBanana.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Monkey.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Normal Balloon.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Obstacle.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Strong Balloon.png</File>
+    <File>C:/Users/trist/Documents/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/IngameSprites/Vines.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

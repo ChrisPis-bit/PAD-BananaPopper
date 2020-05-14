@@ -57,6 +57,10 @@ namespace BananaPopper
                 flipLine = !flipLine;
             }
 
+            if (restartButton.isPressed)
+            {
+                GameEnvironment.GameStateManager.GetGameState("PlayingState").Reset();
+            }
             /*if (flipLine)
             {
                 position = Vector2.Zero;
