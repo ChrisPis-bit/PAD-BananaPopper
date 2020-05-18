@@ -19,12 +19,11 @@ using Microsoft.Xna.Framework.Media;
 
 namespace BananaPopper
 {
-    class PlayingState : GameObjectList
+    class PlayingState : GameState
     {
         //All temporary textures for prototype
         Texture2D lineTest = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 5, 5);
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
-        Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
 
         GameObjectList theObstacles = new GameObjectList(),
          theBullets = new GameObjectList(),
@@ -32,7 +31,6 @@ namespace BananaPopper
          thePlusBanana = new GameObjectList();
 
         public HUD hud;
-        SpriteGameObject theMouse;
         Player thePlayer;
         PopAnimation thePopAnimation;
         XYAxes theXYaxes;
@@ -49,9 +47,7 @@ namespace BananaPopper
             //Sets color for test textures
             GameEnvironment.ChangeColor(lineTest, Color.Blue);
             GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
-            GameEnvironment.ChangeColor(mouse, Color.White);
 
-            theMouse = new SpriteGameObject(mouse);
             hud = new HUD();
             theXYaxes = new XYAxes();
             thePlayer = new Player();
@@ -70,7 +66,6 @@ namespace BananaPopper
             Add(theXYaxes);
             Add(thePlayer);
             Add(hud);
-            Add(theMouse);
         }
 
 
@@ -211,6 +206,16 @@ namespace BananaPopper
                 soundEffects.Play();
             }
 
+            foreach (GameObject button in hud.Children)
+            {
+                if ((button is Button && (button as Button).isHovered) || (button is MenuButton && (button as MenuButton).isHovered))
+                {
+                    theMouse.interact = true;
+                    break;
+                }
+                else theMouse.interact = false;
+            }
+
 
             //Updates the formula on screen
             hud.theFormula.UpdateFormula(thePlayer.centerPos, thePlayer.Oorsprong, hud.flipLine);
@@ -244,8 +249,6 @@ namespace BananaPopper
             {
                 StartLevel(5);
             }
-
-            theMouse.position = inputHelper.MousePosition;
 
             if (inputHelper.KeyPressed(Keys.Space))
             {

@@ -11,28 +11,22 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BananaPopper
 {
-    class LevelCleared : GameObjectList
+    class LevelCleared : GameState
     {
-        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y),
-               mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
+        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y);
         MenuButton nextLevel, homeScreen;
-
-        SpriteGameObject theMouse;
 
         TextGameObject scoreText;
         private int score;
 
         public LevelCleared() : base()
         {
-            GameEnvironment.ChangeColor(mouse, Color.White);
             GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
 
             Add(new SpriteGameObject(bg));
 
             Add(nextLevel = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 3), "Next Level"));
             Add(homeScreen = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 5), "Home"));
-
-            Add(theMouse = new SpriteGameObject(mouse));
 
             Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10), "Level Cleared, Well Done!"));
             Add(scoreText = new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10 * 2)));
@@ -69,14 +63,6 @@ namespace BananaPopper
 
             score = (int)(GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).hud.theScore.GetScore;
             scoreText.text = "Score = " + score;
-        }
-
-
-        public override void HandleInput(InputHelper inputHelper)
-        {
-            base.HandleInput(inputHelper);
-
-            theMouse.position = inputHelper.MousePosition;
         }
     }
 }

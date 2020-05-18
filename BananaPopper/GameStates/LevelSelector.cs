@@ -14,11 +14,9 @@ namespace BananaPopper
     class LevelSelector : MenuState
     {
         Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
-                  mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10),
         levelTexture = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 100, 100);
         Button Back, level;
 
-        SpriteGameObject theMouse;
         GameObjectList levelButtons;
         public int levelCounter;
         int horizontalCounter, verticalCounter;
@@ -32,7 +30,6 @@ namespace BananaPopper
         {
             levelCounter = System.IO.Directory.GetFiles("Content/Maps").Length;
             GameEnvironment.ChangeColor(tempButton, Color.Green);
-            GameEnvironment.ChangeColor(mouse, Color.White);
             GameEnvironment.ChangeColor(levelTexture, new Color(179, 107, 0));
 
 
@@ -46,7 +43,6 @@ namespace BananaPopper
                     verticalCounter++;
                 }
             }
-            Add(theMouse = new SpriteGameObject(mouse));
         }
 
         public override void Update(GameTime gameTime)
@@ -64,12 +60,16 @@ namespace BananaPopper
 
             if (backButton.isPressed)
                 GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
-        }
-        public override void HandleInput(InputHelper inputHelper)
-        {
-            base.HandleInput(inputHelper);
 
-            theMouse.position = inputHelper.MousePosition;
+            foreach (GameObject button in levelButtons.Children)
+            {
+                if ((button is Button && (button as Button).isHovered) || (button is MenuButton && (button as MenuButton).isHovered))
+                {
+                    theMouse.interact = true;
+                    break;
+                }
+                else theMouse.interact = false;
+            }
         }
 
         public void UpdateScores(int playerIndex)

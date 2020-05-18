@@ -77,6 +77,8 @@
     <Compile Include="GameObjects\HudObjects\Timer.cs" />
     <Compile Include="GameObjects\LevelObjects\Vine.cs" />
     <Compile Include="GameObjects\MenuObjects\MenuButton.cs" />
+    <Compile Include="GameObjects\Mouse.cs" />
+    <Compile Include="GameStates\GameState.cs" />
     <Compile Include="GameStates\LevelCleared.cs" />
     <Compile Include="GameStates\Level Failed.cs" />
     <Compile Include="GameStates\HomeMenu.cs" />

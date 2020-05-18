@@ -48,6 +48,11 @@ namespace BananaPopper
             get { return button.isPressed; }
         }
 
+        public bool isHovered
+        {
+            get { return button.isHovered; }
+        }
+
         public Vector2 HitBox
         {
             get { return button.HitBox; }

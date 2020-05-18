@@ -11,16 +11,14 @@ namespace BananaPopper
 {
     class TitleMenuState : MenuState
     {
-        Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
-               mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
+        Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10);
         MenuButton startGame;
 
-        SpriteGameObject theMouse, title;
+        SpriteGameObject title;
 
         public TitleMenuState() : base()
         {
             GameEnvironment.ChangeColor(tempButton, Color.Green);
-            GameEnvironment.ChangeColor(mouse, Color.White);
 
             Add(title = new SpriteGameObject("sprites/MenuSprites/Title"));
             title.Origin = title.HitBox / 2;
@@ -29,7 +27,6 @@ namespace BananaPopper
 
             Add(startGame = new MenuButton(Vector2.Zero, "Start Game"));
             startGame.position = new Vector2(GameEnvironment.Screen.X / 2 - startGame.HitBox.X / 2, GameEnvironment.Screen.Y / 3);
-            Add(theMouse = new SpriteGameObject(mouse));
         }
 
         public override void Update(GameTime gameTime)
@@ -45,13 +42,6 @@ namespace BananaPopper
 
         }
 
-
-        public override void HandleInput(InputHelper inputHelper)
-        {
-            base.HandleInput(inputHelper);
-
-            theMouse.position = inputHelper.MousePosition;
-        }
     }
 }
 
