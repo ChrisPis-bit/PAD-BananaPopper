@@ -20,7 +20,6 @@ namespace BananaPopper
 
         SpriteGameObject theMouse;
         GameObjectList levelButtons;
-        TextGameObject personalScore;
         public int levelCounter;
         int horizontalCounter, verticalCounter;
         // buttonoffset = distance between side and first button.
@@ -35,8 +34,6 @@ namespace BananaPopper
             GameEnvironment.ChangeColor(tempButton, Color.Green);
             GameEnvironment.ChangeColor(mouse, Color.White);
             GameEnvironment.ChangeColor(levelTexture, new Color(179, 107, 0));
-            Add(personalScore = new TextGameObject(Color.Black, new Vector2(GameEnvironment.Screen.X / 2 - 100, GameEnvironment.Screen.Y - 100)));
-
 
 
             Add(levelButtons = new GameObjectList());
@@ -49,7 +46,6 @@ namespace BananaPopper
                     verticalCounter++;
                 }
             }
-
             Add(theMouse = new SpriteGameObject(mouse));
         }
 
@@ -58,28 +54,12 @@ namespace BananaPopper
             base.Update(gameTime);
             for (int i = 0; i < levelButtons.Children.Count(); i++)
             {
+                if ((levelButtons.Children[i] as Button).isPressed)
                 {
-                    if ((levelButtons.Children[i] as Button).isPressed && scoreList[i] > 0)
-                    {
-                        Console.WriteLine("Pressed");
-                        (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel(i + 1);
-                        GameEnvironment.GameStateManager.SwitchTo("PlayingState");
-                    }
-
-                    if ((levelButtons.Children[0] as Button).isPressed)
-                    {
-                        Console.WriteLine("Pressed");
-                        (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel(1);
-                        GameEnvironment.GameStateManager.SwitchTo("PlayingState");
-                    }
+                    Console.WriteLine("Pressed");
+                    (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel(i + 1);
+                    GameEnvironment.GameStateManager.SwitchTo("PlayingState");
                 }
-
-                if ((levelButtons.Children[i] as Button).isHovered)
-                {
-                    personalScore.text = "Personal score : " + scoreList[i];
-                }
-
-
             }
 
             if (backButton.isPressed)
