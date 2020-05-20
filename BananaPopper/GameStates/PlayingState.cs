@@ -35,6 +35,7 @@ namespace BananaPopper
         PopAnimation thePopAnimation;
         XYAxes theXYaxes;
         DirectionBox theDirectionBox;
+        PopperParticles theParticles;
 
         public int levelIndex = 1,
             highScore;
@@ -51,12 +52,14 @@ namespace BananaPopper
             hud = new HUD();
             theXYaxes = new XYAxes();
             thePlayer = new Player();
+            theParticles = new PopperParticles();
 
             //Put which level you want to start in the brackets
             Reset();
 
             //Add GameObjects here
             Add(new Background());
+            Add(theParticles);
             Add(theObstacles);
             Add(theBalloons);
             Add(thePlusBanana);
@@ -109,10 +112,12 @@ namespace BananaPopper
                             obstacle.Visible = false;
                             soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/CrateBreak");
                             soundEffects.Play();
+                            theParticles.SpawnObstacleExp(obstacle.HitBoxPosition + obstacle.HitBox/2, GameEnvironment.TextureScale);
                         }
                         banana.Visible = false;
                         soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/Box");
                         soundEffects.Play();
+                        theParticles.SpawnBananaPop(banana.GlobalPosition, GameEnvironment.TextureScale);
                     }
                 }
 
@@ -128,7 +133,6 @@ namespace BananaPopper
                         {
                             thePopAnimation.position = balloons.position;
                             thePopAnimation.Visible = true;
-
                         }
 
                         if ((balloons as Balloon).hp == 0)
@@ -137,6 +141,8 @@ namespace BananaPopper
                             soundEffects = GameEnvironment.ContentManager.Load<SoundEffect>("SoundEffects/BalloonPopping");
                             soundEffects.Play();
 
+                            theParticles.SpawnBalloonPop(balloons.HitBoxPosition + balloons.HitBox/2, GameEnvironment.TextureScale);
+                            theParticles.SpawnScoreText(new Vector2(balloons.HitBoxPosition.X, balloons.HitBoxPosition.Y + balloons.HitBox.Y / 2), (int)((balloons as Balloon).score * (banana as Banana).ScoreMultiplier));
 
                             hud.theScore.GetScore += (balloons as Balloon).score * (banana as Banana).ScoreMultiplier;
                             (banana as Banana).hitBalloonsAmount++;
@@ -167,6 +173,7 @@ namespace BananaPopper
                         plusBanana.Visible = false;
                         theBullets.Add(new Banana());
                         hud.theBananaCounter.Amount++;
+                        theParticles.SpawnPlusBananaPop(plusBanana.HitBoxPosition + plusBanana.HitBox / 2, GameEnvironment.TextureScale);
                     }
                 }
 
@@ -297,6 +304,7 @@ namespace BananaPopper
             theObstacles.Children.Clear();
             thePlusBanana.Children.Clear();
             theBullets.Children.Clear();
+            theParticles.Reset();
 
             //Colors for game objects, use these colors for maps
             Color balloon = new Color(255, 0, 0),

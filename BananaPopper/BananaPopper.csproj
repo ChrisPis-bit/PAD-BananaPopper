@@ -48,6 +48,7 @@
     <Compile Include="GameManagement\ParticleObject.cs" />
     <Compile Include="GameManagement\ParticleObjectList.cs" />
     <Compile Include="GameManagement\Sounds.cs" />
+    <Compile Include="GameManagement\TextParticleObject.cs" />
     <Compile Include="GameObjects\LevelObjects\Background.cs" />
     <Compile Include="GameObjects\HudObjects\BananaCounter.cs" />
     <Compile Include="GameObjects\MenuObjects\Character.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="GameObjects\LevelObjects\Vine.cs" />
     <Compile Include="GameObjects\MenuObjects\MenuButton.cs" />
     <Compile Include="GameObjects\Mouse.cs" />
+    <Compile Include="GameObjects\PopperParticles.cs" />
     <Compile Include="GameStates\GameState.cs" />
     <Compile Include="GameStates\LevelCleared.cs" />
     <Compile Include="GameStates\Level Failed.cs" />
