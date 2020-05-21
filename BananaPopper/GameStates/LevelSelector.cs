@@ -13,7 +13,7 @@ namespace BananaPopper
 {
     class LevelSelector : MenuState
     {
-        Texture2D TempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
+        Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
         levelTexture = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 100, 100);
         Button Back, level, TutorialButton;
 
