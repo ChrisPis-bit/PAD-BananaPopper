@@ -61,6 +61,7 @@ namespace BananaPopper
             {
                 GameEnvironment.GameStateManager.GetGameState("PlayingState").Reset();
             }
+
             /*if (flipLine)
             {
                 position = Vector2.Zero;
