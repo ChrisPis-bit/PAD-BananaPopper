@@ -52,5 +52,10 @@ namespace BananaPopper
         {
             get { return button.HitBox; }
         }
+
+        public bool isHovered
+        {
+            get { return button.isHovered; }
+        }
     }
 }

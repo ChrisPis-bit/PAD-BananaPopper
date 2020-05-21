@@ -313,3 +313,10 @@ C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\W
 C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\MenuSprites\Button.xnb
 C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\MenuSprites\Title.xnb
 C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\HudSprites\ReturnButton.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Particles\BananaParticle.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Particles\ExpParticle.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Particles\PlusParticle.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Particles\PopParticle.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Mouse\Hand.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Mouse\Pointer.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Particles\ObstacleParticle.xnb

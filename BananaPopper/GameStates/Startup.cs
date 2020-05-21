@@ -10,21 +10,15 @@ namespace BananaPopper
 {
     class Startup : MenuState
     {
-        Texture2D mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10);
         MenuButton login, createAccount, offline;
 
         SpriteGameObject theMouse;
 
         public Startup() : base()
         {
-            GameEnvironment.ChangeColor(mouse, Color.White);
-
-
             Add(login = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10), "Login"));
             Add(createAccount = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 3), "Create Account"));
             Add(offline = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 5), "Offline"));
-
-            Add(theMouse = new SpriteGameObject(mouse));
         }
 
         public override void Update(GameTime gameTime)
@@ -53,14 +47,9 @@ namespace BananaPopper
             {
                 //If player doesn't have internet, or isn't interested in an account, he/she can skip the login and play without account info
                 GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
+                GameEnvironment.DatabaseHelper.online = false;
+                (GameEnvironment.GameStateManager.GetGameState("LevelSelector") as LevelSelector).OfflineScore();
             }
-        }
-
-        public override void HandleInput(InputHelper inputHelper)
-        {
-            base.HandleInput(inputHelper);
-
-            theMouse.position = inputHelper.MousePosition;
         }
     }
 }

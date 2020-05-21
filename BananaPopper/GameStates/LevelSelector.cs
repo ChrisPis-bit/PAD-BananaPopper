@@ -14,11 +14,10 @@ namespace BananaPopper
     class LevelSelector : MenuState
     {
         Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
-                  mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10),
         levelTexture = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 100, 100);
+
         Button Back, level;
 
-        SpriteGameObject theMouse;
         GameObjectList levelButtons;
         TextGameObject personalScore;
         public int levelCounter;
@@ -33,7 +32,6 @@ namespace BananaPopper
         {
             levelCounter = System.IO.Directory.GetFiles("Content/Maps").Length;
             GameEnvironment.ChangeColor(tempButton, Color.Green);
-            GameEnvironment.ChangeColor(mouse, Color.White);
             GameEnvironment.ChangeColor(levelTexture, new Color(179, 107, 0));
             Add(personalScore = new TextGameObject(Color.Black, new Vector2(GameEnvironment.Screen.X / 2 - 100, GameEnvironment.Screen.Y - 100)));
 
@@ -49,8 +47,6 @@ namespace BananaPopper
                     verticalCounter++;
                 }
             }
-
-            Add(theMouse = new SpriteGameObject(mouse));
         }
 
         public override void Update(GameTime gameTime)
@@ -58,7 +54,7 @@ namespace BananaPopper
             base.Update(gameTime);
             for (int i = 0; i < levelButtons.Children.Count(); i++)
             {
-                {
+                
                     if ((levelButtons.Children[i] as Button).isPressed && scoreList[i] > 0)
                     {
                         Console.WriteLine("Pressed");
@@ -72,7 +68,7 @@ namespace BananaPopper
                         (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel(1);
                         GameEnvironment.GameStateManager.SwitchTo("PlayingState");
                     }
-                }
+                
 
                 if ((levelButtons.Children[i] as Button).isHovered)
                 {
@@ -84,12 +80,6 @@ namespace BananaPopper
 
             if (backButton.isPressed)
                 GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
-        }
-        public override void HandleInput(InputHelper inputHelper)
-        {
-            base.HandleInput(inputHelper);
-
-            theMouse.position = inputHelper.MousePosition;
         }
 
         public void UpdateScores(int playerIndex)
@@ -119,6 +109,14 @@ namespace BananaPopper
             for(int i = 0; i < scoreList.Count(); i++)
             {
                 Console.WriteLine(scoreList[i]);
+            }
+        }
+
+        public void OfflineScore()
+        {
+            for(int i = 0; i < levelCounter; i++)
+            {
+                scoreList.Add(0);
             }
         }
     }

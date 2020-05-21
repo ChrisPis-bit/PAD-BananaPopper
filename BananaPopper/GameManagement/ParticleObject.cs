@@ -12,12 +12,13 @@ class ParticleObject : SpriteGameObject
 
     protected float gravity;
 
-    public ParticleObject(string assetname, Vector2 spawnPosition, Vector2 velocity, int fadeTime, float gravity = 0) : base(assetname)
+    public ParticleObject(string assetname, Vector2 spawnPosition, Vector2 velocity, int fadeTime, float gravity = 0, float scale = 1) : base(assetname)
     {
         this.fadeTime = fadeTime;
         this.gravity = gravity;
         position = spawnPosition;
         this.velocity = velocity;
+        this.scale = scale;
     }
 
     public override void Update(GameTime gameTime)
