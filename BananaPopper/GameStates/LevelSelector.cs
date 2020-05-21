@@ -13,10 +13,10 @@ namespace BananaPopper
 {
     class LevelSelector : MenuState
     {
-        Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
+        Texture2D TempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
                   mouse = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 10, 10),
         levelTexture = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 100, 100);
-        Button Back, level;
+        Button Back, level, TutorialButton;
 
         SpriteGameObject theMouse;
         GameObjectList levelButtons;
@@ -30,13 +30,16 @@ namespace BananaPopper
 
         public LevelSelector() : base()
         {
+           
             levelCounter = System.IO.Directory.GetFiles("Content/Maps").Length;
-            GameEnvironment.ChangeColor(tempButton, Color.Green);
+            GameEnvironment.ChangeColor(TempButton, Color.Green);
             GameEnvironment.ChangeColor(mouse, Color.White);
             GameEnvironment.ChangeColor(levelTexture, new Color(179, 107, 0));
-
+            TutorialButton = new Button(levelTexture, new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 2 - 100));
 
             Add(levelButtons = new GameObjectList());
+            Add(new TextGameObject(Color.White, new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 2 - 100),"T"));
+            levelButtons.Add(TutorialButton);
             for (horizontalCounter = 0; horizontalCounter < levelCounter; horizontalCounter++)
             {
                 levelButtons.Add(new Button(levelTexture, new Vector2(100 + ((horizontalCounter % 5) * 150), 300 + (verticalCounter * 200))));
@@ -56,12 +59,17 @@ namespace BananaPopper
             {
                 if ((levelButtons.Children[i] as Button).isPressed)
                 {
-                    Console.WriteLine("Pressed");
                     (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel(i + 1);
                     GameEnvironment.GameStateManager.SwitchTo("PlayingState");
                 }
             }
+            if (TutorialButton.isPressed)
+            {
+                (GameEnvironment.GameStateManager.GetGameState("TutorialState") as PlayingState).StartLevel(0);
+                GameEnvironment.GameStateManager.SwitchTo("TutorialState");
+                (GameEnvironment.GameStateManager.GetGameState("TutorialState") as TutorialState).i = 0;
 
+            }
             if (backButton.isPressed)
                 GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
         }
@@ -70,6 +78,7 @@ namespace BananaPopper
             base.HandleInput(inputHelper);
 
             theMouse.position = inputHelper.MousePosition;
+
         }
 
         public void UpdateScores(int playerIndex)
