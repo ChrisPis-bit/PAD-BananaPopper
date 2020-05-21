@@ -304,9 +304,15 @@ namespace BananaPopper
             extraBanana = new Color(150, 255, 150),
             strongBalloon = new Color(200, 100, 100);
 
-
-            Texture2D map = GameEnvironment.ContentManager.Load<Texture2D>("Maps/Map" + levelIndex);
-
+            Texture2D map;
+            if (levelIndex == 0)
+            {
+                map = GameEnvironment.ContentManager.Load<Texture2D>("TutorialMap");
+            }
+            else
+            {
+                map = GameEnvironment.ContentManager.Load<Texture2D>("Maps/Map" + levelIndex);
+            }
             //Changes GlobalScale according to the maps width or height, so that the map always fits on the screen
             if (map.Width / 13 >= map.Height / 9)
             {

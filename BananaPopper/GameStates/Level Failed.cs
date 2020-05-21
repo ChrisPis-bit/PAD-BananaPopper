@@ -37,6 +37,7 @@ namespace BananaPopper
             if (retry.isPressed)
             {
                 //Switches to the level the player last played, so they can retry the level
+                
                 GameEnvironment.GameStateManager.GetGameState("PlayingState").Reset();
                 GameEnvironment.GameStateManager.SwitchTo("PlayingState");
             }
