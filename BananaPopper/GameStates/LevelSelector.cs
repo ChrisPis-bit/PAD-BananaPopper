@@ -15,7 +15,7 @@ namespace BananaPopper
     {
         Texture2D tempButton = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10),
         levelTexture = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 100, 100);
-        Button Back, level, TutorialButton;
+        LevelButton TutorialButton;
 
         GameObjectList levelButtons;
         TextGameObject personalScore;
@@ -33,47 +33,48 @@ namespace BananaPopper
             levelCounter = System.IO.Directory.GetFiles("Content/Maps").Length;
             GameEnvironment.ChangeColor(tempButton, Color.Green);
             GameEnvironment.ChangeColor(levelTexture, new Color(179, 107, 0));
-            TutorialButton = new Button(levelTexture, new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 2 - 100));
+            TutorialButton = new LevelButton(new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 2 - 100), "T");
             Add(personalScore = new TextGameObject(Color.Black, new Vector2(GameEnvironment.Screen.X / 2 - 100, GameEnvironment.Screen.Y - 100)));
 
 
 
             Add(levelButtons = new GameObjectList());
-            Add(new TextGameObject(Color.White, new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 2 - 100),"T"));
-            levelButtons.Add(TutorialButton);
             for (horizontalCounter = 0; horizontalCounter < levelCounter; horizontalCounter++)
             {
-                levelButtons.Add(new Button(levelTexture, new Vector2(100 + ((horizontalCounter % 5) * 150), 300 + (verticalCounter * 200))));
-                Add(new TextGameObject(Color.White, new Vector2(100 + ((horizontalCounter % 5) * 150), 300 + (verticalCounter * 200)), (horizontalCounter + 1).ToString()));
+                levelButtons.Add(new LevelButton(new Vector2(100 + ((horizontalCounter % 5) * 150), 300 + (verticalCounter * 200)), (horizontalCounter + 1).ToString()));
                 if (horizontalCounter % 5 == 4)
                 {
                     verticalCounter++;
                 }
             }
+
+            Add(TutorialButton);
+            TutorialButton.levelAvailable = true;
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
+
             for (int i = 0; i < levelButtons.Children.Count(); i++)
             {
+                if (i == 0)
+                {
+                    (levelButtons.Children[i] as LevelButton).levelAvailable = true;
+                }
+                else if (scoreList[i - 1] > 0)
+                {
+                    (levelButtons.Children[i] as LevelButton).levelAvailable = true;
+                }
 
-                    if ((levelButtons.Children[i] as Button).isPressed && scoreList[i] > 0)
-                    {
-                        Console.WriteLine("Pressed");
-                        (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel(i + 1);
-                        GameEnvironment.GameStateManager.SwitchTo("PlayingState");
-                    }
+                if ((levelButtons.Children[i] as MenuButton).isPressed && (levelButtons.Children[i] as LevelButton).levelAvailable)
+                {
+                    Console.WriteLine("Pressed");
+                    (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel(i + 1);
+                    GameEnvironment.GameStateManager.SwitchTo("PlayingState");
+                }
 
-                    if ((levelButtons.Children[0] as Button).isPressed)
-                    {
-                        Console.WriteLine("Pressed");
-                        (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel(1);
-                        GameEnvironment.GameStateManager.SwitchTo("PlayingState");
-                    }
-
-
-                if ((levelButtons.Children[i] as Button).isHovered)
+                if ((levelButtons.Children[i] as MenuButton).isHovered && i < scoreList.Count())
                 {
                     personalScore.text = "Personal score : " + scoreList[i];
                 }
@@ -115,7 +116,7 @@ namespace BananaPopper
             }
             cmdData.Close();
 
-            for(int i = 0; i < scoreList.Count(); i++)
+            for (int i = 0; i < scoreList.Count(); i++)
             {
                 Console.WriteLine(scoreList[i]);
             }
@@ -123,7 +124,7 @@ namespace BananaPopper
 
         public void OfflineScore()
         {
-            for(int i = 0; i < levelCounter; i++)
+            for (int i = 0; i < levelCounter; i++)
             {
                 scoreList.Add(0);
             }

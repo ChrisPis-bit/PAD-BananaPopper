@@ -49,10 +49,10 @@ voordat je geen bananen meer hebt"));
             tutorialText.Add(Table = new TextBubble(TablePostition, @"Soms lijken alle ballonnen gepopt te zijn maar is
 het level nog niet gewonnen...
 Dat betekent dat er ontzichtbare ballonnen zijn!
-Vind de ballonnen door dit tabel te gebruiken."));
+Vind de ballonnen door deze tabel te gebruiken."));
             tutorialText.Add(Aim = new TextBubble(AimPosition, @"Om te richten moet je de formule veranderen
 met deze twee pijlen"));
-            tutorialText.Add(move = new TextBubble(StandardPosition, @"Je kan de aap bewegen door deze
+            tutorialText.Add(move = new TextBubble(StandardPosition, @"Je kan de aap bewegen door hem
 naar boven of naar beneden te slepen"));
             tutorialText.Add(Flip = new TextBubble(FlipPosition, @"Staat er een ballon aan de andere kant?
 Druk op deze knop om van schietrichting te veranderen!"));

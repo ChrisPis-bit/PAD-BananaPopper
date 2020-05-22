@@ -329,3 +329,6 @@ C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\De
 C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Particles\PopParticle.xnb
 C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Mouse\Hand.xnb
 C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\Mouse\Pointer.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\TutorialMap.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\MenuSprites\lvlButton.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\MenuSprites\Cross.xnb

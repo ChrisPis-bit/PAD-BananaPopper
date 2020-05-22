@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BananaPopper
 {
-    class LevelFailed : GameObjectList
+    class LevelFailed : GameState
     {
         Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y);
         MenuButton retry, homeScreen;

@@ -12,17 +12,17 @@ namespace BananaPopper
         private const float BUTTON_SCALE = 3,
                             TEXT_SCALE = 1.5f;
 
-        private Button button;
+        protected Button button;
         private TextGameObject text;
 
         private float tweenTime = 0;
         private const float TWEEN_SPEED = 0.1f,
                             TWEEN_AMPLITUDE = 0.01f;
 
-        public MenuButton(Vector2 position, string text) : base()
+        public MenuButton(Vector2 position, string text, string assetName = "sprites/MenuSprites/Button") : base()
         {
             this.position = position;
-            Add(button = new Button("sprites/MenuSprites/Button", Vector2.Zero));
+            Add(button = new Button(assetName, Vector2.Zero));
             button.Origin = button.HitBox / 2;
             button.Scale = BUTTON_SCALE;
             button.position = button.HitBox / 2;

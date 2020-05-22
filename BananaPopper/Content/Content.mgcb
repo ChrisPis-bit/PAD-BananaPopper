@@ -341,6 +341,30 @@
 /processorParam:TextureFormat=Color
 /build:sprites/MenuSprites/Button.png
 
+#begin sprites/MenuSprites/Cross.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:sprites/MenuSprites/Cross.png
+
+#begin sprites/MenuSprites/lvlButton.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:sprites/MenuSprites/lvlButton.png
+
 #begin sprites/MenuSprites/Title.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -353,7 +377,7 @@
 /processorParam:TextureFormat=Color
 /build:sprites/MenuSprites/Title.png
 
-#begin TutorialMap.png
+#begin sprites/Mouse/Hand.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -363,8 +387,6 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:TutorialMap.png
-#begin sprites/Mouse/Hand.png
 /build:sprites/Mouse/Hand.png
 
 #begin sprites/Mouse/Pointer.png
@@ -426,3 +448,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:sprites/Particles/PopParticle.png
+
+#begin TutorialMap.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:TutorialMap.png
+

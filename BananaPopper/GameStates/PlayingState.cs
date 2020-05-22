@@ -435,6 +435,9 @@ namespace BananaPopper
             catch (Exception ex)
             { Console.WriteLine(ex.ToString()); }
             GameEnvironment.DatabaseHelper.con.Close();
+
+            if ((GameEnvironment.GameStateManager.GetGameState("LevelSelector") as LevelSelector).scoreList[levelIndex - 1] < (int)hud.theScore.GetScore)
+                (GameEnvironment.GameStateManager.GetGameState("LevelSelector") as LevelSelector).scoreList[levelIndex - 1] = (int)hud.theScore.GetScore;
         }
 
         public static void addRecord(string level, string bullet, string eBullet, string filePath)

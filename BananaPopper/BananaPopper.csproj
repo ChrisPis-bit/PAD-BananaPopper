@@ -78,6 +78,7 @@
     <Compile Include="GameObjects\LevelObjects\StrongBalloon.cs" />
     <Compile Include="GameObjects\HudObjects\Timer.cs" />
     <Compile Include="GameObjects\LevelObjects\Vine.cs" />
+    <Compile Include="GameObjects\MenuObjects\LevelButton.cs" />
     <Compile Include="GameObjects\MenuObjects\MenuButton.cs" />
     <Compile Include="GameObjects\Mouse.cs" />
     <Compile Include="GameObjects\PopperParticles.cs" />
@@ -137,6 +138,7 @@
     <Content Include="Content\sprites\IngameSprites\Obstacle.png" />
     <Content Include="Content\sprites\IngameSprites\Strong Balloon.png" />
     <Content Include="Content\sprites\IngameSprites\Vines.png" />
+    <Content Include="Content\TutorialMap.png" />
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
