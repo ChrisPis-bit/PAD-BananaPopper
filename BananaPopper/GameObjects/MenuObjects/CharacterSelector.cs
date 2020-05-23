@@ -16,8 +16,8 @@ namespace BananaPopper
         private int selectedChar;
         public bool selected;
 
-        Texture2D tempBg;
-        SpriteGameObject charBg;
+        Texture2D selectedBg, unSelectedBg;
+        Button charBg;
 
         public CharacterSelector(int characterAmount, Vector2 position, bool selected = true) : base()
         {
@@ -32,10 +32,12 @@ namespace BananaPopper
                 characters.Add(new Character(new Vector2(0 + charOffset.X * iChar, 0)));
             }
 
-            tempBg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 0 + (int)charOffset.X * characters.Children.Count(), (int)charOffset.Y);
-            GameEnvironment.ChangeColor(tempBg, new Color(80, 80, 80));
+            selectedBg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 0 + (int)charOffset.X * characters.Children.Count(), (int)charOffset.Y);
+            unSelectedBg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, 0 + (int)charOffset.X * characters.Children.Count(), (int)charOffset.Y);
+            GameEnvironment.ChangeColor(selectedBg, new Color(80, 80, 80));
+            GameEnvironment.ChangeColor(unSelectedBg, new Color(80, 80, 80, 50));
 
-            Add(charBg = new SpriteGameObject(tempBg));
+            Add(charBg = new Button(selectedBg, Vector2.Zero));
             Add(characters);
         }
 
@@ -55,11 +57,11 @@ namespace BananaPopper
 
             if (selected)
             {
-                charBg.Visible = true;
+                charBg.texture = selectedBg;
             }
             else
             {
-                charBg.Visible = false;
+                charBg.texture = unSelectedBg;
             }
         }
 
@@ -83,12 +85,17 @@ namespace BananaPopper
             }
         }
 
+        public bool isPressed
+        {
+            get { return charBg.isPressed; }
+        }
+
         public override void HandleInput(InputHelper inputHelper)
         {
+            base.HandleInput(inputHelper);
+
             if (selected)
             {
-                base.HandleInput(inputHelper);
-
                 //Changes selected character on the list with arrow keys
                 if (inputHelper.KeyPressed(Keys.Right))
                 {

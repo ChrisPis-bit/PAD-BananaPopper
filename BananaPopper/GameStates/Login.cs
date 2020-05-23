@@ -20,6 +20,13 @@ namespace BananaPopper
 
         CharacterSelector userName, passWord;
 
+        TextGameObject errorMessage, explain;
+
+        const string LOGIN_ERROR = "Verkeerde password/username of geen verbinding",
+            CREATE_ACCOUNT_ERROR = "De username wordt all gebruikt of geen verbinding",
+            EXPLAIN_TEXT = @"Use arrow keys to change characters
+Press enter to confirm";
+
 
         public Login() : base()
         {
@@ -31,6 +38,8 @@ namespace BananaPopper
 
             Add(new TextGameObject(Color.White, new Vector2(userName.position.X, userName.position.Y - 80), "Username"));
             Add(new TextGameObject(Color.White, new Vector2(passWord.position.X, passWord.position.Y - 80), "Password"));
+            Add(errorMessage = new TextGameObject(Color.Red, new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 10)));
+            Add(explain = new TextGameObject(Color.Wheat, new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 10 * 9), EXPLAIN_TEXT));
         }
 
         public override void Update(GameTime gameTime)
@@ -39,6 +48,21 @@ namespace BananaPopper
 
             if (backButton.isPressed)
                 GameEnvironment.GameStateManager.SwitchTo("Startup");
+
+            if (userName.isPressed)
+            {
+                userName.selected = true;
+                passWord.selected = false;
+                Console.WriteLine("yes");
+            }
+
+            if (passWord.isPressed)
+            {
+                passWord.selected = true;
+                userName.selected = false;
+                Console.WriteLine("yes");
+
+            }
 
         }
 
@@ -58,20 +82,11 @@ namespace BananaPopper
                     else
                         LoginPlayer(userName.Text, passWord.Text);
                 }
-
-                //Toggles to password  if username was previously selected
                 else
                 {
                     passWord.selected = true;
                     userName.selected = false;
                 }
-            }
-
-            //Toggles back to username selector if backspace is pressed
-            if (inputHelper.KeyPressed(Keys.Back) && !userName.selected)
-            {
-                userName.selected = true;
-                passWord.selected = false;
             }
         }
 
@@ -106,6 +121,7 @@ namespace BananaPopper
                 else
                 {
                     Console.WriteLine("Couldn't find account with this info");
+                    errorMessage.text = LOGIN_ERROR;
                     cmdData.Close();
                 }
             }
@@ -138,6 +154,8 @@ namespace BananaPopper
             catch (Exception ex)
             {
                 Console.WriteLine("Username taken, or no internet connection");
+                errorMessage.text = CREATE_ACCOUNT_ERROR;
+
                 GameEnvironment.DatabaseHelper.con.Close();
             }
         }
