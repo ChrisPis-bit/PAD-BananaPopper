@@ -8,6 +8,9 @@ namespace BananaPopper
 {
     class HUD : GameObjectList
     {
+        private const float BUTTON_X_OFFSET = 20;
+        public const int HUD_X_OFFSET_RATIO = 13; //Defines how much of screen x the hud takes of the 16/9 ratio
+
         Vector2 hudFlipPosition;
 
         Button flipButton, restartButton;
@@ -22,16 +25,13 @@ namespace BananaPopper
 
         public HUD() : base()
         {
-            position = new Vector2((GameEnvironment.Screen.X / 16) * 13, 0);
+            position = new Vector2((GameEnvironment.Screen.X / GameEnvironment.ScreenRatio.X) * HUD_X_OFFSET_RATIO, 0);
 
             Add(theBG = new SpriteGameObject("sprites/HudSprites/HUDbg"));
             theBG.Scale = (float)GameEnvironment.Screen.Y / theBG.texture.Height;
-            Add(flipButton = new Button("sprites/HudSprites/FlipButton", new Vector2(20, GameEnvironment.Screen.Y / 6 * 4)));
-            Add(restartButton = new Button("sprites/Hudsprites/ReturnButton", new Vector2(20, GameEnvironment.Screen.Y / 6 * 3)));
+            Add(flipButton = new HudButton("sprites/HudSprites/FlipButton", new Vector2(BUTTON_X_OFFSET, GameEnvironment.Screen.Y / 6 * 4)));
+            Add(restartButton = new HudButton("sprites/Hudsprites/ReturnButton", new Vector2(flipButton.position.X + flipButton.HitBox.X*2 + BUTTON_X_OFFSET, GameEnvironment.Screen.Y / 6 * 4)));
             flipLine = true;
-            flipButton.Scale = 3;
-            restartButton.Scale = 3;
-            flipButton.Origin = Vector2.Zero;
 
             Add(theFormula = new Formula());
             Add(theScore = new Score());

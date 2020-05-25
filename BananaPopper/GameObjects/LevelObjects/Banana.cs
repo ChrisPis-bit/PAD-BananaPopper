@@ -14,7 +14,9 @@ namespace BananaPopper
     {
         //This bool will stay true after being shot AND hitting an object
         private const float SCORE_MULT_INCREASE = 0.25f,
-            SCORE_MULT_START = 1;
+            SCORE_MULT_START = 1,
+            SPINNING_SPEED = 0.2f,
+            THROW_SPEED = 300;
 
         public bool shot;
         public int hitBalloonsAmount;
@@ -32,7 +34,7 @@ namespace BananaPopper
             scoreMult = SCORE_MULT_START + SCORE_MULT_INCREASE * hitBalloonsAmount;
 
             base.Update(gameTime);
-            angle -= 0.2f;
+            angle -= SPINNING_SPEED;
         }
 
         public void Shoot(Vector2 position, float speed, bool flipLine)
@@ -55,9 +57,7 @@ namespace BananaPopper
                 angle = (float)Math.Atan2(speed, -1);
             }
 
-            velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * 300;
-
-            angle = 0;
+            velocity = new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * THROW_SPEED;
         }
 
         public float ScoreMultiplier

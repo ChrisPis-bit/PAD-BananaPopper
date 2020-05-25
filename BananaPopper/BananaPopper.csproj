@@ -43,13 +43,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BananaPopper.cs" />
-    <Compile Include="GameManagement\Account.cs" />
     <Compile Include="GameManagement\GameStateManager.cs" />
     <Compile Include="GameManagement\IGameLoopObject.cs" />
     <Compile Include="GameManagement\ParticleObject.cs" />
     <Compile Include="GameManagement\ParticleObjectList.cs" />
     <Compile Include="GameManagement\Sounds.cs" />
     <Compile Include="GameManagement\TextParticleObject.cs" />
+    <Compile Include="GameObjects\HudObjects\HudButton.cs" />
     <Compile Include="GameObjects\HudObjects\TextBubble.cs" />
     <Compile Include="GameObjects\LevelObjects\Background.cs" />
     <Compile Include="GameObjects\HudObjects\BananaCounter.cs" />
@@ -74,7 +74,6 @@
     <Compile Include="GameObjects\LevelObjects\invisibleBalloon.cs" />
     <Compile Include="GameObjects\LevelObjects\Obstacle.cs" />
     <Compile Include="GameObjects\LevelObjects\Player.cs" />
-    <Compile Include="GameObjects\LevelObjects\PopAnimation.cs" />
     <Compile Include="GameObjects\HudObjects\Score.cs" />
     <Compile Include="GameObjects\LevelObjects\StrongBalloon.cs" />
     <Compile Include="GameObjects\HudObjects\Timer.cs" />

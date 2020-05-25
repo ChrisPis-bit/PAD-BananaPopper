@@ -9,7 +9,9 @@ namespace BananaPopper
 {
     class PopperParticles : ParticleObjectList
     {
-        private const float POP_SPEED = 100,
+        private const float PARTICLE_DOWNSCALE = 0.5f,
+
+                            POP_SPEED = 100,
                             POP_GRAVITY = 1,
 
                             OBST_SPEED = 80,
@@ -56,7 +58,7 @@ namespace BananaPopper
             Vector2 speed = new Vector2(POP_SPEED) * scale;
             float gravity = POP_GRAVITY * scale;
 
-            SpawnSpriteParticles("sprites/Particles/PopParticle", position, speed, POP_AMOUNT, POP_FADETIME, gravity, scale);
+            SpawnSpriteParticles("sprites/Particles/PopParticle", position, speed, POP_AMOUNT, POP_FADETIME, gravity, scale * PARTICLE_DOWNSCALE);
         }
 
         public void SpawnObstacleExp(Vector2 position, float scale)
@@ -64,7 +66,7 @@ namespace BananaPopper
             Vector2 speed = new Vector2(OBST_SPEED) * scale;
             float gravity = OBST_GRAVITY * scale;
 
-            SpawnSpriteParticles("sprites/Particles/ExpParticle", position, speed, OBST_AMOUNT, OBST_FADETIME, gravity, scale);
+            SpawnSpriteParticles("sprites/Particles/ExpParticle", position, speed, OBST_AMOUNT, OBST_FADETIME, gravity, scale * PARTICLE_DOWNSCALE);
         }
 
         public void SpawnBananaPop(Vector2 position, float scale)
@@ -72,14 +74,14 @@ namespace BananaPopper
             Vector2 speed = new Vector2(BANANA_SPEED) * scale;
             float gravity = BANANA_GRAVITY * scale;
 
-            SpawnSpriteParticles("sprites/Particles/BananaParticle", position, speed, BANANA_AMOUNT, BANANA_FADETIME, gravity, scale);
+            SpawnSpriteParticles("sprites/Particles/BananaParticle", position, speed, BANANA_AMOUNT, BANANA_FADETIME, gravity, scale * PARTICLE_DOWNSCALE);
         }
         public void SpawnPlusBananaPop(Vector2 position, float scale)
         {
             Vector2 speed = new Vector2(PLUS_SPEED) * scale;
             float gravity = PLUS_GRAVITY * scale;
 
-            SpawnSpriteParticles("sprites/Particles/PlusParticle", position, speed, PLUS_AMOUNT, PLUS_FADETIME, gravity, scale);
+            SpawnSpriteParticles("sprites/Particles/PlusParticle", position, speed, PLUS_AMOUNT, PLUS_FADETIME, gravity, scale * PARTICLE_DOWNSCALE);
         }
 
         public void SpawnScoreText(Vector2 position, int score)
