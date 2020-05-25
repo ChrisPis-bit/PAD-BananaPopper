@@ -55,9 +55,6 @@ namespace BananaPopper
             }
             else if (homeScreen.isPressed)
             {
-                (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex++;
-                (GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).StartLevel((GameEnvironment.GameStateManager.GetGameState("PlayingState") as PlayingState).levelIndex);
-
                 GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
             }
 

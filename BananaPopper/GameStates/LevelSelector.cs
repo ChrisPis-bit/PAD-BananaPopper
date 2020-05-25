@@ -41,7 +41,7 @@ namespace BananaPopper
             levelCounter = System.IO.Directory.GetFiles("Content/Maps").Length;
             GameEnvironment.ChangeColor(tempButton, Color.Green);
             GameEnvironment.ChangeColor(levelTexture, new Color(179, 107, 0));
-            TutorialButton = new LevelButton(new Vector2(GameEnvironment.Screen.X / 2, GameEnvironment.Screen.Y / 2 - 100), "T");
+            TutorialButton = new LevelButton(new Vector2(BUTTONOFFSET, GameEnvironment.Screen.Y / 10), "T");
             Add(personalScore = new TextGameObject(Color.Black, new Vector2(GameEnvironment.Screen.X / 2 - 100, GameEnvironment.Screen.Y - 100)));
 
             highScores = new int[levelCounter, DISPLAYED_HIGHSCORES];

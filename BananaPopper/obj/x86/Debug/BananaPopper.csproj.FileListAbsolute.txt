@@ -331,3 +331,4 @@ C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\De
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\TutorialMap.xnb
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\MenuSprites\lvlButton.xnb
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\MenuSprites\Cross.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\HudSprites\Home.xnb

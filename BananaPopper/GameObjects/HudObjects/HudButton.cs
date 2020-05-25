@@ -30,7 +30,7 @@ namespace BananaPopper
                 VisualScale = new Vector2(VisualScale.X + TWEEN_AMPLITUDE * (float)Math.Sin(tweenTime - Math.PI), VisualScale.Y + TWEEN_AMPLITUDE * (float)Math.Sin(tweenTime - Math.PI));
             }
             else
-                VisualScale = new Vector2(BUTTON_SCALE);
+                VisualScale = new Vector2(Scale);
         }
     }
 }
