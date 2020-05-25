@@ -17,7 +17,7 @@ namespace BananaPopper
         public InvisibleBalloon(Vector2 position) : base(position)
         {     
             score = INV_BALLOON_SCORE;
-            scale = GameEnvironment.TextureScale;
+            Scale = GameEnvironment.TextureScale;
         }
         public override void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {

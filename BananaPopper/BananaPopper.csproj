@@ -43,6 +43,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BananaPopper.cs" />
+    <Compile Include="GameManagement\Account.cs" />
     <Compile Include="GameManagement\GameStateManager.cs" />
     <Compile Include="GameManagement\IGameLoopObject.cs" />
     <Compile Include="GameManagement\ParticleObject.cs" />
@@ -145,7 +146,6 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
     <None Include="app.config" />
     <None Include="app.manifest" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="Content\GameFont.spritefont" />
   </ItemGroup>
   <ItemGroup />

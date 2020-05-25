@@ -221,7 +221,6 @@ C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\De
 C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\HudSprites\HUDbg.xnb
 C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\HudSprites\TableLine.xnb
 C:\Users\trist\Documents\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\HudSprites\TableStop.xnb
-C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map7.xnb
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\MonkeyIslandBand.wma
 C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\MonkeyIslandBand.xnb
 C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\IngameSprites\Balloon.xnb

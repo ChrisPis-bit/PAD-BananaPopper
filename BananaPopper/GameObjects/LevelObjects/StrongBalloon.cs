@@ -21,7 +21,7 @@ namespace BananaPopper
             //GameEnvironment.ChangeColor(texture, Color.Gray);
 
             score = STRONG_BALLOON_SCORE;
-            scale = GameEnvironment.TextureScale;
+            Scale = GameEnvironment.TextureScale;
         }
     }
 }
