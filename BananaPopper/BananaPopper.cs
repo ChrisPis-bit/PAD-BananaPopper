@@ -22,6 +22,8 @@ namespace BananaPopper
             base.LoadContent();
             screen.X = 1920;
             screen.Y = 1080;
+            screenRatio.X = 16;
+            screenRatio.Y = 9;
             ApplyResolutionSettings();
 
             backgroundMusic = Content.Load<Song>("MonkeyIslandBand");

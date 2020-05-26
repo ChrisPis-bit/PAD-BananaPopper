@@ -22,7 +22,7 @@ namespace BananaPopper
 
         public override void Reset()
         {
-            scale = GameEnvironment.TextureScale/2;
+            Scale = GameEnvironment.TextureScale/2;
 
             base.Reset();
         }
