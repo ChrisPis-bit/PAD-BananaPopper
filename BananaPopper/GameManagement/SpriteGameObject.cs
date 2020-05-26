@@ -14,7 +14,7 @@ class SpriteGameObject : GameObject
     public SpriteEffects spriteEffect;
     protected Vector2 origin, hitbox, visualScale;
     public float angle;
-    protected float scale, hitboxScale;
+    private float scale, hitboxScale;
 
     public SpriteGameObject(String assetName, float angle = 0)
     {

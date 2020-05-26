@@ -18,7 +18,7 @@ class ParticleObject : SpriteGameObject
         this.gravity = gravity;
         position = spawnPosition;
         this.velocity = velocity;
-        this.scale = scale;
+        this.VisualScale = new Vector2(scale);
     }
 
     public override void Update(GameTime gameTime)

@@ -32,7 +32,6 @@ namespace BananaPopper
 
         public HUD hud;
         Player thePlayer;
-        PopAnimation thePopAnimation;
         XYAxes theXYaxes;
         DirectionBox theDirectionBox;
         PopperParticles theParticles;
@@ -63,7 +62,6 @@ namespace BananaPopper
             Add(theObstacles);
             Add(theBalloons);
             Add(thePlusBanana);
-            Add(thePopAnimation = new PopAnimation());
             Add(theBullets);
             Add(theDirectionBox = new DirectionBox());
             Add(theXYaxes);
@@ -127,14 +125,6 @@ namespace BananaPopper
                     if (balloons.Overlaps(banana))
                     {
                         (balloons as Balloon).hp--;
-
-                        //Invisible balloon collision
-                        if (balloons is InvisibleBalloon)
-                        {
-                            thePopAnimation.position = balloons.position;
-                            thePopAnimation.Visible = true;
-
-                        }
 
                         if ((balloons as Balloon).hp == 0)
                         {
@@ -237,16 +227,6 @@ namespace BananaPopper
                 hud.flipLine = !hud.flipLine;
             }
 
-            if (inputHelper.KeyPressed(Keys.L))
-            {
-                StartLevel(3);
-            }
-
-            if (inputHelper.KeyPressed(Keys.K))
-            {
-                StartLevel(5);
-            }
-
             if (inputHelper.KeyPressed(Keys.Space))
             {
                 if (hud.theBananaCounter.Amount != 0)
@@ -304,6 +284,7 @@ namespace BananaPopper
             extraBanana = new Color(150, 255, 150),
             strongBalloon = new Color(200, 100, 100);
 
+            //Loads in the map using the given index
             Texture2D map;
             if (levelIndex == 0)
             {
@@ -313,10 +294,11 @@ namespace BananaPopper
             {
                 map = GameEnvironment.ContentManager.Load<Texture2D>("Maps/Map" + levelIndex);
             }
+
             //Changes GlobalScale according to the maps width or height, so that the map always fits on the screen
-            if (map.Width / 13 >= map.Height / 9)
+            if (map.Width / HUD.HUD_X_OFFSET_RATIO >= map.Height / GameEnvironment.ScreenRatio.Y)
             {
-                GameEnvironment.GlobalScale = (float)GameEnvironment.Screen.X / 16 * 13 / map.Width;
+                GameEnvironment.GlobalScale = (float)GameEnvironment.Screen.X / GameEnvironment.ScreenRatio.X * HUD.HUD_X_OFFSET_RATIO / map.Width;
             }
             else
                 GameEnvironment.GlobalScale = (float)GameEnvironment.Screen.Y / map.Height;

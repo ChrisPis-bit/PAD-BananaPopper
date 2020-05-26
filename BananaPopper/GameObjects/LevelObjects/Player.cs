@@ -24,7 +24,7 @@ namespace BananaPopper
         public void ResetPlayer(Vector2 startPosition)
         {
             Oorsprong = startPosition;
-            Scale = GameEnvironment.TextureScale/2 - 0.1f;
+            Scale = GameEnvironment.TextureScale / 2 - 0.1f;
             position = startPosition - HitBox / 2;
             centerPos = position + HitBox / 2;
             maxSpeed = GameEnvironment.GlobalScale * 40;
@@ -47,30 +47,7 @@ namespace BananaPopper
             //Movement, checks if player is holding down mouse to swipe the player up
             if (inputHelper.MouseLeftButtonDown())
             {
-                /*if (centerPos == Oorsprong)
-                {
-                    if (Math.Abs(inputHelper.MouseVelocity.X) > Math.Abs(inputHelper.MouseVelocity.Y))
-                    {
-                        velocity.X = inputHelper.MouseVelocity.X * 50;
-                    }
-                    else velocity.Y = inputHelper.MouseVelocity.Y * 50;
-                }
-
-                //Free movement on x if player is gone from 0,0
-                else if (centerPos.X != Oorsprong.X)
-                {
-                    velocity.X = inputHelper.MouseVelocity.X * 50;
-                }
-
-                //Free movement on y if player is gone from 0,0
-                else if (centerPos.Y != Oorsprong.Y)
-                {*/
-                    velocity.Y = inputHelper.MouseVelocity.Y * 50;
-                /*}
-                else
-                {
-                    velocity = new Vector2(0);
-                }*/
+                velocity.Y = inputHelper.MouseVelocity.Y * 50;
 
                 //Checks if the player is close to a point on the grid
             }
@@ -78,18 +55,18 @@ namespace BananaPopper
             {
                 //Re-positions player if he's closer to the last grid point than the next one
                 if (centerPos.X % GameEnvironment.GlobalScale < GameEnvironment.GlobalScale / 2)
-                    position.X = centerPos.X - centerPos.X % GameEnvironment.GlobalScale - HitBox.X/2;
+                    position.X = centerPos.X - centerPos.X % GameEnvironment.GlobalScale - HitBox.X / 2;
 
                 if (centerPos.Y % GameEnvironment.GlobalScale < GameEnvironment.GlobalScale / 2)
-                    position.Y = centerPos.Y - centerPos.Y % GameEnvironment.GlobalScale - HitBox.Y/2;
+                    position.Y = centerPos.Y - centerPos.Y % GameEnvironment.GlobalScale - HitBox.Y / 2;
 
 
                 //Re-positions player if he's closer to the next grid point than the last one
                 if (centerPos.X % GameEnvironment.GlobalScale >= GameEnvironment.GlobalScale / 2)
-                    position.X = centerPos.X + GameEnvironment.GlobalScale - (centerPos.X % GameEnvironment.GlobalScale) - HitBox.X/2;
+                    position.X = centerPos.X + GameEnvironment.GlobalScale - (centerPos.X % GameEnvironment.GlobalScale) - HitBox.X / 2;
 
                 if (centerPos.Y % GameEnvironment.GlobalScale >= GameEnvironment.GlobalScale / 2)
-                    position.Y = centerPos.Y + GameEnvironment.GlobalScale - (centerPos.Y % GameEnvironment.GlobalScale) - HitBox.Y/2;
+                    position.Y = centerPos.Y + GameEnvironment.GlobalScale - (centerPos.Y % GameEnvironment.GlobalScale) - HitBox.Y / 2;
 
                 velocity = new Vector2(0);
             }
@@ -108,7 +85,7 @@ namespace BananaPopper
 
         public void CollideWithObject(SpriteGameObject obj)
         {
-            if (Overlaps(obj))
+            if (obj.Overlaps(this))
             {
                 if (velocity.X != 0)
                 {

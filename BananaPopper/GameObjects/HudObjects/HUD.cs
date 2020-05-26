@@ -8,9 +8,11 @@ namespace BananaPopper
 {
     class HUD : GameObjectList
     {
-        Vector2 hudFlipPosition;
+        private const float BUTTON_X_OFFSET = 20;
+        public const int HOME_BUTTON_SCALE = 2,
+                         HUD_X_OFFSET_RATIO = 13; //Defines how much of screen x the hud takes of the 16/9 ratio
 
-        Button flipButton, restartButton;
+        Button flipButton, restartButton, homeButton;
         public bool flipLine;
 
         public SpriteGameObject theBG;
@@ -22,16 +24,16 @@ namespace BananaPopper
 
         public HUD() : base()
         {
-            position = new Vector2((GameEnvironment.Screen.X / 16) * 13, 0);
+            position = new Vector2((GameEnvironment.Screen.X / GameEnvironment.ScreenRatio.X) * HUD_X_OFFSET_RATIO, 0);
 
             Add(theBG = new SpriteGameObject("sprites/HudSprites/HUDbg"));
             theBG.Scale = (float)GameEnvironment.Screen.Y / theBG.texture.Height;
-            Add(flipButton = new Button("sprites/HudSprites/FlipButton", new Vector2(20, GameEnvironment.Screen.Y / 6 * 4)));
-            Add(restartButton = new Button("sprites/Hudsprites/ReturnButton", new Vector2(20, GameEnvironment.Screen.Y / 6 * 3)));
+            Add(flipButton = new HudButton("sprites/HudSprites/FlipButton", new Vector2(BUTTON_X_OFFSET, GameEnvironment.Screen.Y / 6 * 4)));
+            Add(restartButton = new HudButton("sprites/Hudsprites/ReturnButton", new Vector2(flipButton.position.X + flipButton.HitBox.X*2 + BUTTON_X_OFFSET, GameEnvironment.Screen.Y / 6 * 4)));
+            Add(homeButton = new HudButton("sprites/Hudsprites/Home", Vector2.Zero));
+            homeButton.Scale = HOME_BUTTON_SCALE;
+            homeButton.position = new Vector2(theBG.HitBox.X - homeButton.HitBox.X, 0);
             flipLine = true;
-            flipButton.Scale = 3;
-            restartButton.Scale = 3;
-            flipButton.Origin = Vector2.Zero;
 
             Add(theFormula = new Formula());
             Add(theScore = new Score());
@@ -62,12 +64,10 @@ namespace BananaPopper
                 GameEnvironment.GameStateManager.GetGameState("PlayingState").Reset();
             }
 
-            /*if (flipLine)
+            if (homeButton.isPressed)
             {
-                position = Vector2.Zero;
+                GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
             }
-            else
-                position = hudFlipPosition;*/
         }
     }
 }

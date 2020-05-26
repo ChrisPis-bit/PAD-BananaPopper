@@ -22,6 +22,7 @@
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Background.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/back button.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/FlipButton.png</File>
+    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/Home.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/HUDbg.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/TableLine.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/HudSprites/TableStop.png</File>
@@ -64,6 +65,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>sprites/HudSprites/ReturnButton.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
