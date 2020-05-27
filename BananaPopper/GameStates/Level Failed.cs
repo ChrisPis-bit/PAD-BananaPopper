@@ -11,22 +11,17 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BananaPopper
 {
-    class LevelFailed : GameState
+    class LevelFailed : MenuState
     {
-        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y);
         MenuButton retry, homeScreen;
 
         public LevelFailed() : base()
         {
-            GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
-
-            Add(new SpriteGameObject(bg));
-
-            Add(retry = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10), "Restart"));
+            Add(retry = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 3), "Restart"));
             Add(homeScreen = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 5), "Home"));
 
-            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 3), "Level Failed"));
-            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 4, GameEnvironment.Screen.Y / 2), "Do you want to retry this level?"));
+            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10), "Level Failed"));
+            backButton.Visible = false;
         }
 
         public override void Update(GameTime gameTime)
