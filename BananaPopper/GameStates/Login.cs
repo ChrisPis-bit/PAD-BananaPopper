@@ -53,15 +53,12 @@ Press enter to confirm";
             {
                 userName.selected = true;
                 passWord.selected = false;
-                Console.WriteLine("yes");
             }
 
             if (passWord.isPressed)
             {
                 passWord.selected = true;
                 userName.selected = false;
-                Console.WriteLine("yes");
-
             }
 
         }

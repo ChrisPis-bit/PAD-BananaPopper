@@ -376,7 +376,7 @@ namespace BananaPopper
 
             //Gets the highscore of this level
             GameEnvironment.DatabaseHelper.con.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT Score FROM zmult.Speler_has_Level WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = 1;", GameEnvironment.DatabaseHelper.con);
+            MySqlCommand cmd = new MySqlCommand("SELECT Score FROM zmult.Speler_has_Level WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = " + GameEnvironment.DatabaseHelper.playerIndex + "; ", GameEnvironment.DatabaseHelper.con);
             MySqlDataReader cmdData = cmd.ExecuteReader();
             if (cmdData.Read())
             {
