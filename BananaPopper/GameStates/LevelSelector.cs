@@ -14,7 +14,7 @@ namespace BananaPopper
     class LevelSelector : MenuState
     {
         private const int DISPLAYED_HIGHSCORES = 10,
-            HIGHSCORE_UPDATE_TIME = 500;
+            HIGHSCORE_UPDATE_TIME = 300;
 
         // buttonoffset = distance between side and first button.
         // buttondistance = distance between each button.

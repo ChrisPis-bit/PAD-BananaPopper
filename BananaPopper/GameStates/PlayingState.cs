@@ -404,7 +404,7 @@ namespace BananaPopper
                     cmdData.Close();
                     if (highScore < hud.theScore.GetScore)
                     {
-                        GameEnvironment.DatabaseHelper.ExecuteClosedQuery("Update zmult.Speler_has_Level SET Score = " + hud.theScore.GetScore + " WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = " + PlayerID + ";");
+                        GameEnvironment.DatabaseHelper.ExecuteClosedQuery("Update zmult.Speler_has_Level SET Score = " + (int)hud.theScore.GetScore + " WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = " + PlayerID + " ;");
                     }
 
                 }
