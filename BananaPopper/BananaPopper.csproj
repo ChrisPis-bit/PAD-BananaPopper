@@ -141,6 +141,7 @@
     <Content Include="Content\Maps\Map4.png" />
     <Content Include="Content\Maps\Map5.png" />
     <Content Include="Content\Maps\Map6.png" />
+    <Content Include="Content\Maps\Map7.png" />
     <Content Include="Content\sprites\Background.png" />
     <Content Include="Content\sprites\HudSprites\FlipButton.png" />
     <Content Include="Content\sprites\HudSprites\HUDbg.png" />

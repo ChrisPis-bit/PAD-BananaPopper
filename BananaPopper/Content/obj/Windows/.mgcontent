@@ -49,6 +49,7 @@
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Mouse/Hand.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Mouse/Pointer.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Particles/BananaParticle.png</File>
+    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Particles/ExpParticle.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Particles/ObstacleParticle.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Particles/PlusParticle.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/sprites/Particles/PopParticle.png</File>
@@ -79,6 +80,7 @@
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File>sprites/HudSprites/ReturnButton.png</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
