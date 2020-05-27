@@ -7,11 +7,17 @@
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/arrowKey.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/GameFont.spritefont</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map1.png</File>
+    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map10.png</File>
+    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map11.png</File>
+    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map12.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map2.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map3.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map4.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map5.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map6.png</File>
+    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map7.png</File>
+    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map8.png</File>
+    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map9.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/MonkeyIslandBand.wma</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/BalloonPopping.wav</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/SoundEffects/Box.wav</File>
@@ -48,6 +54,12 @@
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/TutorialMap.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

@@ -130,6 +130,19 @@ namespace BananaPopper
                 GameEnvironment.GameStateManager.SwitchTo("HomeMenu");
         }
 
+        public override void HandleInput(InputHelper inputHelper)
+        {
+            base.HandleInput(inputHelper);
+
+            if (inputHelper.KeyPressed(Keys.OemOpenBrackets))
+            {
+                foreach(LevelButton level in levelButtons.Children)
+                {
+                    level.levelAvailable = true;
+                }
+            }
+        }
+
         public void UpdateScores(int playerIndex)
         {
             scoreList.Clear();
@@ -153,11 +166,6 @@ namespace BananaPopper
                 }
             }
             cmdData.Close();
-
-            for (int i = 0; i < scoreList.Count(); i++)
-            {
-                Console.WriteLine(scoreList[i]);
-            }
         }
 
         public void GetHighScores()

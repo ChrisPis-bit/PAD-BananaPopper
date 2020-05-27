@@ -11,9 +11,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace BananaPopper
 {
-    class LevelCleared : GameState
+    class LevelCleared : MenuState
     {
-        Texture2D bg = new Texture2D(GameEnvironment.Graphics.GraphicsDevice, GameEnvironment.Screen.X, GameEnvironment.Screen.Y);
         MenuButton nextLevel, homeScreen;
 
         TextGameObject scoreText;
@@ -21,15 +20,12 @@ namespace BananaPopper
 
         public LevelCleared() : base()
         {
-            GameEnvironment.ChangeColor(bg, new Color(40, 40, 40));
-
-            Add(new SpriteGameObject(bg));
-
             Add(nextLevel = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 3), "Next Level"));
             Add(homeScreen = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10 * 5), "Home"));
 
-            Add(new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10), "Level Cleared, Well Done!"));
+            Add(new TextGameObject(Color.Black, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10), "Level Cleared, Well Done!"));
             Add(scoreText = new TextGameObject(Color.Cyan, new Vector2(GameEnvironment.Screen.X / 3, GameEnvironment.Screen.Y / 10 * 2)));
+            backButton.Visible = false;
         }
 
         public override void Update(GameTime gameTime)

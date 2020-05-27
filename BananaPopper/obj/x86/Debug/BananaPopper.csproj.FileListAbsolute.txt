@@ -344,3 +344,9 @@ C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\W
 C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\MenuSprites\lvlButton.xnb
 C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\TutorialMap.xnb
 C:\Users\bsiu2\OneDrive\Documents\Team 16 GD\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\sprites\HudSprites\Home.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map10.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map11.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map12.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map7.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map8.xnb
+C:\Users\chris\OneDrive\Documenten\GitHub\PAD-BananaPopper\BananaPopper\bin\Windows\x86\Debug\Content\Maps\Map9.xnb
