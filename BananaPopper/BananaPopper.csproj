@@ -135,6 +135,7 @@
     <Content Include="Content\arrowKey.png" />
     <Content Include="Content\MapStats.txt" />
     <Content Include="Content\Maps\Map1.png" />
+    <Content Include="Content\Maps\Map13.png" />
     <Content Include="Content\Maps\Map2.png" />
     <Content Include="Content\Maps\Map3.png" />
     <Content Include="Content\Maps\Map4.png" />
