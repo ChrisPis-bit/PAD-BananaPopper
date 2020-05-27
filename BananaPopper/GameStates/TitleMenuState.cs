@@ -39,7 +39,6 @@ namespace BananaPopper
                 //Switches to startup screen so the player can choose how they want to start the game
                 GameEnvironment.GameStateManager.SwitchTo("Startup");
             }
-
         }
     }
 }

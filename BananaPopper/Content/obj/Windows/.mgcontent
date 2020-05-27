@@ -10,6 +10,7 @@
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map10.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map11.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map12.png</File>
+    <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map13.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map2.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map3.png</File>
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/Maps/Map4.png</File>
@@ -54,6 +55,7 @@
     <File>C:/Users/chris/OneDrive/Documenten/GitHub/PAD-BananaPopper/BananaPopper/Content/TutorialMap.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
