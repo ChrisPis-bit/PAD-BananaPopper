@@ -375,18 +375,24 @@ namespace BananaPopper
             hud.theBananaCounter.ResetCounter(theBullets);
 
             //Gets the highscore of this level
-            GameEnvironment.DatabaseHelper.con.Open();
-            MySqlCommand cmd = new MySqlCommand("SELECT Score FROM zmult.Speler_has_Level WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = " + GameEnvironment.DatabaseHelper.playerIndex + "; ", GameEnvironment.DatabaseHelper.con);
-            MySqlDataReader cmdData = cmd.ExecuteReader();
-            if (cmdData.Read())
+            try
             {
-                highScore = (int)cmdData[0];
-                cmdData.Close();
-            }
-            else
+                GameEnvironment.DatabaseHelper.con.Open();
+                MySqlCommand cmd = new MySqlCommand("SELECT Score FROM zmult.Speler_has_Level WHERE Level_LevelNr = " + levelIndex + " AND Speler_idSpeler = " + GameEnvironment.DatabaseHelper.playerIndex + "; ", GameEnvironment.DatabaseHelper.con);
+                MySqlDataReader cmdData = cmd.ExecuteReader();
+                if (cmdData.Read())
+                {
+                    highScore = (int)cmdData[0];
+                    cmdData.Close();
+                }
+                else
+                {
+                    highScore = 0;
+                    cmdData.Close();
+                }
+            }catch(Exception ex)
             {
-                highScore = 0;
-                cmdData.Close();
+                Console.WriteLine(ex.ToString());
             }
             GameEnvironment.DatabaseHelper.con.Close();
         }

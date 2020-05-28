@@ -13,14 +13,13 @@ namespace BananaPopper
 {
     class HomeMenu : MenuState
     {
-        MenuButton startGame, options;
+        MenuButton startGame;
 
         private SpriteGameObject title;
 
         public HomeMenu() : base()
         {
             Add(startGame = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*3), "Start Game"));
-            Add(options = new MenuButton(new Vector2(GameEnvironment.Screen.X / 10, GameEnvironment.Screen.Y / 10*5), "Options"));
 
             Add(title = new SpriteGameObject("sprites/MenuSprites/Title"));
             title.Origin = title.HitBox / 2;
@@ -41,13 +40,6 @@ namespace BananaPopper
 
             if (backButton.isPressed)
                 GameEnvironment.GameStateManager.SwitchTo("Startup");
-
-            // else if (options.isPressed)
-            // {
-            //Switches to options screen so the player lower or increase the in-game sound
-            //     GameEnvironment.GameStateManager.SwitchTo("Options");
-            //}
-
         }
     }
 }
