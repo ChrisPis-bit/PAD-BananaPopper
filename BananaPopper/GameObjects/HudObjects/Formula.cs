@@ -15,6 +15,7 @@ namespace BananaPopper
         private const float TEXT_SCALE = 1.5f,
             BUTTON_SCALE = 2,
             BUTTON_X_OFFSET = 100,
+            RC_CHANGE = 0.5f,
             xOffset = 10;
 
         public float scale;
@@ -58,8 +59,8 @@ namespace BananaPopper
         {
             base.Update(gameTime);
 
-            if (upRC.isPressed) rc += 0.5f;
-            if (downRC.isPressed) rc -= 0.5f;
+            if (upRC.isPressed) rc += RC_CHANGE;
+            if (downRC.isPressed) rc -= RC_CHANGE;
 
             //Prevents the array from going out of bounds
             /*if (iRc >= rc.Length)

@@ -21,6 +21,7 @@ class DatabaseHelper
         con = new MySqlConnection(connectionString);
     }
 
+    //Executes a sql query with opening a connection
     public void ExecuteQuery(string query)
     {
         try
@@ -39,6 +40,8 @@ class DatabaseHelper
         con.Close();
     }
 
+    //Executes a sql query without opening a connection
+    //Used in database code where a connection has already been opened
     public void ExecuteClosedQuery(string query)
     {
         try

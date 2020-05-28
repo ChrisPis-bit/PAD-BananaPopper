@@ -23,11 +23,13 @@ namespace BananaPopper.GameObjects
         {
             base.Draw(gameTime, spriteBatch);
 
+            //Draws the horizantal grid lines
             for (int i = 0; i < GameEnvironment.Screen.X/GameEnvironment.GlobalScale; i++)
             {
                 LineRenderer.DrawLine(spriteBatch, grid, new Vector2((GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale), 0), new Vector2(GameEnvironment.GlobalScale + i * GameEnvironment.GlobalScale, GameEnvironment.Screen.Y));
             }
 
+            //Draws the vertical grid lines
             for (int j = 0; j < GameEnvironment.Screen.Y / GameEnvironment.GlobalScale; j++)
             {
                 LineRenderer.DrawLine(spriteBatch, grid, new Vector2(GameEnvironment.Screen.X, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale), new Vector2(0, GameEnvironment.GlobalScale + j * GameEnvironment.GlobalScale));

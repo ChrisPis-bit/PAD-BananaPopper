@@ -9,6 +9,8 @@ namespace BananaPopper
 {
     class HudButton : Button
     {
+        //Base class for buttons in the HUD
+
         private const float BUTTON_SCALE = 3;
 
         private float tweenTime = 0;

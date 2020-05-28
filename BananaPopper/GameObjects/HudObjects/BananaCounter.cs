@@ -15,6 +15,7 @@ namespace BananaPopper
 
         }
 
+        //Resets the banana amount using the amount of bananas in the bullet gameobjectlist in playingstate
         public void ResetCounter(GameObjectList bananas)
         {
             Children.Clear();
@@ -34,6 +35,8 @@ namespace BananaPopper
             }
         }
 
+        //Either removes or adds a banana
+        //Adds if the value goes up, removes if it goes down
         public int Amount
         {
             get { return Children.Count(); }

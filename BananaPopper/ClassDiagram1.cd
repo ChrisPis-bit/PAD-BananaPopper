@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BananaPopper.BananaPopper" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>BananaPopper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.LineRenderer" Collapsed="true">
+    <Position X="78.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>GameManagement\LineRenderer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Sounds" Collapsed="true">
+    <Position X="78.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameManagement\Sounds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.TextGameObject" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIAAAAAAAAAggAAAAAAAAACAAAAAACIAAAAAAgAAAA=</HashCode>
+      <FileName>GameManagement\TextGameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.TextParticleObject" Collapsed="true">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameManagement\TextParticleObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Button" Collapsed="true">
+    <Position X="22" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAABAAAAAAAAAAAQAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>GameObjects\Button.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.BananaCounter" Collapsed="true">
+    <Position X="55.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAACAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\HudObjects\BananaCounter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Formula" Collapsed="true">
+    <Position X="58" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAACAACADAAAAAAEAAACCBAAAAACAAAQQAAAAAA=</HashCode>
+      <FileName>GameObjects\HudObjects\Formula.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.HUD" Collapsed="true">
+    <Position X="40" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAIAAgBAAEAQAAAAgEABAAAAAABAAEABAEBAI=</HashCode>
+      <FileName>GameObjects\HudObjects\HUD.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.HudButton" Collapsed="true">
+    <Position X="22" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAEAAAAQAAAAAAAAAAACAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\HudObjects\HudButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Score" Collapsed="true">
+    <Position X="6.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAIAAAAAAAAAAAAAAAQgAAAAAA=</HashCode>
+      <FileName>GameObjects\HudObjects\Score.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Table" Collapsed="true">
+    <Position X="46.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAgAAACAAABAAAAAAAAAAABAQAAAAAAA=</HashCode>
+      <FileName>GameObjects\HudObjects\Table.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.TextBubble" Collapsed="true">
+    <Position X="49" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>GameObjects\HudObjects\TextBubble.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Timer" Collapsed="true">
+    <Position X="10.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAgABAAEAAAAAAQAAAAAAAgAAAAQAAAAAAA=</HashCode>
+      <FileName>GameObjects\HudObjects\Timer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Balloon" Collapsed="true">
+    <Position X="30" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAgAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\Balloon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Banana" Collapsed="true">
+    <Position X="35.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQECAAAAAAABAAAEQAAAQAAAAAAAAAACCQAAAAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\Banana.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.DirectionBox" Collapsed="true">
+    <Position X="13" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\DirectionBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.ExplosiveBanana" Collapsed="true">
+    <Position X="35.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\ExplosiveBanana.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.InvisibleBalloon" Collapsed="true">
+    <Position X="28.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\invisibleBalloon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Obstacle" Collapsed="true">
+    <Position X="15.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\Obstacle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Player" Collapsed="true">
+    <Position X="19.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAACAAABAAAQAAAAAQAEAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.plusBanana" Collapsed="true">
+    <Position X="24.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\plusBanana.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.StrongBalloon" Collapsed="true">
+    <Position X="31" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\StrongBalloon.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Vine" Collapsed="true">
+    <Position X="37.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\Vine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.XYAxes" Collapsed="true">
+    <Position X="42.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAIAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\XYAxes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Character" Collapsed="true">
+    <Position X="4" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAEAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\MenuObjects\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.CharacterSelector" Collapsed="true">
+    <Position X="44.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAAAAEAAAAAIAAACBAAAAABAACgAAAAA=</HashCode>
+      <FileName>GameObjects\MenuObjects\CharacterSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.LevelButton" Collapsed="true">
+    <Position X="51.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABgAAAAAAAAAAAAIAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\MenuObjects\LevelButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.MenuButton" Collapsed="true">
+    <Position X="51.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABEAACAQAAABAAAAAAASAEAAAAIAAAACAAAAAA=</HashCode>
+      <FileName>GameObjects\MenuObjects\MenuButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Mouse" Collapsed="true">
+    <Position X="26.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAACAAAgAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\Mouse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.PopperParticles" Collapsed="true">
+    <Position X="53.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iAAASAARAAAABAAAAAAAIQQCAgggAAAAAACgFkBEICE=</HashCode>
+      <FileName>GameObjects\PopperParticles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.GameState" Collapsed="true">
+    <Position X="68.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>GameStates\GameState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.HomeMenu" Collapsed="true">
+    <Position X="60.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAQAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameStates\HomeMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.LevelFailed" Collapsed="true">
+    <Position X="64.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameStates\Level Failed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.LevelCleared" Collapsed="true">
+    <Position X="67" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAEAAAAABQAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameStates\LevelCleared.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.LevelSelector" Collapsed="true">
+    <Position X="69.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASABAiAgCQYAQAAIAABAEogAAAIgAAAAAAcBAAAAKA=</HashCode>
+      <FileName>GameStates\LevelSelector.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Login" Collapsed="true">
+    <Position X="71.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAHAAAIAAAAAAAAAFAAAAAAAAAQAEgAABAUCAAA=</HashCode>
+      <FileName>GameStates\Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.MenuState" Collapsed="true">
+    <Position X="67" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameStates\MenuState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.PlayingState" Collapsed="true">
+    <Position X="76" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASQAAqAAAiABgIAAAAAIAAwIAIAAABAAAAABCgAAAA=</HashCode>
+      <FileName>GameStates\PlayingState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Startup" Collapsed="true">
+    <Position X="73.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAIAAAAAAQAAAAABAAAEAA=</HashCode>
+      <FileName>GameStates\Startup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.TitleMenuState" Collapsed="true">
+    <Position X="62.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAAAAAQAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameStates\TitleMenuState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.TutorialState" Collapsed="true">
+    <Position X="76" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIRQAACAAACABACCAQAgUAEAIBAAAAAAIAEAAEEABQA=</HashCode>
+      <FileName>GameStates\TutorialState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.Program" Collapsed="true">
+    <Position X="80.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.GameManagement.ScoreManager" Collapsed="true">
+    <Position X="82" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameManagement\Class1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DatabaseHelper" Collapsed="true">
+    <Position X="78.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAgAAAAAAUAAABAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>GameManagement\DatabaseHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameEnvironment" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BIQKAECACAAAAgAABIAAAAQAiAAJBAhIAAQAGAAAgBQ=</HashCode>
+      <FileName>GameManagement\GameEnvironment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameObject" Collapsed="true">
+    <Position X="40" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAACABgBAAAAAYAAAAAAAAAAIAAQACAAAAAA=</HashCode>
+      <FileName>GameManagement\GameObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="GameObjectList" Collapsed="true">
+    <Position X="58" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAACAAAAABgQECAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameManagement\GameObjectList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameStateManager" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="80.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAQAAABgAAAAQAAAIUAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>GameManagement\GameStateManager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InputHelper" Collapsed="true">
+    <Position X="82" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASIAAAgAAAAAAAAAAIAAUBCEAABAAAAAAAAQABSwAA=</HashCode>
+      <FileName>GameManagement\InputHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ParticleObject" Collapsed="true">
+    <Position X="17.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameManagement\ParticleObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ParticleObjectList" Collapsed="true">
+    <Position X="53.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAA=</HashCode>
+      <FileName>GameManagement\ParticleObjectList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpriteGameObject" Collapsed="true">
+    <Position X="25.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQBABQAAAAAAgACBCIJAAACAAAAAgAAAAIAAAhAAAA=</HashCode>
+      <FileName>GameManagement\SpriteGameObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BananaPopper.GameObjects.Background" Collapsed="true">
+    <Position X="33.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameObjects\LevelObjects\Background.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IGameLoopObject" Collapsed="true">
+    <Position X="78.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameManagement\IGameLoopObject.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
